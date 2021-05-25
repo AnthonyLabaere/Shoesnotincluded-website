@@ -7,7 +7,7 @@ interface ScrollToTopProps {
     children?: React.ReactNode
 }
 
-function ScrollToTop({ history, children }: ScrollToTopProps) {
+const ScrollToTop = ({ history, children }: ScrollToTopProps) => {
     useEffect(() => {
         const unlisten = history.listen(() => {
             window.scrollTo(0, 0);
@@ -15,7 +15,7 @@ function ScrollToTop({ history, children }: ScrollToTopProps) {
         return () => {
             unlisten();
         }
-    }, []);
+    }, [history]);
 
     return <Fragment>{children}</Fragment>;
 }

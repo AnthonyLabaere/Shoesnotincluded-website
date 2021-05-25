@@ -2,14 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 import { ContentContainer } from '../../components/common'
-import { Marginer } from "../../components/marginer"
+import Marginer from "../../components/marginer"
 import { ContentPageContainer, InnerPageContainer, PageContainer } from '../../components/pageContainer'
 
 const LegalNoticesContentContainer = styled(ContentContainer)`
     text-align: justify;
 `
 
-function LegalNotices() {
+const LegalNotices = () => {
     return (
         <PageContainer>
             <InnerPageContainer>
@@ -65,4 +65,4 @@ function LegalNotices() {
     )
 }
 
-export default LegalNotices;
+export default LegalNotices

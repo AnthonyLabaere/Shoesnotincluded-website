@@ -5,10 +5,11 @@ const ButtonWrapper = styled.button<{ size?: number }>`
     border: none;
     outline: none;
     color: #fff;
-    padding: 6px 1em;
-    font-size: ${({ size }) => (size ? size + "px" : "18px")};
+    margin: 1.25rem;
+    padding: 0.75rem;
+    font-size: ${({ size }) => (size ? size + "rem" : "1.5rem")};
     font-weight: 600;
-    border-radius: 3px;
+    border-radius: 5px;
     background-color: ${({ theme }) => (theme.backgroundButtonColor)};
     cursor: pointer;
     transition: all 200ms ease-in-out;
@@ -22,12 +23,12 @@ const ButtonWrapper = styled.button<{ size?: number }>`
     }
 `;
 
-export function Button(props: any) {
-    const { size } = props;
-
+const Button = ({ children, className, size, style }: { children: string | JSX.Element | JSX.Element[], className?: string, size?: number, style?: React.CSSProperties }) => {
     return (
-        <ButtonWrapper size={size} className={props.className} style={props.style}>
-            {props.children}
+        <ButtonWrapper size={size} className={className} style={style}>
+            {children}
         </ButtonWrapper>
     );
 }
+
+export default Button;

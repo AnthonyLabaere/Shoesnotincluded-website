@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ThemeProvider } from 'styled-components';
 
-import { Footer } from './gui/components/footer';
-import { Navbar } from './gui/components/navbar';
+import Footer from './gui/components/footer';
+import Navbar from './gui/components/navbar';
 import ScrollToTop from './gui/components/scrollToTop';
 
 import Contact from './gui/screens/Contact';

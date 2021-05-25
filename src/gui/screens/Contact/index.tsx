@@ -1,6 +1,6 @@
 import React from "react";
 // import { Formik } from 'formik';
-// import styled from "styled-components";
+import styled from "styled-components";
 
 // import { Button } from "../../components/button"
 import { ContentContainer } from "../../components/common"
@@ -55,7 +55,7 @@ import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../c
 
 // export const SubmitButtonContainer = styled.div`
 //     width: 100%;
-//     margin: 1em;
+//     margin: 1rem;
 //     display: flex;
 //     justify-content: center;
 // `
@@ -65,7 +65,11 @@ import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../c
 //   color: ${props => props.color || '#4d4d4d'};
 // `;
 
-function Contact() {
+const ContactFormContentContainer = styled(ContentContainer)`
+    min-height: 500px;
+`
+
+const Contact = () => {
     return (
         <PageContainer>
             <InnerPageContainer>
@@ -74,7 +78,7 @@ function Contact() {
                         <h1>Contact</h1>
                     </ContentContainer>
                 </ContentPageContainer>
-                <ContentContainer>
+                <ContactFormContentContainer>
                     <h2 style={{ textAlign: 'center' }}>Une question sur l'application ou l'un des jeux ? Merci de nous contacter via l'adresse mail suivante :</h2>
                     <h2 style={{ textAlign: 'center' }}>contact@shoesnotincluded.fr</h2>
                     {/* <h2 style={{ textAlign: 'center' }}>Une question sur l'application ou l'un des jeux ? Merci de remplir le formulaire ci-dessous :</h2> */}
@@ -142,10 +146,10 @@ function Contact() {
                             </form>
                         )}
                     </Formik> */}
-                </ContentContainer>
+                </ContactFormContentContainer>
             </InnerPageContainer>
         </PageContainer>
     )
 }
 
-export default Contact;
+export default Contact

@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
+import OutsideClickerInterceptor from '../components/outsideClickerInterceptor'
+
 export const StyledMenu = styled.nav<{ open: boolean }>`
     display: flex;
     flex-direction: column;
@@ -18,7 +20,7 @@ export const StyledMenu = styled.nav<{ open: boolean }>`
     transform: ${({ open }) => open ? 'translateY(0)' : 'translateY(-100%)'};
     z-index: 9;
     
-    @media (max-width: ${({ theme }) => theme.mobile}) {
+    @media (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
         width: 100%;
     }
 
@@ -29,7 +31,7 @@ export const StyledMenu = styled.nav<{ open: boolean }>`
         text-decoration: none;
         transition: color 0.3s linear;
         
-        @media (max-width: ${({ theme }) => theme.mobile}) {
+        @media (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
             font-size: 1.5rem;
             text-align: center;
         }
@@ -42,26 +44,28 @@ export const StyledMenu = styled.nav<{ open: boolean }>`
 
 const MenuLink = styled(Link)`
     color: #000;
-    font-size: 1.8em;
+    font-size: 1.8rem;
     
     &:hover {
         color: ${({ theme }) => (theme.linkHoverColor)};
     }
 `
 
-const Menu = ({ open, setOpen }: { open: boolean, setOpen: (open: boolean) => void }) => {
+const Menu = ({ burgerRef, open, setOpen }: { burgerRef: any, open: boolean, setOpen: (open: boolean) => void }) => {
     return (
-        <StyledMenu open={open} onClick={() => setOpen(!open)}>
-            <MenuLink to="/">
-                Accueil
-            </MenuLink>
-            <MenuLink to="/enquoicaconsiste">
-                En quoi ça consiste ?
-            </MenuLink>
-            <MenuLink to="/contact">
-                Contact
-            </MenuLink>
-        </StyledMenu >
+        <OutsideClickerInterceptor exceptionRef={burgerRef} enabled={open} onIntercept={() => setOpen(false)}>
+            <StyledMenu open={open} onClick={() => setOpen(!open)}>
+                <MenuLink to="/">
+                    Accueil
+                </MenuLink>
+                <MenuLink to="/enquoicaconsiste">
+                    En quoi ça consiste ?
+                </MenuLink>
+                <MenuLink to="/contact">
+                    Contact
+                </MenuLink>
+            </StyledMenu>
+        </OutsideClickerInterceptor>
     )
 }
 export default Menu;

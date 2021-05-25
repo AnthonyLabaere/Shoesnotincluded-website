@@ -1,15 +1,15 @@
 import React from "react";
-import { faDiscord, faFacebook, faInstagram, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faDiscord, faFacebook, /*faInstagram, */faLinkedinIn, faTwitter, /*faYoutube*/ } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { DEVICE_SIZES, SOCIAL_NETWORKS_URLS } from "../../constants";
-import { Brand } from "./brand";
-import { Marginer } from "./marginer";
+import Brand from "./brand";
+import Marginer from "./marginer";
 
-const GREY_COLOR = "#a3a3a3";
+const GREY_COLOR = "#353535";
 const GREY_HOVER_COLOR = "#666666"
 
 const FooterContainer = styled.div`
@@ -18,13 +18,18 @@ const FooterContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2em 3em;
-    padding-bottom: 0;
+    padding: 2rem 3rem;
     border-top: 0.6px solid rgb(0, 0, 0, 0.3);
 
-    @media screen and (max-width: ${({ theme }) => theme.deviceSize.mobile}) {
-        padding: 2em 12px;
+    @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+        padding: 2rem 0.75rem;
     }
+
+    @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXS}) {
+        padding: 0.5rem 0.5rem;
+    }
+
+    padding-bottom: 0;
 `;
 
 const TopContainer = styled.div`
@@ -33,24 +38,20 @@ const TopContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1em;
+    margin-bottom: 1rem;
 `;
 
 const TopContentContainer = styled.div`
     width: 100%;
-    max-width: ${({ theme }) => theme.deviceSize.laptop};
+    max-width: ${({ theme }) => theme.deviceSizes.laptop};
 `;
 
 const ContentContainer = styled.div<{ isMobile?: boolean }>`
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
 
-    &:not(:last-of-type) {
-        margin-right: 3%;
-    }
-
-    @media screen and (max-width: ${({ theme }) => theme.deviceSize.mobile}) {
+    @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
         flex-direction: column;
     }
 `;
@@ -63,7 +64,7 @@ const BottomContainer = styled.span`
     border-top: 0.6px solid rgb(0, 0, 0, 0.3);
     padding: 0 10px;
 
-    @media screen and (max-width: ${({ theme }) => theme.deviceSize.mobile}) {
+    @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
         padding: 0;
     }
 `;
@@ -72,8 +73,8 @@ const TopSubContainer = styled.span`
     display: flex;
     flex-direction: column;
     flex: 1;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin-left: 1rem;
+    margin-right: 1rem;
     text-align: justify;
     align-items: center;
 `;
@@ -94,7 +95,7 @@ const SocialIconContainer = styled.div`
 const SocialIcon = styled.div`
     color:  ${GREY_COLOR};
     font-size: 45px;
-    margin: 5px;
+    margin: 0 10px;
     cursor: pointer;
     transition: background-color, 200ms ease-in-out;
 
@@ -102,7 +103,7 @@ const SocialIcon = styled.div`
         color: ${GREY_HOVER_COLOR};
     }
 
-    @media screen and (max-width: ${({ theme }) => theme.deviceSize.mobile}) {
+    @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
         font-size: 25px;
     }
 `;
@@ -112,26 +113,27 @@ const BottomSubContainer = styled.span`
     align-items: center;
 `;
 
-const PrivacyText = styled.h6`
+const PrivacyText = styled.div`
     color: ${GREY_COLOR};
-    font-size: 11px;
+    font-size: 0.75rem;
+    font-weight: bold;
     margin: 0;
     display: flex;
     align-items: center;
     display: inline;
 
-    @media screen and (max-width: ${({ theme }) => theme.deviceSize.mobile}) {
-        font-size: 8px;
+    @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+        font-size: 0.5rem;
     }
 `;
 
 const StyledLink = styled(Link)`
     color: ${GREY_COLOR};
     display: inline;
-    font-size: 1.25em;
+    font-size: 1.25rem;
 
-    @media screen and (max-width: ${({ theme }) => theme.deviceSize.mobile}) {
-        font-size: 0.75em;
+    @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+        font-size: 0.75rem;
     }
 
     &:hover {
@@ -139,8 +141,19 @@ const StyledLink = styled(Link)`
     }
 `;
 
-export function Footer(props: any) {
-    const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobile });
+const Footer = () => {
+    const isMobileXS = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXS })
+    const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL })
+
+    let marginerMargin: number
+    if (isMobileXS) {
+        marginerMargin = 5
+    } else if (isMobile) {
+        marginerMargin = 7.5
+    } else {
+        marginerMargin = 10
+    }
+
 
     return (
         <FooterContainer>
@@ -149,42 +162,53 @@ export function Footer(props: any) {
                     <ContentContainer>
                         <TopSubContainer>
                             <Title>À propos</Title>
-                            <p>SHOESNOTINCLUDED est une application mobile reprenant les codes de l'escape game mais en plein air. Les jeux vous propose de vous déplacer dans des quartiers, de fouillez l'environnement à la recherche d'indice et d'y résoudre des énigmes. L'application permet de jouer seul mais aussi de synchroniser la partie à plusieurs.</p>
+                            <p>SHOESNOTINCLUDED est une application mobile reprenant les codes de l'escape game mais en plein air. Les jeux vous proposent de vous déplacer dans des quartiers, de fouillez l'environnement à la recherche d'indices et d'y résoudre des énigmes. L'application permet de jouer seul mais aussi à plusieurs.</p>
                         </TopSubContainer>
                         <TopSubContainer>
                             <Title>Où jouer ?</Title>
-                            <p>Les premiers jeux seront disponibles sur Nantes fin 2021 - début 2022. Des jeux seront ensuite créés dans d'autres villes de France en 2022. N'hésitez pas à nous suivre sur les réseaux sociaux pour ne pas rater les événements à venir.</p>
+                            <p>Le premier jeu sera disponible à la fin de l'été 2021 sur Nantes et d'autres jeux suivront jusqu'au printemps 2022. Des jeux seront ensuite créés dans d'autres villes de France. N'hésitez pas à nous suivre sur les réseaux sociaux pour ne pas rater les évènements à venir.</p>
                         </TopSubContainer>
                     </ContentContainer>
                     <ContentContainer>
                         <TopSubContainer>
                             <Title>Suivez-nous sur les réseaux sociaux :</Title>
                             <SocialIconContainer>
-                                <a href={SOCIAL_NETWORKS_URLS.discord}>
+                                <a href={SOCIAL_NETWORKS_URLS.discord} title="Discord">
                                     <SocialIcon>
                                         <FontAwesomeIcon icon={faDiscord} />
                                     </SocialIcon>
+                                    <span className="sr-only">Discord</span>
                                 </a>
-                                <a href={SOCIAL_NETWORKS_URLS.facebook}>
+                                <a href={SOCIAL_NETWORKS_URLS.facebook} title="Facebook">
                                     <SocialIcon>
                                         <FontAwesomeIcon icon={faFacebook} />
                                     </SocialIcon>
+                                    <span className="sr-only">Facebook</span>
                                 </a>
-                                <a href={SOCIAL_NETWORKS_URLS.youtube}>
+                                {/* <a href={SOCIAL_NETWORKS_URLS.youtube} title="Youtube">
                                     <SocialIcon>
                                         <FontAwesomeIcon icon={faYoutube} />
                                     </SocialIcon>
-                                </a>
-                                <a href={SOCIAL_NETWORKS_URLS.twitter}>
+                                    <span className="sr-only">Youtube</span>
+                                </a> */}
+                                <a href={SOCIAL_NETWORKS_URLS.twitter} title="Twitter">
                                     <SocialIcon>
                                         <FontAwesomeIcon icon={faTwitter} />
                                     </SocialIcon>
+                                    <span className="sr-only">Twitter</span>
                                 </a>
-                                <a href={SOCIAL_NETWORKS_URLS.instagram}>
+                                <a href={SOCIAL_NETWORKS_URLS.linkedin} title="Linkedin">
+                                    <SocialIcon>
+                                        <FontAwesomeIcon icon={faLinkedinIn} />
+                                    </SocialIcon>
+                                    <span className="sr-only">Linkedin</span>
+                                </a>
+                                {/* <a href={SOCIAL_NETWORKS_URLS.instagram} title="Instagram">
                                     <SocialIcon>
                                         <FontAwesomeIcon icon={faInstagram} />
                                     </SocialIcon>
-                                </a>
+                                    <span className="sr-only">Instagram</span>
+                                </a> */}
                             </SocialIconContainer>
                         </TopSubContainer>
                     </ContentContainer>
@@ -196,17 +220,19 @@ export function Footer(props: any) {
                     <Link to="/">
                         <Brand size={isMobile ? 0.75 : 1.25} color={GREY_COLOR} hoverColor={GREY_HOVER_COLOR} />
                     </Link>
-                    <Marginer direction="horizontal" margin={10} />
+                    <Marginer direction="horizontal" margin={marginerMargin} />
                     <PrivacyText> Marque déposée. 2021</PrivacyText>
                 </BottomSubContainer>
 
                 <BottomSubContainer>
                     <StyledLink to="/cgu">{isMobile ? 'CGU' : 'Conditions générales d\'utilisation'}</StyledLink>
-                    <Marginer direction="horizontal" margin={10} />
+                    <Marginer direction="horizontal" margin={marginerMargin} />
                     <StyledLink to="/mentions-legales">Mentions légales</StyledLink>
-                    <Marginer direction="horizontal" margin={10} />
+                    <Marginer direction="horizontal" margin={marginerMargin} />
                 </BottomSubContainer>
             </BottomContainer>
         </FooterContainer>
     );
 }
+
+export default Footer

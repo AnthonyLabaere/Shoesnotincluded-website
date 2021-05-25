@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Marginer } from "../../components/marginer";
+import Marginer from "../../components/marginer";
 import { ContentPageContainer } from '../../components/pageContainer'
 
 // https://developer.apple.com/app-store/marketing/guidelines/#section-badges
@@ -12,7 +12,7 @@ import GooglePlayBadge from "../../../assets/images/google-play-badge.png";
 const Title = styled.h1`
     color: #000;
 
-    @media screen and (max-width: ${({ theme }) => theme.deviceSize.mobile}) {
+    @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
         font-size: 20px;
     }
 `;
@@ -26,18 +26,24 @@ const StoresImagesContainer = styled.div`
 `;
 
 const StoreImage = styled.div`
-    margin: 1em;
+    margin: 1rem;
 
     img {
-        width: 20em;
+        width: 20rem;
+        /* height: 20rem; */
 
-        @media screen and (max-width: ${({ theme }) => theme.deviceSize.mobile}) {
-            width: 10em;
+        @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+            width: 10rem;
+            /* height: 10rem; */
+        }
+
+        @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXS}) {
+            width: 7.5rem;
         }
     }
 `;
 
-export function Stores(props: any) {
+const Stores = () => {
     return (
         <ContentPageContainer coloredBackground>
             <Marginer direction="vertical" margin="5em" />
@@ -54,3 +60,5 @@ export function Stores(props: any) {
         </ContentPageContainer>
     );
 }
+
+export default Stores
