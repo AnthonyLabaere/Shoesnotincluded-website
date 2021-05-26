@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { YOUTUBE_PRESENTATION_VIDEO_URL } from "../../../constants";
+import Button from '../../components/button'
 import { StyledReactPlayer } from '../../components/common'
 
 const AboutVideoContainer = styled.div`
@@ -13,12 +14,6 @@ const AboutVideoContainer = styled.div`
   justify-content: center;
 `;
 
-const StyledLink = styled(Link)`
-    &:hover {
-        color: ${({ theme }) => (theme.linkHoverColor)}; 
-    }
-`
-
 const Subtitle = styled.h2`
     text-align: center;
     a {
@@ -26,12 +21,20 @@ const Subtitle = styled.h2`
     }
 `;
 
-export function AboutVideo(props: any) {
+const StyledLink = styled(Link)`
+    &:hover {
+        color: ${({ theme }) => (theme.linkHoverColor)}; 
+    }
+`
+
+const AboutVideo = () => {
     return (
         <AboutVideoContainer>
-            <Subtitle>En quoi ça consiste ?</Subtitle>
+            <Subtitle>Vidéo de présentation :</Subtitle>
             <StyledReactPlayer url={YOUTUBE_PRESENTATION_VIDEO_URL} />
-            <Subtitle><StyledLink to="/enquoicaconsiste">Cliquez <u>ici</u> pour plus d'informations.</StyledLink></Subtitle>
-        </AboutVideoContainer>
+            <StyledLink to="/enquoicaconsiste"><Button>Je souhaite plus d'informations</Button></StyledLink>
+        </AboutVideoContainer >
     );
 }
+
+export default AboutVideo

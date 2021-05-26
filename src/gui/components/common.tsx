@@ -3,13 +3,13 @@ import styled from "styled-components";
 
 export const ContentContainer = styled.div`
     width: 100%;
-    max-width: ${({ theme }) => theme.deviceSize.laptop};
+    max-width: ${({ theme }) => theme.deviceSizes.laptop};
     
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    padding: 1em;
+    padding: 1rem;
 
     > * {
         width: 100%;
@@ -19,7 +19,7 @@ export const ContentContainer = styled.div`
         text-align: center;
     }
 
-    @media screen and (max-width: ${({ theme }) => theme.deviceSize.mobile}) {
+    @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
         padding: 5px;
     }
 `;
@@ -27,7 +27,7 @@ export const ContentContainer = styled.div`
 export const StyledReactPlayer = styled(ReactPlayer)`
     max-width: 100%;
     
-    @media screen and (max-width: ${({ theme }) => theme.deviceSize.mobile}) {
+    @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
         max-width: 95%;
     }
 `

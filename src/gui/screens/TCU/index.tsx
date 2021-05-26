@@ -2,14 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 import { ContentContainer } from '../../components/common'
-import { Marginer } from "../../components/marginer"
+import Marginer from "../../components/marginer"
 import { ContentPageContainer, InnerPageContainer, PageContainer } from '../../components/pageContainer'
 
 const TCUContentContainer = styled(ContentContainer)`
     text-align: justify;
 `
 
-function TCU() {
+const TCU = () => {
     return (
         <PageContainer>
             <InnerPageContainer>
@@ -239,4 +239,4 @@ En dehors des cas où la loi ne le permet pas, il est fait attribution exclusive
     )
 }
 
-export default TCU;
+export default TCU

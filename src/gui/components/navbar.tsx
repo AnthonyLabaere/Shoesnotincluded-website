@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from 'react'
 import styled from "styled-components";
 import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 
 import { DEVICE_SIZES } from "../../constants";
-import { Brand } from "./brand";
-import { Marginer } from "./marginer";
+import Brand from "./brand";
+import Marginer from "./marginer";
 
 import Burger from './burger';
 import Menu from './menu';
@@ -18,7 +18,7 @@ const NavbarContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1.5em;
+    padding: 0 1.5rem;
 
     border-bottom: 0.6px solid rgb(0, 0, 0, 0.3);
 `;
@@ -30,13 +30,8 @@ const BrandLogoLink = styled(Link)`
 
 const LogoImage = styled.div`
     img {
-        width: 25px;
-    }
-
-    @media screen and (max-width: ${({ theme }) => theme.deviceSize.mobile}) {
-        img {
-            width: 25px;
-        }
+        width: 40px;
+        height: 40px;
     }
 `;
 
@@ -50,17 +45,29 @@ const AccessibilityContainer = styled.div`
 
 const MenuLink = styled(Link)`
     color: #000;
-    font-size: 1.8em;
+    font-size: 1.8rem;
     
     &:hover {
         color: ${({ theme }) => (theme.linkHoverColor)};
     }
 `
 
-export function Navbar(props: any) {
+const Navbar = () => {
+    const burgerRef = useRef(null)
+
     const [open, setOpen] = useState(false);
 
-    const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobile });
+    const isMobileXS = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXS })
+    const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL })
+
+    let brandFontSize: number
+    if (isMobileXS) {
+        brandFontSize = 1
+    } else if (isMobile) {
+        brandFontSize = 1.25
+    } else {
+        brandFontSize = 2
+    }
 
     return (
         <NavbarContainer>
@@ -69,13 +76,13 @@ export function Navbar(props: any) {
                     <LogoImage>
                         <img src={LogoImg} alt="SHOESNOTINCLUDED logo" />
                     </LogoImage>
-                    <Brand size={isMobile ? 1 : 1.25} />
+                    <Brand size={brandFontSize} />
                 </BrandLogoLink>
                 {
                     isMobile ?
                         <>
-                            <Burger open={open} setOpen={setOpen} />
-                            <Menu open={open} setOpen={setOpen} />
+                            <Burger burgerRef={burgerRef} open={open} setOpen={setOpen} />
+                            <Menu burgerRef={burgerRef} open={open} setOpen={setOpen} />
                         </>
                         :
                         <>
@@ -93,3 +100,5 @@ export function Navbar(props: any) {
         </NavbarContainer>
     );
 }
+
+export default Navbar

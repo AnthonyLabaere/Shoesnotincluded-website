@@ -1,13 +1,13 @@
 import React from "react";
 
-import { AboutVideo } from "./aboutVideo"
-import { Stores } from "./stores"
+import AboutVideo from "./aboutVideo"
+import Stores from "./stores"
 import { ContentContainer } from '../../components/common'
-import { Marginer } from "../../components/marginer"
+import Marginer from "../../components/marginer"
 import { InnerPageContainer, PageContainer } from '../../components/pageContainer'
-import { TopSection } from '../../components/topSection'
+import TopSection from '../../components/topSection'
 
-function Home() {
+const Home = () => {
     return (
         <PageContainer>
             <TopSection />
@@ -23,4 +23,4 @@ function Home() {
     )
 }
 
-export default Home;
+export default Home

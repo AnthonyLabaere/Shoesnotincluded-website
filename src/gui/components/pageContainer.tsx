@@ -33,6 +33,6 @@ export const ContentPageContainer = styled.div<{ coloredBackground?: boolean }>`
     padding: 10px;
 
     > * {
-        max-width: ${({ theme }) => theme.deviceSize.laptop};
+        max-width: ${({ theme }) => theme.deviceSizes.laptop};
     }
 `
