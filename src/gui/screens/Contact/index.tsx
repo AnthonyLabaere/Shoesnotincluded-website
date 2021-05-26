@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 // import { Formik } from 'formik';
-import styled from "styled-components";
+import styled from 'styled-components'
 
 // import { Button } from "../../components/button"
-import { ContentContainer } from "../../components/common"
+import { ContentContainer } from '../../components/common'
 import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer'
 
 // export const Form = styled.form`
@@ -66,23 +66,23 @@ import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../c
 // `;
 
 const ContactFormContentContainer = styled(ContentContainer)`
-    min-height: 500px;
+  min-height: 500px;
 `
 
 const Contact = () => {
-    return (
-        <PageContainer>
-            <InnerPageContainer>
-                <ContentPageContainer coloredBackground>
-                    <ContentContainer>
-                        <h1>Contact</h1>
-                    </ContentContainer>
-                </ContentPageContainer>
-                <ContactFormContentContainer>
-                    <h2 style={{ textAlign: 'center' }}>Une question sur l'application ou l'un des jeux ? Merci de nous contacter via l'adresse mail suivante :</h2>
-                    <h2 style={{ textAlign: 'center' }}>contact@shoesnotincluded.fr</h2>
-                    {/* <h2 style={{ textAlign: 'center' }}>Une question sur l'application ou l'un des jeux ? Merci de remplir le formulaire ci-dessous :</h2> */}
-                    {/* <Formik
+  return (
+    <PageContainer>
+      <InnerPageContainer>
+        <ContentPageContainer coloredBackground>
+          <ContentContainer>
+            <h1>Contact</h1>
+          </ContentContainer>
+        </ContentPageContainer>
+        <ContactFormContentContainer>
+          <h2 style={{ textAlign: 'center' }}>Une question sur l&apos;application ou l&apos;un des jeux ? Merci de nous contacter via l&apos;adresse mail suivante :</h2>
+          <h2 style={{ textAlign: 'center' }}>contact@shoesnotincluded.fr</h2>
+          {/* <h2 style={{ textAlign: 'center' }}>Une question sur l'application ou l'un des jeux ? Merci de remplir le formulaire ci-dessous :</h2> */}
+          {/* <Formik
                         initialValues={{ name: '', email: '', message: '' }}
                         validate={values => {
                             const errors: { email?: string } = {};
@@ -146,10 +146,10 @@ const Contact = () => {
                             </form>
                         )}
                     </Formik> */}
-                </ContactFormContentContainer>
-            </InnerPageContainer>
-        </PageContainer>
-    )
+        </ContactFormContentContainer>
+      </InnerPageContainer>
+    </PageContainer>
+  )
 }
 
 export default Contact
