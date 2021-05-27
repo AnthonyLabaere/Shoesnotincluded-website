@@ -1,10 +1,10 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
-import CourierNewBold from '../assets/fonts/CourierNew-Bold.ttf';
+import CourierNewBold from '../assets/fonts/CourierNew-Bold.ttf'
 
 export const GlobalStyles = createGlobalStyle`
     @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
-
+ 
     @font-face {
         font-family: 'CourierNew-Bold';
         src: local('CourierNew-Bold'), url(${CourierNewBold}) format('truetype');
