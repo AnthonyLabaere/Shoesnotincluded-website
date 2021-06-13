@@ -16,4 +16,4 @@ export const SOCIAL_NETWORKS_URLS = {
   youtube: 'https://www.youtube.com/channel/UCAZgpA_vxXUa48gOAkk_hCQ',
 }
 
-export const YOUTUBE_PRESENTATION_VIDEO_URL = 'https://www.youtube.com/watch?v=frC0sedlcjI&ab_channel=soundbay-RoyaltyFreeMusicforFilms%26Media'
+export const YOUTUBE_PRESENTATION_VIDEO_URL = 'https://www.youtube.com/watch?v=uL6K0EMkuiE'
