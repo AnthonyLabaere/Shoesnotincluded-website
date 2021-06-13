@@ -165,7 +165,7 @@ const Footer = () => {
             </TopSubContainer>
             <TopSubContainer>
               <Title>Où jouer ?</Title>
-              <p>Le premier jeu sera disponible à la fin de l&apos;été 2021 sur Nantes et d&apos;autres jeux suivront jusqu&apos;au printemps 2022. Des jeux seront ensuite créés dans d&apos;autres villes de France. N&apos;hésitez pas à nous suivre sur les réseaux sociaux pour ne pas rater les évènements à venir.</p>
+              <p>Le premier jeu sera disponible fin 2021 sur Nantes et d&apos;autres jeux suivront jusqu&apos;au printemps 2022. Des jeux seront ensuite créés dans d&apos;autres villes de France. N&apos;hésitez pas à nous suivre sur les réseaux sociaux pour ne pas rater les évènements à venir.</p>
             </TopSubContainer>
           </ContentContainer>
           <ContentContainer>
