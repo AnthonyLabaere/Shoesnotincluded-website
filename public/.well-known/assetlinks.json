@@ -5,7 +5,7 @@
       ],
       "target":{
          "namespace":"android_app",
-         "package_name":"com.shoesnotincludedescapegamenantes",
+         "package_name":"fr.shoesnotincluded",
          "sha256_cert_fingerprints":[
             "36:FB:88:08:31:C9:A5:8F:1B:4C:42:4E:D6:50:AF:8C:67:DD:81:28:7D:EF:CF:87:E2:17:D4:A8:DE:7F:55:9A"
          ]
