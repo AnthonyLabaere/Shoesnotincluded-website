@@ -44,4 +44,4 @@ module.exports = {
     // We sometimes need empty arrow functions for mock or init values
     '@typescript-eslint/no-empty-function': ['warn', { allow: ['arrowFunctions'] }],
   },
-};
+}

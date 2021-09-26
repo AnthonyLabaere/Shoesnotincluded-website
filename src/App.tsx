@@ -9,6 +9,7 @@ import ScrollToTop from './gui/components/scrollToTop'
 import Contact from './gui/screens/Contact'
 import Home from './gui/screens/Home'
 import LegalNotices from './gui/screens/LegalNotices'
+import LegalNoticesAndCGU from './gui/screens/LegalNoticesAndCGU'
 import TCU from './gui/screens/TCU'
 import WhatIsThat from './gui/screens/WhatIsThat'
 import { GlobalStyles } from './style/global'
@@ -30,6 +31,7 @@ const App: React.VoidFunctionComponent = () => {
               <Route path="/contact" exact component={Contact} />
               <Route path="/cgu" exact component={TCU} />
               <Route path="/mentions-legales" exact component={LegalNotices} />
+              <Route path="/cgu-mentions-legales" exact component={LegalNoticesAndCGU} />
             </Switch>
           </ScrollToTop>
 
