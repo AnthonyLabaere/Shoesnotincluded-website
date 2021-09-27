@@ -101,15 +101,10 @@ const PrivacyPolicy = () => {
             <p>Conformément à la réglementation européenne en vigueur, les Utilisateurs du Site et de l'Application mobile disposent des droits suivants :</p>
             <ul>
               <li>droit d&apos;accès (article 15 RGPD) et de rectification (article 16 RGPD), de mise à jour, de complétude des données des Utilisateurs droit de verrouillage ou d'effacement des données des Utilisateurs à caractère personnel (article 17 du RGPD), lorsqu'elles sont inexactes, incomplètes, équivoques, périmées, ou dont la collecte, l&apos;utilisation, la communication ou la conservation est interdite </li>
-
               <li>droit de retirer à tout moment un consentement (article 13-2c RGPD) </li>
-
               <li>droit à la limitation du traitement des données des Utilisateurs (article 18 RGPD) </li>
-
               <li>droit d'opposition au traitement des données des Utilisateurs (article 21 RGPD) </li>
-
               <li>droit à la portabilité des données que les Utilisateurs auront fournies, lorsque ces données font l'objet de traitements automatisés fondés sur leur consentement ou sur un contrat (article 20 RGPD) </li>
-
               <li>droit de définir le sort des données des Utilisateurs après leur mort et de choisir à qui SHOESNOTINCLUDED devra communiquer (ou non) ses données à un tiers qu'il aura préalablement désigné</li>
             </ul>
             <p>Dès que SHOESNOTINCLUDED a connaissance du décès d'un Utilisateur et à défaut d'instructions de sa part, SHOESNOTINCLUDED s'engage à détruire ses données, sauf si leur conservation s'avère nécessaire à des fins probatoires ou pour répondre à une obligation légale.</p>
