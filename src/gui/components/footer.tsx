@@ -224,8 +224,9 @@ const Footer = () => {
         </BottomSubContainer>
 
         <BottomSubContainer>
-          <StyledLink to="/cgu">Mentions légales & CGU</StyledLink>
+          <StyledLink to="/cgu">{isMobile ? 'CGU' : 'Mentions légales & CGU'}</StyledLink>
           <Marginer direction="horizontal" margin={marginerMargin} />
+          <StyledLink to="/confidentialite">{isMobile ? 'Confidentialité' : 'Politique de confidentialité'}</StyledLink>
         </BottomSubContainer>
       </BottomContainer>
     </FooterContainer>

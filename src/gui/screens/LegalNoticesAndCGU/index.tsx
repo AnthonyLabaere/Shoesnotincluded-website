@@ -25,9 +25,12 @@ const LegalNoticesAndCGU = () => {
         </ContentPageContainer>
         <ContentPageContainer>
           <LegalNoticesTCUContentContainer>
-            <p style={{ textAlign: 'center' }}>Mis à jour le 26/09/2021</p>
+            <p style={{ textAlign: 'center' }}>Mis à jour le 27/09/2021</p>
+
             <h2>Mentions Légales</h2>
-            <p>Vous êtes actuellement connecté au site internet shoesnotincluded.fr (ci-après le « Site ») ou à l'application mobile associée (ci-après l' « Application mobile »).</p>
+            <p>
+              Vous êtes actuellement connecté au site internet <a href="https://www.shoesnotincluded.fr/">https://www.shoesnotincluded.fr/</a> (ci-après le « Site ») ou à l'application mobile associée (ci-après l' « Application mobile »).
+            </p>
 
             <h3>1. Éditeur du Site et de l'Application mobile</h3>
             <p>Le Site et l'Application mobile sont édités par Anthony Labaere.</p>
@@ -70,7 +73,7 @@ const LegalNoticesAndCGU = () => {
               <strong>Information(s)</strong> : désigne(nt) l'ensemble des informations et publications accessibles sur le Site et l'Application mobile.
             </p>
             <p>
-              <strong>Site</strong> : désigne le site proposé par l'Éditeur sur Internet depuis l'adresse www.shoesnotincluded.fr.
+              <strong>Site</strong> : désigne le site proposé par l'Éditeur sur Internet depuis l'adresse <a href="https://www.shoesnotincluded.fr/">https://www.shoesnotincluded.fr/</a>.
             </p>
             <p>
               <strong>Application mobile</strong> : désigne l'application mobile associée proposée par l'Éditeur sur les stores Android et Apple.

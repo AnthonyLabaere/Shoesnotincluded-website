@@ -9,6 +9,7 @@ import ScrollToTop from './gui/components/scrollToTop'
 import Contact from './gui/screens/Contact'
 import Home from './gui/screens/Home'
 import LegalNoticesAndCGU from './gui/screens/LegalNoticesAndCGU'
+import PrivacyPolicy from './gui/screens/PrivacyPolicy'
 import WhatIsThat from './gui/screens/WhatIsThat'
 import { GlobalStyles } from './style/global'
 import { theme } from './style/theme'
@@ -28,6 +29,7 @@ const App: React.VoidFunctionComponent = () => {
               <Route path="/enquoicaconsiste" exact component={WhatIsThat} />
               <Route path="/contact" exact component={Contact} />
               <Route path="/cgu" exact component={LegalNoticesAndCGU} />
+              <Route path="/confidentialite" exact component={PrivacyPolicy} />
             </Switch>
           </ScrollToTop>
 
