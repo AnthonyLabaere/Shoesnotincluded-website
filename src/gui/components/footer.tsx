@@ -224,9 +224,7 @@ const Footer = () => {
         </BottomSubContainer>
 
         <BottomSubContainer>
-          <StyledLink to="/cgu">{isMobile ? 'CGU' : "Conditions générales d'utilisation"}</StyledLink>
-          <Marginer direction="horizontal" margin={marginerMargin} />
-          <StyledLink to="/mentions-legales">Mentions légales</StyledLink>
+          <StyledLink to="/cgu">Mentions légales & CGU</StyledLink>
           <Marginer direction="horizontal" margin={marginerMargin} />
         </BottomSubContainer>
       </BottomContainer>
