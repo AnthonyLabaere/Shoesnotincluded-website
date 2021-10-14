@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 
 const BrandContainer = styled.div<{ color: string; hoverColor: string; size?: number; withShadow: boolean }>`
@@ -6,7 +5,8 @@ const BrandContainer = styled.div<{ color: string; hoverColor: string; size?: nu
   flex-direction: row;
   align-items: center;
   margin: 0;
-  font-family: 'CourierNew-Bold';
+  font-family: 'jackwrite.regular';
+  font-weight: bold;
   font-size: ${({ size }) => (size ? size + 'rem' : '1.25rem')};
   color: ${({ color }) => (color ? color : '#000')};
   text-shadow: ${({ theme, withShadow }) => (withShadow ? theme.textShadow.default : 'none')};

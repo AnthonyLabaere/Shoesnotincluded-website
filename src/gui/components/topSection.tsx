@@ -99,6 +99,8 @@ const SloganText = styled.h3`
   margin: 0;
   line-height: 1.4;
   color: #000;
+  font-family: 'jackwrite.regular';
+  font-weight: normal;
   text-shadow: ${({ theme }) => theme.textShadow.default};
   font-size: 50px;
 
@@ -138,7 +140,7 @@ const TopSection = () => {
             <Marginer direction="vertical" margin={8} />
             <SloganText>L&apos;escape game plein air</SloganText>
             <SloganText>
-              qui vous <SpecialText>rassemble</SpecialText>
+              qui vous <SpecialText>rassemble</SpecialText>.
             </SloganText>
             <Marginer direction="vertical" margin={15} />
           </LogoContainer>

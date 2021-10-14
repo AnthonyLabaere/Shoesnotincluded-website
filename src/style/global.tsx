@@ -1,13 +1,23 @@
 import { createGlobalStyle } from 'styled-components'
 
-import CourierNewBold from '../assets/fonts/CourierNew-Bold.ttf'
+import jackwritebold from '../assets/fonts/jackwrite.bold.ttf'
+import jackwriteregular from '../assets/fonts/jackwrite.regular.ttf'
+import jackwritethin from '../assets/fonts/jackwrite.thin.ttf'
 
 export const GlobalStyles = createGlobalStyle`
     @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
  
     @font-face {
-        font-family: 'CourierNew-Bold';
-        src: local('CourierNew-Bold'), url(${CourierNewBold}) format('truetype');
+        font-family: 'jackwrite.bold';
+        src: local('jackwrite.bold'), url(${jackwritebold}) format('truetype');
+    }
+    @font-face {
+        font-family: 'jackwrite.regular';
+        src: local('jackwrite.regular'), url(${jackwriteregular}) format('truetype');
+    }
+    @font-face {
+        font-family: 'jackwrite.thin';
+        src: local('jackwrite.thin'), url(${jackwritethin}) format('truetype');
     }
 
     html,
@@ -29,7 +39,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     code {
-        font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+        font-family: source-code-pro, Menlo, Monaco, Consolas, monospace;
     }
 
     a {
