@@ -9,11 +9,6 @@ const BrandContainer = styled.div<{ color: string; hoverColor: string; size?: nu
   font-weight: bold;
   font-size: ${({ size }) => (size ? size + 'rem' : '1.25rem')};
   color: ${({ color }) => (color ? color : '#000')};
-  text-shadow: ${({ theme, withShadow }) => (withShadow ? theme.textShadow.default : 'none')};
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    text-shadow: ${({ theme, withShadow }) => (withShadow ? theme.textShadow.mobileXS : 'none')};
-  }
 
   &:hover {
     color: ${({ color, hoverColor }) => (hoverColor ? hoverColor : color ? color : '#000')};

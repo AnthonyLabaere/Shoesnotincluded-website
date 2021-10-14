@@ -1,8 +1,9 @@
-import { DEVICE_SIZES } from '../constants'
+import * as Constants from '../constants'
 
 export interface Theme {
   backgroundColor: string
   backgroundButtonColor: string
+  backgroundHoverButtonColor: string
   deviceSizes: {
     mobileXS: string
     mobile: string
@@ -13,27 +14,28 @@ export interface Theme {
   }
   linkHoverColor: string
   specialTextColor: string
-  textShadow: {
+  filter: {
     mobileXS: string
     default: string
   }
 }
 
 export const theme: Theme = {
-  backgroundColor: 'rgb(180, 220, 220)',
-  backgroundButtonColor: 'rgb(100,150,160)',
+  backgroundColor: Constants.THEME_BLUE_COLORS[2],
+  backgroundButtonColor: Constants.THEME_TURQUOISE_COLORS[0],
+  backgroundHoverButtonColor: Constants.THEME_TURQUOISE_COLORS[1],
   deviceSizes: {
-    mobileXS: DEVICE_SIZES.mobileXS + 'px',
-    mobile: DEVICE_SIZES.mobile + 'px',
-    mobileXL: DEVICE_SIZES.mobileXL + 'px',
-    tablet: DEVICE_SIZES.tablet + 'px',
-    laptop: DEVICE_SIZES.laptop + 'px',
-    desktop: DEVICE_SIZES.desktop + 'px',
+    mobileXS: Constants.DEVICE_SIZES.mobileXS + 'px',
+    mobile: Constants.DEVICE_SIZES.mobile + 'px',
+    mobileXL: Constants.DEVICE_SIZES.mobileXL + 'px',
+    tablet: Constants.DEVICE_SIZES.tablet + 'px',
+    laptop: Constants.DEVICE_SIZES.laptop + 'px',
+    desktop: Constants.DEVICE_SIZES.desktop + 'px',
   },
-  linkHoverColor: 'rgb(140,180,190)',
-  specialTextColor: '#ff6961',
-  textShadow: {
-    mobileXS: '0 0 25px #fff, 0 0 25px #fff, 0 0 25px #fff, 0 0 25px #fff',
-    default: '0 0 25px #fff, 0 0 25px #fff, 0 0 25px #fff, 0 0 25px #fff, 0 0 25px #fff, 0 0 25px #fff',
+  linkHoverColor: Constants.THEME_TURQUOISE_COLORS[0],
+  specialTextColor: Constants.THEME_RED_COLORS[0],
+  filter: {
+    mobileXS: 'drop-shadow(0 0 2rem #fff) drop-shadow(0 0 2rem #fff) drop-shadow(0 0 2rem #fff) ',
+    default: 'drop-shadow(0 0 2rem #fff) drop-shadow(0 0 2rem #fff) drop-shadow(0 0 2rem #fff) drop-shadow(0 0 2rem #fff)',
   },
 }

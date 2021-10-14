@@ -38,7 +38,7 @@ const TopSectionContainer = styled.div`
 const BackgroundFilter = styled.div`
   width: 100%;
   height: 100%;
-  background-color: rgba(180, 220, 220, 0.5);
+  /* background-color: rgba(180, 220, 220, 0.5); */
   display: flex;
   flex-direction: column;
 `
@@ -65,13 +65,14 @@ const LogoContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  filter: ${({ theme }) => theme.filter.default};
 `
 
 const LogoImage = styled.div`
   display: flex;
   flex: 1;
   align-items: center;
-  filter: drop-shadow(0 0 2rem #fff);
+  filter: ${({ theme }) => theme.filter.default};
 
   img {
     width: 400px;
@@ -84,6 +85,7 @@ const LogoImage = styled.div`
       width: 160px;
       height: 160px;
     }
+    filter: none;
   }
 
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXS}) {
@@ -92,6 +94,7 @@ const LogoImage = styled.div`
       width: 130px;
       height: 130px;
     }
+    filter: none;
   }
 `
 
@@ -101,7 +104,6 @@ const SloganText = styled.h3`
   color: #000;
   font-family: 'jackwrite.regular';
   font-weight: normal;
-  text-shadow: ${({ theme }) => theme.textShadow.default};
   font-size: 50px;
 
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
@@ -140,7 +142,7 @@ const TopSection = () => {
             <Marginer direction="vertical" margin={8} />
             <SloganText>L&apos;escape game plein air</SloganText>
             <SloganText>
-              qui vous <SpecialText>rassemble</SpecialText>.
+              qui vous <SpecialText>rassemble</SpecialText>
             </SloganText>
             <Marginer direction="vertical" margin={15} />
           </LogoContainer>

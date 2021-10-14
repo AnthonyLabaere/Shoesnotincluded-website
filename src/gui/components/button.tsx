@@ -15,7 +15,7 @@ const ButtonWrapper = styled.button<{ size?: number }>`
   transition: all 200ms ease-in-out;
 
   &:hover {
-    background-color: ${({ theme }) => theme.linkHoverColor};
+    background-color: ${({ theme }) => theme.backgroundHoverButtonColor};
   }
 
   &:focus {
