@@ -217,7 +217,7 @@ const Footer = () => {
       <BottomContainer>
         <BottomSubContainer>
           <Link to="/">
-            <Brand size={isMobile ? 0.75 : 1.25} color={GREY_COLOR} hoverColor={GREY_HOVER_COLOR} />
+            <Brand size={isMobile ? 1 : 1.5} color={GREY_COLOR} hoverColor={GREY_HOVER_COLOR} />
           </Link>
           <Marginer direction="horizontal" margin={marginerMargin} />
           <PrivacyText> Marque déposée. 2021</PrivacyText>

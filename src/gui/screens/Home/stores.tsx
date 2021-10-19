@@ -47,7 +47,7 @@ const Stores = () => {
   return (
     <ContentPageContainer coloredBackground>
       <Marginer direction="vertical" margin="5em" />
-      <Title>Bientôt disponible sur :</Title>
+      <Title>Sortie prévue sur les stores fin Décembre à Nantes :</Title>
       <StoresImagesContainer>
         <StoreImage>
           <img style={{ opacity: 0.5 }} src={GooglePlayBadge} alt="Google play store logo" />

@@ -102,7 +102,7 @@ const SloganText = styled.h3`
   margin: 0;
   line-height: 1.4;
   color: #000;
-  font-family: 'jackwrite.regular';
+  font-family: 'Oxygen-Regular';
   font-weight: normal;
   font-size: 50px;
 
@@ -121,9 +121,9 @@ const TopSection = () => {
 
   let brandFontSize: number
   if (isMobileXS) {
-    brandFontSize = 1.8
-  } else if (isMobile) {
     brandFontSize = 2.2
+  } else if (isMobile) {
+    brandFontSize = 2.8
   } else {
     brandFontSize = 3.5
   }
@@ -135,7 +135,7 @@ const TopSection = () => {
           <LogoContainer>
             {isMobile && (
               <LogoImage>
-                <img src={LogoImg} alt="SHOESNOTINCLUDED logo" />
+                <img src={LogoImg} alt="ShoesNotIncluded logo" />
               </LogoImage>
             )}
             <Brand size={brandFontSize} withShadow={true}></Brand>
@@ -148,7 +148,7 @@ const TopSection = () => {
           </LogoContainer>
           {!isMobile && (
             <LogoImage>
-              <img src={LogoImg} alt="SHOESNOTINCLUDED logo" />
+              <img src={LogoImg} alt="ShoesNotIncluded logo" />
             </LogoImage>
           )}
         </TopSectionInnerContainer>

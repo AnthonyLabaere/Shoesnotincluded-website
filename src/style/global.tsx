@@ -1,23 +1,23 @@
 import { createGlobalStyle } from 'styled-components'
 
-import jackwritebold from '../assets/fonts/jackwrite.bold.ttf'
-import jackwriteregular from '../assets/fonts/jackwrite.regular.ttf'
-import jackwritethin from '../assets/fonts/jackwrite.thin.ttf'
+import oxygenBold from '../assets/fonts/Oxygen-Bold.ttf'
+import oxygenLight from '../assets/fonts/Oxygen-Light.ttf'
+import oxygenRegular from '../assets/fonts/Oxygen-Regular.ttf'
 
 export const GlobalStyles = createGlobalStyle`
     @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
  
     @font-face {
-        font-family: 'jackwrite.bold';
-        src: local('jackwrite.bold'), url(${jackwritebold}) format('truetype');
+        font-family: 'Oxygen-Bold';
+        src: local('Oxygen-Bold'), url(${oxygenBold}) format('truetype');
     }
     @font-face {
-        font-family: 'jackwrite.regular';
-        src: local('jackwrite.regular'), url(${jackwriteregular}) format('truetype');
+        font-family: 'Oxygen-Light';
+        src: local('Oxygen-Light'), url(${oxygenLight}) format('truetype');
     }
     @font-face {
-        font-family: 'jackwrite.thin';
-        src: local('jackwrite.thin'), url(${jackwritethin}) format('truetype');
+        font-family: 'Oxygen-Regular';
+        src: local('Oxygen-Regular'), url(${oxygenRegular}) format('truetype');
     }
 
     html,

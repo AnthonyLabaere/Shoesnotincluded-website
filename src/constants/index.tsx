@@ -16,7 +16,7 @@ export const SOCIAL_NETWORKS_URLS = {
   youtube: 'https://www.youtube.com/watch?v=uL6K0EMkuiE',
 }
 
-export const YOUTUBE_PRESENTATION_VIDEO_URL = 'https://www.youtube.com/watch?v=uL6K0EMkuiE'
+export const YOUTUBE_PRESENTATION_VIDEO_URL = 'https://www.youtube.com/watch?v=Ki2kuAnUzxY'
 
 // Les couleurs du thème
 export const THEME_RED_COLORS = ['#ff5e66', '#ff777d', '#ffa9ae']

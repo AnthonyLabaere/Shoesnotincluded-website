@@ -5,7 +5,7 @@ const BrandContainer = styled.div<{ color: string; hoverColor: string; size?: nu
   flex-direction: row;
   align-items: center;
   margin: 0;
-  font-family: 'jackwrite.regular';
+  font-family: 'Oxygen-Bold';
   font-weight: bold;
   font-size: ${({ size }) => (size ? size + 'rem' : '1.25rem')};
   color: ${({ color }) => (color ? color : '#000')};
@@ -36,11 +36,11 @@ const Brand = (props: any) => {
 
   return (
     <BrandContainer color={color} hoverColor={hoverColor} size={size} withShadow={withShadow}>
-      SHOES
+      Shoes
       <BrandNot color={color} hoverColor={hoverColor} withShadow={withShadow}>
-        NOT
+        Not
       </BrandNot>
-      INCLUDED
+      Included
     </BrandContainer>
   )
 }

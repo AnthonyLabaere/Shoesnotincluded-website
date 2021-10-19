@@ -62,9 +62,9 @@ const Navbar = () => {
 
   let brandFontSize: number
   if (isMobileXS) {
-    brandFontSize = 1
-  } else if (isMobile) {
     brandFontSize = 1.25
+  } else if (isMobile) {
+    brandFontSize = 1.5
   } else {
     brandFontSize = 2
   }
@@ -74,7 +74,7 @@ const Navbar = () => {
       <AccessibilityContainer>
         <BrandLogoLink to="/">
           <LogoImage>
-            <img src={LogoImg} alt="SHOESNOTINCLUDED logo" />
+            <img src={LogoImg} alt="ShoesNotIncluded logo" />
           </LogoImage>
           <Brand size={brandFontSize} />
         </BrandLogoLink>
