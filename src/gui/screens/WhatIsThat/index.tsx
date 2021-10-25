@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import Crowdfunding from '../../components/crowdfunding'
 import { YOUTUBE_PRESENTATION_VIDEO_URL } from '../../../constants'
 import { ContentContainer, StyledReactPlayer } from '../../components/common'
 import Marginer from '../../components/marginer'
@@ -14,6 +15,7 @@ const TextContainer = styled.div`
 const WhatIsThat = () => {
   return (
     <PageContainer>
+      <Crowdfunding />
       <InnerPageContainer>
         <ContentPageContainer coloredBackground>
           <ContentContainer>

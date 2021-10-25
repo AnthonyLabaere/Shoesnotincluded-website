@@ -24,12 +24,20 @@ export const InnerPageContainer = styled.div<{ maxWidth?: number }>`
   align-items: center;
 `
 
-export const ContentPageContainer = styled.div<{ coloredBackground?: boolean }>`
+export const ContentPageContainer = styled.div<{ coloredBackground?: boolean | string }>`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${({ coloredBackground, theme }) => (coloredBackground ? theme.backgroundColor : 'transparent')};
+  background-color: ${({ coloredBackground, theme }) => {
+    if (coloredBackground === undefined || coloredBackground === false) {
+      return 'transparent'
+    }
+    if (coloredBackground === true) {
+      return theme.backgroundColor
+    }
+    return coloredBackground
+  }};
   padding: 10px;
 
   > * {

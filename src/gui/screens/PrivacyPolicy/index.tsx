@@ -2,6 +2,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import Crowdfunding from '../../components/crowdfunding'
 import { ContentContainer } from '../../components/common'
 import Marginer from '../../components/marginer'
 import { ContentPageContainer, InnerPageContainer, PageContainer } from '../../components/pageContainer'
@@ -18,6 +19,7 @@ const PrivacyPolicyContentContainer = styled(ContentContainer)`
 const PrivacyPolicy = () => {
   return (
     <PageContainer>
+      <Crowdfunding />
       <InnerPageContainer>
         <ContentPageContainer coloredBackground>
           <ContentContainer>

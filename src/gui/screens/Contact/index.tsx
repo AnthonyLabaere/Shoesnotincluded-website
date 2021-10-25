@@ -5,6 +5,7 @@ import styled from 'styled-components'
 // import { Button } from "../../components/button"
 import { ContentContainer } from '../../components/common'
 import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer'
+import Crowdfunding from '../../components/crowdfunding'
 
 // export const Form = styled.form`
 //   display: flex;
@@ -72,6 +73,7 @@ const ContactFormContentContainer = styled(ContentContainer)`
 const Contact = () => {
   return (
     <PageContainer>
+      <Crowdfunding />
       <InnerPageContainer>
         <ContentPageContainer coloredBackground>
           <ContentContainer>
