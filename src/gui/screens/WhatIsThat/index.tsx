@@ -30,27 +30,26 @@ const WhatIsThat = () => {
           <Marginer direction="vertical" margin="2em" />
           <ContentContainer>
             <h2>Si vous n&apos;êtes pas encore convaincu après le visionnage de la vidéo :</h2>
-            <h3>SHOESNOTINCLUDED, c&apos;est un jeu reprenant fidèlement les codes de l&apos;escape game mais en plein air.</h3>
+            <h3>ShoesNotIncluded, c&apos;est un jeu reprenant fidèlement les codes de l&apos;escape game mais en plein air.</h3>
             <TextContainer>
-              <p>Au bout du compte : c&apos;est un mix entre un escape game, un jeu de piste (ou geocaching) et une sorte de jeu de société.</p>
+              <p>C&apos;est un mix entre un escape game, un jeu de piste (ou geocaching) et une sorte de jeu de société.</p>
               Plus concrètement, c&apos;est une application mobile présentant des jeux où :<br />
               <ul>
                 <li>Chaque jeu est constitué de plusieurs étapes.</li>
                 <li>Chaque étape correspond à un lieu donné, à trouver en résolvant une énigme.</li>
                 <li>Une fois à proximité du lieu, vous aurez automatiquement accès, via une géolocalisation, à des indices et énigmes sous la forme de cartes.</li>
-                <li>Avec les indices et l&apos;environnement local, vous devrez alors résoudre une série d&apos;énigme en trouvant des codes et en réussissant certaines manipulations.</li>
+                <li>ous devrez alors résoudre une série d'énigmes en vous basant sur les indices affichés et l'environnement local, en trouvant des codes et en effectuant certaines manipulations.</li>
                 <li>Une fois tous les codes trouvés et manipulations réalisées, vous aurez alors accès à l&apos;énigme de l&apos;étape suivante.</li>
               </ul>
               <p>
-                Plus précisément, vous pouvez vous représenter chaque étape comme une salle d&apos;un escape game.
+                Vous pouvez vous représenter chaque étape comme une salle d'un escape game : les étapes sont remplies d'indices et de codes à trouver, tout comme une salle d'escape game.
                 <br />
-                Ces étapes sont remplies d&apos;indices et de codes à trouver, tout comme l&apos;est une salle d&apos;escape game.
                 <br />
-                D&apos;ailleurs, vous ne saurez jamais combien exactement d&apos;étapes un jeu contient. Alors ne traînez pas !<br />
+                Attention, vous ne connaîtrez pas le nombre d'étapes d'un jeu. Alors ne traînez pas !<br />
               </p>
-              <p>La durée approximative du jeu est indiquée sur l&apos;application, mais vous pouvez tabler entre 60 et 90min dans la plupart des cas. Un conseil : venez avec de bonnes chaussures ;)</p>
+              <p>La durée approximative du jeu est indiquée sur l'application, mais vous pouvez compter 60 à 90 minutes. Un conseil : venez avec de bonnes chaussures ;)</p>
               <p>
-                Oh et un dernier détail : toutes les actions sont synchronisées entre les smartphones des différents joueurs : <b>vous pouvez jouer jusqu&apos;à 5 sur une même partie, chacun sur votre smartphone</b> !<br />
+                Un dernier détail : toutes les actions sont synchronisées entre les smartphones des différents joueurs : <b>vous pouvez jouer jusqu&apos;à 5 sur une même partie, chacun sur votre smartphone</b> !<br />
                 Parce que pour nous, l&apos;élément essentiel d&apos;un escape game est <b>le travail d&apos;équipe</b>.
               </p>
             </TextContainer>
