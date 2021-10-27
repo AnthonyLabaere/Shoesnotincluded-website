@@ -34,13 +34,13 @@ const WhatIsThat = () => {
             <h2>Si vous n&apos;êtes pas encore convaincu après le visionnage de la vidéo :</h2>
             <h3>ShoesNotIncluded, c&apos;est un jeu reprenant fidèlement les codes de l&apos;escape game mais en plein air.</h3>
             <TextContainer>
-              <p>C&apos;est un mix entre un escape game, un jeu de piste (ou geocaching) et une sorte de jeu de société.</p>
+              <p>C&apos;est un mix entre un escape game et un jeu de piste.</p>
               Plus concrètement, c&apos;est une application mobile présentant des jeux où :<br />
               <ul>
                 <li>Chaque jeu est constitué de plusieurs étapes.</li>
                 <li>Chaque étape correspond à un lieu donné, à trouver en résolvant une énigme.</li>
                 <li>Une fois à proximité du lieu, vous aurez automatiquement accès, via une géolocalisation, à des indices et énigmes sous la forme de cartes.</li>
-                <li>ous devrez alors résoudre une série d'énigmes en vous basant sur les indices affichés et l'environnement local, en trouvant des codes et en effectuant certaines manipulations.</li>
+                <li>Vous devrez alors résoudre une série d'énigmes en vous basant sur les indices affichés et l'environnement local, en trouvant des codes et en effectuant certaines manipulations.</li>
                 <li>Une fois tous les codes trouvés et manipulations réalisées, vous aurez alors accès à l&apos;énigme de l&apos;étape suivante.</li>
               </ul>
               <p>

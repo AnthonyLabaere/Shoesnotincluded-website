@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import conf from '../../conf'
 import * as Constants from '../../constants'
 import Marginer from './marginer'
 import { ContentPageContainer } from './pageContainer'
@@ -33,6 +34,10 @@ const CrowdfundingButtonWrapper = styled.a <{ size?: number }>`
 `
 
 const Crowdfunding = () => {
+  if (!conf.withCrowdfunding) {
+    return <></>
+  }
+
   return (
     <ContentPageContainer coloredBackground={Constants.THEME_ORANGE_COLORS[0]}>
       <Marginer direction="vertical" margin="1em" />
