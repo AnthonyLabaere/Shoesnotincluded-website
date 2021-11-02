@@ -10,7 +10,7 @@ export const DEVICE_SIZES = {
 export const SOCIAL_NETWORKS_URLS = {
   discord: 'https://discord.gg/PPZEctUjsA',
   facebook: 'https://www.facebook.com/ShoesNotIncludedApp',
-  instagram: 'https://www.instagram.com/shoesnotincluded',
+  instagram: 'https://www.instagram.com/_shoes_not_included_/',
   linkedin: 'https://www.linkedin.com/company/shoesnotincluded',
   twitter: 'https://twitter.com/ShoesNtIncluded',
   youtube: 'https://www.youtube.com/watch?v=uL6K0EMkuiE',
