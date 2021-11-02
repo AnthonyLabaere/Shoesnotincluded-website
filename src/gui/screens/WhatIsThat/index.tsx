@@ -22,10 +22,13 @@ const TextContainer = styled.div`
 `
 
 const Image = styled.img`
-  height: 350px;
-  max-height: 350px;
+  width: 50%;
   margin-top: 15px;
   margin-bottom: 15px;
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+    width: 100%;
+  }
 `
 const ImageBetweenLi = styled(Image)`
   margin-bottom: 15px;
