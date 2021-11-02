@@ -1,3 +1,3 @@
 export default {
-  withCrowdfunding: false,
+  withCrowdfunding: true,
 }
