@@ -1,5 +1,5 @@
 import React from 'react'
-import { faDiscord, faFacebook, faInstagram, faLinkedinIn, faTwitter /*faYoutube*/ } from '@fortawesome/free-brands-svg-icons'
+import { /*faDiscord, */ faFacebook, faInstagram, faLinkedinIn /*, faTwitter faYoutube*/ } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
@@ -172,12 +172,12 @@ const Footer = () => {
             <TopSubContainer>
               <Title>Suivez-nous sur les réseaux sociaux :</Title>
               <SocialIconContainer>
-                <a href={SOCIAL_NETWORKS_URLS.discord} title="Discord">
+                {/* <a href={SOCIAL_NETWORKS_URLS.discord} title="Discord">
                   <SocialIcon>
                     <FontAwesomeIcon icon={faDiscord} />
                   </SocialIcon>
                   <span className="sr-only">Discord</span>
-                </a>
+                </a> */}
                 <a href={SOCIAL_NETWORKS_URLS.facebook} title="Facebook">
                   <SocialIcon>
                     <FontAwesomeIcon icon={faFacebook} />
@@ -190,12 +190,12 @@ const Footer = () => {
                                     </SocialIcon>
                                     <span className="sr-only">Youtube</span>
                                 </a> */}
-                <a href={SOCIAL_NETWORKS_URLS.twitter} title="Twitter">
+                {/* <a href={SOCIAL_NETWORKS_URLS.twitter} title="Twitter">
                   <SocialIcon>
                     <FontAwesomeIcon icon={faTwitter} />
                   </SocialIcon>
                   <span className="sr-only">Twitter</span>
-                </a>
+                </a> */}
                 <a href={SOCIAL_NETWORKS_URLS.linkedin} title="Linkedin">
                   <SocialIcon>
                     <FontAwesomeIcon icon={faLinkedinIn} />
