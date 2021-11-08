@@ -146,7 +146,7 @@ const LegalNoticesAndCGU = () => {
             <ul>
               <li>Écran : 1024 X 768 minimum</li>
               <li>Version minimum d'Android : 5.0 (Lollipop)</li>
-              <li>Version minimum d'IOS : 11.0</li>
+              <li>Version minimum d'IOS : 12.0</li>
             </ul>
             <p>Des espaces d'échanges sont à la disposition des Utilisateurs. Toutefois, ShoesNotIncluded se réserve le droit de supprimer, sans mise en demeure préalable, tout contenu déposé dans cet espace qui contreviendrait à la législation applicable en France, en particulier aux dispositions relatives à la protection des données. Le cas échéant, ShoesNotIncluded se réserve également la possibilité de mettre en cause la responsabilité civile et/ou pénale de l'Utilisateur, notamment en cas de message à caractère raciste, injurieux, diffamant, ou pornographique, quel que soit le support utilisé (texte, photographie...).</p>
             <p>L'Utilisateur s'engage à accéder au Site ou à l'Application mobile en utilisant un matériel ne contenant pas de virus.</p>
