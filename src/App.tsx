@@ -8,7 +8,8 @@ import ScrollToTop from './gui/components/scrollToTop'
 
 import Contact from './gui/screens/Contact'
 import Home from './gui/screens/Home'
-import LegalNoticesAndCGU from './gui/screens/LegalNoticesAndCGU'
+import LegalNotices from './gui/screens/LegalNotices'
+import CGUCGV from './gui/screens/CGUCGV'
 import PrivacyPolicy from './gui/screens/PrivacyPolicy'
 import RedirectionError from './gui/screens/RedirectionError'
 import WhatIsThat from './gui/screens/WhatIsThat'
@@ -29,7 +30,8 @@ const App: React.VoidFunctionComponent = () => {
               <Route path="/" exact component={Home} />
               <Route path="/enquoicaconsiste" exact component={WhatIsThat} />
               <Route path="/contact" exact component={Contact} />
-              <Route path="/cgu" exact component={LegalNoticesAndCGU} />
+              <Route path="/mentions-legales" exact component={LegalNotices} />
+              <Route path="/cgu-cgv" exact component={CGUCGV} />
               <Route path="/confidentialite" exact component={PrivacyPolicy} />
               <Route path="/join/*" exact component={RedirectionError} />
             </Switch>

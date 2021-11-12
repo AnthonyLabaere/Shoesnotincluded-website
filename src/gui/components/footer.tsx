@@ -108,8 +108,15 @@ const SocialIcon = styled.div`
   }
 `
 
-const BottomSubContainer = styled.span`
+const BottomSubContainerColumn = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const BottomSubContainerRow = styled.div`
+  display: flex;
+  flex-direction: row;
   align-items: center;
 `
 
@@ -131,6 +138,7 @@ const StyledLink = styled(Link)`
   color: ${GREY_COLOR};
   display: inline;
   font-size: 1.25rem;
+  text-decoration: underline;
 
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     font-size: 0.75rem;
@@ -215,19 +223,21 @@ const Footer = () => {
       </TopContainer>
 
       <BottomContainer>
-        <BottomSubContainer>
+        <BottomSubContainerColumn>
           <Link to="/">
             <Brand size={isMobile ? 1 : 1.5} color={GREY_COLOR} hoverColor={GREY_HOVER_COLOR} />
           </Link>
-          <Marginer direction="horizontal" margin={marginerMargin} />
+          {/* <Marginer direction="horizontal" margin={marginerMargin} /> */}
           <PrivacyText> Marque déposée. 2021</PrivacyText>
-        </BottomSubContainer>
+        </BottomSubContainerColumn>
 
-        <BottomSubContainer>
-          <StyledLink to="/cgu">{isMobile ? 'CGU' : 'Mentions légales & CGU'}</StyledLink>
+        <BottomSubContainerRow>
+          <StyledLink to="/mentions-legales">Mentions légales</StyledLink>
+          <Marginer direction="horizontal" margin={marginerMargin} />
+          <StyledLink to="/cgu-cgv">{isMobile ? 'CGU & CGV' : "Condition générales d'utilisation et de vente"}</StyledLink>
           <Marginer direction="horizontal" margin={marginerMargin} />
           <StyledLink to="/confidentialite">{isMobile ? 'Confidentialité' : 'Politique de confidentialité'}</StyledLink>
-        </BottomSubContainer>
+        </BottomSubContainerRow>
       </BottomContainer>
     </FooterContainer>
   )

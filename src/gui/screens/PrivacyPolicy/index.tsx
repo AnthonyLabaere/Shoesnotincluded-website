@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react'
 import styled from 'styled-components'
 
@@ -28,128 +27,342 @@ const PrivacyPolicy = () => {
         </ContentPageContainer>
         <ContentPageContainer>
           <PrivacyPolicyContentContainer>
-            <p style={{ textAlign: 'center' }}>Mis à jour le 27/09/2021</p>
+            <div>
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 0 }}>Définition des termes utilisés dans la politique de confidentialité</span>
+                </h3>
+                <div>
+                  <p>On désignera par la suite :</p>
+                  <ul>
+                    <li>
+                      <strong>« Donnée personnelle »&nbsp;</strong>: se définit comme « <em>toute information relative à une personne physique identifiée ou qui peut être identifiée, directement ou indirectement, par référence à un numéro d'identification ou à un ou plusieurs éléments qui lui sont propres</em> », conformément à la loi Informatique et libertés du 6 janvier 1978.
+                    </li>
+                    <li>
+                      <strong>« Service »</strong> : le service https://www.shoesnotincluded.fr/ et l'ensemble de ses contenus.
+                    </li>
+                    <li>
+                      <strong>« Editeur »</strong> ou <strong>« Nous »</strong> ou <strong>« ShoesNotIncluded »</strong> : la société ShoesNotIncluded, auto-entreprise au nom de Anthony Labaere responsable de l'édition et du contenu du Service.
+                    </li>
+                    <li>
+                      <strong>« Utilisateur »&nbsp;</strong>ou <strong>« Vous »</strong> : l'internaute visitant et utilisant le Service.
+                    </li>
+                  </ul>
+                </div>
+              </div>
 
-            <h2>1. Définitions</h2>
-            <p>
-              <strong>SHOESNOTINCLUDED</strong> : la personne physique Anthony Labaere.
-              {/* <strong>SHOESNOTINCLUDED</strong> : la société SHOESNOTINCLUDED, auto-entreprise au nom de Anthony Labaere immatriculée au Registre du Commerce et des Sociétés de Nantes sous le numéro de SIRET TODO. */}
-            </p>
-            <p>
-              <b>Site :</b> le site internet <a href="https://www.shoesnotincluded.fr/">https://www.shoesnotincluded.fr/</a>.
-            </p>
-            <p>
-              <b>Application mobile :</b> l'application mobile ShoesNotIncluded disponible sur les stores Android et Apple.
-            </p>
-            <p>
-              <b>Client :</b> tout professionnel ou personne physique capable au sens des articles 1123 et suivants du Code civil, ou personne morale, qui visite le Site et Application mobile objets des présentes conditions générales.
-              <br />
-              <b>Prestations et Services :</b> le Site et l'Application mobile mettent à disposition des Clients :
-            </p>
-            <p>
-              <b>Contenu :</b> Ensemble des éléments constituants l'information présente sur le Site et l'Application mobile, notamment textes – images – vidéos.
-            </p>
-            <p>
-              <b>Informations clients :</b> Ci après dénommé « Information(s) » qui correspondent à l'ensemble des données personnelles susceptibles d'être détenues par le Site et l'Application mobile pour la gestion de votre compte, de la gestion de la relation client et à des fins d'analyses et de statistiques.
-            </p>
-            <p>
-              <b>Utilisateur :</b> Internaute se connectant, utilisant le Site ou l'Application mobile susnommé.
-            </p>
-            <p>
-              <b>Informations personnelles :</b> « Les informations qui permettent, sous quelque forme que ce soit, directement ou non, l&apos;identification des personnes physiques auxquelles elles s&apos;appliquent » (article 4 de la loi n° 78-17 du 6 janvier 1978).
-            </p>
-            <p>Les termes « données à caractère personnel », « personne concernée », « sous traitant » et « données sensibles » ont le sens défini par le Règlement Général sur la Protection des Données (RGPD : n° 2016-679)</p>
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 0 }}>
+                    Article 1 - <span style={{ marginLeft: 10 }}></span>Introduction et rôle de la Politique de confidentialité
+                  </span>
+                </h3>
+                <div>
+                  <p>La présente charte vise à vous informer des engagements du Service eu égard au respect de votre vie privée et à la protection des Données personnelles vous concernant, collectées et traitées à l'occasion de votre utilisation du Service.</p>
+                  <p>Il est important que vous lisiez la présente politique de confidentialité afin que vous soyez conscient des raisons pour lesquelles nous utilisons vos données et comment nous le faisons.</p>
+                  <p>En vous inscrivant sur le Service, vous vous engagez à nous fournir des informations véritables vous concernant. La communication de fausses informations est contraire aux conditions générales figurant sur le Service.</p>
+                  <p>Veuillez noter que la présente Politique de confidentialité est susceptible d’être modifiée ou complétée à tout moment, notamment en vue de se conformer à toute évolution législative, réglementaire, jurisprudentielle ou technologique. La date de sa mise à jour sera clairement mentionnée, le cas échéant.</p>
+                  <p>Ces modifications vous engagent dès leur mise en ligne et nous vous invitons donc à consulter régulièrement la présente Politique de confidentialité afin de prendre connaissance des éventuelles modifications.</p>
+                  <p>Vous trouverez également la description de vos droits à la protection de la vie privée et la façon dont la loi vous protège.</p>
+                  <p>Si vous avez des questions concernant la présente politique de confidentialité ou si vous voulez exercer vos droits tels que décrit à l’article 10 de la présente Politique de confidentialité, veuillez nous contacter par e-mail à l’adresse : contact@shoesnotincluded ou par courrier adressé à : 25 rue Jules Piedeleu.</p>
+                </div>
+              </div>
 
-            <h2>2. Gestion des données personnelles.</h2>
-            <p>Le Client est informé des réglementations concernant la communication marketing, la loi du 21 Juin 2014 pour la confiance dans l'Economie Numérique, la Loi Informatique et Liberté du 06 Août 2004 ainsi que du Règlement Général sur la Protection des Données (RGPD : n° 2016-679).</p>
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 0 }}>
+                    Article 2 - <span style={{ marginLeft: 10 }}></span>Données collectées sur le Site
+                  </span>
+                </h3>
+                <div>
+                  <p>Les Données collectées et ultérieurement traitées par le Service sont celles que vous nous transmettez volontairement en remplissant les différents formulaires présents au sein du Service. Pour certaines opérations sur les contenus, vous pourrez être amenés à transmettre des Données vous concernant à des tiers partenaires au travers de leurs propres services, plus spécifiquement lors des paiements que vous pourrez effectuer. Nous ne disposerons pas des dites données, leur collecte et leur traitement étant régis par les conditions propres à ces intervenants. Nous vous invitons à consulter leurs conditions avant de communiquer vos Données dans ce cadre.</p>
+                  <p>Votre adresse IP (numéro d'identification attribué sur Internet à votre ordinateur) est collectée automatiquement. Vous êtes informés que le Service est susceptible de mettre en œuvre un procédé automatique de traçage (Cookie), auquel vous pouvez faire obstacle en modifiant les paramètres concernés de votre navigateur internet, comme expliqué dans les conditions générales du présent Service.</p>
+                  <p>D’une manière générale, il vous est possible de visiter le Service https://www.shoesnotincluded.fr/ sans communiquer aucune information personnelle vous concernant. Dans tous les cas, vous n’avez aucune obligation de transmettre ces informations. Néanmoins, en cas de refus, il se peut que vous ne puissiez pas bénéficier de certaines informations ou services.</p>
+                  <p>Nous recueillons, utilisons et partageons également des données agrégées telles que des données statistiques ou démographiques quel qu’en soit l’usage. Les données agrégées peuvent provenir de vos informations personnelles mais ne sont pas concernées comme telles par la loi car ces données ne révèlent pas directement votre identité. Par exemple, nous pouvons agréger vos données d’utilisation afin de calculer le pourcentage d’utilisateurs qui accèdent à une fonctionnalité spécifique du Service.</p>
+                  <p></p>
+                  <p>Nous ne collectons pas de données dites « sensibles ».</p>
+                  <p>Les coordonnées des Utilisateurs du Service qui se seront inscrits sur celui-ci seront sauvegardées, dans le respect des dispositions de la loi informatique et liberté du 6 janvier 1978. Conformément à cette dernière, ils disposent d’un droit d’accès, de retrait, de modification ou de rectification des Données qu’ils ont fournies. Pour cela, il leur suffit d’en faire la demande à l’adresse électronique suivante : contact@shoesnotincluded, ou par courrier : 25 rue Jules Piedeleu.</p>
+                  <p>La collecte des Données personnelles des Utilisateurs par l'Editeur ne nécessite pas de déclaration auprès de l’autorité française de protection des Données personnelles (la Commission Nationale de l’Informatique et des Libertés – CNIL).</p>
+                </div>
+              </div>
 
-            <h3>2.1 Responsable de la collecte des données personnelles</h3>
-            <p>Pour les Données Personnelles collectées dans le cadre de la création du compte personnel de l'Utilisateur et de sa navigation sur le Site ou l'Application mobile, le responsable du traitement des Données Personnelles est : Anthony Labaere. SHOESNOTINCLUDED est représenté par Anthony Labaere, son représentant légal.</p>
-            <p>En tant que responsable du traitement des données qu'il collecte, SHOESNOTINCLUDED s'engage à respecter le cadre des dispositions légales en vigueur. Il lui appartient notamment au Client d'établir les finalités de ses traitements de données, de fournir à ses prospects et clients, à partir de la collecte de leurs consentements, une information complète sur le traitement de leurs données personnelles et de maintenir un registre des traitements conforme à la réalité. Chaque fois que SHOESNOTINCLUDED traite des Données Personnelles, SHOESNOTINCLUDED prend toutes les mesures raisonnables pour s'assurer de l'exactitude et de la pertinence des Données Personnelles au regard des finalités pour lesquelles le Site ou l'Application mobile les traite.</p>
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 0 }}>
+                    Article 3 - <span style={{ marginLeft: 10 }}></span>Identité du responsable du traitement
+                  </span>
+                </h3>
+                <div>
+                  <p>Le responsable du traitement est la société Anthony Labaere, ayant son siège social à l'adresse suivante : 25 rue Jules Piedeleu, 44100 Nantes .</p>
+                  <p>
+                    <br />
+                  </p>
+                </div>
+              </div>
 
-            <h3>2.2 Données personnelles collectées pour les besoins du site et de l'application mobile</h3>
-            <p>SHOESNOTINCLUDED traite les données personnelles de l'Utilisateur afin de lui donner accès à son compte. Le traitement opéré par SHOESNOTINCLUDED s'inscrit donc dans le cadre de l'article 6-1) b) du Règlement 2016/679 du Parlement européen et du Conseil du 27 avril 2016 relatif à la protection des données (le « RGPD »), en vertu duquel le traitement est licite s'il est nécessaire à l'exécution d'un contrat auquel la personne concernée est partie.</p>
-            <p>Les données personnelles recueillies sur l'application résultent du consentement explicite de l'utilisateur à communiquer des informations via les formulaires présents sur l'application. Certaines données signalées comme obligatoires doivent être complétées sans quoi votre inscription ne pourra être prise en compte.</p>
-            <p>La création du compte par l'utilisation d'un compte associé (Google, Facebook, Twitter, Apple) transmet à SHOESNOTINCLUDED la liste de données personnelles suivante :</p>
-            <ul>
-              <li>Nom</li>
-              <li>Prénom</li>
-              <li>Adresse mail</li>
-              <li>Numéro de téléphone</li>
-              <li>Photo de profil</li>
-            </ul>
-            <p>Vos informations personnelles sont conservées pendant une durée qui ne saurait excéder 36 mois sauf si :</p>
-            <ul>
-              <li>Vous exercez votre droit de suppression des données vous concernant, dans la limite des conditions décrites à l'article 17 du RGPD.</li>
-              <li>Une durée de conservation plus longue est autorisée ou imposée en vertu d'une obligation légale ou réglementaire.</li>
-              <li>Pendant cette période, nous mettons en place tous les moyens aptes à assurer la confidentialité et la sécurité de vos données personnelles, de manière à empêcher leur endommagement, effacement ou accès par des tiers non autorisés.</li>
-            </ul>
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 0 }}>
+                    Article 4 - <span style={{ marginLeft: 10 }}></span>Finalité des Données collectées
+                  </span>
+                </h3>
+                <div>
+                  <p>Les Données identifiées comme étant obligatoires sur les formulaires du Service sont nécessaires afin de pouvoir bénéficier des fonctionnalités correspondantes du Service, et plus spécifiquement des opérations sur les contenus proposés au sein de celui-ci.</p>
+                  <p>Le Service est susceptible de collecter et traiter les Données de ses Utilisateurs :</p>
+                  <ul>
+                    <li>Aux fins de vous fournir les informations ou les services auxquels vous avez souscrit, notamment : Escape game mobile en plein air.</li>
+                    <li>Aux fins de recueillir des informations nous permettant d’améliorer notre Service, nos produits et fonctionnalités (notamment par l’usage des cookies).</li>
+                  </ul>
+                </div>
+              </div>
 
-            <h3>2.3 Finalité des données collectées</h3>
-            <p>SHOESNOTINCLUDED est susceptible de traiter tout ou partie des données :</p>
-            <ul>
-              <li>pour gérer l'inscription de l'Utilisateur et la gestion de son compte</li>
-              <li>pour déterminer la position géographique de l'Utilisateur </li>
-              <li>pour associer le pseudonyme de l'Utilisateur ou de son équipe à un tableau des scores</li>
-              <li>pour permettre la navigation sur le Site et l'Application mobile et la gestion et la traçabilité des prestations et services commandés par l'utilisateur : données de connexion et d'utilisation du Site et de l'Application mobile, facturation, historique des commandes, etc. </li>
-              <li>pour prévenir et lutter contre la fraude informatique (spamming, hacking…) : matériel informatique utilisé pour la navigation, l'adresse IP, le mot de passe (hashé) </li>
-              <li>pour améliorer la navigation sur le Site ou l'application Mobile : données de connexion et d'utilisation </li>
-              <li>pour mener des enquêtes de satisfaction facultatives sur le Site ou l'Application mobile : adresse email</li>
-              <li>pour mener des campagnes de communication (mail) : adresse email</li>
-            </ul>
-            <p>SHOESNOTINCLUDED ne commercialise pas vos données personnelles qui sont donc uniquement utilisées par nécessité ou à des fins statistiques et d'analyses.</p>
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 0 }}>
+                    Article 5 - <span style={{ marginLeft: 10 }}></span>Destinataires et utilisation des Données collectées
+                  </span>
+                </h3>
+                <div>
+                  <p>Les Données collectées par nos soins sont traitées pour les besoins d’exécution des opérations sur les contenus du Service.</p>
+                  <p>Vous êtes susceptible de recevoir des courriers électroniques (emails) de notre Service, notamment dans le cadre de newsletters que vous avez acceptées. Vous pouvez demander à ne plus recevoir ces courriers électroniques en nous contactant à l'adresse contact@shoesnotincluded ou sur le lien prévu à cet effet dans chacun des courriers électroniques qui vous seront adressés.</p>
+                  <p>Seul ShoesNotIncluded est destinataire de vos Informations personnelles. Celles-ci ne sont jamais transmises à un tiers, nonobstant les sous-traitants auxquels ShoesNotIncluded fait appel. Ni ShoesNotIncluded ni ses sous-traitants ne procèdent à la commercialisation des données personnelles des visiteurs et utilisateurs de son Service.</p>
+                  <p>Vos données personnelles peuvent être partagées avec les parties indiquées ci-dessous aux fins définies dans la présente politique de confidentialité.</p>
+                  <p>Nous exigeons que tous les tiers garantissent la sécurité de vos données personnelles et les traitent conformément à la loi. Nous ne permettons pas à nos fournisseurs de services tiers d’utiliser vos données.</p>
+                </div>
+              </div>
 
-            <h3>2.4 Droit d'accès, de rectification et d'opposition</h3>
-            <p>Conformément à la réglementation européenne en vigueur, les Utilisateurs du Site et de l'Application mobile disposent des droits suivants :</p>
-            <ul>
-              <li>droit d&apos;accès (article 15 RGPD) et de rectification (article 16 RGPD), de mise à jour, de complétude des données des Utilisateurs droit de verrouillage ou d'effacement des données des Utilisateurs à caractère personnel (article 17 du RGPD), lorsqu'elles sont inexactes, incomplètes, équivoques, périmées, ou dont la collecte, l&apos;utilisation, la communication ou la conservation est interdite </li>
-              <li>droit de retirer à tout moment un consentement (article 13-2c RGPD) </li>
-              <li>droit à la limitation du traitement des données des Utilisateurs (article 18 RGPD) </li>
-              <li>droit d'opposition au traitement des données des Utilisateurs (article 21 RGPD) </li>
-              <li>droit à la portabilité des données que les Utilisateurs auront fournies, lorsque ces données font l'objet de traitements automatisés fondés sur leur consentement ou sur un contrat (article 20 RGPD) </li>
-              <li>droit de définir le sort des données des Utilisateurs après leur mort et de choisir à qui SHOESNOTINCLUDED devra communiquer (ou non) ses données à un tiers qu'il aura préalablement désigné</li>
-            </ul>
-            <p>Dès que SHOESNOTINCLUDED a connaissance du décès d'un Utilisateur et à défaut d'instructions de sa part, SHOESNOTINCLUDED s'engage à détruire ses données, sauf si leur conservation s'avère nécessaire à des fins probatoires ou pour répondre à une obligation légale.</p>
-            <p>Si l'Utilisateur souhaite savoir comment SHOESNOTINCLUDED utilise ses Données Personnelles, demander à les rectifier ou s'oppose à leur traitement, l'Utilisateur peut contacter SHOESNOTINCLUDED par mail à l'adresse suivante : contact@shoesnotincluded.fr</p>
-            <p>Dans ce cas, l'Utilisateur doit indiquer les Données Personnelles qu'il souhaiterait que SHOESNOTINCLUDED corrige, mette à jour ou supprime, en s'identifiant précisément avec une copie d'une pièce d'identité (carte d'identité ou passeport). </p>
-            <p>Les demandes de suppression de Données Personnelles seront soumises aux obligations qui sont imposées à SHOESNOTINCLUDED par la loi, notamment en matière de conservation ou d'archivage des documents. Enfin, les Utilisateurs du Site ou de l'Application mobile peuvent déposer une réclamation auprès des autorités de contrôle, et notamment de la CNIL (https://www.cnil.fr/fr/plaintes).</p>
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 0 }}>
+                    Article 6 - <span style={{ marginLeft: 10 }}></span>Fondements légaux régissant le traitement des données
+                  </span>
+                </h3>
+                <div>
+                  <p>Conformément au Règlement Général sur la Protection des Données (RGPD), ShoesNotIncluded ne traite des données à caractère personnel que dans les situations suivantes :</p>
+                  <ul>
+                    <li>
+                      avec votre <strong>consentement</strong>
+                      <span>&nbsp;</span>;
+                    </li>
+                    <li>
+                      lorsqu'il existe une<span>&nbsp;</span>
+                      <strong>obligation contractuelle</strong>
+                      <span>&nbsp;</span>(un contrat entre ShoesNotIncluded et vous) ;
+                    </li>
+                    <li>
+                      pour répondre à une<span>&nbsp;</span>
+                      <strong>
+                        obligation légale<span>&nbsp;</span>
+                      </strong>
+                      (en vertu de la législation UE ou nationale).
+                    </li>
+                  </ul>
+                </div>
+              </div>
 
-            <h3>2.5 Non-communication des données personnelles</h3>
-            <p>SHOESNOTINCLUDED s'interdit de traiter, héberger ou transférer les Informations collectées sur ses Clients vers un pays situé en dehors de l'Union européenne ou reconnu comme « non adéquat » par la Commission européenne sans en informer préalablement le client. Pour autant, SHOESNOTINCLUDED reste libre du choix de ses sous-traitants techniques et commerciaux à la condition qu'il présentent les garanties suffisantes au regard des exigences du Règlement Général sur la Protection des Données (RGPD : n° 2016-679).</p>
-            <p>SHOESNOTINCLUDED s'engage à prendre toutes les précautions nécessaires afin de préserver la sécurité des Informations et notamment qu'elles ne soient pas communiquées à des personnes non autorisées. Cependant, si un incident impactant l'intégrité ou la confidentialité des Informations du Client est portée à la connaissance de SHOESNOTINCLUDED, celle-ci devra dans les meilleurs délais informer le Client et lui communiquer les mesures de corrections prises. Par ailleurs SHOESNOTINCLUDED ne collecte aucune « données sensibles ».</p>
-            <p>Les Données Personnelles de l'Utilisateur peuvent être traitées par des filiales de SHOESNOTINCLUDED et des sous-traitants (prestataires de services), exclusivement afin de réaliser les finalités de la présente politique.</p>
-            <p>Dans la limite de leurs attributions respectives et pour les finalités rappelées ci-dessus, les principales personnes susceptibles d'avoir accès aux données des Utilisateurs du Site et de l'Application mobile sont principalement les agents de notre service client.</p>
-            <div ng-bind-html="rgpdHTML"></div>
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 0 }}>
+                    Article 7 - <span style={{ marginLeft: 10 }}></span>Sécurité des Données
+                  </span>
+                </h3>
+                <div>
+                  Vous êtes informés que vos Données pourront être divulguées en application d'une loi, d'un règlement ou en vertu d'une décision d'une autorité réglementaire ou judiciaire compétente ou encore, si cela s'avère nécessaire, aux fins, pour l'Editeur, de préserver ses droits et intérêts.
+                  <br />
+                  <br />
+                  Nous avons mis en place des mesures de sécurité appropriées afin d’empêcher que vos données personnelles ne soient accidentellement perdues, utilisées, modifiées, dévoilées ou consultées sans autorisation. De plus, l’accès à vos données personnelles est soumis à une procédure de sécurité définie et documentée.
+                </div>
+              </div>
 
-            <h2>3. Notification d'incident</h2>
-            <p>Quels que soient les efforts fournis, aucune méthode de transmission sur Internet et aucune méthode de stockage électronique n&apos;est complètement sûre. Nous ne pouvons en conséquence pas garantir une sécurité absolue. Si nous prenions connaissance d&apos;une brèche de la sécurité, nous avertirions les utilisateurs concernés afin qu&apos;ils puissent prendre les mesures appropriées. Nos procédures de notification d'incident tiennent compte de nos obligations légales, qu&apos;elles se situent au niveau national ou européen. Nous nous engageons à informer pleinement nos clients de toutes les questions relevant de la sécurité de leur compte et à leur fournir toutes les informations nécessaires pour les aider à respecter leurs propres obligations réglementaires en matière de reporting.</p>
-            <p>Aucune information personnelle de l&apos;utilisateur du Site ou de l'Application mobile n&apos;est publiée à l&apos;insu de l&apos;utilisateur, échangée, transférée, cédée ou vendue sur un support quelconque à des tiers. Seule l&apos;hypothèse du rachat de SHOESNOTINCLUDED et de ses droits permettrait la transmission des dites informations à l&apos;éventuel acquéreur qui serait à son tour tenu de la même obligation de conservation et de modification des données vis à vis de l&apos;utilisateur du Site et de l'Application mobile.</p>
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 0 }}>
+                    Article 8 - <span style={{ marginLeft: 10 }}></span>Durée de conservation des Données
+                  </span>
+                </h3>
+                <div>
+                  <p>
+                    <span>
+                      Les Données sont stockées chez l'hébergeur du Service, dont les coordonnées figurent dans les mentions légales du Service, et sont conservées pour la durée strictement nécessaire à la réalisation des finalités visées ci-avant{' '}
+                      <span>
+                        et ne saurait excéder <span></span>
+                        <span>36</span>
+                        <span></span> mois
+                      </span>
+                      . Au-delà de cette durée, elles seront conservées à des fins exclusivement statistiques et ne donneront lieu à aucune exploitation, de quelque nature que ce soit.
+                    </span>
+                  </p>
+                </div>
+              </div>
 
-            <h3>3.1 Sécurité</h3>
-            <p>Pour assurer la sécurité et la confidentialité des Données Personnelles, le Site et l'Application mobile utilise des réseaux protégés par des dispositifs standards tels que par pare-feu, la pseudonymisation, l'encryption et mot de passe.</p>
-            <p>Lors du traitement des Données Personnelles, SHOESNOTINCLUDED prend toutes les mesures raisonnables visant à les protéger contre toute perte, utilisation détournée, accès non autorisé, divulgation, altération ou destruction.</p>
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 0 }}>
+                    Article 9 - <span style={{ marginLeft: 10 }}></span>Prestataires habilités et transfert vers un pays tiers de l’Union Européenne
+                  </span>
+                </h3>
+                <div>
+                  <p>ShoesNotIncluded vous informe qu’il a recours à des prestataires habilités pour faciliter le recueil et le traitement des données que vous nous avez communiquées. Ces prestataires peuvent être situés en dehors de l’Union Européenne et ont communication des données recueillies par le biais des divers formulaires présents sur le Service.</p>
+                  <p>ShoesNotIncluded s’est préalablement assuré de la mise en œuvre par ses prestataires de garanties adéquates et du respect de conditions strictes en matière de confidentialité, d’usage et de protection des données. Tout particulièrement, la vigilance s’est portée sur l’existence d’un fondement légal pour effectuer un quelconque transfert de données vers un pays tiers. A ce titre, certains de nos prestataires sont soumis à des règles internes d’entreprise (ou « Binding Corporate Rules ») qui ont été approuvées par la CNIL en 2016 quand les autres obéissent non seulement à des Clauses Contractuelles Types mais également au Privacy Shield.</p>
+                </div>
+              </div>
 
-            <h2>4. Liens hypertextes « cookies » et balises « tags » internet</h2>
-            <p>Le Site et l'Application mobile n'utilisent pas de « cookies » ou de balises « tags » internet.</p>
-            {/* <p>Le Site contient un certain nombre de liens hypertextes vers d'autres sites, mis en place avec l'autorisation de SHOESNOTINCLUDED. Cependant, SHOESNOTINCLUDED n'a pas la possibilité de vérifier le contenu des sites ainsi visités, et n'assumera en conséquence aucune responsabilité de ce fait.</p>
-            Sauf si vous décidez de désactiver les cookies, vous acceptez que le Site puisse les utiliser. Vous pouvez à tout moment désactiver ces cookies et ce gratuitement à partir des possibilités de désactivation qui vous sont offertes et rappelées ci-après, sachant que cela peut réduire ou empêcher l'accessibilité à tout ou partie des Services proposés par le site. */}
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 0 }}>
+                    Article 10 - <span style={{ marginLeft: 10 }}></span>Droits informatiques et libertés
+                  </span>
+                </h3>
+                <div>
+                  <p>Conformément à la législation sur la protection des données personnelles, vous avez les droits détaillés ci-après que vous pouvez exercer, comme indiqué à l’Article 1 de la Présente Politique de confidentialité en nous écrivant à l’adresse postale mentionnée en tête (25 rue Jules Piedeleu) ou en envoyant un courriel à contact@shoesnotincluded :</p>
+                  <ul>
+                    <li>Le droit d’information : nous avons l’obligation de vous informer de la manière dont nous utilisons vos données personnelles (tel que décrit dans la présente politique de confidentialité).</li>
+                    <li>Le droit d’accès : c’est votre droit d’effectuer une demande d’accès aux données vous concernant afin de recevoir une copie des données à caractère personnel que nous détenons ; Toutefois, en raison de l’obligation de sécurité et de confidentialité dans le traitement des données à caractère personnel qui incombe à ShoesNotIncluded, vous êtes informé que votre demande sera traitée sous réserve que vous rapportiez la preuve de votre identité, notamment par la production d’un scan ou d’une photocopie de votre titre d’identité valide.</li>
+                    <li>Le droit de rectification : le droit de nous demander de rectifier des données personnelles vous concernant qui seraient incomplètes ou inexactes. Au titre de ce droit, la législation vous autorise à demander la rectification, la mise à jour, le verrouillage ou encore l’effacement des données vous concernant qui peuvent être inexactes, erronées, incomplètes ou obsolètes.</li>
+                    <li>Le droit à l’effacement, aussi connu sous le nom de « droit à l’oubli » : dans certains cas, vous pouvez nous demander de supprimer les données personnelles que nous avons vous concernant (mis à part s’il existe une raison juridique impérieuse qui nous oblige à les conserver).</li>
+                    <li>Le droit à la limitation du traitement : vous avez le droit dans certains cas de nous demander de suspendre le traitement des données personnelles,</li>
+                    <li>Le droit à la portabilité des données : vous avez le droit de nous demander une copie de vos données personnelles dans un format courant (par exemple un fichier .csv).</li>
+                    <li>Le droit d’opposition : vous avez le droit de vous opposer au traitement de vos données personnelles (par exemple, en nous interdisant de traiter vos données à des fins de marketing direct).</li>
+                  </ul>
+                  <p>Cependant, l’exercice de ce droit n’est possible que dans l’une des deux situations suivantes : lorsque l’exercice de ce droit est fondé sur des motifs légitimes ou lorsque l’exercice de ce droit vise à faire obstacle à ce que les données recueillies soient utilisées à des fins de prospection commerciale.</p>
+                  <p>Contactez-nous si vous souhaitez exercer l’un des droits décrits ci-dessus en nous écrivant à 25 rue Jules Piedeleu ou par courriel à contact@shoesnotincluded</p>
+                  <p>Vous n’aurez pas de frais à payer pour l’accès à vos données personnelles (ni pour l’exercice de tout autre droit). Cependant, nous pourrons vous facturer des frais raisonnables si votre demande est manifestement infondée, répétitive ou excessive. Dans ce cas, nous pouvons aussi refuser de répondre à votre demande.</p>
+                  <p>ShoesNotIncluded sera en droit, le cas échéant, de s’opposer aux demandes manifestement abusives de par leur caractère systématique, répétitif, ou leur nombre.</p>
+                  <p>Nous pouvons vous demander des informations spécifiques afin de confirmer votre identité et d’assurer votre droit d’accès à vos données personnelles (ou pour exercer tout autre droit). Il s’agit d’une mesure de sécurité pour garantir que ces données personnelles ne soient pas délivrées à une personne non autorisée à les recevoir. Nous pouvons aussi vous contacter pour obtenir plus d’informations concernant votre demande, afin de vous donner une réponse plus rapide.</p>
+                  <p>Nous essayons de répondre à toutes les demandes légitimes dans un délai d’un mois. Ce délai d’un mois peut être dépassé dans le cas où votre demande est particulièrement complexe ou si vous en avez fait plusieurs. Dans ce cas, nous vous préviendrons et vous tiendrons informé.</p>
+                </div>
+              </div>
 
-            {/* <h3>4.1. « COOKIES »</h3>
-            <p>Un « cookie » est un petit fichier d'information envoyé sur le navigateur de l'Utilisateur et enregistré au sein du terminal de l'Utilisateur (ex : ordinateur, smartphone), (ci-après « Cookies »). Ce fichier comprend des informations telles que le nom de domaine de l'Utilisateur, le fournisseur d'accès Internet de l'Utilisateur, le système d'exploitation de l'Utilisateur, ainsi que la date et l'heure d'accès. Les Cookies ne risquent en aucun cas d'endommager le terminal de l'Utilisateur.</p>
-            <p>SHOESNOTINCLUDED est susceptible de traiter les informations de l'Utilisateur concernant sa visite du Site, telles que les pages consultées, les recherches effectuées. Ces informations permettent à SHOESNOTINCLUDED d'améliorer le contenu du Site, de la navigation de l'Utilisateur.</p>
-            <p>Les Cookies facilitant la navigation et/ou la fourniture des services proposés par le Site, l'Utilisateur peut configurer son navigateur pour qu'il lui permette de décider s'il souhaite ou non les accepter de manière à ce que des Cookies soient enregistrés dans le terminal ou, au contraire, qu'ils soient rejetés, soit systématiquement, soit selon leur émetteur. L'Utilisateur peut également configurer son logiciel de navigation de manière à ce que l'acceptation ou le refus des Cookies lui soient proposés ponctuellement, avant qu'un Cookie soit susceptible d'être enregistré dans son terminal. SHOESNOTINCLUDED informe l'Utilisateur que, dans ce cas, il se peut que les fonctionnalités de son logiciel de navigation ne soient pas toutes disponibles.</p>
-            <p>Si l'Utilisateur refuse l'enregistrement de Cookies dans son terminal ou son navigateur, ou si l'Utilisateur supprime ceux qui y sont enregistrés, l'Utilisateur est informé que sa navigation et son expérience sur le Site peuvent être limitées. Cela pourrait également être le cas lorsque SHOESNOTINCLUDED ou l'un de ses prestataires ne peut pas reconnaître, à des fins de compatibilité technique, le type de navigateur utilisé par le terminal, les paramètres de langue et d'affichage ou le pays depuis lequel le terminal semble connecté à Internet.</p>
-            <p>Le cas échéant, SHOESNOTINCLUDED décline toute responsabilité pour les conséquences liées au fonctionnement dégradé du Site et des services éventuellement proposés par SHOESNOTINCLUDED, résultant (i) du refus de Cookies par l'Utilisateur (ii) de l'impossibilité pour le Site d'enregistrer ou de consulter les Cookies nécessaires à leur fonctionnement du fait du choix de l'Utilisateur. Pour la gestion des Cookies et des choix de l'Utilisateur, la configuration de chaque navigateur est différente. Elle est décrite dans le menu d'aide du navigateur, qui permettra de savoir de quelle manière l'Utilisateur peut modifier ses souhaits en matière de Cookies.</p>
-            <p>À tout moment, l'Utilisateur peut faire le choix d'exprimer et de modifier ses souhaits en matière de Cookies. SHOESNOTINCLUDED pourra en outre faire appel aux services de prestataires externes pour l'aider à recueillir et traiter les informations décrites dans cette section.</p>
-            <p>Enfin, en cliquant sur les icônes dédiées aux réseaux sociaux Twitter, Facebook, Linkedin et Google Plus figurant sur le Site ou l'Application mobile et si l'Utilisateur a accepté le dépôt de cookies en poursuivant sa navigation sur le Site Internet ou l'Application mobile, Twitter, Facebook, Linkedin et Google Plus peuvent également déposer des cookies sur vos terminaux (ordinateur, tablette, téléphone portable).</p>
-            <p>Ces types de cookies ne sont déposés sur vos terminaux qu'à condition que vous y consentiez, en continuant votre navigation sur le Site Internet ou l'Application mobile. À tout moment, l'Utilisateur peut néanmoins revenir sur son consentement à ce que SHOESNOTINCLUDED dépose ce type de cookies.</p> */}
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 0 }}>
+                    Article 11 - <span style={{ marginLeft: 10 }}></span>Plainte auprès de l’Autorité de protection des données
+                  </span>
+                </h3>
+                <div>
+                  <p>
+                    Si vous considérez que ShoesNotIncluded ne respecte pas ses obligations au regard de vos Informations Personnelles, vous pouvez adresser une plainte ou une demande auprès de l’autorité compétente. En France, l’autorité compétente est la CNIL à laquelle vous pouvez adresser une demande par voie électronique à l'adresse suivante : <a href="https://www.cnil.fr/fr/plaintes/internet">https://www.cnil.fr/fr/plaintes/internet</a>.
+                  </p>
+                </div>
+              </div>
 
-            {/* <h3>4.2. BALISES « TAGS » INTERNET</h3>
-            <p>SHOESNOTINCLUDED peut employer occasionnellement des balises Internet (également appelées « tags », ou balises d'action, GIF à un pixel, GIF transparents, GIF invisibles et GIF un à un) et les déployer par l'intermédiaire d'un partenaire spécialiste d'analyses Web susceptible de se trouver (et donc de stocker les informations correspondantes, y compris l'adresse IP de l'Utilisateur) dans un pays étranger.</p>
-            <p>Ces balises sont placées à la fois dans les publicités en ligne permettant aux internautes d'accéder au Site, et sur les différentes pages de celui-ci.</p>
-            <p>Cette technologie permet à SHOESNOTINCLUDED d'évaluer les réponses des visiteurs face au Site et l'efficacité de ses actions (par exemple, le nombre de fois où une page est ouverte et les informations consultées), ainsi que l'utilisation de ce Site par l'Utilisateur. </p>
-            <p>Le prestataire externe pourra éventuellement recueillir des informations sur les visiteurs du Site et d'autres sites Internet grâce à ces balises, constituer des rapports sur l'activité du Site à l'attention de SHOESNOTINCLUDED, et fournir d'autres services relatifs à l'utilisation de celui-ci et d'Internet.</p> */}
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 0 }}>
+                    Article 12 - <span style={{ marginLeft: 10 }}></span>Politique relative aux cookies
+                  </span>
+                </h3>
+                <div>
+                  <p>Lors de votre première utilisation du Service https://www.shoesnotincluded.fr/, vous êtes avertis par un bandeau que des informations relatives à votre navigation sont susceptibles d’être enregistrées dans des fichiers alphanumériques dénommés « cookies ». Notre politique d’utilisation des cookies vous permet de mieux comprendre les dispositions que nous mettons en œuvre en matière de navigation sur notre Service. Elle vous informe notamment sur l’ensemble des cookies présents sur notre Service, leur finalité et vous donne la marche à suivre pour les paramétrer.</p>
+                </div>
+              </div>
 
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 30 }}>
+                    a) <span style={{ marginLeft: 10 }}></span>Informations générales sur les cookies présents sur le site
+                  </span>
+                </h3>
+                <div>
+                  <p>ShoesNotIncluded, en tant qu’éditeur du présent Service, pourra procéder à l’implantation de cookies sur le disque dur de votre terminal (ordinateur, tablette, mobile etc.) afin de vous garantir une navigation fluide et optimale sur notre Service.</p>
+                  <p>Les « cookies » (ou témoins de connexion) sont des petits fichiers texte de taille limitée qui nous permettent de reconnaître votre ordinateur, votre tablette ou votre mobile aux fins de personnaliser les services que nous vous proposons.</p>
+                  <p>Les informations recueillies par le biais des cookies ne permettent en aucune manière de vous identifier nominativement. Elles sont utilisées exclusivement pour nos besoins propres afin d’améliorer l’interactivité et la performance de notre Service et de vous adresser des contenus adaptés à vos centres d’intérêts. Aucune de ces informations ne fait l’objet d’une communication auprès de tiers sauf lorsque ShoesNotIncluded a obtenu au préalable votre consentement ou bien lorsque la divulgation de ces informations est requise par la loi, sur ordre d’un tribunal ou toute autorité administrative ou judiciaire habilitée à en connaître.</p>
+                  <p>
+                    Pour mieux vous éclairer sur les informations que les cookies identifient, vous trouverez un tableau listant les différents types de cookies susceptibles d’être utilisés sur le Service de ShoesNotIncluded, leur nom, leur finalité ainsi que leur durée de conservation à l'adresse <span>https://www.shoesnotincluded.fr/cookies</span>.
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 30 }}>
+                    b) <span style={{ marginLeft: 10 }}></span>Configuration de vos préférences sur les cookies
+                  </span>
+                </h3>
+                <div>
+                  <p>Vous pouvez accepter ou refuser le dépôt de cookies à tout moment.</p>
+                  <p>Lors de votre première utilisation du Service https://www.shoesnotincluded.fr/, une bannière présentant brièvement des informations relatives au dépôt de cookies et de technologies similaires apparaît en bas de votre écran. Cette bannière vous avertit qu’en poursuivant votre navigation sur le Service de ShoesNotIncluded (en chargeant une nouvelle page ou en cliquant sur divers éléments du Service par exemple), vous acceptez le dépôt de cookies sur votre terminal.</p>
+                  <p>Selon le type de cookie en cause, le recueil de votre consentement au dépôt et à la lecture de cookies sur votre terminal peut être impératif.</p>
+                </div>
+              </div>
+
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 30 }}>
+                    c) <span style={{ marginLeft: 10 }}></span>Les cookies exemptés de consentement
+                  </span>
+                </h3>
+                <div>
+                  <p>Conformément aux recommandations de la Commission Nationale de l’Informatique et des Libertés (CNIL), certains cookies sont dispensés du recueil préalable de votre consentement dans la mesure où ils sont strictement nécessaires au fonctionnement du Service ou ont pour finalité exclusive de permettre ou faciliter la communication par voie électronique. Il s’agit notamment des cookies d’identifiant de session, d’authentification, de session d’équilibrage de charge ainsi que des cookies de personnalisation de votre interface. Ces cookies sont intégralement soumis à la présente politique dans la mesure où ils sont émis et gérés par ShoesNotIncluded.</p>
+                </div>
+              </div>
+
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 30 }}>
+                    d) <span style={{ marginLeft: 10 }}></span>Les cookies nécessitant le recueil préalable de votre consentement
+                  </span>
+                </h3>
+                <div>
+                  <p>Cette exigence concerne les cookies émis par des tiers et qui sont qualifiés de « persistants » dans la mesure où ils demeurent dans votre terminal jusqu'à leur effacement ou leur date d’expiration.</p>
+                  <p>De tels cookies étant émis par des tiers, leur utilisation et leur dépôt sont soumis à leurs propres politiques de confidentialité dont vous trouverez un lien ci-dessous. Cette famille de cookie regroupe les cookies de mesure d’audience, les cookies publicitaires, auxquels ShoesNotIncluded n’a pas recours, ainsi que les cookies de partage de réseaux sociaux (Facebook, YouTube, Twitter, LinkedIn, etc.). Les cookies de partage des réseaux sociaux sont émis et gérés par l’éditeur du réseau social concerné. Sous réserve de votre consentement, ces cookies vous permettent de partager facilement une partie du contenu publié sur le Service, notamment par l’intermédiaire d’un « bouton » applicatif de partage selon le réseau social concerné.</p>
+                  <p>Les cookies de mesure d’audience établissent des statistiques concernant la fréquentation et l’utilisation de divers éléments du Service (comme les contenus / pages que vous avez visité). Ces données participent à l’amélioration de l’ergonomie du Service. </p>
+                </div>
+              </div>
+
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 30 }}>
+                    e) <span style={{ marginLeft: 10 }}></span>Outils de paramétrage des cookies
+                  </span>
+                </h3>
+                <div>
+                  <p>La plupart des navigateurs Internet sont configurés par défaut de façon à ce que le dépôt de cookies soit autorisé. Votre navigateur vous offre l’opportunité de modifier ces paramètres standards de manière à ce que l’ensemble des cookies soit rejeté systématiquement ou bien à ce qu’une partie seulement des cookies soit acceptée ou refusée en fonction de leur émetteur.</p>
+                  <p>ATTENTION : Nous attirons votre attention sur le fait que le refus du dépôt de cookies sur votre terminal est néanmoins susceptible d’altérer votre expérience d’utilisateur ainsi que votre accès à certains services ou fonctionnalités du présent Service. Le cas échéant, ShoesNotIncluded décline toute responsabilité concernant les conséquences liées à la dégradation de vos conditions de navigation qui interviennent en raison de votre choix de refuser, supprimer ou bloquer les cookies nécessaires au fonctionnement du Service. Ces conséquences ne sauraient constituer un dommage et vous ne pourrez prétendre à aucune indemnité de ce fait.</p>
+                  <p>Votre navigateur vous permet également de supprimer les cookies existants sur votre terminal ou encore de vous signaler lorsque de nouveaux cookies sont susceptibles d’être déposés sur votre terminal. Ces paramétrages n’ont pas d’incidence sur votre navigation mais vous font perdre tout le bénéfice apporté par le cookie.</p>
+                  <p>Veuillez ci-dessous prendre connaissance des multiples outils mis à votre disposition afin que vous puissiez paramétrer les cookies déposés sur votre terminal.</p>
+                </div>
+              </div>
+
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 30 }}>
+                    f) <span style={{ marginLeft: 10 }}></span>Paramétrage de votre navigateur internet
+                  </span>
+                </h3>
+                <div>
+                  <p>Chaque navigateur Internet propose ses propres paramètres de gestion des cookies. Pour savoir de quelle manière modifier vos préférences en matière de cookies, vous trouverez ci-dessous les liens vers l’aide nécessaire pour accéder au menu de votre navigateur prévu à cet effet.</p>
+                  <p>
+                    Google Chrome : <a href="https://support.google.com/chrome/answer/95647?hl=fr">https://support.google.com/chrome/answer/95647?hl=fr</a>
+                    <br />
+                    Internet Explorer : <a href="https://support.microsoft.com/fr-fr/help/17442/windows-internet-explorer-delete-manage-cookies#ie=ie-11">https://support.microsoft.com/fr-fr/help/17442/windows-internet-explorer-delete-manage-cookies#ie=ie-11</a>
+                    <br />
+                    Mozilla Firefox : <a href="https://support.mozilla.org/fr/kb/activer-desactiver-cookies">https://support.mozilla.org/fr/kb/activer-desactiver-cookies</a>
+                    <br />
+                    Opera : <a href="http://help.opera.com/Windows/10.20/fr/cookies.html">http://help.opera.com/Windows/10.20/fr/cookies.html</a>
+                    <br />
+                    Safari <a href="https://support.apple.com/kb/PH21411?viewlocale=fr_FR&amp;locale=fr_FR">https://support.apple.com/kb/PH21411?viewlocale=fr_FR&amp;locale=fr_FR</a>
+                    <br />
+                    <br />
+                    Pour de plus amples informations concernant les outils de maîtrise des cookies, vous pouvez consulter le site internet de la CNIL : <a href="https://www.cnil.fr/fr/cookies-les-outils-pour-les-maitriser">https://www.cnil.fr/fr/cookies-les-outils-pour-les-maitriser</a>.
+                  </p>
+                  <p>Pour toute interrogation ou demande complémentaire d’informations relative à la présente politique des cookies, merci de bien vouloir nous contacter.</p>
+                </div>
+              </div>
+
+              <div>
+                <h3>
+                  <span style={{ marginLeft: 30 }}>
+                    g) <span style={{ marginLeft: 10 }}></span>Liste des cookies
+                  </span>
+                </h3>
+                <div>
+                  <p>La liste détaillée des cookies utilisés sur le Service https://www.shoesnotincluded.fr/ est disponible à l'adresse suivante : https://www.shoesnotincluded.fr/cookies.</p>
+                </div>
+              </div>
+
+              <p style={{ marginTop: 40, textAlign: 'right' }}>Tous droits réservés - 12 novembre 2021</p>
+            </div>
           </PrivacyPolicyContentContainer>
           <Marginer direction="vertical" margin="2em" />
         </ContentPageContainer>
