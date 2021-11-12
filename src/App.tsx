@@ -13,6 +13,7 @@ import CGUCGV from './gui/screens/CGUCGV'
 import PrivacyPolicy from './gui/screens/PrivacyPolicy'
 import RedirectionError from './gui/screens/RedirectionError'
 import WhatIsThat from './gui/screens/WhatIsThat'
+import Cookies from './gui/screens/Cookies'
 import { GlobalStyles } from './style/global'
 import { theme } from './style/theme'
 
@@ -34,6 +35,7 @@ const App: React.VoidFunctionComponent = () => {
               <Route path="/cgu-cgv" exact component={CGUCGV} />
               <Route path="/confidentialite" exact component={PrivacyPolicy} />
               <Route path="/join/*" exact component={RedirectionError} />
+              <Route path="/cookies" exact component={Cookies} />
             </Switch>
           </ScrollToTop>
 
