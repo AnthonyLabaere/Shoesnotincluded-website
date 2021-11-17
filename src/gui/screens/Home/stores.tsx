@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import * as Constants from '../../../constants'
 import { Theme } from '../../../style/theme'
 import Marginer from '../../components/marginer'
 import { ContentPageContainer } from '../../components/pageContainer'
@@ -12,6 +13,15 @@ import GooglePlayBadge from '../../../assets/images/google-play-badge.png'
 
 const Title = styled.h1`
   color: #000;
+  text-align: center;
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+    font-size: 20px;
+  }
+`
+const SubTitle = styled.h3`
+  color: #000;
+  text-align: center;
 
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     font-size: 20px;
@@ -47,15 +57,22 @@ const Stores = () => {
   return (
     <ContentPageContainer coloredBackground>
       <Marginer direction="vertical" margin="5em" />
-      <Title>Sortie prévue sur les stores fin Décembre à Nantes :</Title>
+      <Title>
+        Sortie du premier jeu prévue fin Décembre à Nantes.
+        <br /> <br />
+        En attendant, téléchargez l'application, venez tester le tutoriel et n'hésitez pas à faire des retours à l'équipe !
+      </Title>
       <StoresImagesContainer>
         <StoreImage>
-          <img style={{ opacity: 0.5 }} src={GooglePlayBadge} alt="Google play store logo" />
+          <a href={Constants.PLAY_STORE_LINK}>
+            <img src={GooglePlayBadge} alt="Google play store logo" />
+          </a>
         </StoreImage>
         <StoreImage>
           <img style={{ opacity: 0.5 }} src={AppleStoreBadge} alt="Apple store logo" />
         </StoreImage>
       </StoresImagesContainer>
+      <SubTitle>L'application n'est pour l'instant disponible que sur Android. Encore un peu de patience, elle sera bientôt disponible sur iPhone.</SubTitle>
       <Marginer direction="vertical" margin="5em" />
     </ContentPageContainer>
   )

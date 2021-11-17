@@ -42,7 +42,7 @@ const Crowdfunding = () => {
     <ContentPageContainer coloredBackground={Constants.THEME_ORANGE_COLORS[0]}>
       <Marginer direction="vertical" margin="1em" />
       <UluleLogo src={UluleLogoImg} alt="Ulule logo" />
-      <CrowdfundingButtonWrapper href="https://fr.ulule.com/shoesnotincluded-1/">Participer au crowdfunding sur Ulule</CrowdfundingButtonWrapper>
+      <CrowdfundingButtonWrapper href="https://fr.ulule.com/shoesnotincluded-1/">Participez au crowdfunding sur Ulule pour aider le projet en profitant d'une réduction sur le pré-achat d'une partie.</CrowdfundingButtonWrapper>
       <Marginer direction="vertical" margin="1em" />
     </ContentPageContainer>
   )

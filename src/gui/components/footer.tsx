@@ -169,7 +169,7 @@ const Footer = () => {
           <ContentContainer>
             <TopSubContainer>
               <Title>À propos</Title>
-              <p>SHOESNOTINCLUDED est une application mobile reprenant les codes de l&apos;escape game mais en plein air. Les jeux vous proposent de vous déplacer dans des quartiers, de fouiller l&apos;environnement à la recherche d&apos;indices et d&apos;y résoudre des énigmes. L&apos;application permet de jouer seul mais aussi à plusieurs.</p>
+              <p>ShoesNotIncluded est une application mobile multijoueur reprenant les codes de l&apos;escape game mais en plein air. Les jeux vous proposent de vous déplacer dans des quartiers, de fouiller l&apos;environnement à la recherche d&apos;indices et d&apos;y résoudre des énigmes. L&apos;application permet de jouer seul mais aussi à plusieurs.</p>
             </TopSubContainer>
             <TopSubContainer>
               <Title>Où jouer ?</Title>

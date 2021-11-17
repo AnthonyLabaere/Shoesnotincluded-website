@@ -19,6 +19,9 @@ export const SOCIAL_NETWORKS_URLS = {
 export const YOUTUBE_PRESENTATION_VIDEO_URL = 'https://www.youtube.com/watch?v=Ki2kuAnUzxY'
 export const YOUTUBE_EXPLICATIONS_VIDEO_URL = 'https://www.youtube.com/watch?v=isrewn1MPGc'
 
+export const PLAY_STORE_LINK = 'https://play.google.com/store/apps/details?id=fr.shoesnotincluded'
+export const APPLE_STORE_LINK = 'https://apps.apple.com/us/app/shoesnotincluded/id1595811731'
+
 // Les couleurs du thème
 export const THEME_RED_COLORS = ['#ff5e66', '#ff777d', '#ffa9ae']
 export const THEME_TURQUOISE_COLORS = ['#4cdabd', '#76f1d9', '#abffef']
