@@ -69,10 +69,11 @@ const Stores = () => {
           </a>
         </StoreImage>
         <StoreImage>
-          <img style={{ opacity: 0.5 }} src={AppleStoreBadge} alt="Apple store logo" />
+          <a href={Constants.APPLE_STORE_LINK}>
+            <img src={AppleStoreBadge} alt="Apple store logo" />
+          </a>
         </StoreImage>
       </StoresImagesContainer>
-      <SubTitle>L'application n'est pour l'instant disponible que sur Android. Encore un peu de patience, elle sera bientôt disponible sur iPhone.</SubTitle>
       <Marginer direction="vertical" margin="5em" />
     </ContentPageContainer>
   )
