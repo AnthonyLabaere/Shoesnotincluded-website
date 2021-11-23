@@ -58,6 +58,11 @@ const WhatIsThat = () => {
             <h3>ShoesNotIncluded, c&apos;est un jeu reprenant fidèlement les codes de l&apos;escape game mais en plein air.</h3>
             <TextContainer>
               <p>
+                <b>La différence avec ce qu'on peut trouver ailleurs ? Le support est pensé multijoueur : les actions sont synchronisées entre les joueurs connectés sur une même partie. Et en plus, le prix est unique quelque soit le nombre de joueur : pas besoin de se ruiner pour jouer sur plusieurs smartphones !</b>
+                <br />
+                <br />
+              </p>
+              <p>
                 C&apos;est un mix entre un <u>escape game</u> et un <u>jeu de piste</u>.
               </p>
               Plus concrètement, c&apos;est une <u>application mobile</u> présentant des jeux où :<br />
