@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { YOUTUBE_EXPLICATIONS_VIDEO_URL } from '../../../constants'
+import { YOUTUBE_PRESENTATION_VIDEO_URL } from '../../../constants'
 import Button from '../../components/button'
 import { StyledReactPlayer } from '../../components/common'
 
@@ -31,7 +31,7 @@ const AboutVideo = () => {
   return (
     <AboutVideoContainer>
       <Subtitle>Vidéo de présentation :</Subtitle>
-      <StyledReactPlayer url={YOUTUBE_EXPLICATIONS_VIDEO_URL} />
+      <StyledReactPlayer url={YOUTUBE_PRESENTATION_VIDEO_URL} />
       <StyledLink to="/enquoicaconsiste">
         <Button>Je souhaite plus d&apos;informations</Button>
       </StyledLink>
