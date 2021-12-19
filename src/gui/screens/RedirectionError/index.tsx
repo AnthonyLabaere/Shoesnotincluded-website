@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Crowdfunding from '../../components/crowdfunding'
 import { ContentContainer } from '../../components/common'
 import Marginer from '../../components/marginer'
 import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer'
@@ -31,7 +30,6 @@ const TextContainer = styled.div`
 const WhatIsThat = () => {
   return (
     <PageContainer>
-      <Crowdfunding />
       <InnerPageContainer>
         <ContentPageContainer coloredBackground>
           <ContentContainer>

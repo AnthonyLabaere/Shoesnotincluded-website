@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Crowdfunding from '../../components/crowdfunding'
 import { YOUTUBE_EXPLICATIONS_VIDEO_URL } from '../../../constants'
 import { ContentContainer, StyledReactPlayer } from '../../components/common'
 import Marginer from '../../components/marginer'
@@ -39,7 +38,6 @@ const ImageIntoParagraph = styled(Image)``
 const WhatIsThat = () => {
   return (
     <PageContainer>
-      <Crowdfunding />
       <InnerPageContainer>
         <ContentPageContainer coloredBackground>
           <ContentContainer>
