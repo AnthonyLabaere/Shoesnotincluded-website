@@ -58,10 +58,12 @@ const Stores = () => {
     <ContentPageContainer coloredBackground>
       <Marginer direction="vertical" margin="5em" />
       <Title>
-        Sortie du premier jeu prévue fin Décembre à Nantes.
-        <br /> <br />
-        En attendant, téléchargez l'application, venez tester le tutoriel et n'hésitez pas à faire des retours à l'équipe !
+        ShoesNotIncluded est sur les stores !
+        <br />
+        <br />
+        Téléchargez l'application pour jouer au premier jeu "Le Père Noël est surbooké" sur Nantes.
       </Title>
+
       <StoresImagesContainer>
         <StoreImage>
           <a href={Constants.PLAY_STORE_LINK}>
