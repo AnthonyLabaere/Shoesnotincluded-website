@@ -1,10 +1,9 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
 import Footer from './gui/components/footer'
 import Navbar from './gui/components/navbar'
-import ScrollToTop from './gui/components/scrollToTop'
 
 import Contact from './gui/screens/Contact'
 import Home from './gui/screens/Home'
@@ -21,26 +20,24 @@ const App: React.VoidFunctionComponent = () => {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Router>
+        <BrowserRouter>
           <GlobalStyles />
 
           <Navbar />
 
-          <ScrollToTop>
-            <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/enquoicaconsiste" exact component={WhatIsThat} />
-              <Route path="/contact" exact component={Contact} />
-              <Route path="/mentions-legales" exact component={LegalNotices} />
-              <Route path="/cgu-cgv" exact component={CGUCGV} />
-              <Route path="/confidentialite" exact component={PrivacyPolicy} />
-              <Route path="/join/*" exact component={RedirectionError} />
-              <Route path="/cookies" exact component={Cookies} />
-            </Switch>
-          </ScrollToTop>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/enquoicaconsiste" element={<WhatIsThat />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/mentions-legales" element={<LegalNotices />} />
+            <Route path="/cgu-cgv" element={<CGUCGV />} />
+            <Route path="/confidentialite" element={<PrivacyPolicy />} />
+            <Route path="/join/*" element={<RedirectionError />} />
+            <Route path="/cookies" element={<Cookies />} />
+          </Routes>
 
           <Footer />
-        </Router>
+        </BrowserRouter>
       </ThemeProvider>
     </div>
   )

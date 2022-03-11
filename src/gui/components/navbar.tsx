@@ -86,6 +86,7 @@ const Navbar = () => {
         ) : (
           <>
             <Marginer direction="horizontal" margin={100} />
+            <Marginer direction="horizontal" margin={100} />
             <MenuLink to="/enquoicaconsiste">En quoi ça consiste ?</MenuLink>
             <Marginer direction="horizontal" margin={100} />
             <MenuLink to="/contact">Contact</MenuLink>

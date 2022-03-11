@@ -4,7 +4,7 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:@typescript-eslint/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -13,7 +13,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['react', '@typescript-eslint'],
   settings: {
     react: {
       version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
@@ -21,15 +21,6 @@ module.exports = {
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto',
-      },
-      {
-        usePrettierrc: true,
-      },
-    ],
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // Allow to use destructutring assignment like { foo, ...rest } = data
     '@typescript-eslint/no-unused-vars': ['warn', { ignoreRestSiblings: true }],
