@@ -6,9 +6,12 @@ import * as Types from './types'
 // https://firebase.google.com/docs/firestore/query-data/queries#web-version-9_2
 // https://travis.media/how-to-use-firebase-with-react/
 
+console.log(process.env.REACT_APP_authDomain)
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_apiKey,
   authDomain: process.env.REACT_APP_authDomain,
+  databaseURL: process.env.databaseURL,
   projectId: process.env.REACT_APP_projectId,
   storageBucket: process.env.REACT_APP_storageBucket,
   messagingSenderId: process.env.REACT_APP_messagingSenderId,
