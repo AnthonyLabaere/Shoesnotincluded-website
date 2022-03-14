@@ -56,6 +56,7 @@ const Menu = ({ burgerRef, open, setOpen }: { burgerRef: any; open: boolean; set
     <OutsideClickerInterceptor exceptionRef={burgerRef} enabled={open} onIntercept={() => setOpen(false)}>
       <StyledMenu open={open} onClick={() => setOpen(!open)}>
         <MenuLink to="/">Accueil</MenuLink>
+        <MenuLink to="/scenarios">Les scénarios</MenuLink>
         <MenuLink to="/enquoicaconsiste">En quoi ça consiste ?</MenuLink>
         <MenuLink to="/contact">Contact</MenuLink>
       </StyledMenu>

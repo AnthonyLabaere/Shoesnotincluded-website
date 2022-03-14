@@ -11,6 +11,7 @@ import LegalNotices from './gui/screens/LegalNotices'
 import CGUCGV from './gui/screens/CGUCGV'
 import PrivacyPolicy from './gui/screens/PrivacyPolicy'
 import RedirectionError from './gui/screens/RedirectionError'
+import Scenarios from './gui/screens/Scenarios'
 import WhatIsThat from './gui/screens/WhatIsThat'
 import Cookies from './gui/screens/Cookies'
 import { GlobalStyles } from './style/global'
@@ -27,6 +28,7 @@ const App: React.VoidFunctionComponent = () => {
 
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/scenarios" element={<Scenarios />} />
             <Route path="/enquoicaconsiste" element={<WhatIsThat />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/mentions-legales" element={<LegalNotices />} />
