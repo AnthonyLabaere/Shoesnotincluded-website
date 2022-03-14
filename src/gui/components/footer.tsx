@@ -173,7 +173,7 @@ const Footer = () => {
             </TopSubContainer>
             <TopSubContainer>
               <Title>Où jouer ?</Title>
-              <p>Plusieurs scénarios sont disponibles sur Nantes et d'autres sont en cours de création. N&apos;hésitez pas à nous suivre sur les réseaux sociaux pour ne pas rater les évènements à venir.</p>
+              <p>Plusieurs scénarios sont disponibles à Nantes et d'autres sont en cours de création. N&apos;hésitez pas à nous suivre sur les réseaux sociaux pour ne pas rater les évènements à venir.</p>
             </TopSubContainer>
           </ContentContainer>
           <ContentContainer>

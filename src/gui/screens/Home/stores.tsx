@@ -61,7 +61,7 @@ const Stores = () => {
         ShoesNotIncluded est sur les stores !
         <br />
         <br />
-        Téléchargez l'application pour jouer au premier jeu "Le Père Noël est surbooké" sur Nantes.
+        Téléchargez l'application pour jouer aux scénarios à Nantes.
       </Title>
 
       <StoresImagesContainer>

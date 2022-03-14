@@ -81,7 +81,7 @@ const Scenarios = () => {
         <ContentPageContainer coloredBackground>
           <ContentContainer>
             {
-              city !== undefined ? <h1>Les scénarios jouables sur {city.name}</h1> : <h1 />
+              city !== undefined ? <h1>Les scénarios disponibles à {city.name}</h1> : <h1 />
             }
           </ContentContainer>
         </ContentPageContainer>
