@@ -57,7 +57,7 @@ export const theme: Theme = {
   specialTextColor: Constants.THEME_RED_COLORS[0],
   colors: {
     reds: Constants.THEME_RED_COLORS,
-    turquoises: Constants.THEME_RED_COLORS,
+    turquoises: Constants.THEME_TURQUOISE_COLORS,
     blues: Constants.THEME_BLUE_COLORS,
     black: Constants.THEME_BLACK_COLOR,
     grey: Constants.THEME_GREY_COLOR,

@@ -1,13 +1,14 @@
 import React from 'react';
 
-import * as Types from '../../../types';
+import * as Types from '../../types';
 import GameTag, { GameTagProps } from './GameTag';
 
 interface GameTagsProps {
   tags: Types.Tags;
+  large?: boolean;
 }
 
-function GameTags({ tags }: GameTagsProps) {
+function GameTags({ tags, large }: GameTagsProps) {
   const gameTagPropsList: GameTagProps[] = [];
   gameTagPropsList.push({
     label: tags.difficulty,
@@ -32,7 +33,7 @@ function GameTags({ tags }: GameTagsProps) {
       {
         gameTagPropsList.map(gameTagProps => {
           return (
-            <GameTag key={gameTagProps.type} label={gameTagProps.label} type={gameTagProps.type} />
+            <GameTag key={gameTagProps.type} label={gameTagProps.label} type={gameTagProps.type} large={large} />
           );
         })
       }

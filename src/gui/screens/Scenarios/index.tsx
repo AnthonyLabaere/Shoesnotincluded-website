@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import * as Types from '../../../types'
 import * as Firebase from '../../../firebase'
 import { ContentContainer } from '../../components/common'
 import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer'
-import GameTags from './GameTags'
+import GameTags from '../../components/GameTags'
 
 const ScenariosContainer = styled.div`
   display: flex;
@@ -13,7 +14,7 @@ const ScenariosContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const ScenarioContainer = styled.div`
+const ScenarioContainer = styled(Link)`
   display: flex;
   flex-direction: column;
 
@@ -26,11 +27,18 @@ const ScenarioContainer = styled.div`
   border: 1px solid black;
   border-radius: 15px;
 
+  cursor: pointer;
+  color: black;
+
   background-color: ${({ theme }) => theme.colors.white};
 
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     min-width: 95%;
     max-width: 95%;
+  }
+
+  :hover {
+    background-color: ${({ theme }) => theme.backgroundColor};
   }
 `;
 
@@ -39,8 +47,8 @@ const ScenarioLogoImage = styled.div`
   padding: 5px;
 
   img {
-    max-width: 150px;
-    max-height: 150px;
+      width: 150px;
+      height: 150px;
   }
 
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXS}) {
@@ -93,7 +101,7 @@ const Scenarios = () => {
                   return a.data.ordre - b.data.ordre;
                 }).map(scenario => {
                   return (
-                    <ScenarioContainer key={scenario.id}>
+                    <ScenarioContainer key={scenario.id} to={"/scenario/" + scenario.id}>
                       <h2 style={{ flex: 1, textAlign: 'center', padding: 5 }}>{scenario.data.title}</h2>
                       <div style={{ display: 'flex', flex: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                         <ScenarioLogoImage>

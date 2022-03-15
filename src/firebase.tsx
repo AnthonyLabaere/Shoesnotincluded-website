@@ -1,12 +1,10 @@
 import { initializeApp } from 'firebase/app'
-import { collection, query, onSnapshot, where, getFirestore } from "firebase/firestore";
+import { collection, doc, getDoc, query, onSnapshot, where, getFirestore } from "firebase/firestore";
 
 import * as Types from './types'
 
 // https://firebase.google.com/docs/firestore/query-data/queries#web-version-9_2
 // https://travis.media/how-to-use-firebase-with-react/
-
-console.log(process.env.REACT_APP_authDomain)
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_apiKey,
@@ -44,4 +42,12 @@ export const subscribeToScenariosFromCity = (city: string, callback: (cities: Ty
   });
 
   return unsubscribe;
+};
+
+export const subscribeToScenario = (scenarioId: string, callback: (cities: undefined | Types.ScenarioDocument) => void) => {
+  const docRef = doc(collection(db, "scenarii"), scenarioId);
+
+  return onSnapshot(docRef, (docSnapTmp) => {
+    callback(docSnapTmp.exists() ? docSnapTmp.data() as Types.ScenarioDocument : undefined);
+  });
 };

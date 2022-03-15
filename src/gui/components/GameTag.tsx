@@ -2,9 +2,9 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import * as Constants from '../../../constants';
-import * as Types from '../../../types';
-import { Theme } from '../../../style/theme';
+import * as Constants from '../../constants';
+import * as Types from '../../types';
+import { Theme } from '../../style/theme';
 
 // Libellés des tags
 const SPECIFIC_TAGS_LABEL = {
@@ -14,16 +14,23 @@ const SPECIFIC_TAGS_LABEL = {
   all: 'Tout public',
 };
 
-const Tag = styled.div <{ type: Types.GameTagType }>`
+const Tag = styled.div <{ type: Types.GameTagType, large?: boolean }>`
   align-self: flex-start;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  margin-left: 1px;
-  margin-right: 1px;
-  margin-top: 1px;
-  margin-bottom: 1px;
+  padding-left: ${({ large }: { large?: boolean }) => {
+    return large ? "15px" : "5px";
+  }}; 
+  padding-right: ${({ large }: { large?: boolean }) => {
+    return large ? "15px" : "5px";
+  }}; 
+  padding-top: ${({ large }: { large?: boolean }) => {
+    return large ? "0" : "1px";
+  }}; 
+  padding-bottom: ${({ large }: { large?: boolean }) => {
+    return large ? "0" : "1px";
+  }}; 
+  margin: ${({ large }: { large?: boolean }) => {
+    return large ? "5px" : "1px";
+  }}; 
   border-radius: 5px;
   color: ${({ type, theme }: { type: Types.GameTagType, theme: Theme }) => {
     if (Object.keys(theme.tags).includes(type)) {
@@ -44,9 +51,10 @@ const Tag = styled.div <{ type: Types.GameTagType }>`
 export interface GameTagProps {
   label?: string;
   type: Types.GameTagType;
+  large?: boolean;
 }
 
-function GameTag({ label, type }: GameTagProps) {
+function GameTag({ label, type, large }: GameTagProps) {
   let enhancedLabel: undefined | string;
 
   if (label !== undefined) {
@@ -63,8 +71,11 @@ function GameTag({ label, type }: GameTagProps) {
   }
 
   return (
-    <Tag type={type}>
-      {enhancedLabel as string}
+    <Tag type={type} large={large}>
+      {
+        large ? <h3>{enhancedLabel as string}</h3> : enhancedLabel as string
+      }
+
     </Tag>
   );
 }
