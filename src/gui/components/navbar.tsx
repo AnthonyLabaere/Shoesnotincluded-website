@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 import { DEVICE_SIZES } from '../../constants'
 import Brand from './brand'
@@ -91,6 +93,10 @@ const Navbar = () => {
             <MenuLink to="/enquoicaconsiste">En quoi ça consiste ?</MenuLink>
             <Marginer direction="horizontal" margin={100} />
             <MenuLink to="/contact">Contact</MenuLink>
+            <Marginer direction="horizontal" margin={100} />
+            <MenuLink to="/compte">
+              Mon compte <FontAwesomeIcon icon={faUser} size="1x" />
+            </MenuLink>
           </>
         )}
       </AccessibilityContainer>

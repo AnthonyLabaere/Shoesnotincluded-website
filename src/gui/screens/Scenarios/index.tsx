@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import * as Types from '../../../types'
-import * as Firebase from '../../../firebase'
+import * as CityFirestore from '../../../firebase/firestore/cityFirestore'
+import * as ScenarioFirestore from '../../../firebase/firestore/scenarioFirestore'
 import { ContentContainer } from '../../components/common'
 import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer'
 import GameTags from '../../components/GameTags'
@@ -64,7 +65,7 @@ const Scenarios = () => {
   const [cities, setCities] = useState<Types.CityDocument[]>([])
   // console.debug("cities", cities)
   useEffect(() => {
-    return Firebase.subscribeToCities(setCities);
+    return CityFirestore.subscribeToCities(setCities);
   }, []);
 
   const cityId = "nantes";
@@ -80,7 +81,7 @@ const Scenarios = () => {
   const [scenarios, setScenarios] = useState<Types.ScenarioSnapshot[]>([])
   console.debug(scenarios)
   useEffect(() => {
-    return Firebase.subscribeToScenariosFromCity(cityId, setScenarios);
+    return ScenarioFirestore.subscribeToScenariosFromCity(cityId, setScenarios);
   }, [cityId]);
 
   return (

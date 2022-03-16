@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
-
 import * as Types from '../../../types';
-import * as Firebase from '../../../firebase';
+import * as ScenarioFirestore from '../../../firebase/firestore/scenarioFirestore'
 import { ContentContainer } from '../../components/common';
 import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer';
 import TextContent from '../../components/TextContent';
@@ -77,7 +76,7 @@ const Scenarios = () => {
     const locationSplit = location.pathname.split("/");
     if (locationSplit.length > 1) {
       const scenarioId = locationSplit[2];
-      const unsubscribe = Firebase.subscribeToScenario(scenarioId, scenarioTmp => {
+      const unsubscribe = ScenarioFirestore.subscribeToScenario(scenarioId, scenarioTmp => {
         setScenario(scenarioTmp);
         setLoading(false);
       });

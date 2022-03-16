@@ -23,9 +23,9 @@ const ButtonWrapper = styled.button<{ size?: number }>`
   }
 `
 
-const Button = ({ children, className, size, style }: { children: string | JSX.Element | JSX.Element[]; className?: string; size?: number; style?: React.CSSProperties }) => {
+const Button = ({ children, className, size, style, onClick }: { children: string | JSX.Element | JSX.Element[], className?: string, size?: number, style?: React.CSSProperties, onClick?: () => void }) => {
   return (
-    <ButtonWrapper size={size} className={className} style={style}>
+    <ButtonWrapper size={size} className={className} style={style} onClick={onClick}>
       {children}
     </ButtonWrapper>
   )

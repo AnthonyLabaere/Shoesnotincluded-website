@@ -15,6 +15,8 @@ import Scenarios from './gui/screens/Scenarios'
 import Scenario from './gui/screens/Scenario'
 import WhatIsThat from './gui/screens/WhatIsThat'
 import Cookies from './gui/screens/Cookies'
+import Account from './gui/screens/Account'
+
 import { GlobalStyles } from './style/global'
 import { theme } from './style/theme'
 
@@ -38,6 +40,7 @@ const App: React.VoidFunctionComponent = () => {
             <Route path="/confidentialite" element={<PrivacyPolicy />} />
             <Route path="/join/*" element={<RedirectionError />} />
             <Route path="/cookies" element={<Cookies />} />
+            <Route path="/compte" element={<Account />} />
           </Routes>
 
           <Footer />
