@@ -6,12 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 import { DEVICE_SIZES } from '../../constants'
+import useCurrentUser from '../../hooks/useCurrentUser'
 import Brand from './brand'
 import Marginer from './marginer'
-
 import Burger from './burger'
 import Menu from './menu'
-
 import LogoImg from '../../assets/images/logo.png'
 
 const NavbarContainer = styled.div`
@@ -46,6 +45,8 @@ const AccessibilityContainer = styled.div`
 `
 
 const MenuLink = styled(Link)`
+  display: flex;
+  flex-direction: columns;
   color: #000;
   font-size: 1.8rem;
 
@@ -54,7 +55,18 @@ const MenuLink = styled(Link)`
   }
 `
 
+const UserName = styled.div`
+  overflow: hidden;
+  max-width: 15ch;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  margin-right: 5px;
+`
+
 const Navbar = () => {
+  const { user } = useCurrentUser();
+
   const burgerRef = useRef(null)
 
   const [open, setOpen] = useState(false)
@@ -95,7 +107,7 @@ const Navbar = () => {
             <MenuLink to="/contact">Contact</MenuLink>
             <Marginer direction="horizontal" margin={100} />
             <MenuLink to="/compte">
-              Mon compte <FontAwesomeIcon icon={faUser} size="1x" />
+              <UserName>{user ? user.displayName : "Mon compte"}</UserName> <FontAwesomeIcon icon={faUser} size="1x" />
             </MenuLink>
           </>
         )}
