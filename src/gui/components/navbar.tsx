@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faUserSlash } from '@fortawesome/free-solid-svg-icons'
 
 import { DEVICE_SIZES } from '../../constants'
 import useCurrentUser from '../../hooks/useCurrentUser'
@@ -61,7 +61,7 @@ const UserName = styled.div`
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  margin-right: 5px;
+  margin-right: 10px;
 `
 
 const Navbar = () => {
@@ -107,7 +107,7 @@ const Navbar = () => {
             <MenuLink to="/contact">Contact</MenuLink>
             <Marginer direction="horizontal" margin={100} />
             <MenuLink to="/compte">
-              <UserName>{user ? user.displayName : "Mon compte"}</UserName> <FontAwesomeIcon icon={faUser} size="1x" />
+              <UserName>{user ? user.displayName : "Mon compte"}</UserName> <FontAwesomeIcon icon={user ? faUser : faUserSlash} size="1x" />
             </MenuLink>
           </>
         )}
