@@ -97,3 +97,8 @@ export interface ScenarioDocument {
   // Message de fin du jeu
   readonly gameOverMessage: string;
 }
+
+export interface UserDocument {
+  displayName: string;
+  // dev?: boolean;
+}

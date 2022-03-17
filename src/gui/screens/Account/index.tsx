@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
+import { User } from 'firebase/auth';
 
+import * as Types from '../../../types'
 import { auth } from '../../../firebase'
+import * as UserFirestore from '../../../firebase/firestore/userFirestore'
 import { ContentContainer } from '../../components/common'
 import Button from '../../components/button'
+import FirebaseUiAuth from '../../components/FirebaseUIAuth'
 import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer';
-import { User } from 'firebase/auth';
 
 const AccountContentContainer = styled(ContentContainer)`
   display: flex;
@@ -26,35 +28,46 @@ const LogoutButton = styled(Button)`
     background-color: ${({ theme }) => theme.colors.black};
   }
 `
-// Configure FirebaseUI.
-const uiConfig = {
-  // Popup signin flow rather than redirect flow.
-  signInFlow: 'popup',
-  // We will display Google and Facebook as auth providers.
-  signInOptions: [
-    // firebase.auth.EmailAuthProvider.PROVIDER_ID,
-    "password",
-    // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    "google.com",
-    "apple.com",
-    // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-    "facebook.com"
-  ],
-  callbacks: {
-    // Avoid redirects after sign-in.
-    signInSuccessWithAuthResult: () => false,
-  },
-};
-
 const Account = () => {
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [authUser, setAuthUser] = useState<User>();
 
   useEffect(() => {
-    const unregisterAuthObserver = auth.onAuthStateChanged(user => {
-      setIsSignedIn(!!user);
+    const unregisterAuthObserver = auth.onAuthStateChanged(userAuthTmp => {
+      if (userAuthTmp) {
+        setLoading(true);
+        UserFirestore.createUser(userAuthTmp.uid, userAuthTmp.displayName ? userAuthTmp.displayName : "John Doe", () => {
+          setAuthUser(userAuthTmp);
+        });
+      } else {
+        setLoading(false);
+        setAuthUser(undefined);
+      }
     });
     return () => unregisterAuthObserver();
   }, []);
+
+  // const [isSignedIn, setIsSignedIn] = useState(false);
+  const [user, setUser] = useState<Types.UserDocument>();
+
+  useEffect(() => {
+    if (authUser) {
+      const unsubscribe = UserFirestore.subscribeToUser(authUser.uid, userTmp => {
+        setUser(userTmp);
+      });
+
+      return unsubscribe;
+    } else {
+      setUser(undefined);
+    }
+  }, [authUser]);
+
+  useEffect(() => {
+    if (user) {
+      setLoading(false);
+    }
+  }, [user]);
 
   return (
     <PageContainer>
@@ -62,21 +75,26 @@ const Account = () => {
         <ContentPageContainer coloredBackground>
           <ContentContainer>
             {
-              !isSignedIn ? <h1>Connexion</h1> : <h1>Mon compte</h1>
+              !user ? <h1>Connexion</h1> : <h1>Mon compte</h1>
             }
           </ContentContainer>
         </ContentPageContainer>
         <ContentPageContainer>
           <AccountContentContainer>
             {
-              !isSignedIn ?
+              !user ?
                 <>
-                  <h2>Veuillez vous connecter ou vous créer un compte :</h2>
-                  <FirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+                  {
+                    !loading ? <>
+                      <h2>Veuillez vous connecter ou vous créer un compte :</h2>
+                      <FirebaseUiAuth />
+                    </>
+                      : <h2>Chargement du compte en cours...</h2>
+                  }
                 </>
                 :
                 <>
-                  <h2>Bonjour {(auth.currentUser as User).displayName}, bienvenue dans votre espace personnel.</h2>
+                  <h2>Bonjour {user.displayName}, bienvenue dans votre espace personnel.</h2>
                   <LogoutButton onClick={() => auth.signOut()}>Déconnexion</LogoutButton>
                 </>
             }
