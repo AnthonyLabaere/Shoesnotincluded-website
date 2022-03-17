@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { User } from 'firebase/auth';
 
-import * as Types from '../../../types'
-import { auth } from '../../../firebase'
-import * as UserFirestore from '../../../firebase/firestore/userFirestore'
-import { ContentContainer } from '../../components/common'
-import Button from '../../components/button'
-import FirebaseUiAuth from '../../components/FirebaseUIAuth'
+import useCurrentUser from '../../../hooks/useCurrentUser';
+import { auth } from '../../../firebase';
+import * as FirebaseAuth from '../../../firebase/auth';
+import * as UserFirestore from '../../../firebase/firestore/userFirestore';
+import { ContentContainer } from '../../components/common';
+import Button from '../../components/button';
+import FirebaseUiAuth from '../../components/FirebaseUIAuth';
 import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer';
 
 const AccountContentContainer = styled(ContentContainer)`
@@ -20,48 +20,49 @@ const AccountContentContainer = styled(ContentContainer)`
   }
 `
 
-const LogoutButton = styled(Button)`
-  width: 50%;
+const ButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+    flex-direction: column;
+  }
+`
+
+const DeleteOrLogoutButton = styled(Button)`
+  flex: 1;
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+    width: 100%;
+  }
+`
+
+const DeleteButton = styled(DeleteOrLogoutButton)`
   background-color: ${({ theme }) => theme.colors.reds[0]};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.black};
   }
 `
+
 const Account = () => {
   const [loading, setLoading] = useState(false);
 
-  const [authUser, setAuthUser] = useState<User>();
-
   useEffect(() => {
-    const unregisterAuthObserver = auth.onAuthStateChanged(userAuthTmp => {
+    return FirebaseAuth.subscribeToAuth(userAuthTmp => {
       if (userAuthTmp) {
         setLoading(true);
-        UserFirestore.createUser(userAuthTmp.uid, userAuthTmp.displayName ? userAuthTmp.displayName : "John Doe", () => {
-          setAuthUser(userAuthTmp);
-        });
+        UserFirestore.createUser(userAuthTmp.uid, userAuthTmp.displayName ? userAuthTmp.displayName : "John Doe");
       } else {
         setLoading(false);
-        setAuthUser(undefined);
       }
     });
-    return () => unregisterAuthObserver();
   }, []);
 
-  // const [isSignedIn, setIsSignedIn] = useState(false);
-  const [user, setUser] = useState<Types.UserDocument>();
-
-  useEffect(() => {
-    if (authUser) {
-      const unsubscribe = UserFirestore.subscribeToUser(authUser.uid, userTmp => {
-        setUser(userTmp);
-      });
-
-      return unsubscribe;
-    } else {
-      setUser(undefined);
-    }
-  }, [authUser]);
+  const { user } = useCurrentUser();
 
   useEffect(() => {
     if (user) {
@@ -95,7 +96,10 @@ const Account = () => {
                 :
                 <>
                   <h2>Bonjour {user.displayName}, bienvenue dans votre espace personnel.</h2>
-                  <LogoutButton onClick={() => auth.signOut()}>Déconnexion</LogoutButton>
+                  <ButtonsContainer>
+                    <DeleteOrLogoutButton style={{ flex: 1 }} onClick={() => auth.signOut()}>Déconnexion</DeleteOrLogoutButton>
+                    <DeleteButton onClick={() => FirebaseAuth.deleteAuth()}>Suppression de votre compte</DeleteButton>
+                  </ButtonsContainer>
                 </>
             }
           </AccountContentContainer>

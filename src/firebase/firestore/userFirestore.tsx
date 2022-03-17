@@ -23,7 +23,7 @@ export const subscribeToUser = (userUid: string, callback: (user?: Types.UserDoc
  * @param successCallback le callback à appeler en cas de succès
  * @param errorCallback le callback à appeler en cas d'erreur
  */
-export const createUser = (userUid: string, displayName: string, successCallback: () => void/*, errorCallback: (message: string) => void*/) => {
+export const createUser = (userUid: string, displayName: string/*, successCallback: () => void, errorCallback: (message: string) => void*/) => {
   const userDocRef = getUserDocRef(userUid);
 
   getDoc(userDocRef)
@@ -34,14 +34,14 @@ export const createUser = (userUid: string, displayName: string, successCallback
           consent: serverTimestamp()
         })
           .then(() => {
-            successCallback();
+            // successCallback();
           })
           .catch((error) => {
             console.error(error);
             // errorCallback(FirestoreUtils.getErrorMessage(error, 'de la création du compte ' + displayName));
           });
       } else {
-        successCallback();
+        // successCallback();
       }
     })
     .catch((error) => {
