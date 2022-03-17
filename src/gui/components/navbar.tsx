@@ -64,6 +64,13 @@ const UserName = styled.div`
   margin-right: 10px;
 `
 
+const MobileUserLink = styled(Link)`
+  display: flex;
+  color: black;
+  position: absolute;
+  right: 2rem;
+`
+
 const Navbar = () => {
   const { user } = useCurrentUser();
 
@@ -92,25 +99,27 @@ const Navbar = () => {
           </LogoImage>
           <Brand size={brandFontSize} />
         </BrandLogoLink>
-        {isMobile ? (
-          <>
-            <Burger burgerRef={burgerRef} open={open} setOpen={setOpen} />
-            <Menu burgerRef={burgerRef} open={open} setOpen={setOpen} />
-          </>
-        ) : (
-          <>
-            <Marginer direction="horizontal" margin={100} />
-            <MenuLink to="/scenarios">Les scénarios</MenuLink>
-            <Marginer direction="horizontal" margin={100} />
-            <MenuLink to="/enquoicaconsiste">En quoi ça consiste ?</MenuLink>
-            <Marginer direction="horizontal" margin={100} />
-            <MenuLink to="/contact">Contact</MenuLink>
-            <Marginer direction="horizontal" margin={100} />
-            <MenuLink to="/compte">
-              <UserName>{user ? user.displayName : "Mon compte"}</UserName> <FontAwesomeIcon icon={user ? faUser : faUserSlash} size="1x" />
-            </MenuLink>
-          </>
-        )}
+        {
+          isMobile ? (
+            <>
+              <Burger burgerRef={burgerRef} open={open} setOpen={setOpen} />
+              <Menu burgerRef={burgerRef} open={open} setOpen={setOpen} />
+              <MobileUserLink style={{ display: 'flex', color: 'black', position: 'absolute', right: '2rem' }} to="/compte"><FontAwesomeIcon icon={user ? faUser : faUserSlash} size="2x" /></MobileUserLink>
+            </>
+          ) : (
+            <>
+              <Marginer direction="horizontal" margin={100} />
+              <MenuLink to="/scenarios">Les scénarios</MenuLink>
+              <Marginer direction="horizontal" margin={100} />
+              <MenuLink to="/enquoicaconsiste">En quoi ça consiste ?</MenuLink>
+              <Marginer direction="horizontal" margin={100} />
+              <MenuLink to="/contact">Contact</MenuLink>
+              <Marginer direction="horizontal" margin={100} />
+              <MenuLink to="/compte">
+                <UserName>{user ? user.displayName : "Mon compte"}</UserName> <FontAwesomeIcon icon={user ? faUser : faUserSlash} size="1x" />
+              </MenuLink>
+            </>
+          )}
       </AccessibilityContainer>
     </NavbarContainer>
   )

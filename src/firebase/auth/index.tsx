@@ -12,7 +12,7 @@ export const deleteAuth = () => {
 
   if (user) {
     deleteUser(user).then(() => {
-    }).catch((error) => {
+    }).catch(() => {
       // An error ocurred
       // ...
     });
