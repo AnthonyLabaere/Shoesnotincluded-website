@@ -29,6 +29,10 @@ const uiConfig = {
     // Avoid redirects after sign-in.
     signInSuccessWithAuthResult: () => false,
   },
+  // Terms of service url.
+  tosUrl: 'https://www.shoesnotincluded.fr/cgu-cgv',
+  // Privacy policy url.
+  privacyPolicyUrl: 'https://www.shoesnotincluded.fr/confidentialite'
 };
 
 const FirebaseUiAuth = () => {
