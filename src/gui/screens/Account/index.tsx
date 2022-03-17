@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
 
 import { auth } from '../../../firebase'
 import { ContentContainer } from '../../components/common'
@@ -72,7 +72,7 @@ const Account = () => {
               !isSignedIn ?
                 <>
                   <h2>Veuillez vous connecter ou vous créer un compte :</h2>
-                  <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+                  <FirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
                 </>
                 :
                 <>

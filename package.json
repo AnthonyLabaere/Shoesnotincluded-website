@@ -13,6 +13,7 @@
     "firebase": "^9.6.8",
     "formik": "^2.2.9",
     "framer-motion": "^4.1.17",
+    "postcss-normalize": "^10.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-firebaseui": "^6.0.0",
@@ -25,6 +26,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "postinstall": "patch-package",
     "start": "env-cmd -f ./.env react-scripts start",
     "start:local": "env-cmd -f ./.env.local react-scripts start",
     "build": "react-scripts build",
@@ -61,6 +63,8 @@
     "@typescript-eslint/parser": "^5.14.0",
     "env-cmd": "^10.1.0",
     "eslint": "^7.11.0",
-    "eslint-plugin-react": "^7.29.3"
+    "eslint-plugin-react": "^7.29.3",
+    "patch-package": "^6.4.7",
+    "postinstall-postinstall": "^2.1.0"
   }
 }
