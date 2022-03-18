@@ -51,17 +51,6 @@ const DeleteButton = styled(DeleteOrLogoutButton)`
 const Account = () => {
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    return FirebaseAuth.subscribeToAuth(userAuthTmp => {
-      if (userAuthTmp) {
-        setLoading(true);
-        UserFirestore.createUser(userAuthTmp.uid, userAuthTmp.displayName ? userAuthTmp.displayName : "John Doe");
-      } else {
-        setLoading(false);
-      }
-    });
-  }, []);
-
   const { user } = useCurrentUser();
 
   useEffect(() => {
@@ -88,7 +77,15 @@ const Account = () => {
                   {
                     !loading ? <>
                       <h2>Veuillez vous connecter ou vous créer un compte :</h2>
-                      <FirebaseUiAuth />
+                      <FirebaseUiAuth signInSuccessWithAuthResultCallback={(authResult: any) => {
+                        if (authResult.additionalUserInfo.isNewUser) {
+                          setLoading(true);
+                          UserFirestore.createUser(authResult.user.uid, authResult.user.displayName ? authResult.user.displayName : "John Doe");
+                        }
+
+                        // Pas de redirection
+                        return false;
+                      }} />
                     </>
                       : <h2>Chargement du compte en cours...</h2>
                   }

@@ -35,9 +35,14 @@ const uiConfig = {
   privacyPolicyUrl: 'https://www.shoesnotincluded.fr/confidentialite'
 };
 
-const FirebaseUiAuth = () => {
+interface FirebaseUiAuthProps {
+  signInSuccessWithAuthResultCallback?: (authResult: any) => boolean;
+}
+
+const FirebaseUiAuth = ({ signInSuccessWithAuthResultCallback }: FirebaseUiAuthProps) => {
   return (
-    <FirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+    <FirebaseAuth uiConfig={{ ...uiConfig, callbacks: { ...uiConfig.callbacks, signInSuccessWithAuthResult: signInSuccessWithAuthResultCallback !== undefined ? signInSuccessWithAuthResultCallback : uiConfig.callbacks.signInSuccessWithAuthResult } }}
+      firebaseAuth={auth} />
   );
 }
 
