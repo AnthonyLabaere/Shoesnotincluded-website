@@ -18,7 +18,7 @@ export const StyledBurger = styled.button<{ open: boolean }>`
   span {
     width: 2rem;
     height: 0.25rem;
-    background: ${({ theme }) => theme.backgroundButtonColor};
+    background: black;
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
