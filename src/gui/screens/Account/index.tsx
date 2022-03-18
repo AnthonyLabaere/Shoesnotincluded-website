@@ -126,7 +126,7 @@ const Account = () => {
                 <>
                   <h2>Bonjour {user.displayName}, bienvenue dans votre espace personnel.</h2>
                   {
-                    !userAuth.emailVerified && <h3>Email blabla</h3>
+                    !userAuth.emailVerified && <h3>Merci de confirmer votre adresse mail en <span style={{ fontWeight: 'bold' }}>cliquant sur le lien fourni par mail</span> à l'adresse mail : <br /><br />{userAuth.email}<br /><br /><br />Pensez à vérifier vos spams ou indésirables.</h3>
                   }
                   <ButtonsContainer>
                     <DeleteOrLogoutButton style={{ flex: 1 }} onClick={() => auth.signOut()}>Déconnexion</DeleteOrLogoutButton>
