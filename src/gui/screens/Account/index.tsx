@@ -51,7 +51,28 @@ const DeleteButton = styled(DeleteOrLogoutButton)`
 const Account = () => {
   const [loading, setLoading] = useState(false);
 
-  const { user } = useCurrentUser();
+  const { userAuth, user } = useCurrentUser();
+
+  // Booléen indiquant que l'utilisateur doit être rafraîchit pour vérifier si le champ emailVerified a été mis à jour
+  const [reloadEmailVerified, setReloadEmailVerified] = useState(false);
+
+  // Synchronisation avec le champ emailVerified de l'utilisateur
+  useEffect(() => {
+    if (userAuth !== undefined && userAuth != null && reloadEmailVerified === true) {
+      const timerTmp = setInterval(() => {
+        FirebaseAuth.reloadCurrentUser((userAuthTmp) => {
+          if (userAuthTmp === null || (userAuthTmp !== null && userAuthTmp.emailVerified === true)) {
+            setReloadEmailVerified(false);
+            window.clearInterval(timerTmp);
+          }
+        }/* TODO, errorCallback*/);
+      }, 5000);
+
+      return () => {
+        window.clearInterval(timerTmp);
+      };
+    }
+  }, [userAuth, reloadEmailVerified]);
 
   useEffect(() => {
     if (user) {
@@ -72,15 +93,26 @@ const Account = () => {
         <ContentPageContainer>
           <AccountContentContainer>
             {
-              !user ?
+              !userAuth || !user ?
                 <>
                   {
                     !loading ? <>
                       <h2>Veuillez vous connecter ou vous créer un compte :</h2>
                       <FirebaseUiAuth signInSuccessWithAuthResultCallback={(authResult: any) => {
+                        const authResultUser = authResult.user;
+
                         if (authResult.additionalUserInfo.isNewUser) {
                           setLoading(true);
-                          UserFirestore.createUser(authResult.user.uid, authResult.user.displayName ? authResult.user.displayName : "John Doe");
+
+                          UserFirestore.createUser(authResultUser.uid, authResultUser.displayName ? authResultUser.displayName : "John Doe");
+
+                          if (!authResultUser.emailVerified) {
+                            FirebaseAuth.sendEmailVerification()
+                              .then(() => setReloadEmailVerified(true))
+                              .catch(() => {
+                                // TODO
+                              });
+                          }
                         }
 
                         // Pas de redirection
@@ -93,9 +125,12 @@ const Account = () => {
                 :
                 <>
                   <h2>Bonjour {user.displayName}, bienvenue dans votre espace personnel.</h2>
+                  {
+                    !userAuth.emailVerified && <h3>Email blabla</h3>
+                  }
                   <ButtonsContainer>
                     <DeleteOrLogoutButton style={{ flex: 1 }} onClick={() => auth.signOut()}>Déconnexion</DeleteOrLogoutButton>
-                    <DeleteButton onClick={() => FirebaseAuth.deleteAuth()}>Suppression de votre compte</DeleteButton>
+                    <DeleteButton onClick={() => FirebaseAuth.deleteCurrentUser()}>Suppression de votre compte</DeleteButton>
                   </ButtonsContainer>
                 </>
             }

@@ -13,6 +13,8 @@ export const subscribeToScenariosFromCity = (city: string, callback: (cities: Ty
         data: doc.data() as Types.ScenarioDocument
       }
     }));
+  }, () => {
+    // TODO
   });
 
   return unsubscribe;
@@ -23,5 +25,7 @@ export const subscribeToScenario = (scenarioId: string, callback: (cities: undef
 
   return onSnapshot(docRef, (docSnapTmp) => {
     callback(docSnapTmp.exists() ? docSnapTmp.data() as Types.ScenarioDocument : undefined);
+  }, () => {
+    // TODO
   });
 };

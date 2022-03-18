@@ -12,6 +12,8 @@ export const subscribeToUser = (userUid: string, callback: (user?: Types.UserDoc
 
   return onSnapshot(userDocRef, userDocSnap => {
     callback(userDocSnap.exists() ? userDocSnap.data() as Types.UserDocument : undefined);
+  }, () => {
+    // TODO
   });
 };
 
@@ -38,6 +40,7 @@ export const createUser = (userUid: string, displayName: string/*, successCallba
           })
           .catch((error) => {
             console.error(error);
+            // TODO
             // errorCallback(FirestoreUtils.getErrorMessage(error, 'de la création du compte ' + displayName));
           });
       } else {
@@ -46,6 +49,7 @@ export const createUser = (userUid: string, displayName: string/*, successCallba
     })
     .catch((error) => {
       console.error(error);
+      // TODO
       // errorCallback(FirestoreUtils.getErrorMessage(error, 'de la création du compte ' + displayName));
     });
 

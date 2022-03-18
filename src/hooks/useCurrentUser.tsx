@@ -6,17 +6,19 @@ import * as FirebaseAuth from '../firebase/auth';
 import * as UserFirestore from '../firebase/firestore/userFirestore'
 
 function useCurrentUser() {
-  const [authUser, setAuthUser] = useState<null | User>();
+  const [userAuth, setUserAuth] = useState<null | User>();
 
   useEffect(() => {
-    return FirebaseAuth.subscribeToAuth(setAuthUser);
+    return FirebaseAuth.subscribeToAuth(userAuthTmp => {
+      setUserAuth(userAuthTmp);
+    });
   }, []);
 
   const [user, setUser] = useState<Types.UserDocument>();
 
   useEffect(() => {
-    if (authUser) {
-      const unsubscribe = UserFirestore.subscribeToUser(authUser.uid, userTmp => {
+    if (userAuth) {
+      const unsubscribe = UserFirestore.subscribeToUser(userAuth.uid, userTmp => {
         setUser(userTmp);
       });
 
@@ -24,10 +26,10 @@ function useCurrentUser() {
     } else {
       setUser(undefined);
     }
-  }, [authUser]);
+  }, [userAuth]);
 
   return {
-    authUser,
+    userAuth,
     user
   }
 }

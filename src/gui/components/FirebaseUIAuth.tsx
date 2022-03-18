@@ -41,7 +41,12 @@ interface FirebaseUiAuthProps {
 
 const FirebaseUiAuth = ({ signInSuccessWithAuthResultCallback }: FirebaseUiAuthProps) => {
   return (
-    <FirebaseAuth uiConfig={{ ...uiConfig, callbacks: { ...uiConfig.callbacks, signInSuccessWithAuthResult: signInSuccessWithAuthResultCallback !== undefined ? signInSuccessWithAuthResultCallback : uiConfig.callbacks.signInSuccessWithAuthResult } }}
+    <FirebaseAuth uiConfig={
+      {
+        ...uiConfig,
+        callbacks: { ...uiConfig.callbacks, signInSuccessWithAuthResult: signInSuccessWithAuthResultCallback !== undefined ? signInSuccessWithAuthResultCallback : uiConfig.callbacks.signInSuccessWithAuthResult }
+      }
+    }
       firebaseAuth={auth} />
   );
 }
