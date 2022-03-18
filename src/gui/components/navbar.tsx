@@ -53,6 +53,14 @@ const MenuLink = styled(Link)`
   &:hover {
     color: ${({ theme }) => theme.linkHoverColor};
   }
+
+  @media (max-width: ${({ theme }) => theme.deviceSizes.laptop}) {
+    font-size: 1.5rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
+    font-size: 1.2rem;
+  }
 `
 
 const UserName = styled.div`
@@ -80,12 +88,18 @@ const Navbar = () => {
 
   const isMobileXS = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXS })
   const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL })
+  const tablet = useMediaQuery({ maxWidth: DEVICE_SIZES.tablet })
+  const laptop = useMediaQuery({ maxWidth: DEVICE_SIZES.laptop })
 
   let brandFontSize: number
   if (isMobileXS) {
     brandFontSize = 1.25
   } else if (isMobile) {
     brandFontSize = 1.5
+  } else if (tablet) {
+    brandFontSize = 1.5
+  } else if (laptop) {
+    brandFontSize = 1.8
   } else {
     brandFontSize = 2
   }
@@ -109,14 +123,14 @@ const Navbar = () => {
           ) : (
             <>
               <Marginer direction="horizontal" margin={100} />
-              <MenuLink to="/scenarios">Les scénarios</MenuLink>
+              <MenuLink to="/scenarios">{"Les scénarios"}</MenuLink>
               <Marginer direction="horizontal" margin={100} />
-              <MenuLink to="/enquoicaconsiste">En quoi ça consiste ?</MenuLink>
+              <MenuLink to="/enquoicaconsiste">{"En quoi ça consiste ?"}</MenuLink>
               <Marginer direction="horizontal" margin={100} />
               <MenuLink to="/contact">Contact</MenuLink>
               <Marginer direction="horizontal" margin={100} />
-              <MenuLink to="/compte">
-                <UserName>{user ? user.displayName : "Mon compte"}</UserName> <FontAwesomeIcon icon={user ? faUser : faUserSlash} size="1x" />
+              <MenuLink to="/compte" style={{ display: 'flex', alignItems: 'center' }}>
+                <UserName>{user ? user.displayName : "Mon compte"}</UserName> <FontAwesomeIcon icon={user ? faUser : faUserSlash} size="1x" />
               </MenuLink>
             </>
           )}
