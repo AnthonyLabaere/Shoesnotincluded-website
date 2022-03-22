@@ -132,6 +132,7 @@ const Navbar = () => {
               <MenuLink to="/compte" style={{ display: 'flex', alignItems: 'center' }}>
                 <UserName>{user ? user.displayName : "Mon compte"}</UserName> <FontAwesomeIcon icon={user ? faUser : faUserSlash} size="1x" />
               </MenuLink>
+              <Marginer direction="horizontal" margin={100} />
             </>
           )}
       </AccessibilityContainer>

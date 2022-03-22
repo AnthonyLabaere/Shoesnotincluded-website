@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
 import * as Types from '../../../types';
 import * as ScenarioFirestore from '../../../firebase/firestore/scenarioFirestore'
 import { ContentContainer } from '../../components/common';
+import Button from '../../components/button';
 import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer';
 import TextContent from '../../components/TextContent';
 import GameTags from '../../components/GameTags'
@@ -139,13 +140,16 @@ const Scenarios = () => {
         </ContentPageContainer>
         <ContentPageContainer coloredBackground>
           <Marginer direction="vertical" margin="1em" />
-          <Title>
-            Pour y jouer rien de plus simple, téléchargez l'application et sélectionnez le scénario :
-          </Title>
-          <StoreButtons />
-          <Subtitle>
-            Prix d'une partie : 29.99€ pour 5 joueurs.
-          </Subtitle>
+          <ContentContainer>
+            <Title>
+              Pour y jouer rien de plus simple, téléchargez l'application et sélectionnez le scénario :
+            </Title>
+            <StoreButtons />
+            <Subtitle>
+              Prix d'une partie : <span style={{ textDecoration: 'line-through' }}>29,99€</span> 26,99€ (10% de réduction via un achat via le site) pour 5 joueurs.
+            </Subtitle>
+            <Link style={{ flex: 1 }} to="/achat"><Button style={{ width: '100%' }}>Je souhaite acheter un bon pour une partie</Button></Link>
+          </ContentContainer>
           <Marginer direction="vertical" margin="1em" />
         </ContentPageContainer>
       </InnerPageContainer>

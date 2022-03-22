@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import { YOUTUBE_EXPLICATIONS_VIDEO_URL } from '../../../constants'
 import { ContentContainer, StyledReactPlayer } from '../../components/common'
 import Marginer from '../../components/marginer'
 import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer'
+import Button from '../../components/button'
 
 import FrameStepsImg from '../../../assets/images/1frameSteps.png'
 import FrameStepImg from '../../../assets/images/2frameStep.png'
@@ -117,6 +119,7 @@ const WhatIsThat = () => {
                 .
               </p>
             </TextContainer>
+            <Link style={{ flex: 1 }} to="/achat"><Button style={{ width: '100%' }}>Je souhaite acheter un bon pour une partie</Button></Link>
           </ContentContainer>
           <Marginer direction="vertical" margin="2em" />
         </ContentPageContainer>

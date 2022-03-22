@@ -102,3 +102,23 @@ export interface UserDocument {
   displayName: string;
   // dev?: boolean;
 }
+
+export interface CheckoutSessionDocument {
+  // cancel_url: string;
+  // client: string;
+  // created: Date;
+  // mode: string;
+  // price: string;
+  // sessionId: string;
+  // success_url:string;
+  url: string;
+}
+
+export interface Payment {
+  id: string;
+  createdDate: Date;
+  status: string;
+  amount: number;
+  consumed?: boolean;
+  voucherId?: string;
+}
