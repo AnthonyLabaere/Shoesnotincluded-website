@@ -15,7 +15,7 @@ const Title = styled.h1`
 `
 const Stores = () => {
   return (
-    <ContentPageContainer coloredBackground>
+    <ContentPageContainer coloredBackground id="stores">
       <Marginer direction="vertical" margin="5em" />
       <Title>
         ShoesNotIncluded est sur les stores !

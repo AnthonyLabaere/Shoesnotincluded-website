@@ -127,6 +127,8 @@ const Navbar = () => {
               <Marginer direction="horizontal" margin={100} />
               <MenuLink to="/enquoicaconsiste">{"En quoi ça consiste ?"}</MenuLink>
               <Marginer direction="horizontal" margin={100} />
+              <MenuLink to="/faq">FAQ</MenuLink>
+              <Marginer direction="horizontal" margin={100} />
               <MenuLink to="/contact">Contact</MenuLink>
               <Marginer direction="horizontal" margin={100} />
               <MenuLink to="/compte" style={{ display: 'flex', alignItems: 'center' }}>

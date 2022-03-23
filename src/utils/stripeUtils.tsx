@@ -11,22 +11,18 @@ const AMOUNT_FORMATTER = new Intl.NumberFormat('fr-FR', {
 export const getPaymentStatusLabel = (statusCode: string): string => {
   // cf https://stripe.com/docs/api/payment_intents/object
   // requires_payment_method, requires_confirmation, requires_action, processing, requires_capture, canceled, or succeeded
-  if (statusCode === 'succeeded') {
-    return "Validé";
-  }
-
   switch (statusCode) {
     case 'requires_payment_method':
     case 'requires_confirmation':
     case 'requires_action':
     case 'requires_capture':
-      return "Inconnu"
+      return "❌Annulé"
     case 'canceled':
-      return "Annulé"
+      return "❌Annulé"
     case "succeeded":
-      return "Confirmé";
+      return "✅Confirmé";
     default:
-      return "Inconnu"
+      return "❓Inconnu"
   }
 
 }

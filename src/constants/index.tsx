@@ -33,3 +33,7 @@ export const THEME_YELLOW_COLORS = ['#ffe27e', '#ffe89b']
 export const THEME_ORANGE_COLORS = ['#f6b36f', '#ffc991']
 export const THEME_GREEN_COLORS = ['#a0c59a', '#c4e7bf']
 export const THEME_PURPLE_COLORS = ['#aba9e9', '#c7c6f1']
+
+export const APP_GAME_COST = "29,99 €";
+export const WEBSITE_GAME_COST = "26,99 €";
+export const WEBSITE_TO_APP_GAME_REDUCTION_PERCENT = 10;

@@ -178,29 +178,31 @@ const Account = () => {
             }
             {
               userAuth.emailVerified && <PaymentHistory>
-                <h3 style={{ textAlign: 'left' }}>Historique d'achat :</h3>
+                <h2 style={{ textAlign: 'left' }}>Historique d'achat :</h2>
                 {
-                  payments === undefined ? <h4>Chargement de l'historique en cours...</h4>
+                  payments === undefined ? <h3>Chargement de l'historique en cours...</h3>
                     :
                     <>
                       {
-                        payments.length === 0 ? <h4>Aucun achat réalisé.</h4>
+                        payments.length === 0 ? <h3 style={{ textAlign: 'left' }}>Aucun achat réalisé.</h3>
                           :
                           <>
                             <PaymentRow>
+                              <PaymentRowHeaderElement>Identifiant</PaymentRowHeaderElement>
                               <PaymentRowHeaderElement>Date d'achat</PaymentRowHeaderElement>
                               <PaymentRowHeaderElement>Statut</PaymentRowHeaderElement>
                               <PaymentRowHeaderElement>Montant</PaymentRowHeaderElement>
-                              <PaymentRowHeaderElement>Identifiant du bon de commande</PaymentRowHeaderElement>
+                              <PaymentRowHeaderElement>Bon d'achat</PaymentRowHeaderElement>
                             </PaymentRow>
                             {
                               payments.map(paymentTmp => {
                                 return (
                                   <PaymentRow key={paymentTmp.id}>
-                                    <PaymentRowElement>{'Le ' + new Date(paymentTmp.createdDate).toLocaleDateString("fr") + ' à ' + new Date(paymentTmp.createdDate).toLocaleTimeString("fr")}</PaymentRowElement>
+                                    <PaymentRowElement>{paymentTmp.id}</PaymentRowElement>
+                                    <PaymentRowElement>{'Le ' + paymentTmp.createdDate.toLocaleDateString("fr") + ' à ' + paymentTmp.createdDate.toLocaleTimeString("fr")}</PaymentRowElement>
                                     <PaymentRowElement>{StripeUtils.getPaymentStatusLabel(paymentTmp.status)}</PaymentRowElement>
                                     <PaymentRowElement>{StripeUtils.getPaymentAmount(paymentTmp.amount)}</PaymentRowElement>
-                                    <PaymentRowElement>{paymentTmp.voucherId}</PaymentRowElement>
+                                    <PaymentRowElement>{paymentTmp.voucherId !== undefined ? paymentTmp.voucherId : "Indisponible"}</PaymentRowElement>
                                   </PaymentRow>
                                 );
                               })

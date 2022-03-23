@@ -1,5 +1,6 @@
-import ReactPlayer from 'react-player'
-import styled from 'styled-components'
+import ReactPlayer from 'react-player';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const ContentContainer = styled.div`
   width: 100%;
@@ -22,7 +23,7 @@ export const ContentContainer = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     padding: 5px;
   }
-`
+`;
 
 export const StyledReactPlayer = styled(ReactPlayer)`
   max-width: 100%;
@@ -30,4 +31,24 @@ export const StyledReactPlayer = styled(ReactPlayer)`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     max-width: 95%;
   }
-`
+`;
+
+export const StyledALink = styled.a`
+  color: black;
+  display: inline;
+  text-decoration: underline;
+
+  &:hover {
+    color: #505050;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  color: black;
+  display: inline;
+  text-decoration: underline;
+
+  &:hover {
+    color: #505050;
+  }
+`;

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
+import * as Constants from "../../../constants";
 import * as StripeFirestore from "../../../firebase/firestore/stripeFirestore";
 import useCurrentUser from "../../../hooks/useCurrentUser";
-import { ContentContainer } from '../../components/common'
+import { ContentContainer, StyledLink } from '../../components/common'
 import Button from '../../components/button'
 import Checkbox from '../../components/Checkbox'
 import Marginer from '../../components/marginer'
@@ -49,13 +49,14 @@ const Payment = () => {
   }, [stripeUrl]);
 
   const [consent, setConsent] = useState(false);
+  const [tryWithoutConsent, setTryWithoutConsent] = useState(false);
 
   return (
     <PageContainer>
       <InnerPageContainer>
         <ContentPageContainer coloredBackground>
           <ContentContainer>
-            <h1>Confirmation de l'achat d'une partie</h1>
+            <h1>Achat d'une partie</h1>
           </ContentContainer>
         </ContentPageContainer>
         <ContentPageContainer>
@@ -72,18 +73,28 @@ const Payment = () => {
               </ul>
             </PaymentText>
             <PaymentText>
-              <Checkbox id="consent" label={<>J'accepte les <Link to="/cgu-cgv">conditions générales de ventes</Link></>} value={consent} onChange={setConsent} />
+              <Checkbox id="consent" label={<>J'accepte les <StyledLink to="/cgu-cgv">conditions générales de ventes</StyledLink></>} value={consent} onChange={setConsent} />
             </PaymentText>
-            <Button disabled={!consent || loading} onClick={() => {
-              setLoading(true);
-              createPayment();
+            <Button disabled={loading} onClick={() => {
+              if (consent) {
+                setTryWithoutConsent(false);
+                setLoading(true);
+                createPayment();
+              } else {
+                setTryWithoutConsent(true);
+              }
             }} >
               {
                 !loading ?
-                  "Acheter un bon pour une partie à 26,99€"
+                  "Acheter un bon pour une partie à " + Constants.WEBSITE_GAME_COST
                   : "Redirection vers le site partenaire en cours, merci de patienter..."
               }
             </Button>
+            {
+              tryWithoutConsent && <PaymentText style={{ color: Constants.THEME_RED_COLORS[0] }}>
+                Veuillez accepter les conditions générales de vente.
+              </PaymentText>
+            }
           </ContentContainer>
         </ContentPageContainer>
       </InnerPageContainer>

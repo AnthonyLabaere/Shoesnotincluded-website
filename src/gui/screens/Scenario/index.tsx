@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 
 import * as Types from '../../../types';
+import * as Constants from '../../../constants';
 import * as ScenarioFirestore from '../../../firebase/firestore/scenarioFirestore'
 import { ContentContainer } from '../../components/common';
 import Button from '../../components/button';
@@ -146,7 +147,7 @@ const Scenarios = () => {
             </Title>
             <StoreButtons />
             <Subtitle>
-              Prix d'une partie : <span style={{ textDecoration: 'line-through' }}>29,99€</span> 26,99€ (10% de réduction via un achat via le site) pour 5 joueurs.
+              Prix d'une partie : <span style={{ textDecoration: 'line-through' }}>{Constants.APP_GAME_COST}</span> {Constants.WEBSITE_GAME_COST} ({Constants.WEBSITE_TO_APP_GAME_REDUCTION_PERCENT}% de réduction via un achat via le site) pour 5 joueurs.
             </Subtitle>
             <Link style={{ flex: 1 }} to="/achat"><Button style={{ width: '100%' }}>Je souhaite acheter un bon pour une partie</Button></Link>
           </ContentContainer>

@@ -7,6 +7,9 @@ const CUSTOMERS_FIRESTORE_COLLECTION = "stripeCustomers";
 const CHECKOUT_SESSIONS_FIRESTORE_SUBCOLLECTION = "checkout_sessions";
 const PAYMENTS_FIRESTORE_SUBCOLLECTION = "payments";
 
+// Alternative : https://github.com/stripe/stripe-firebase-extensions/tree/next/firestore-stripe-web-sdk
+// Mais la création de checkout session ne permet pas de sélectionner une locale à ce jour (23/03/2022)
+
 const getCheckoutSessionsCollectionRef = (userUid: string) => {
   return collection(db, CUSTOMERS_FIRESTORE_COLLECTION, userUid, CHECKOUT_SESSIONS_FIRESTORE_SUBCOLLECTION);
 }
