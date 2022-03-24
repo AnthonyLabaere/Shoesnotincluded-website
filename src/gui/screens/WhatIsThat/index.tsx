@@ -119,7 +119,7 @@ const WhatIsThat = () => {
                 .
               </p>
             </TextContainer>
-            <Link style={{ flex: 1 }} to="/achat"><Button style={{ width: '100%' }}>Je souhaite acheter un bon pour une partie</Button></Link>
+            <Link style={{ display: 'flex', flex: 1, marginTop: 25 }} to="/achat"><Button style={{ flex: 1 }}>Je souhaite acheter un bon pour une partie</Button></Link>
           </ContentContainer>
           <Marginer direction="vertical" margin="2em" />
         </ContentPageContainer>

@@ -75,21 +75,24 @@ const Payment = () => {
             <PaymentText>
               <Checkbox id="consent" label={<>J'accepte les <StyledLink to="/cgu-cgv">conditions générales de ventes</StyledLink></>} value={consent} onChange={setConsent} />
             </PaymentText>
-            <Button disabled={loading} onClick={() => {
-              if (consent) {
-                setTryWithoutConsent(false);
-                setLoading(true);
-                createPayment();
-              } else {
-                setTryWithoutConsent(true);
-              }
-            }} >
-              {
-                !loading ?
-                  "Acheter un bon pour une partie à " + Constants.WEBSITE_GAME_COST
-                  : "Redirection vers le site partenaire en cours, merci de patienter..."
-              }
-            </Button>
+            {/* <Link style={{ display: 'flex', flex: 1 }} to="/achat"><Button style={{ flex: 1 }}>Je souhaite acheter un bon pour une partie</Button></Link> */}
+            <div style={{ display: 'flex', flex: 1 }}>
+              <Button style={{ flex: 1 }} disabled={loading} onClick={() => {
+                if (consent) {
+                  setTryWithoutConsent(false);
+                  setLoading(true);
+                  createPayment();
+                } else {
+                  setTryWithoutConsent(true);
+                }
+              }} >
+                {
+                  !loading ?
+                    "Acheter un bon pour une partie à " + Constants.WEBSITE_GAME_COST
+                    : "Redirection vers le site partenaire en cours, merci de patienter..."
+                }
+              </Button>
+            </div>
             {
               tryWithoutConsent && <PaymentText style={{ color: Constants.THEME_RED_COLORS[0] }}>
                 Veuillez accepter les conditions générales de vente.
