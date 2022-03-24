@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Modal from 'react-modal';
 
-import * as Types from "../../../types"
+import * as Types from "../../../types";
 import useCurrentUser from '../../../hooks/useCurrentUser';
 import { auth } from '../../../firebase';
 import * as FirebaseAuth from '../../../firebase/auth';
@@ -10,6 +9,7 @@ import * as StripeFirestore from '../../../firebase/firestore/stripeFirestore';
 import * as UserFirestore from '../../../firebase/firestore/userFirestore';
 import * as StripeUtils from "../../../utils/stripeUtils";
 import { ContentContainer, StyledLink } from '../../components/common';
+import Modal from '../../components/Modal';
 import Button from '../../components/button';
 import FirebaseUiAuth from '../../components/FirebaseUIAuth';
 import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer';
@@ -238,19 +238,8 @@ const Account = () => {
 
       <Modal
         isOpen={displayDeleteAccountModal}
-        onRequestClose={() => setDisplayDeleteAccountModal(false)}
-        style={{
-          content: {
-            top: '50%',
-            left: '50%',
-            right: 'auto',
-            bottom: 'auto',
-            marginRight: '-50%',
-            transform: 'translate(-50%, -50%)',
-          }
-        }}
-        contentLabel="Suppression de votre compte"
-        ariaHideApp={false}>
+        onClose={() => setDisplayDeleteAccountModal(false)}
+        contentLabel="Suppression de votre compte">
         <h2>Suppression de votre compte</h2>
         <div>⚠ Attention, la suppression de votre compte entraînera la suppression de toutes vos données.</div>
         <div style={{ display: 'flex', flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
