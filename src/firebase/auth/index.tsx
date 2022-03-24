@@ -17,14 +17,16 @@ export const reloadCurrentUser = (successCallback: (userAuthTmp: null | User) =>
     });
 }
 
-export const deleteCurrentUser = () => {
+export const deleteCurrentUser = (callback: () => void) => {
   const user = auth.currentUser;
 
   if (user) {
-    deleteUser(user).then(() => {
-    }).catch(() => {
-      // TODO
-    });
+    deleteUser(user)
+      .then(() => {
+        callback();
+      }).catch(() => {
+        // TODO
+      });
   }
 }
 

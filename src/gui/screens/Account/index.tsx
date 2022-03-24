@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import Modal from 'react-modal';
 
 import * as Types from "../../../types"
 import useCurrentUser from '../../../hooks/useCurrentUser';
@@ -127,6 +128,8 @@ const Account = () => {
     }
   }, [userAuth]);
 
+  const [displayDeleteAccountModal, setDisplayDeleteAccountModal] = useState(false);
+
   if (!userAuth || !user) {
     return (
       <PageContainer>
@@ -231,11 +234,35 @@ const Account = () => {
             }
             <ButtonsContainer>
               <DeleteOrLogoutButton style={{ flex: 1 }} onClick={() => auth.signOut()}>Déconnexion</DeleteOrLogoutButton>
-              <DeleteButton onClick={() => FirebaseAuth.deleteCurrentUser()}>Suppression de votre compte</DeleteButton>
+              <DeleteButton onClick={() => setDisplayDeleteAccountModal(true)}>Suppression de votre compte</DeleteButton>
             </ButtonsContainer>
           </AccountContentContainer>
         </ContentPageContainer>
       </InnerPageContainer>
+
+      <Modal
+        isOpen={displayDeleteAccountModal}
+        onRequestClose={() => setDisplayDeleteAccountModal(false)}
+        style={{
+          content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+          }
+        }}
+        contentLabel="Suppression de votre compte"
+        ariaHideApp={false}>
+        <h2>Suppression de votre compte</h2>
+        <div>⚠ Attention, la suppression de votre compte entraînera la suppression de toutes vos données.</div>
+        <div style={{ display: 'flex', flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+          <DeleteButton onClick={() => FirebaseAuth.deleteCurrentUser(() => setDisplayDeleteAccountModal(false))}>Supprimer</DeleteButton>
+          <DeleteOrLogoutButton onClick={() => setDisplayDeleteAccountModal(false)}>Annuler</DeleteOrLogoutButton>
+        </div>
+      </Modal>
+
     </PageContainer>
   );
 }
