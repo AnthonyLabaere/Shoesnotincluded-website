@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 
 import * as Types from "../../../types";
+import * as Constants from "../../../constants";
 import useCurrentUser from '../../../hooks/useCurrentUser';
 import { auth } from '../../../firebase';
 import * as FirebaseAuth from '../../../firebase/auth';
@@ -31,20 +33,33 @@ const PaymentHistory = styled.div`
 const PaymentRow = styled.div`
   display: flex;
   flex-direction: row;
+  flex: 1;
 `;
 
-const PaymentRowHeaderElement = styled.h3`
-  flex: 1;
-  margin-top: 5px;
-  margin-bottom: 5px;
+const PaymentRowHeaderElement = styled.h3<{ flex?: number }>`
+  flex: ${({ flex = 1 }: { flex?: number }) => flex};
+  margin: 5px;
   text-align: left;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
+    text-align: center;
+  }
 `;
 
-const PaymentRowElement = styled.h4`
-  flex: 1;
-  margin-top: 5px;
-  margin-bottom: 5px;
+const PaymentRowElement = styled.div<{ flex?: number }>`
+  flex: ${({ flex = 1 }: { flex?: number }) => flex};
+  margin: 5px;
   text-align: left;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
+    text-align: center;
+  }
 `;
 
 const ButtonsContainer = styled.div`
@@ -76,6 +91,8 @@ const DeleteButton = styled(DeleteOrLogoutButton)`
 `;
 
 const Account = () => {
+  const isMobile = useMediaQuery({ maxWidth: Constants.DEVICE_SIZES.tablet });
+
   const [loading, setLoading] = useState(true);
 
   const { userAuth, user } = useCurrentUser();
@@ -203,21 +220,21 @@ const Account = () => {
                           :
                           <>
                             <PaymentRow>
-                              <PaymentRowHeaderElement>Identifiant</PaymentRowHeaderElement>
-                              <PaymentRowHeaderElement>Date d'achat</PaymentRowHeaderElement>
-                              <PaymentRowHeaderElement>Statut</PaymentRowHeaderElement>
-                              <PaymentRowHeaderElement>Montant</PaymentRowHeaderElement>
-                              <PaymentRowHeaderElement>Bon d'achat</PaymentRowHeaderElement>
+                              {!isMobile && <PaymentRowHeaderElement flex={1}>Identifiant</PaymentRowHeaderElement>}
+                              <PaymentRowHeaderElement flex={isMobile ? 0.5 : 1}>Date{!isMobile ? " d'achat" : ""}</PaymentRowHeaderElement>
+                              <PaymentRowHeaderElement flex={0.5}>Statut</PaymentRowHeaderElement>
+                              {!isMobile && <PaymentRowHeaderElement flex={0.5}>Montant</PaymentRowHeaderElement>}
+                              <PaymentRowHeaderElement flex={1}>Bon{' '}d'achat</PaymentRowHeaderElement>
                             </PaymentRow>
                             {
                               payments.map(paymentTmp => {
                                 return (
                                   <PaymentRow key={paymentTmp.id}>
-                                    <PaymentRowElement>{paymentTmp.id}</PaymentRowElement>
-                                    <PaymentRowElement>{'Le ' + paymentTmp.createdDate.toLocaleDateString("fr") + ' à ' + paymentTmp.createdDate.toLocaleTimeString("fr")}</PaymentRowElement>
-                                    <PaymentRowElement>{StripeUtils.getPaymentStatusLabel(paymentTmp.status)}</PaymentRowElement>
-                                    <PaymentRowElement>{StripeUtils.getPaymentAmount(paymentTmp.amount)}</PaymentRowElement>
-                                    <PaymentRowElement>{paymentTmp.voucherId !== undefined ? paymentTmp.voucherId : "Indisponible"}</PaymentRowElement>
+                                    {!isMobile && <PaymentRowElement flex={1}>{paymentTmp.id}</PaymentRowElement>}
+                                    <PaymentRowElement flex={isMobile ? 0.5 : 1}>{isMobile ? paymentTmp.createdDate.toLocaleDateString("fr") : "Le " + paymentTmp.createdDate.toLocaleDateString("fr") + " à " + paymentTmp.createdDate.toLocaleTimeString("fr")}</PaymentRowElement>
+                                    <PaymentRowElement flex={0.5}>{StripeUtils.getPaymentStatusLabel(paymentTmp.status, isMobile)}</PaymentRowElement>
+                                    {!isMobile && <PaymentRowElement flex={0.5}>{StripeUtils.getPaymentAmount(paymentTmp.amount)}</PaymentRowElement>}
+                                    <PaymentRowElement flex={1}>{paymentTmp.voucherId !== undefined ? paymentTmp.voucherId : "Indisponible"}</PaymentRowElement>
                                   </PaymentRow>
                                 );
                               })
