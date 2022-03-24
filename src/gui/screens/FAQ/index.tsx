@@ -40,7 +40,7 @@ const FAQ = () => {
 
             {/* <Question>TODO Question enfants</Question>
             <Response>
-              TODO réponse
+              TODO réponse enfant
             </Response> */}
 
             <Question>Comment utiliser un bon d'achat ?</Question>

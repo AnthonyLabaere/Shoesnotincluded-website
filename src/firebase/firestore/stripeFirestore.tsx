@@ -1,7 +1,9 @@
 import { addDoc, collection, doc, onSnapshot, orderBy, query } from "firebase/firestore";
 
-import * as Types from '../../types';
 import { db } from '../index';
+import * as Types from '../../types';
+import * as Constants from '../../constants';
+import * as NotificationUtils from '../../utils/notificationUtils';
 
 const CUSTOMERS_FIRESTORE_COLLECTION = "stripeCustomers";
 const CHECKOUT_SESSIONS_FIRESTORE_SUBCOLLECTION = "checkout_sessions";
@@ -25,10 +27,11 @@ export const subscribeToCheckoutSession = (userUid: string, checkoutSessionId: s
     if (checkoutSessionSnap.exists()) {
       callback(checkoutSessionSnap.data() as Types.CheckoutSessionDocument);
     } else {
-      // TODO erreur
+      NotificationUtils.handleError("Aucune session de paiement correspondant à l'identifiant " + checkoutSessionId + ". " + Constants.CONTACT_MESSAGE);
     }
-  }, () => {
-    // TODO erreur
+  }, (error) => {
+    console.error(error);
+    NotificationUtils.handleError("Une erreur est survenue lors de la récupération de votre session de paiement d'identifiant " + checkoutSessionId + ". " + Constants.CONTACT_MESSAGE);
   });
 };
 
@@ -52,8 +55,9 @@ export const subscribeToPayments = (userUid: string, callback: (payments: Types.
       });
     });
     callback(payments);
-  }, () => {
-    // TODO erreur
+  }, (error) => {
+    console.error(error);
+    NotificationUtils.handleError("Une erreur est survenue lors de la récupération des paiements associés à votre compte. " + Constants.CONTACT_MESSAGE);
   });
 };
 
@@ -76,12 +80,10 @@ export const createPayment = (userUid: string, successCallback: (checkoutSession
     cancel_url: window.location.origin + "/compte",
   })
     .then((checkoutSessionRef) => {
-      // console.log("checkoutSessionRefId", checkoutSessionRef.id);
       successCallback(checkoutSessionRef.id);
     })
     .catch((error) => {
       console.error(error);
-      // TODO
-      // errorCallback(FirestoreUtils.getErrorMessage(error, 'de la création du compte ' + displayName));
+      NotificationUtils.handleError("Une erreur est survenue lors de la création de la session de paiement. " + Constants.CONTACT_MESSAGE);
     });
 };

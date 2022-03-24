@@ -7,6 +7,8 @@ export const DEVICE_SIZES = {
   desktop: 2024,
 }
 
+export const CONTACT_MESSAGE = 'Merci de nous contacter si le problème persiste.';
+
 export const SOCIAL_NETWORKS_URLS = {
   discord: 'https://discord.gg/PPZEctUjsA',
   facebook: 'https://www.facebook.com/ShoesNotIncludedApp',

@@ -101,7 +101,7 @@ const Account = () => {
             setReloadEmailVerified(false);
             window.clearInterval(timerTmp);
           }
-        }/* TODO, errorCallback*/);
+        });
       }, 5000);
 
       return () => {
@@ -153,11 +153,7 @@ const Account = () => {
                       UserFirestore.createUser(authResultUser.uid, authResultUser.displayName ? authResultUser.displayName : "John Doe");
 
                       if (!authResultUser.emailVerified) {
-                        FirebaseAuth.sendEmailVerification()
-                          .then(() => setReloadEmailVerified(true))
-                          .catch(() => {
-                            // TODO
-                          });
+                        FirebaseAuth.sendEmailVerification(() => setReloadEmailVerified(true));
                       }
                     }
 
