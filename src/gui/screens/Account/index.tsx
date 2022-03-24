@@ -72,7 +72,7 @@ const ButtonsContainer = styled.div`
   justify-content: center;
   width: 100%;
 
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
     flex-direction: column;
   }
 `;
@@ -80,7 +80,7 @@ const ButtonsContainer = styled.div`
 const DeleteOrLogoutButton = styled(Button)`
   flex: 1;
 
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
     width: 100%;
   }
 `;
@@ -268,11 +268,11 @@ const Account = () => {
         onClose={() => setDisplayDeleteAccountModal(false)}
         contentLabel="Suppression de votre compte">
         <h2>Suppression de votre compte</h2>
-        <div>⚠ Attention, la suppression de votre compte entraînera la suppression de toutes vos données.</div>
-        <div style={{ display: 'flex', flex: 1, flexDirection: "row", justifyContent: "center", alignItems: "center" }}>
+        <div>Attention, la suppression de votre compte entraînera la suppression de toutes vos données.</div>
+        <ButtonsContainer>
           <DeleteButton onClick={() => FirebaseAuth.deleteCurrentUser(() => setDisplayDeleteAccountModal(false))}>Supprimer</DeleteButton>
           <DeleteOrLogoutButton onClick={() => setDisplayDeleteAccountModal(false)}>Annuler</DeleteOrLogoutButton>
-        </div>
+        </ButtonsContainer>
       </Modal>
 
     </PageContainer>
