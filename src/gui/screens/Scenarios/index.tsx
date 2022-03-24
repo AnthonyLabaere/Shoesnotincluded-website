@@ -89,9 +89,8 @@ const Scenarios = () => {
       <InnerPageContainer>
         <ContentPageContainer coloredBackground>
           <ContentContainer>
-            {
-              city !== undefined ? <h1>Les scénarios disponibles à {city.name}</h1> : <h1 />
-            }
+            {/* FIXME : à changer une fois la sélection de la ville rendue possible */}
+            <h1>Les scénarios disponibles à {city !== undefined ? city.name : "Nantes"}</h1>
           </ContentContainer>
         </ContentPageContainer>
         <ContentPageContainer>
