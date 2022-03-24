@@ -1,7 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faUserSlash } from '@fortawesome/free-solid-svg-icons'
 
+import useCurrentUser from '../../hooks/useCurrentUser';
 import OutsideClickerInterceptor from '../components/outsideClickerInterceptor'
 
 export const StyledMenu = styled.nav<{ open: boolean }>`
@@ -52,6 +55,8 @@ const MenuLink = styled(Link)`
 `
 
 const Menu = ({ burgerRef, open, setOpen }: { burgerRef: any; open: boolean; setOpen: (open: boolean) => void }) => {
+  const { user } = useCurrentUser();
+
   return (
     <OutsideClickerInterceptor exceptionRef={burgerRef} enabled={open} onIntercept={() => setOpen(false)}>
       <StyledMenu open={open} onClick={() => setOpen(!open)}>
@@ -60,6 +65,9 @@ const Menu = ({ burgerRef, open, setOpen }: { burgerRef: any; open: boolean; set
         <MenuLink to="/enquoicaconsiste">{"En quoi ça consiste ?"}</MenuLink>
         <MenuLink to="/faq">FAQ</MenuLink>
         <MenuLink to="/contact">Contact</MenuLink>
+        <MenuLink to="/compte">
+          {user ? user.displayName : "Mon compte"} <FontAwesomeIcon icon={user ? faUser : faUserSlash} size="1x" />
+        </MenuLink>
       </StyledMenu>
     </OutsideClickerInterceptor>
   )

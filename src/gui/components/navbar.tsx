@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faUserSlash } from '@fortawesome/free-solid-svg-icons'
 
-import { DEVICE_SIZES } from '../../constants'
-import useCurrentUser from '../../hooks/useCurrentUser'
+import { DEVICE_SIZES } from '../../constants';
+import useCurrentUser from '../../hooks/useCurrentUser';
 import Brand from './brand'
 import Marginer from './marginer'
 import Burger from './burger'
