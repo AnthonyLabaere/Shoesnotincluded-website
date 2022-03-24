@@ -1,6 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Footer from './gui/components/footer'
 import Navbar from './gui/components/navbar'
@@ -46,7 +48,7 @@ const App: React.VoidFunctionComponent = () => {
             <Route path="/achat" element={<Payment />} />
             <Route path="/faq" element={<FAQ />} />
           </Routes>
-
+          <ToastContainer />
           <Footer />
         </BrowserRouter>
       </ThemeProvider>
