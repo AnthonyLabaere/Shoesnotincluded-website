@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCopy } from '@fortawesome/free-solid-svg-icons'
 
 import * as Types from "../../../types";
 import * as Constants from "../../../constants";
@@ -9,6 +11,7 @@ import { auth } from '../../../firebase';
 import * as FirebaseAuth from '../../../firebase/auth';
 import * as StripeFirestore from '../../../firebase/firestore/stripeFirestore';
 import * as UserFirestore from '../../../firebase/firestore/userFirestore';
+import * as NotificationUtils from "../../../utils/notificationUtils";
 import * as StripeUtils from "../../../utils/stripeUtils";
 import { ContentContainer, StyledLink } from '../../components/common';
 import Modal from '../../components/Modal';
@@ -234,7 +237,14 @@ const Account = () => {
                                     <PaymentRowElement flex={isMobile ? 0.5 : 1}>{isMobile ? paymentTmp.createdDate.toLocaleDateString("fr") : "Le " + paymentTmp.createdDate.toLocaleDateString("fr") + " à " + paymentTmp.createdDate.toLocaleTimeString("fr")}</PaymentRowElement>
                                     <PaymentRowElement flex={0.5}>{StripeUtils.getPaymentStatusLabel(paymentTmp.status, isMobile)}</PaymentRowElement>
                                     {!isMobile && <PaymentRowElement flex={0.5}>{StripeUtils.getPaymentAmount(paymentTmp.amount)}</PaymentRowElement>}
-                                    <PaymentRowElement flex={1}>{paymentTmp.voucherId !== undefined ? paymentTmp.voucherId : "Indisponible"}</PaymentRowElement>
+                                    <PaymentRowElement flex={1} style={{ cursor: paymentTmp.voucherId !== undefined ? 'pointer' : 'default' }} onClick={() => {
+                                      if (paymentTmp.voucherId !== undefined) {
+                                        navigator.clipboard.writeText(paymentTmp.voucherId);
+                                        NotificationUtils.handleMessage(`Bon d'achat ${paymentTmp.voucherId?.substring(0, 3)}... copié dans le presse-papier.`);
+                                      }
+                                    }}>
+                                      {paymentTmp.voucherId !== undefined ? <div style={{ display: 'flex' }}><FontAwesomeIcon style={{ marginRight: 5 }} icon={faCopy} size="1x" />{paymentTmp.voucherId}</div> : <span>Indisponible</span>}
+                                    </PaymentRowElement>
                                   </PaymentRow>
                                 );
                               })
