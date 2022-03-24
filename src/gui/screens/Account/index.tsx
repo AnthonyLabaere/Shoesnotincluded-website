@@ -75,9 +75,18 @@ const DeleteButton = styled(DeleteOrLogoutButton)`
 `;
 
 const Account = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const { userAuth, user } = useCurrentUser();
+
+  useEffect(() => {
+    if (userAuth !== undefined) {
+      if (userAuth !== null) {
+        setLoadingUser(true);
+      }
+      setLoading(false);
+    }
+  }, [userAuth]);
 
   // Booléen indiquant que l'utilisateur doit être rafraîchit pour vérifier si le champ emailVerified a été mis à jour
   const [reloadEmailVerified, setReloadEmailVerified] = useState(false);
@@ -100,9 +109,11 @@ const Account = () => {
     }
   }, [userAuth, reloadEmailVerified]);
 
+  const [loadingUser, setLoadingUser] = useState(false);
+
   useEffect(() => {
     if (user) {
-      setLoading(false);
+      setLoadingUser(false);
     }
   }, [user]);
 
@@ -122,21 +133,19 @@ const Account = () => {
         <InnerPageContainer>
           <ContentPageContainer coloredBackground>
             <ContentContainer>
-              {
-                !user ? <h1>Connexion</h1> : <h1>Mon compte</h1>
-              }
+              <h1>Connexion</h1>
             </ContentContainer>
           </ContentPageContainer>
           <ContentPageContainer>
             <AccountContentContainer>
               {
-                !loading ? <>
+                (!loading && !loadingUser) ? <>
                   <h2>Veuillez vous connecter ou vous créer un compte :</h2>
                   <FirebaseUiAuth signInSuccessWithAuthResultCallback={(authResult: any) => {
                     const authResultUser = authResult.user;
 
                     if (authResult.additionalUserInfo.isNewUser) {
-                      setLoading(true);
+                      setLoadingUser(true);
 
                       UserFirestore.createUser(authResultUser.uid, authResultUser.displayName ? authResultUser.displayName : "John Doe");
 
