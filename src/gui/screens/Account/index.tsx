@@ -8,7 +8,7 @@ import * as FirebaseAuth from '../../../firebase/auth';
 import * as StripeFirestore from '../../../firebase/firestore/stripeFirestore';
 import * as UserFirestore from '../../../firebase/firestore/userFirestore';
 import * as StripeUtils from "../../../utils/stripeUtils";
-import { ContentContainer } from '../../components/common';
+import { ContentContainer, StyledLink } from '../../components/common';
 import Button from '../../components/button';
 import FirebaseUiAuth from '../../components/FirebaseUIAuth';
 import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer';
@@ -152,6 +152,7 @@ const Account = () => {
                     // Pas de redirection
                     return false;
                   }} />
+                  <span>⚠ Attention, les adresses en @free.fr ne sont pour l'instant pas compatibles avec nos systèmes. Merci d'en choisir une autre ou de <StyledLink to="/contact">nous contacter</StyledLink>.</span>
                 </>
                   : <h2>Chargement du compte en cours...</h2>
               }
@@ -174,7 +175,13 @@ const Account = () => {
           <AccountContentContainer>
             <h2>Bonjour {user.displayName}, bienvenue dans votre espace personnel.</h2>
             {
-              !userAuth.emailVerified && <h3>Merci de confirmer votre adresse mail en <span style={{ fontWeight: 'bold' }}>cliquant sur le lien fourni par mail</span> à l'adresse mail : <br /><br />{userAuth.email}<br /><br /><br />Pensez à vérifier vos spams ou indésirables.</h3>
+              !userAuth.emailVerified &&
+              <h3>
+                Merci de confirmer votre adresse mail en <span style={{ fontWeight: 'bold' }}>cliquant sur le lien fourni par mail</span> à l'adresse mail :
+                <br /><br />
+                {userAuth.email}<br /><br /><br />
+                Pensez à vérifier vos spams ou indésirables. <br /><br />
+                Merci de <StyledLink to="/contact">nous contacter</StyledLink> si vous ne recevez pas le mail.</h3>
             }
             {
               userAuth.emailVerified && <PaymentHistory>

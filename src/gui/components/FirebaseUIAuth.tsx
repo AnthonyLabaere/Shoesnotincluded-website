@@ -46,8 +46,7 @@ const FirebaseUiAuth = ({ signInSuccessWithAuthResultCallback }: FirebaseUiAuthP
         ...uiConfig,
         callbacks: { ...uiConfig.callbacks, signInSuccessWithAuthResult: signInSuccessWithAuthResultCallback !== undefined ? signInSuccessWithAuthResultCallback : uiConfig.callbacks.signInSuccessWithAuthResult }
       }
-    }
-      firebaseAuth={auth} />
+    } firebaseAuth={auth} />
   );
 }
 
