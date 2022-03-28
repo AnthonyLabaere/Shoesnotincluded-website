@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -93,12 +94,33 @@ const DeleteButton = styled(DeleteOrLogoutButton)`
   }
 `;
 
+interface AccountState {
+  fromPayment?: boolean;
+}
+
 const Account = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [locationState, setLocationState] = useState<null | AccountState>(null);
+  useEffect(() => {
+    if (location !== null) {
+      setLocationState(location.state as null | AccountState);
+    }
+  }, [location]);
+
+
   const isMobile = useMediaQuery({ maxWidth: Constants.DEVICE_SIZES.tablet });
 
   const [loading, setLoading] = useState(true);
 
   const { userAuth, user } = useCurrentUser();
+
+  const optionalRedirectToAccount = (locationState: null | AccountState) => {
+    if (locationState !== null && locationState.fromPayment === true) {
+      navigate("../achat", { replace: true, state: { fromAccount: true } });
+    }
+  }
 
   useEffect(() => {
     if (userAuth !== undefined) {
@@ -120,6 +142,9 @@ const Account = () => {
           if (userAuthTmp === null || (userAuthTmp !== null && userAuthTmp.emailVerified === true)) {
             setReloadEmailVerified(false);
             window.clearInterval(timerTmp);
+
+            // Redirection éventuelle dans le cas où l'utilisateur a eu besoin de vérifier son adresse mail (email ou Facebook)
+            optionalRedirectToAccount(locationState);
           }
         });
       }, 5000);
@@ -163,7 +188,7 @@ const Account = () => {
             <AccountContentContainer>
               {
                 (!loading && !loadingUser) ? <>
-                  <h2>Veuillez vous connecter ou vous créer un compte :</h2>
+                  <h2>{locationState !== null && locationState.fromPayment ? "Pour acheter une partie, v" : "V"}euillez vous connecter ou vous créer un compte :</h2>
                   <FirebaseUiAuth signInSuccessWithAuthResultCallback={(authResult: any) => {
                     const authResultUser = authResult.user;
 
@@ -174,7 +199,13 @@ const Account = () => {
 
                       if (!authResultUser.emailVerified) {
                         FirebaseAuth.sendEmailVerification(() => setReloadEmailVerified(true));
+                      } else {
+                        // Redirection éventuelle dans le cas où l'utilisateur n'a pas besoin de vérifier son adresse mail (Google ou Apple)
+                        optionalRedirectToAccount(locationState);
                       }
+                    } else {
+                      // Redirection éventuelle dans le cas où l'utilisateur avait déjà un compte
+                      optionalRedirectToAccount(locationState);
                     }
 
                     // Pas de redirection

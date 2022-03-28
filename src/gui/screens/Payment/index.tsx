@@ -1,21 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import styled from 'styled-components';
 
 import * as Constants from "../../../constants";
 import * as StripeFirestore from "../../../firebase/firestore/stripeFirestore";
 import useCurrentUser from "../../../hooks/useCurrentUser";
-import { ContentContainer, StyledLink } from '../../components/common'
-import Button from '../../components/button'
-import Checkbox from '../../components/Checkbox'
-import Marginer from '../../components/marginer'
-import { ContentPageContainer, InnerPageContainer, PageContainer } from '../../components/pageContainer'
+import { ContentContainer, StyledLink } from '../../components/common';
+import Button from '../../components/button';
+import Checkbox from '../../components/Checkbox';
+import Marginer from '../../components/marginer';
+import { ContentPageContainer, InnerPageContainer, PageContainer } from '../../components/pageContainer';
 
 const PaymentText = styled.h3`
   text-align: left;
 `;
 
 const Payment = () => {
+  const navigate = useNavigate();
+
   const { userAuth } = useCurrentUser();
+
+  useEffect(() => {
+    if (userAuth === null) {
+      navigate("../compte", { replace: true, state: { fromPayment: true } });
+    }
+  }, [userAuth]);
 
   const [loading, setLoading] = useState(false);
   const [checkoutSessionId, setCheckoutSessionId] = useState<string>();
@@ -42,13 +51,13 @@ const Payment = () => {
 
   useEffect(() => {
     if (stripeUrl !== undefined) {
-      console.log(stripeUrl);
       // Redirection vers stripe
       window.location.href = stripeUrl;
     }
   }, [stripeUrl]);
 
   const [consent, setConsent] = useState(false);
+  const [tryWithoutVerifiedUser, setTryWithoutVerifiedUser] = useState(false);
   const [tryWithoutConsent, setTryWithoutConsent] = useState(false);
 
   return (
@@ -69,7 +78,7 @@ const Payment = () => {
                 <li>Permet de jouer jusqu'à 5 joueurs simultanés.</li>
                 <li>Peut être utilisé pour soi ou offert en cadeau 🎁.</li>
                 <li>N'a pas de date de fin de validité 📆.</li>
-                <li>10% de réduction par rapport à un achat sur l'application mobile.</li>
+                <li>Prix réduit de 10% par rapport à un achat sur l'application mobile.</li>
               </ul>
             </PaymentText>
             <PaymentText>
@@ -77,14 +86,22 @@ const Payment = () => {
             </PaymentText>
             {/* <Link style={{ display: 'flex', flex: 1 }} to="/achat"><Button style={{ flex: 1 }}>Je souhaite acheter un bon pour une partie</Button></Link> */}
             <div style={{ display: 'flex', flex: 1 }}>
-              <Button style={{ flex: 1 }} disabled={loading} onClick={() => {
-                if (consent) {
-                  setTryWithoutConsent(false);
-                  setLoading(true);
-                  createPayment();
-                } else {
-                  setTryWithoutConsent(true);
+              <Button style={{ flex: 1 }} disabled={userAuth === undefined || userAuth === null || loading} onClick={() => {
+                if (userAuth !== undefined && userAuth !== null) {
+                  if (userAuth.emailVerified === false) {
+                    setTryWithoutVerifiedUser(true);
+                  } else {
+                    setTryWithoutVerifiedUser(false);
+                    if (consent) {
+                      setTryWithoutConsent(false);
+                      setLoading(true);
+                      createPayment();
+                    } else {
+                      setTryWithoutConsent(true);
+                    }
+                  }
                 }
+
               }} >
                 {
                   !loading ?
@@ -93,6 +110,11 @@ const Payment = () => {
                 }
               </Button>
             </div>
+            {
+              tryWithoutVerifiedUser && <PaymentText style={{ color: Constants.THEME_RED_COLORS[0] }}>
+                Veuillez terminer votre inscription en cliquant sur le lien fourni par mail, puis rafraîchissez la page.
+              </PaymentText>
+            }
             {
               tryWithoutConsent && <PaymentText style={{ color: Constants.THEME_RED_COLORS[0] }}>
                 Veuillez accepter les conditions générales de vente.
