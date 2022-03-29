@@ -74,7 +74,7 @@ export const createPayment = (userUid: string, successCallback: (checkoutSession
 
   addDoc(checkoutSessionsCollectionRef, {
     mode: "payment",
-    price: "price_1Kfg5lBHqoS8JnzKUpmrVj4x",
+    price: process.env.REACT_APP_stripePriceId,
     locale: "fr",
     success_url: window.location.origin + "/compte",
     cancel_url: window.location.origin + "/compte",
