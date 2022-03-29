@@ -147,7 +147,7 @@ const Scenarios = () => {
             </Title>
             <StoreButtons />
             <Subtitle>
-              Prix d'une partie : <span style={{ textDecoration: 'line-through' }}>{Constants.APP_GAME_COST}</span> {Constants.WEBSITE_GAME_COST} ({Constants.WEBSITE_TO_APP_GAME_REDUCTION_PERCENT}% de réduction via un achat via le site) pour 5 joueurs.
+              Prix d'une partie : <span style={{ textDecoration: 'line-through' }}>{Constants.APP_GAME_COST}</span> {Constants.WEBSITE_GAME_COST} ({Constants.WEBSITE_TO_APP_GAME_REDUCTION_PERCENT}% de réduction en achetant directement sur le site) pour 5 joueurs.
             </Subtitle>
             <Link style={{ display: 'flex', flex: 1 }} to="/achat"><Button style={{ flex: 1 }}>Je souhaite acheter un bon pour une partie</Button></Link>
           </ContentContainer>
