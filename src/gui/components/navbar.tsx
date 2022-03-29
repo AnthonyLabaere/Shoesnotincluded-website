@@ -54,12 +54,16 @@ const MenuLink = styled(Link)`
     color: ${({ theme }) => theme.linkHoverColor};
   }
 
-  @media (max-width: ${({ theme }) => theme.deviceSizes.laptop}) {
+  @media (max-width: ${({ theme }) => theme.deviceSizes.desktop}) {
     font-size: 1.5rem;
   }
 
-  @media (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
+  @media (max-width: ${({ theme }) => theme.deviceSizes.laptop}) {
     font-size: 1.2rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
+    font-size: 1rem;
   }
 `
 
@@ -126,6 +130,8 @@ const Navbar = () => {
               <MenuLink to="/scenarios">{"Les scénarios"}</MenuLink>
               <Marginer direction="horizontal" margin={100} />
               <MenuLink to="/enquoicaconsiste">{"En quoi ça consiste ?"}</MenuLink>
+              <Marginer direction="horizontal" margin={100} />
+              <MenuLink to="/tarif">Tarif</MenuLink>
               <Marginer direction="horizontal" margin={100} />
               <MenuLink to="/faq">FAQ</MenuLink>
               <Marginer direction="horizontal" margin={100} />

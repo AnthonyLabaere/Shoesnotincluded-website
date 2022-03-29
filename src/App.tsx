@@ -16,6 +16,7 @@ import RedirectionError from './gui/screens/RedirectionError';
 import Scenarios from './gui/screens/Scenarios';
 import Scenario from './gui/screens/Scenario';
 import WhatIsThat from './gui/screens/WhatIsThat';
+import Prices from './gui/screens/Prices';
 import Cookies from './gui/screens/Cookies';
 import Account from './gui/screens/Account';
 import Payment from './gui/screens/Payment';
@@ -38,6 +39,7 @@ const App: React.VoidFunctionComponent = () => {
             <Route path="/scenarios" element={<Scenarios />} />
             <Route path="/scenario/*" element={<Scenario />} />
             <Route path="/enquoicaconsiste" element={<WhatIsThat />} />
+            <Route path="/tarif" element={<Prices />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/mentions-legales" element={<LegalNotices />} />
             <Route path="/cgu-cgv" element={<CGUCGV />} />

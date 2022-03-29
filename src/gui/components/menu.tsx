@@ -63,6 +63,7 @@ const Menu = ({ burgerRef, open, setOpen }: { burgerRef: any; open: boolean; set
         <MenuLink to="/">Accueil</MenuLink>
         <MenuLink to="/scenarios">{"Les scénarios"}</MenuLink>
         <MenuLink to="/enquoicaconsiste">{"En quoi ça consiste ?"}</MenuLink>
+        <MenuLink to="/tarif">Tarif</MenuLink>
         <MenuLink to="/faq">FAQ</MenuLink>
         <MenuLink to="/contact">Contact</MenuLink>
         <MenuLink to="/compte">
