@@ -119,6 +119,10 @@ const Payment = () => {
                 Veuillez accepter les conditions générales de vente.
               </PaymentText>
             }
+            <PaymentText>
+              Pour utiliser le bon d'achat, veuillez vous référer à la section "Comment utiliser un bon d'achat ?" de la <StyledLink to="/faq">FAQ</StyledLink>.<br />
+            </PaymentText>
+            <i>Précision : les bons d'achat ne sont pour l'instant pas visibles dans l'historique de l'application mobile.</i>
           </ContentContainer>
         </ContentPageContainer>
       </InnerPageContainer>
