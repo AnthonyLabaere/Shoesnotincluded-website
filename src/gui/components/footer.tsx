@@ -5,7 +5,8 @@ import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { DEVICE_SIZES, SOCIAL_NETWORKS_URLS } from '../../constants'
+import { DEVICE_SIZES, SOCIAL_NETWORKS_URLS } from '../../constants';
+import { StyledLink } from '../components/common';
 import Brand from './brand'
 import Marginer from './marginer'
 
@@ -134,11 +135,9 @@ const PrivacyText = styled.div`
   }
 `
 
-const StyledLink = styled(Link)`
+const BottomStyledLink = styled(StyledLink)`
   color: ${GREY_COLOR};
-  display: inline;
   font-size: 1.25rem;
-  text-decoration: underline;
 
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     font-size: 0.75rem;
@@ -219,6 +218,12 @@ const Footer = () => {
               </SocialIconContainer>
             </TopSubContainer>
           </ContentContainer>
+          <Marginer direction="vertical" margin={25} />
+          <ContentContainer>
+            <TopSubContainer>
+              <BottomStyledLink to="/ils-parlent-de-nous">Ils parlent de nous.</BottomStyledLink>
+            </TopSubContainer>
+          </ContentContainer>
         </TopContentContainer>
       </TopContainer>
 
@@ -232,11 +237,11 @@ const Footer = () => {
         </BottomSubContainerColumn>
 
         <BottomSubContainerRow>
-          <StyledLink to="/mentions-legales">Mentions légales</StyledLink>
+          <BottomStyledLink to="/mentions-legales">Mentions légales</BottomStyledLink>
           <Marginer direction="horizontal" margin={marginerMargin} />
-          <StyledLink to="/cgu-cgv">{isMobile ? 'CGU & CGV' : "Condition générales d'utilisation et de vente"}</StyledLink>
+          <BottomStyledLink to="/cgu-cgv">{isMobile ? 'CGU & CGV' : "Condition générales d'utilisation et de vente"}</BottomStyledLink>
           <Marginer direction="horizontal" margin={marginerMargin} />
-          <StyledLink to="/confidentialite">{isMobile ? 'Confidentialité' : 'Politique de confidentialité'}</StyledLink>
+          <BottomStyledLink to="/confidentialite">{isMobile ? 'Confidentialité' : 'Politique de confidentialité'}</BottomStyledLink>
         </BottomSubContainerRow>
       </BottomContainer>
     </FooterContainer>

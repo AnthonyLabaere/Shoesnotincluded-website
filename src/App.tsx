@@ -20,7 +20,8 @@ import Prices from './gui/screens/Prices';
 import Cookies from './gui/screens/Cookies';
 import Account from './gui/screens/Account';
 import Payment from './gui/screens/Payment';
-import FAQ from './gui/screens/FAQ'
+import FAQ from './gui/screens/FAQ';
+import TheyTalkAboutUs from './gui/screens/TheyTalkAboutUs';
 
 import { GlobalStyles } from './style/global'
 import { theme } from './style/theme'
@@ -49,6 +50,7 @@ const App: React.VoidFunctionComponent = () => {
             <Route path="/compte" element={<Account />} />
             <Route path="/achat" element={<Payment />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/ils-parlent-de-nous" element={<TheyTalkAboutUs />} />
           </Routes>
           <ToastContainer />
           <Footer />
