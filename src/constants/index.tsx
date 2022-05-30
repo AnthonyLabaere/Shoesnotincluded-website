@@ -44,3 +44,4 @@ export const WEBSITE_TO_APP_GAME_REDUCTION_PERCENT = 10;
 export const ACTU_NANTES_15122021_URL = "https://actu.fr/pays-de-la-loire/nantes_44109/escape-game-a-nantes-testez-l-application-shoesnotincluded-pour-jouer-a-l-exterieur_46879556.html";
 export const OCEANE_FM_30122021_URL = "https://oceanefm.ouest-france.fr/anthony-labaere-il-ne-fournit-pas-les-chaussures";
 export const UNIDIVERS_NANTES_11042022_URL = "https://www.unidivers.fr/shoesnotincluded-escape-game-plein-air/";
+export const OUEST_FRANCE_28052022_URL = "https://www.ouest-france.fr/premium/?article_id=e1ae8370-d783-11ec-a8f3-48d2134a7ef1";
