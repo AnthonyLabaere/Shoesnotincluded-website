@@ -135,7 +135,7 @@ const Navbar = () => {
               <Marginer direction="horizontal" margin={100} />
               <MenuLink to="/faq">FAQ</MenuLink>
               <Marginer direction="horizontal" margin={100} />
-              <MenuLink to="/contact">Contact</MenuLink>
+              <MenuLink to="/team-building">Team-building</MenuLink>
               <Marginer direction="horizontal" margin={100} />
               <MenuLink to="/compte" style={{ display: 'flex', alignItems: 'center' }}>
                 <UserName>{user ? user.displayName : "Mon compte"}</UserName> <FontAwesomeIcon icon={user ? faUser : faUserSlash} size="1x" />

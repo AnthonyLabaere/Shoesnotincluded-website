@@ -22,6 +22,7 @@ import Account from './gui/screens/Account';
 import Payment from './gui/screens/Payment';
 import FAQ from './gui/screens/FAQ';
 import TheyTalkAboutUs from './gui/screens/TheyTalkAboutUs';
+import TeamBuilding from './gui/screens/TeamBuilding';
 
 import { GlobalStyles } from './style/global'
 import { theme } from './style/theme'
@@ -41,7 +42,7 @@ const App: React.VoidFunctionComponent = () => {
             <Route path="/scenario/*" element={<Scenario />} />
             <Route path="/enquoicaconsiste" element={<WhatIsThat />} />
             <Route path="/tarif" element={<Prices />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/team-building" element={<TeamBuilding />} />
             <Route path="/mentions-legales" element={<LegalNotices />} />
             <Route path="/cgu-cgv" element={<CGUCGV />} />
             <Route path="/confidentialite" element={<PrivacyPolicy />} />
@@ -50,6 +51,7 @@ const App: React.VoidFunctionComponent = () => {
             <Route path="/compte" element={<Account />} />
             <Route path="/achat" element={<Payment />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/ils-parlent-de-nous" element={<TheyTalkAboutUs />} />
           </Routes>
           <ToastContainer />

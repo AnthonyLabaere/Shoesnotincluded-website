@@ -65,7 +65,7 @@ const Menu = ({ burgerRef, open, setOpen }: { burgerRef: any; open: boolean; set
         <MenuLink to="/enquoicaconsiste">{"En quoi ça consiste ?"}</MenuLink>
         <MenuLink to="/tarif">Tarif</MenuLink>
         <MenuLink to="/faq">FAQ</MenuLink>
-        <MenuLink to="/contact">Contact</MenuLink>
+        <MenuLink to="/team-building">Team-building</MenuLink>
         <MenuLink to="/compte">
           {user ? user.displayName : "Mon compte"} <FontAwesomeIcon icon={user ? faUser : faUserSlash} size="1x" />
         </MenuLink>

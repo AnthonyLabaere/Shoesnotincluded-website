@@ -75,7 +75,7 @@ const Contact = () => {
       <InnerPageContainer>
         <ContentPageContainer coloredBackground>
           <ContentContainer>
-            <h1>Contact</h1>
+            <h1>Nous contacter</h1>
           </ContentContainer>
         </ContentPageContainer>
         <ContactFormContentContainer>

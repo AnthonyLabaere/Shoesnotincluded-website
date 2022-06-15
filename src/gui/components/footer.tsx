@@ -224,6 +224,12 @@ const Footer = () => {
               <BottomStyledLink to="/ils-parlent-de-nous">Ils parlent de nous.</BottomStyledLink>
             </TopSubContainer>
           </ContentContainer>
+          <Marginer direction="vertical" margin={25} />
+          <ContentContainer>
+            <TopSubContainer>
+              <BottomStyledLink to="/contact">Nous contacter</BottomStyledLink>
+            </TopSubContainer>
+          </ContentContainer>
         </TopContentContainer>
       </TopContainer>
 
