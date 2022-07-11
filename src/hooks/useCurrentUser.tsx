@@ -19,7 +19,10 @@ function useCurrentUser() {
   useEffect(() => {
     if (userAuth) {
       const unsubscribe = UserFirestore.subscribeToUser(userAuth.uid, userTmp => {
-        setUser(userTmp);
+        setUser({
+          id: userAuth.uid,
+          ...userTmp,
+        });
       });
 
       return unsubscribe;

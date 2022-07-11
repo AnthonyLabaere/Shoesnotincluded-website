@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 export interface Coordinates {
   latitude: number;
   longitude: number;
@@ -99,7 +101,8 @@ export interface ScenarioDocument {
 }
 
 export interface UserDocument {
-  displayName: string;
+  id: string;
+  displayName?: string;
   // dev?: boolean;
 }
 
@@ -112,6 +115,12 @@ export interface CheckoutSessionDocument {
   // sessionId: string;
   // success_url:string;
   url: string;
+}
+
+export interface UserVoucherCardHistoryDocument {
+  voucherCardId: string;
+  consumedDate: Timestamp;
+  voucherId: string;
 }
 
 export interface Payment {

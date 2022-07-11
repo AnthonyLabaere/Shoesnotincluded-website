@@ -23,6 +23,7 @@ import Payment from './gui/screens/Payment';
 import FAQ from './gui/screens/FAQ';
 import TheyTalkAboutUs from './gui/screens/TheyTalkAboutUs';
 import TeamBuilding from './gui/screens/TeamBuilding';
+import CardValidation from './gui/screens/CardValidation';
 
 import { GlobalStyles } from './style/global'
 import { theme } from './style/theme'
@@ -53,6 +54,7 @@ const App: React.VoidFunctionComponent = () => {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/ils-parlent-de-nous" element={<TheyTalkAboutUs />} />
+            <Route path="/validation-carte" element={<CardValidation />} />
           </Routes>
           <ToastContainer />
           <Footer />

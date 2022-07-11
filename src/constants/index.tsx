@@ -1,3 +1,16 @@
+// Collections Firestore
+export const CONF_FIRESTORE_COLLECTION = 'conf';
+export const CITIES_FIRESTORE_COLLECTION = 'cities';
+export const USERS_FIRESTORE_COLLECTION = 'users';
+export const USER_GAME_HISTORY_FIRESTORE_COLLECTION = 'userGameHistory';
+export const USER_VOUCHER_CARD_HISTORY_FIRESTORE_COLLECTION = "userVoucherCardHistory";
+export const SCENARII_FIRESTORE_COLLECTION = 'scenarii';
+export const STEPS_FIRESTORE_COLLECTION = 'steps';
+export const CARDS_FIRESTORE_COLLECTION = 'cards';
+export const GAMES_FIRESTORE_COLLECTION = 'games';
+export const GAMES_FINISHED_FLAGS_FIRESTORE_COLLECTION = 'gamesFinishedFlags';
+export const LEADERBOARD_FIRESTORE_COLLECTION = 'leaderboard';
+
 export const DEVICE_SIZES = {
   mobileXS: 400,
   mobile: 580,

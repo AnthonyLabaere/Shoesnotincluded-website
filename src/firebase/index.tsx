@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app'
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 // import { getAnalytics } from "firebase/analytics";
+import { getFunctions } from 'firebase/functions';
 
 // https://firebase.google.com/docs/firestore/query-data/queries#web-version-9_2
 // https://travis.media/how-to-use-firebase-with-react/
@@ -20,7 +21,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+const functions = getFunctions(app);
 // const analytics = getAnalytics(app);
 
-export { app, auth, db };
+export { app, auth, db, functions };
 

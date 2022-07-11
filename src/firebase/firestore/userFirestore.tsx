@@ -1,16 +1,21 @@
-import { getDoc, doc, onSnapshot, setDoc, serverTimestamp } from "firebase/firestore";
+import { collection, getDoc, doc, onSnapshot, setDoc, getDocs, serverTimestamp } from "firebase/firestore";
 
 import { db } from '../index';
 import * as Types from '../../types';
 import * as Constants from '../../constants';
 import * as NotificationUtils from '../../utils/notificationUtils';
-
-const getUserDocRef = (userUid: string) => {
-  return doc(db, "users", userUid);
-}
+/**
+ * Récupération de la référence d'un utilisateur
+ *
+ * @param userUid l'uid de l'utilisateur au sens authentification firebase (= l'identifiant du document firestore correspondant à l'utilisateur)
+ * @returns la référence de l'utilisateur
+ */
+const userDocumentReference = (userUid: string) => {
+  return doc(db, Constants.USERS_FIRESTORE_COLLECTION, userUid);
+};
 
 export const subscribeToUser = (userUid: string, callback: (user?: Types.UserDocument) => void) => {
-  const userDocRef = getUserDocRef(userUid);
+  const userDocRef = userDocumentReference(userUid);
 
   return onSnapshot(userDocRef, userDocSnap => {
     callback(userDocSnap.exists() ? userDocSnap.data() as Types.UserDocument : undefined);
@@ -29,7 +34,7 @@ export const subscribeToUser = (userUid: string, callback: (user?: Types.UserDoc
  * @param errorCallback le callback à appeler en cas d'erreur
  */
 export const createUser = (userUid: string, displayName: string) => {
-  const userDocRef = getUserDocRef(userUid);
+  const userDocRef = userDocumentReference(userUid);
 
   getDoc(userDocRef)
     .then(userDocSnap => {
@@ -48,6 +53,33 @@ export const createUser = (userUid: string, displayName: string) => {
       console.error(error);
       NotificationUtils.handleError("Une erreur est survenue lors de la création de votre utilisateur. " + Constants.CONTACT_MESSAGE);
     });
+};
 
 
+/**
+ * Récupération de la référence de l'historique de validation de carte de bon pour une partie d'un utilisateur
+ *
+ * @param userUid l'uid de l'utilisateur au sens authentification firebase (= l'identifiant du document firestore correspondant à l'utilisateur)
+ * @returns la référence de l'utilisateur
+ */
+const userVoucherCardHistoryCollectionReference = (userUid: string) => {
+  return collection(db, `${Constants.USERS_FIRESTORE_COLLECTION}/${userUid}/${Constants.USER_VOUCHER_CARD_HISTORY_FIRESTORE_COLLECTION}`);
+};
+
+/**
+ * Souscription aux modifications sur l'historique de validation de carte de bon pour une partie d'un utilisateur stocké dans firestore
+ *
+ * @param userUid l'identifiant du document firestore correspondant au scénario
+ * @param callback la fonction à appeler lors de modification sur le scénario
+ * @returns la méthode de désinscription
+ */
+export const subscribeToVoucherCardHistoryDocument = (userUid: string, callback: (userGameHistoryDocuments: Types.UserVoucherCardHistoryDocument[]) => void) => {
+  const voucherCardHistoryCollectionRef = userVoucherCardHistoryCollectionReference(userUid);
+
+  return onSnapshot(voucherCardHistoryCollectionRef, voucherCardHistoryDocsSnap => {
+    callback(voucherCardHistoryDocsSnap.docs.map(doc => doc.data() as Types.UserVoucherCardHistoryDocument));
+  }, (error) => {
+    console.error(error);
+    NotificationUtils.handleError("Une erreur est survenue lors de la récupération de l'historique de validation de carte de votre utilisateur. " + Constants.CONTACT_MESSAGE);
+  });
 };

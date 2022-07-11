@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCopy } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopy } from '@fortawesome/free-solid-svg-icons';
 
 import * as Types from "../../../types";
 import * as Constants from "../../../constants";
@@ -96,6 +96,7 @@ const DeleteButton = styled(DeleteOrLogoutButton)`
 
 interface AccountState {
   fromPayment?: boolean;
+  fromCardValidation?: boolean;
 }
 
 const Account = () => {
@@ -117,9 +118,24 @@ const Account = () => {
   const { userAuth, user } = useCurrentUser();
 
   const optionalRedirectToAccount = (locationState: null | AccountState) => {
-    if (locationState !== null && locationState.fromPayment === true) {
-      navigate("../achat", { replace: true, state: { fromAccount: true } });
+    if (locationState !== null) {
+      if (locationState.fromPayment === true) {
+        navigate("../achat", { replace: true, state: { fromAccount: true } });
+      } else if (locationState.fromCardValidation === true) {
+        navigate("../validation-carte", { replace: true, state: { fromAccount: true } });
+      }
     }
+  }
+
+  const getTitlePrefix = (locationState: null | AccountState): string => {
+    if (locationState !== null) {
+      if (locationState.fromPayment === true) {
+        return "Pour acheter une partie, v";
+      } else if (locationState.fromCardValidation === true) {
+        return "Pour valider votre carte, v";
+      }
+    }
+    return "V";
   }
 
   useEffect(() => {
@@ -157,9 +173,14 @@ const Account = () => {
 
   const [loadingUser, setLoadingUser] = useState(false);
 
+  const [userVoucherCardHistoryDocuments, setUserVoucherCardHistoryDocuments] = useState<Types.UserVoucherCardHistoryDocument[]>([]);
+
   useEffect(() => {
     if (user) {
       setLoadingUser(false);
+
+      // Synchronisation de l'historique des cartes de bon pour une partie validées par l'utilisateur
+      UserFirestore.subscribeToVoucherCardHistoryDocument(user.id, setUserVoucherCardHistoryDocuments);
     }
   }, [user]);
 
@@ -188,7 +209,7 @@ const Account = () => {
             <AccountContentContainer>
               {
                 (!loading && !loadingUser) ? <>
-                  <h2>{locationState !== null && locationState.fromPayment ? "Pour acheter une partie, v" : "V"}euillez vous connecter ou vous créer un compte :</h2>
+                  <h2>{getTitlePrefix(locationState)}euillez vous connecter ou vous créer un compte :</h2>
                   <FirebaseUiAuth signInSuccessWithAuthResultCallback={(authResult: any) => {
                     const authResultUser = authResult.user;
 
@@ -243,48 +264,77 @@ const Account = () => {
                 Merci de <StyledLink to="/contact">nous contacter</StyledLink> si vous ne recevez pas le mail.</h3>
             }
             {
-              userAuth.emailVerified && <PaymentHistory>
-                <h2 style={{ textAlign: 'left' }}>Historique d'achat :</h2>
+              userAuth.emailVerified && <>
                 {
-                  payments === undefined ? <h3>Chargement de l'historique en cours...</h3>
-                    :
-                    <>
-                      {
-                        payments.length === 0 ? <h3 style={{ textAlign: 'left' }}>Aucun achat réalisé.</h3>
-                          :
-                          <>
-                            <PaymentRow>
-                              {!isMobile && <PaymentRowHeaderElement flex={1}>Identifiant</PaymentRowHeaderElement>}
-                              <PaymentRowHeaderElement flex={isMobile ? 0.5 : 1}>Date{!isMobile ? " d'achat" : ""}</PaymentRowHeaderElement>
-                              <PaymentRowHeaderElement flex={0.5}>Statut</PaymentRowHeaderElement>
-                              {!isMobile && <PaymentRowHeaderElement flex={0.5}>Montant</PaymentRowHeaderElement>}
-                              <PaymentRowHeaderElement flex={1}>Bon{' '}d'achat</PaymentRowHeaderElement>
-                            </PaymentRow>
-                            {
-                              payments.map(paymentTmp => {
-                                return (
-                                  <PaymentRow key={paymentTmp.id}>
-                                    {!isMobile && <PaymentRowElement flex={1}>{paymentTmp.id}</PaymentRowElement>}
-                                    <PaymentRowElement flex={isMobile ? 0.5 : 1}>{isMobile ? paymentTmp.createdDate.toLocaleDateString("fr") : "Le " + paymentTmp.createdDate.toLocaleDateString("fr") + " à " + paymentTmp.createdDate.toLocaleTimeString("fr")}</PaymentRowElement>
-                                    <PaymentRowElement flex={0.5}>{StripeUtils.getPaymentStatusLabel(paymentTmp.status, isMobile)}</PaymentRowElement>
-                                    {!isMobile && <PaymentRowElement flex={0.5}>{StripeUtils.getPaymentAmount(paymentTmp.amount)}</PaymentRowElement>}
-                                    <PaymentRowElement flex={1} style={{ cursor: paymentTmp.voucherId !== undefined ? 'pointer' : 'default' }} onClick={() => {
-                                      if (paymentTmp.voucherId !== undefined) {
-                                        navigator.clipboard.writeText(paymentTmp.voucherId);
-                                        NotificationUtils.handleMessage(`Bon d'achat ${paymentTmp.voucherId?.substring(0, 3)}... copié dans le presse-papier.`);
-                                      }
-                                    }}>
-                                      {paymentTmp.voucherId !== undefined ? <div style={{ display: 'flex' }}><FontAwesomeIcon style={{ marginRight: 5 }} icon={faCopy} size="1x" />{paymentTmp.voucherId}</div> : <span>Indisponible</span>}
-                                    </PaymentRowElement>
-                                  </PaymentRow>
-                                );
-                              })
-                            }
-                          </>
-                      }
-                    </>
+                  userVoucherCardHistoryDocuments.length > 0 &&
+                  <PaymentHistory>
+                    <h2 style={{ textAlign: 'left' }}>Historique de validation de carte{userVoucherCardHistoryDocuments.length > 1 ? "s" : ""} :</h2>
+                    <PaymentRow>
+                      {!isMobile && <PaymentRowHeaderElement flex={1}>Identifiant{' '}de{' '}la{' '}carte</PaymentRowHeaderElement>}
+                      <PaymentRowHeaderElement flex={isMobile ? 0.5 : 1}>Date{!isMobile ? " de validation" : ""}</PaymentRowHeaderElement>
+                      <PaymentRowHeaderElement flex={1}>Bon{' '}d'achat</PaymentRowHeaderElement>
+                    </PaymentRow>
+                    {
+                      userVoucherCardHistoryDocuments.map(userGameVoucherCardDocumentTmp => {
+                        return (
+                          <PaymentRow key={userGameVoucherCardDocumentTmp.voucherCardId}>
+                            {!isMobile && <PaymentRowElement flex={1}>{userGameVoucherCardDocumentTmp.voucherCardId}</PaymentRowElement>}
+                            <PaymentRowElement flex={isMobile ? 0.5 : 1}>{isMobile ? userGameVoucherCardDocumentTmp.consumedDate.toDate().toLocaleDateString("fr") : "Le " + userGameVoucherCardDocumentTmp.consumedDate.toDate().toLocaleDateString("fr") + " à " + userGameVoucherCardDocumentTmp.consumedDate.toDate().toLocaleTimeString("fr")}</PaymentRowElement>
+                            <PaymentRowElement flex={1} style={{ cursor: userGameVoucherCardDocumentTmp.voucherId !== undefined ? 'pointer' : 'default' }} onClick={() => {
+                              navigator.clipboard.writeText(userGameVoucherCardDocumentTmp.voucherId);
+                              NotificationUtils.handleMessage(`Bon d'achat ${userGameVoucherCardDocumentTmp.voucherId?.substring(0, 3)}... copié dans le presse-papier.`);
+                            }}>
+                              <div style={{ display: isMobile ? 'block' : 'flex' }}><FontAwesomeIcon style={{ marginRight: 5 }} icon={faCopy} size="1x" />{userGameVoucherCardDocumentTmp.voucherId}</div>
+                            </PaymentRowElement>
+                          </PaymentRow>
+                        );
+                      })
+                    }
+                  </PaymentHistory>
                 }
-              </PaymentHistory>
+                <PaymentHistory>
+                  <h2 style={{ textAlign: 'left' }}>Historique d'achat :</h2>
+                  {
+                    payments === undefined ? <h3>Chargement de l'historique en cours...</h3>
+                      :
+                      <>
+                        {
+                          payments.length === 0 ? <h3 style={{ textAlign: 'left' }}>Aucun achat réalisé.</h3>
+                            :
+                            <>
+                              <PaymentRow>
+                                {!isMobile && <PaymentRowHeaderElement flex={1}>Identifiant</PaymentRowHeaderElement>}
+                                <PaymentRowHeaderElement flex={isMobile ? 0.5 : 1}>Date{!isMobile ? " d'achat" : ""}</PaymentRowHeaderElement>
+                                <PaymentRowHeaderElement flex={0.5}>Statut</PaymentRowHeaderElement>
+                                {!isMobile && <PaymentRowHeaderElement flex={0.5}>Montant</PaymentRowHeaderElement>}
+                                <PaymentRowHeaderElement flex={1}>Bon{' '}d'achat</PaymentRowHeaderElement>
+                              </PaymentRow>
+                              {
+                                payments.map(paymentTmp => {
+                                  return (
+                                    <PaymentRow key={paymentTmp.id}>
+                                      {!isMobile && <PaymentRowElement flex={1}>{paymentTmp.id}</PaymentRowElement>}
+                                      <PaymentRowElement flex={isMobile ? 0.5 : 1}>{isMobile ? paymentTmp.createdDate.toLocaleDateString("fr") : "Le " + paymentTmp.createdDate.toLocaleDateString("fr") + " à " + paymentTmp.createdDate.toLocaleTimeString("fr")}</PaymentRowElement>
+                                      <PaymentRowElement flex={0.5}>{StripeUtils.getPaymentStatusLabel(paymentTmp.status, isMobile)}</PaymentRowElement>
+                                      {!isMobile && <PaymentRowElement flex={0.5}>{StripeUtils.getPaymentAmount(paymentTmp.amount)}</PaymentRowElement>}
+                                      <PaymentRowElement flex={1} style={{ cursor: paymentTmp.voucherId !== undefined ? 'pointer' : 'default' }} onClick={() => {
+                                        if (paymentTmp.voucherId !== undefined) {
+                                          navigator.clipboard.writeText(paymentTmp.voucherId);
+                                          NotificationUtils.handleMessage(`Bon d'achat ${paymentTmp.voucherId?.substring(0, 3)}... copié dans le presse-papier.`);
+                                        }
+                                      }}>
+                                        {paymentTmp.voucherId !== undefined ? <div style={{ display: isMobile ? 'block' : 'flex' }}><FontAwesomeIcon style={{ marginRight: 5 }} icon={faCopy} size="1x" />{paymentTmp.voucherId}</div> : <span>Indisponible</span>}
+                                      </PaymentRowElement>
+                                    </PaymentRow>
+                                  );
+                                })
+                              }
+                            </>
+                        }
+                      </>
+                  }
+                </PaymentHistory>
+              </>
             }
             <ButtonsContainer>
               <DeleteOrLogoutButton style={{ flex: 1 }} onClick={() => auth.signOut()}>Déconnexion</DeleteOrLogoutButton>

@@ -30,13 +30,13 @@ const ButtonWrapper = styled.button<{ size?: number, disabled: boolean }>`
   }
 `
 
-const Button = ({ children, className, size, style, onClick, disabled = false }: { children: string | JSX.Element | JSX.Element[], className?: string, size?: number, style?: React.CSSProperties, onClick?: () => void, disabled?: boolean }) => {
+const Button = ({ children, className, size, style, onClick, disabled = false, type = 'button' }: { children: string | JSX.Element | JSX.Element[], className?: string, size?: number, style?: React.CSSProperties, onClick?: () => void, disabled?: boolean, type?: 'button' | 'submit' | 'reset' }) => {
   return (
     <ButtonWrapper size={size} className={className} style={style} onClick={() => {
       if (!disabled && onClick !== undefined) {
         onClick();
       }
-    }} disabled={disabled}>
+    }} disabled={disabled} type={type}>
       {children}
     </ButtonWrapper>
   )
