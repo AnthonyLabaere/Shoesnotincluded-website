@@ -5,8 +5,8 @@ import * as Constants from '../../constants';
 import * as NotificationUtils from '../../utils/notificationUtils';
 
 export const consumeVoucherCard = (voucherCardId: string, validationCode: string, callback: (voucherId: string) => void, errorCallback: () => void) => {
-  const consumeVoucherCardFirestore = httpsCallable(functions, 'consumeVoucherCard');
-  consumeVoucherCardFirestore({ voucherCardId, validationCode })
+  const consumeVoucherCardFunction = httpsCallable(functions, 'consumeVoucherCard');
+  consumeVoucherCardFunction({ voucherCardId, validationCode })
     .then((result) => {
       const data: { voucherId: string } = result.data as { voucherId: string };
       callback(data.voucherId)
@@ -15,7 +15,6 @@ export const consumeVoucherCard = (voucherCardId: string, validationCode: string
       // Getting the Error details.
       const code = error.code;
 
-      // TODO : gérer les différents messages d'erreur
       if (code === "functions/unauthenticated") {
         NotificationUtils.handleMessage("Vous devez vous connecter à votre compte avant pouvoir demander à valider votre carte. " + Constants.CONTACT_MESSAGE);
       } else if (code === "functions/permission-denied") {
@@ -31,6 +30,26 @@ export const consumeVoucherCard = (voucherCardId: string, validationCode: string
         NotificationUtils.handleMessage("Le code de validation associé à la carte ne correspond pas. " + Constants.CONTACT_MESSAGE);
       } else {
         NotificationUtils.handleError("Une erreur inconnue est survenue lors de la tentative de validation de votre carte. " + Constants.CONTACT_MESSAGE);
+      }
+
+      errorCallback();
+    });
+}
+
+export const contact = (lastName: string, firstName: string, email: string, subject: string, message: string, callback: () => void, errorCallback: () => void) => {
+  const contactFunction = httpsCallable(functions, 'contact');
+  contactFunction({ lastName, firstName, email, subject, message })
+    .then(() => {
+      callback()
+    })
+    .catch((error) => {
+      // Getting the Error details.
+      const code = error.code;
+
+      if (code === "functions/invalid-argument") {
+        NotificationUtils.handleMessage("Une erreur technique est survenue lors de l'envoi du formulaire. " + Constants.CONTACT_MESSAGE);
+      } else {
+        NotificationUtils.handleError("Une erreur inconnue est survenue lors de l'envoi du formulaire. " + Constants.CONTACT_MESSAGE);
       }
 
       errorCallback();

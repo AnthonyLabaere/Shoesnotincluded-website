@@ -2,19 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import Button from '../../components/button';
-import * as VoucherCardFirestore from '../../../firebase/firestore/voucherCardFirestore';
 import styled from 'styled-components';
 import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useFormik } from 'formik';
 
 import * as Constants from '../../../constants';
 import useCurrentUser from "../../../hooks/useCurrentUser";
-import { useFormik } from 'formik';
+import * as FirebaseFunctions from '../../../firebase/functions';
 import { ContentContainer, StyledALink } from '../../components/common';
 import Marginer from '../../components/marginer';
 import { ContentPageContainer, InnerPageContainer, PageContainer } from '../../components/pageContainer';
 import Modal from '../../components/Modal';
 import * as NotificationUtils from "../../../utils/notificationUtils";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const Form = styled.form`
   display: flex;
@@ -118,7 +118,7 @@ const CardValidation = () => {
     },
     validate,
     onSubmit: (values, { setSubmitting }) => {
-      VoucherCardFirestore.consumeVoucherCard(values.voucherCardId, values.validationCode, (voucherId) => {
+      FirebaseFunctions.consumeVoucherCard(values.voucherCardId, values.validationCode, (voucherId) => {
         setSubmitting(false);
         setVoucherId(voucherId);
       }, () => setSubmitting(false));

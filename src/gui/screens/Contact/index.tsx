@@ -1,75 +1,126 @@
 import React from 'react'
-// import { Formik } from 'formik';
-import styled from 'styled-components'
+import { useFormik } from 'formik';
+import styled from 'styled-components';
 
-// import { Button } from "../../components/button"
-import { ContentContainer } from '../../components/common'
-import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer'
+import * as Constants from "../../../constants";
+import * as FirebaseFunctions from '../../../firebase/functions';
+import Button from "../../components/button";
+import { ContentContainer } from '../../components/common';
+import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer';
+import * as NotificationUtils from "../../../utils/notificationUtils";
 
-// export const Form = styled.form`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// `;
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
 
-// export const Input = styled.input`
-//     width: 100%;
-//     height: 42px;
-//     outline: none;
-//     border: 1px solid rgba(200, 200, 200, 0.03);
-//     padding: 0 10px;
-//     transition: all, 200ms ease-in-out;
-//     box-sizing: border-box;
-//     border-bottom: 1.4px solid rgba(200, 200, 200, 0.4);
+export const InputContainer = styled.div`
+  margin-bottom: 15px;
+  width: 50%;
 
-//     &::placeholder {
-//         color: rgba(170, 170, 170, 1);
-//     }
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
+    width: 100%;
+    text-align: center;
+  }
+`;
 
-//     &:focus {
-//         outline: none;
-//         border-bottom: ${({ theme }) => ("2px solid " + theme.linkHoverColor)};
-//     }
-// `;
+export const Label = styled.label`
+  font-size: 1.5em;
+`;
 
-// export const Textarea = styled.textarea`
-//     width: 100%;
-//     height: 168px;
-//     outline: none;
-//     border: 1px solid rgba(200, 200, 200, 0.03);
-//     padding: 10px 10px;
-//     transition: all, 200ms ease-in-out;
-//     box-sizing: border-box;
-//     border-bottom: 1.4px solid rgba(200, 200, 200, 0.4);
-//     resize: none;
+export const Input = styled.input`
+    width: 100%;
+    height: 42px;
+    outline: none;
+    border: 1px solid rgba(200, 200, 200, 0.03);
+    padding: 0 10px;
+    transition: all, 200ms ease-in-out;
+    box-sizing: border-box;
+    border-bottom: 1.4px solid rgba(200, 200, 200, 0.4);
 
-//     &::placeholder {
-//         color: rgba(170, 170, 170, 1);
-//     }
+    &::placeholder {
+        color: rgba(170, 170, 170, 1);
+    }
 
-//     &:focus {
-//         outline: none;
-//         border-bottom: ${({ theme }) => ("2px solid " + theme.linkHoverColor)};
-//     }
-// `;
+    &:focus {
+        outline: none;
+        border-bottom: ${({ theme }) => ("2px solid " + theme.linkHoverColor)};
+    }
+`;
 
-// export const SubmitButtonContainer = styled.div`
-//     width: 100%;
-//     margin: 1rem;
-//     display: flex;
-//     justify-content: center;
-// `
+export const Textarea = styled.textarea`
+    width: 100%;
+    height: 168px;
+    outline: none;
+    border: 1px solid rgba(200, 200, 200, 0.03);
+    padding: 10px 10px;
+    transition: all, 200ms ease-in-out;
+    box-sizing: border-box;
+    border-bottom: 1.4px solid rgba(200, 200, 200, 0.4);
+    resize: none;
 
-// export const Text = styled.p<{ color: string }>`
-//   font-family: 'Raleway', sans-serif;
-//   color: ${props => props.color || '#4d4d4d'};
-// `;
+    &::placeholder {
+        color: rgba(170, 170, 170, 1);
+    }
+
+    &:focus {
+        outline: none;
+        border-bottom: ${({ theme }) => ("2px solid " + theme.linkHoverColor)};
+    }
+`;
+
+export const ErrorMessage = styled.div`
+  font-weight: bold;
+  color: ${Constants.THEME_RED_COLORS[0]};
+  margin-top: 5px;
+  min-height: 20px;
+`;
 
 const ContactFormContentContainer = styled(ContentContainer)`
   min-height: 500px;
 `
 
 const Contact = () => {
+  const validate = (values: { firstName?: string, lastName?: string, email?: string, subject?: string, message?: string }) => {
+    const errors: { lastName?: string, firstName?: string, email?: string, subject?: string, message?: string } = {};
+    if (!values.lastName) {
+      errors.lastName = 'Champ requis';
+    }
+    if (!values.firstName) {
+      errors.firstName = 'Champ requis';
+    }
+    if (!values.email) {
+      errors.email = 'Champ requis';
+    }
+    if (!values.subject) {
+      errors.subject = 'Champ requis';
+    }
+    if (!values.message) {
+      errors.message = 'Champ requis';
+    }
+
+    return errors;
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      lastName: '',
+      firstName: '',
+      email: '',
+      subject: '',
+      message: ''
+    },
+    validate,
+    onSubmit: (values, { setSubmitting }) => {
+      FirebaseFunctions.contact(values.lastName, values.firstName, values.email, values.subject, values.message, () => {
+        NotificationUtils.handleMessage(`Votre message a été envoyé. Nous vous répondrons dès que possible.`);
+        setSubmitting(false);
+      }, () => setSubmitting(false));
+    }
+  });
+
   return (
     <PageContainer>
       <InnerPageContainer>
@@ -79,73 +130,40 @@ const Contact = () => {
           </ContentContainer>
         </ContentPageContainer>
         <ContactFormContentContainer>
-          <h2 style={{ textAlign: 'center' }}>Une question sur l&apos;application ou l&apos;un des jeux ? Merci de nous contacter via l&apos;adresse mail suivante :</h2>
-          <h2 style={{ textAlign: 'center' }}>contact@shoesnotincluded.fr</h2>
-          {/* <h2 style={{ textAlign: 'center' }}>Une question sur l'application ou l'un des jeux ? Merci de remplir le formulaire ci-dessous :</h2> */}
-          {/* <Formik
-                        initialValues={{ name: '', email: '', message: '' }}
-                        validate={values => {
-                            const errors: { email?: string } = {};
-                            if (!values.email) {
-                                errors.email = 'Obligatoire';
-                            } else if (
-                                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-                            ) {
-                                errors.email = 'Invalid email address';
-                            }
-                            return errors;
-                        }}
-                        onSubmit={(values, { setSubmitting }) => {
-                            setTimeout(() => {
-                                alert(JSON.stringify(values, null, 2));
-                                setSubmitting(false);
-                            }, 400);
-                        }}
-                    >
-                        {({
-                            values,
-                            handleChange,
-                            handleBlur,
-                            handleSubmit,
-                            isSubmitting
-                        }) => (
-                            <form onSubmit={handleSubmit}>
-                                <Input
-                                    type="text"
-                                    name="name"
-                                    placeholder="Nom*"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.name}
-                                    required
-                                />
+          <h2 style={{ textAlign: 'center', marginBottom: 50 }}>Une question sur l'application ou l'un des scénarios ? Merci de remplir le formulaire ci-dessous :</h2>
+          <Form onSubmit={formik.handleSubmit}>
+            <InputContainer>
+              <Label htmlFor="lastName">Nom</Label>
+              <Input id="lastName" type="text" {...formik.getFieldProps('lastName')} />
+              <ErrorMessage>{formik.touched.lastName && formik.errors.lastName ? formik.errors.lastName : ""}</ErrorMessage>
+            </InputContainer>
 
-                                <Input
-                                    type="email"
-                                    name="email"
-                                    placeholder="Adresse mail*"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.email}
-                                    required
-                                />
+            <InputContainer>
+              <Label htmlFor="firstName">Prénom</Label>
+              <Input id="firstName" type="text" {...formik.getFieldProps('firstName')} />
+              <ErrorMessage>{formik.touched.firstName && formik.errors.firstName ? formik.errors.firstName : ""}</ErrorMessage>
+            </InputContainer>
 
-                                <Textarea
-                                    name="message"
-                                    placeholder="Message*"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.message}
-                                    required
-                                />
-                                <SubmitButtonContainer>
-                                    <Button type="submit" disabled={isSubmitting} style={{ fontSize: '1.8em' }}>
-                                        Envoyer
-                                    </Button>
-                                </SubmitButtonContainer>
-                            </form>
-                        )}
-                    </Formik> */}
+            <InputContainer>
+              <Label htmlFor="email">Adresse mail</Label>
+              <Input id="email" type="email" {...formik.getFieldProps('email')} />
+              <ErrorMessage>{formik.touched.email && formik.errors.email ? formik.errors.email : ""}</ErrorMessage>
+            </InputContainer>
+
+            <InputContainer>
+              <Label htmlFor="subject">Objet</Label>
+              <Input id="subject" type="text" {...formik.getFieldProps('subject')} />
+              <ErrorMessage>{formik.touched.subject && formik.errors.subject ? formik.errors.subject : ""}</ErrorMessage>
+            </InputContainer>
+
+            <InputContainer>
+              <Label htmlFor="message">Message</Label>
+              <Textarea id="message" {...formik.getFieldProps('message')} />
+              <ErrorMessage>{formik.touched.message && formik.errors.message ? formik.errors.message : ""}</ErrorMessage>
+            </InputContainer>
+
+            <Button type="submit" disabled={formik.isSubmitting}>{formik.isSubmitting ? "Envoi en cours..." : "Envoyer"}</Button>
+          </Form>
         </ContactFormContentContainer>
       </InnerPageContainer>
     </PageContainer>
