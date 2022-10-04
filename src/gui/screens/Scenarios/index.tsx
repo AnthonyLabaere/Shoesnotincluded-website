@@ -97,23 +97,25 @@ const Scenarios = () => {
           <ContentContainer>
             <ScenariosContainer>
               {
-                scenarios.sort((a, b) => {
-                  return a.data.ordre - b.data.ordre;
-                }).map(scenario => {
-                  return (
-                    <ScenarioContainer key={scenario.id} to={"/scenario/" + scenario.id}>
-                      <h2 style={{ flex: 1, textAlign: 'center', padding: 5 }}>{scenario.data.title}</h2>
-                      <div style={{ display: 'flex', flex: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                        <ScenarioLogoImage>
-                          <img src={scenario.data.logoUrl} alt={scenario.id + " logo"} />
-                        </ScenarioLogoImage>
-                        <div style={{ flex: 2 }}>
-                          <GameTags tags={scenario.data.tags} />
+                scenarios
+                  .filter(scenario => scenario.data.secret !== true)
+                  .sort((a, b) => {
+                    return a.data.ordre - b.data.ordre;
+                  }).map(scenario => {
+                    return (
+                      <ScenarioContainer key={scenario.id} to={"/scenario/" + scenario.id}>
+                        <h2 style={{ flex: 1, textAlign: 'center', padding: 5 }}>{scenario.data.title}</h2>
+                        <div style={{ display: 'flex', flex: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                          <ScenarioLogoImage>
+                            <img src={scenario.data.logoUrl} alt={scenario.id + " logo"} />
+                          </ScenarioLogoImage>
+                          <div style={{ flex: 2 }}>
+                            <GameTags tags={scenario.data.tags} />
+                          </div>
                         </div>
-                      </div>
-                    </ScenarioContainer>
-                  )
-                })
+                      </ScenarioContainer>
+                    )
+                  })
               }
             </ScenariosContainer>
           </ContentContainer>
