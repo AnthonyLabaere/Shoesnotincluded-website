@@ -48,23 +48,23 @@ const Event = () => {
               <p>Le scénario est composé d'une série d'étapes qui peuvent être appréhendées comme les différentes salles d'un escape game. Et comme dans un escape game, vos collaborateurs devront travailler ensemble pour avancer dans le jeu.</p>
               <p>
                 Et surtout avec <b>ShoesNotIncluded</b>, aucun collaborateur n'est laissé de côté :
-                <ul>
-                  <li>chaque participant a accès à l'intégralité des éléments du scénario via l'application mobile installée sur son smartphone personnel.</li>
-                  <li>les actions des membres d'une même équipe sont synchronisées directement entre les smartphones des participants.</li>
-                  <li>le contenu de chaque étape est conçu de manière à ne pas pouvoir être résolu seul : que ce soit par l'entremêlement des énigmes, la quantité d'information ou plus simplement le support qui nécessite d'être à plusieurs sur certaines énigmes.</li>
-                </ul>
-                Le résultat est que tous les membres de l'équipe se sentent investis par le jeu, participent activement et partagent un moment convivial entre collègues : la cohésion d'équipe en est ainsi renforcée.
               </p>
+              <ul>
+                <li>chaque participant a accès à l'intégralité des éléments du scénario via l'application mobile installée sur son smartphone personnel.</li>
+                <li>les actions des membres d'une même équipe sont synchronisées directement entre les smartphones des participants.</li>
+                <li>le contenu de chaque étape est conçu de manière à ne pas pouvoir être résolu seul : que ce soit par l'entremêlement des énigmes, la quantité d'information ou plus simplement le support qui nécessite d'être à plusieurs sur certaines énigmes.</li>
+              </ul>
+              <p>Le résultat est que tous les membres de l'équipe se sentent investis par le jeu, participent activement et partagent un moment convivial entre collègues : la cohésion d'équipe en est ainsi renforcée.</p>
               <p>Un accompagnateur gérera le départ des équipes et les attendra à la fin du parcours pour un debriefing.</p>
               <p>
                 Plusieurs options supplémentaires sont envisageables sur devis :
-                <ul>
-                  <li>départ et/ou arrivée proche d'un lieu spécifique du centre-ville de Nantes.</li>
-                  <li>personnalisation du jeu avec des éléments propres à l'entreprise.</li>
-                  <li>intégration d'une ou plusieurs étapes (= lieux) personnalisées.</li>
-                  <li>distribution de récompenses.</li>
-                </ul>
               </p>
+              <ul>
+                <li>départ et/ou arrivée proche d'un lieu spécifique du centre-ville de Nantes.</li>
+                <li>personnalisation du jeu avec des éléments propres à l'entreprise.</li>
+                <li>intégration d'une ou plusieurs étapes (= lieux) personnalisées.</li>
+                <li>distribution de récompenses.</li>
+              </ul>
               <p>Comptez une petite demi-heure de marche sur les deux heures de jeu, et celui-ci passe par des lieux adaptés aux personnes en situation de handicap.</p>
               <p><span style={{ textDecoration: "underline" }}>Attention</span> : le support du jeu est le smartphone des participants, il est donc nécessaire que chacun ait un téléphone chargé avec l'application mobile <b>ShoesNotIncluded</b> installée.</p>
             </TextContainer>
