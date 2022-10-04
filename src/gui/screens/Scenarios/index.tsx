@@ -65,7 +65,7 @@ const Scenarios = () => {
   const [cities, setCities] = useState<Types.CityDocument[]>([])
   // console.debug("cities", cities)
   useEffect(() => {
-    return CityFirestore.subscribeToCities(setCities);
+    CityFirestore.subscribeToCities(setCities);
   }, []);
 
   const cityId = "nantes";
