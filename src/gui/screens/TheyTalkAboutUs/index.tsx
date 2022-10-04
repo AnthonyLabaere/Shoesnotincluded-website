@@ -10,6 +10,8 @@ import ActuNantes from '../../../assets/images/actuNantes.png';
 import OceaneFM from '../../../assets/images/oceaneFM.png';
 import Unidivers from '../../../assets/images/unidivers.png';
 import OuestFrance from '../../../assets/images/ouest-france.png';
+import SortiesANantes from '../../../assets/images/sorties-a-nantes-20220818.png';
+import NantesEtVousTV from '../../../assets/images/nantes-et-vous-tv.png';
 
 const Image = styled.img`
   width: 75%;
@@ -58,6 +60,16 @@ const TheyTalkAboutUs = () => {
           </ContentContainer>
         </ContentPageContainer>
         <ContentPageContainer>
+          <ContentContainer>
+            <h3>NANTES&VOUSTV - 30 août 2022</h3>
+            <a href={Constants.NANTES_ET_VOUS_TV_URL}><LongImage src={NantesEtVousTV} alt="NANTESETVOUSTV" /></a>
+          </ContentContainer>
+          <ContentContainer>
+            <RightSubContentContainer>
+              <h3>Sorties à Nantes - 22 août 2022</h3>
+              <a href={Constants.SORTIES_A_NANTES_18082022_URL}><LongImage src={SortiesANantes} alt="Sorties-A-Nantes-20220818" /></a>
+            </RightSubContentContainer>
+          </ContentContainer>
           <ContentContainer>
             <h3>Ouest-France - 28 mai 2022</h3>
             <a href={Constants.OUEST_FRANCE_28052022_URL}><LongImage src={OuestFrance} alt="Ouest-France" /></a>

@@ -58,3 +58,5 @@ export const ACTU_NANTES_15122021_URL = "https://actu.fr/pays-de-la-loire/nantes
 export const OCEANE_FM_30122021_URL = "https://oceanefm.ouest-france.fr/anthony-labaere-il-ne-fournit-pas-les-chaussures";
 export const UNIDIVERS_NANTES_11042022_URL = "https://www.unidivers.fr/shoesnotincluded-escape-game-plein-air/";
 export const OUEST_FRANCE_28052022_URL = "https://www.ouest-france.fr/premium/?article_id=e1ae8370-d783-11ec-a8f3-48d2134a7ef1";
+export const SORTIES_A_NANTES_18082022_URL = "https://sortiesanantes.com/shoes-not-included-un-nantais-cree-une-appli-descape-game-en-exterieur/";
+export const NANTES_ET_VOUS_TV_URL = "https://www.nantesetvous.tv/movie/ntvtalk/entreprendre/shoes-not-included-lescape-game-de-rue/";
