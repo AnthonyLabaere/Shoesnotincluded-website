@@ -5,6 +5,8 @@ import * as Types from '../../types';
 import * as Constants from '../../constants';
 import * as NotificationUtils from '../../utils/notificationUtils';
 
+// https://firebase.google.com/codelabs/stripe-firebase-extensions
+
 const CUSTOMERS_FIRESTORE_COLLECTION = "stripeCustomers";
 const CHECKOUT_SESSIONS_FIRESTORE_SUBCOLLECTION = "checkout_sessions";
 const PAYMENTS_FIRESTORE_SUBCOLLECTION = "payments";
@@ -75,6 +77,7 @@ export const createPayment = (userUid: string, successCallback: (checkoutSession
   addDoc(checkoutSessionsCollectionRef, {
     mode: "payment",
     price: process.env.REACT_APP_stripePriceId,
+    allow_promotion_codes: true,
     locale: "fr",
     success_url: window.location.origin + "/compte",
     cancel_url: window.location.origin + "/compte",
