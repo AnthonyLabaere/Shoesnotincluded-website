@@ -2,27 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import { YOUTUBE_EXPLICATIONS_VIDEO_URL } from '../../../constants';
+import { YOUTUBE_TEAM_BUILDING_VIDEO_URL, YOUTUBE_EXPLICATIONS_VIDEO_URL } from '../../../constants';
 import { ContentContainer, StyledReactPlayer } from '../../components/common';
 import Marginer from '../../components/marginer';
 import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer';
 import Button from '../../components/button';
 
-import AnonymousDu44 from '../../../assets/images/anonymousDu44.png';
-
 const TextContainer = styled.div`
   font-size: 1.1rem;
   text-align: justify;
-`;
-
-const Image = styled.img`
-  width: 50%;
-  margin-top: 15px;
-  margin-bottom: 15px;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    width: 100%;
-  }
 `;
 
 const Event = () => {
@@ -39,9 +27,9 @@ const Event = () => {
           <ContentContainer>
             <TextContainer>
               <h3>Vous souhaitez organiser une activité d'entreprise avec un escape game plein air ? <b>ShoesNotIncluded</b> a un scénario pour vous !</h3>
-              <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Image src={AnonymousDu44} alt="Anonymous du 44" />
-              </div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <StyledReactPlayer url={YOUTUBE_TEAM_BUILDING_VIDEO_URL} />
+            </div>
               <p style={{ marginBottom: 50 }}>Des pirates Nantais viennent de s'introduire dans votre système informatique : le groupe de hackers <b>4N0NYM0U5DU44</b>. Ils ont la main sur l'intégralité des données de votre entreprise mais heureusement pour vous, ils vous laissent une chance de les sauver. Ils considèrent Nantes comme un lieu historique trop méconnu, et sont outrés du manque de connaissance de vos équipes sur l'histoire locale. Résolvez les énigmes réalisées par leur soin et prouvez que vous êtes méritant de l'héritage culturel de la ville. Vous n'avez que peu de temps avant que l'intégralité de votre base de données soit définitivement effacée. Vous n'avez pas le choix, vous devez vous plier à leur exigence.</p>
               <p>Pendant approximativement 2h, vos collaborateurs devront résoudre les énigmes d'un escape game plein air et géolocalisé sur application mobile, leur faisant traverser la ville pour en découvrir ou redécouvrir certains principaux lieux culturels et historiques.</p>
               <p>Les participants formeront des équipes de 5 et les différentes équipes seront en concurrence les unes avec les autres.</p>
