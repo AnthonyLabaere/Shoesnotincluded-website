@@ -80,6 +80,7 @@ const Payment = () => {
                 <li>N'a pas de date de fin de validité 📆.</li>
                 <li>Prix réduit de 10% par rapport à un achat sur l'application mobile.</li>
               </ul>
+              ❗ Attention, ce bon d'achat est uniquement activable sur <u>Android</u>. La politique de vente d'Apple ne nous permet pas de vous faire profiter de cette réduction.
             </PaymentText>
             <PaymentText>
               <Checkbox id="consent" label={<>J'accepte les <StyledLink to="/cgu-cgv">conditions générales de ventes</StyledLink></>} value={consent} onChange={setConsent} />

@@ -47,8 +47,9 @@ const FAQ = () => {
             <Response>
               1 - Ouvrez l'application ShoesNotIncluded (ou téléchargez-là au préalable sur les stores <StyledALink href={Constants.PLAY_STORE_LINK}>Android</StyledALink> ou <StyledALink href={Constants.APPLE_STORE_LINK}>Apple</StyledALink>).<br />
               2 - Sélectionnez un scénario (exemple : Le testament d'Anne de Bretagne)<br />
-              3 - Cliquez sur "Utiliser un bon d'achat"<br />
+              3 - Cliquez sur "Utiliser un bon d'achat" (uniquement disponible sur Android)<br />
               4 - Renseignez le code du bon d'achat obtenu lors du paiement.<br />
+              5 - Le joueur utilisant un bon d'achat a alors la possibilité d'inviter 4 autres personnes lors du lancement de la partie, qu'ils soient sur Android ou Apple.
               <br /><i>Précision : les bons d'achat ne sont pour l'instant pas visibles dans l'historique de l'application mobile.</i>
             </Response>
 
