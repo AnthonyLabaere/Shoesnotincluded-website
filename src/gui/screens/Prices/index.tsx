@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
 import * as Constants from '../../../constants';
@@ -18,9 +17,11 @@ const Prices = () => {
         </ContentPageContainer>
         <ContentPageContainer>
           <ContentContainer>
-            <h2 style={{ textAlign: 'center' }}><span style={{ textDecoration: 'line-through' }}>{Constants.APP_GAME_COST}</span> {Constants.WEBSITE_GAME_COST} ({Constants.WEBSITE_TO_APP_GAME_REDUCTION_PERCENT}% de réduction en achetant directement sur le site) pour une équipe allant jusqu'à 5 joueurs.</h2>
-            <h3 style={{ textAlign: 'center' }}>Ce prix est bien pour tout le groupe : ici le nombre de joueurs n'influe pas sur le prix de la partie.</h3>
-            <h4 style={{ textAlign: 'center' }}>Pour plus d'informations, visitez la <StyledLink to="/faq">FAQ</StyledLink>.</h4>
+            <div className="fs-3 text-center"><span style={{ textDecoration: 'line-through' }}>{Constants.APP_GAME_COST}</span> <b>{Constants.WEBSITE_GAME_COST}</b> ({Constants.WEBSITE_TO_APP_GAME_REDUCTION_PERCENT}% de réduction en achetant directement sur le site) pour une équipe allant jusqu'à 5 joueurs.</div>
+            <br/>
+            <div className="fs-4 text-center">Ce prix est bien pour tout le groupe : ici le nombre de joueurs n'influe pas sur le prix de la partie.</div>
+            <br/>
+            <div className="fs-5 text-center">Pour plus d'informations, visitez la <StyledLink to="/faq">FAQ</StyledLink>.</div>
             <Link style={{ display: 'flex', flex: 1, marginTop: 25 }} to="/achat"><Button style={{ flex: 1 }}>Je souhaite acheter un bon pour une partie</Button></Link>
           </ContentContainer>
           <Marginer direction="vertical" margin="2em" />

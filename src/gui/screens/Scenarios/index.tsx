@@ -104,7 +104,7 @@ const Scenarios = () => {
                   }).map(scenario => {
                     return (
                       <ScenarioContainer key={scenario.id} to={"/scenario/" + scenario.id}>
-                        <h2 style={{ flex: 1, textAlign: 'center', padding: 5 }}>{scenario.data.title}</h2>
+                        <div className="fs-3" style={{ flex: 1, textAlign: 'center', padding: 5 }}>{scenario.data.title}</div>
                         <div style={{ display: 'flex', flex: 3, flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                           <ScenarioLogoImage>
                             <img src={scenario.data.logoUrl} alt={scenario.id + " logo"} />

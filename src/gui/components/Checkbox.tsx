@@ -11,7 +11,7 @@ const Checkbox = ({ id, label, value, onChange }: CheckboxProps) => {
       <input id={id} type="checkbox" checked={value} onChange={() => {
         onChange(!value);
       }} />
-      <label htmlFor={id} aria-describedby="label">{label}</label>
+      <label className="ms-1" htmlFor={id} aria-describedby="label">{label}</label>
     </>
   )
 };

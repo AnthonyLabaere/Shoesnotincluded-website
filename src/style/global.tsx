@@ -32,7 +32,7 @@ export const GlobalStyles = createGlobalStyle`
 
     body {
         margin: 0;
-        font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-family: "Oxygen", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
         font-weight: "bold";
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
@@ -49,83 +49,5 @@ export const GlobalStyles = createGlobalStyle`
     textarea, input, button, select { 
         font-family: inherit;
         font-size: inherit;
-    }
-
-    [type="checkbox"]:not(:checked), 
-    [type="checkbox"]:checked {
-      /* Cache la checkbox sans
-        la rendre invisible aux
-        lecteurs d'écran */
-      position: absolute;
-      left: 0;
-      opacity: 0.01;
-    }
-
-    /* Preparer le label */
-    [type="checkbox"]:not(:checked) + label,
-    [type="checkbox"]:checked + label {
-      position: relative; /* permet de positionner la checkbox */
-      padding-left: 2.3em; /* place pour la box */
-      font-size: 1.05em;
-      line-height: 1.7;
-      cursor: pointer; 
-    }
-
-    /* Aspect de la case */
-    [type="checkbox"]:not(:checked) + label::before,
-    [type="checkbox"]:checked + label::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 1.4em;
-      height: 1.4em;
-      border: 1px solid #aaa;
-      background: #FFF;
-      border-radius: .2em;
-      transition: all .275s;
-    }
-
-    /* Aspect de la coche */
-    [type="checkbox"]:not(:checked) + label::after,
-    [type="checkbox"]:checked + label::after {
-      content: '✕';
-      speak: never; /* Pour être sûr que le lecteur d'écran ne lira pas "fois" */
-      position: absolute;
-      top: .39em;
-      left: .08em;
-      font-size: 1.6em;
-      color: #4cdabd;
-      line-height: 0;
-      transition: all .2s; /* Petite transition */
-    }
-
-    /* Aspect non cochée */
-    [type="checkbox"]:not(:checked) + label::after {
-      opacity: 0;
-      transform: scale(0) rotate(45deg);
-    }
-
-    /* Aspect cochée */
-    [type="checkbox"]:checked + label::after {
-      opacity: 1;
-      transform: scale(1) rotate(0);
-    }
-
-    /* Disabled checkbox */
-    [type="checkbox"]:disabled:not(:checked) + label::before,
-    [type="checkbox"]:disabled:checked + label::before {
-      box-shadow: none;
-      border-color: #bbb;
-      background-color: #e9e9e9;
-    }
-
-    /* Disabled checked */
-    [type="checkbox"]:disabled:checked + label::after {
-      color: #777;
-    }
-
-    [type="checkbox"]:disabled + label {
-      color: #aaa;
     }
 `

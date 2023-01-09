@@ -1,5 +1,3 @@
-import React from 'react'
-
 import AboutVideo from './aboutVideo'
 import Stores from './stores'
 import { ContentContainer } from '../../components/common'

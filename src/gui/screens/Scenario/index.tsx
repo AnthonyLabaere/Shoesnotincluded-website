@@ -51,23 +51,6 @@ const ScenarioLogoImage = styled.div`
   }
 `
 
-const Title = styled.h1`
-  color: #000;
-  text-align: center;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    font-size: 20px;
-  }
-`
-const Subtitle = styled.h2`
-  color: #000;
-  text-align: center;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    font-size: 18px;
-  }
-`
-
 const Scenarios = () => {
   const location = useLocation();
 
@@ -132,7 +115,7 @@ const Scenarios = () => {
           <ContentContainer>
             <ScenarioContainer>
               <GameTags tags={scenario.tags} large={true} />
-              <h3 style={{ textAlign: 'justify' }}><TextContent>{scenario.description}</TextContent></h3>
+              <div className="fs-5" style={{ textAlign: 'justify' }}><TextContent>{scenario.description}</TextContent></div>
               <ScenarioLogoImage>
                 <img src={scenario.logoUrl} alt={scenario.title + " logo"} />
               </ScenarioLogoImage>
@@ -142,13 +125,13 @@ const Scenarios = () => {
         <ContentPageContainer coloredBackground>
           <Marginer direction="vertical" margin="1em" />
           <ContentContainer>
-            <Title>
+            <h2 className="text-center">
               Pour y jouer rien de plus simple, téléchargez l'application et sélectionnez le scénario :
-            </Title>
+            </h2>
             <StoreButtons />
-            <Subtitle>
-              Prix d'une partie : <span style={{ textDecoration: 'line-through' }}>{Constants.APP_GAME_COST}</span> {Constants.WEBSITE_GAME_COST} ({Constants.WEBSITE_TO_APP_GAME_REDUCTION_PERCENT}% de réduction en achetant directement sur le site) pour une équipe allant jusqu'à 5 joueurs.
-            </Subtitle>
+            <h3 className="text-center">
+              Prix d'une partie : <span style={{ textDecoration: 'line-through' }}>{Constants.APP_GAME_COST}</span> <b>{Constants.WEBSITE_GAME_COST}</b> ({Constants.WEBSITE_TO_APP_GAME_REDUCTION_PERCENT}% de réduction en achetant directement sur le site) pour une équipe allant jusqu'à 5 joueurs.
+            </h3>
             <Link style={{ display: 'flex', flex: 1 }} to="/achat"><Button style={{ flex: 1 }}>Je souhaite acheter un bon pour une partie</Button></Link>
           </ContentContainer>
           <Marginer direction="vertical" margin="1em" />

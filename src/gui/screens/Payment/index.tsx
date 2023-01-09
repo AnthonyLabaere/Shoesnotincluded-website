@@ -11,7 +11,7 @@ import Checkbox from '../../components/Checkbox';
 import Marginer from '../../components/marginer';
 import { ContentPageContainer, InnerPageContainer, PageContainer } from '../../components/pageContainer';
 
-const PaymentText = styled.h3`
+const PaymentText = styled.div`
   text-align: left;
 `;
 
@@ -71,7 +71,7 @@ const Payment = () => {
         <ContentPageContainer>
           <ContentContainer>
             <Marginer direction="vertical" margin="2em" />
-            <PaymentText>
+            <PaymentText className="fs-5">
               Cet achat vous donnera accès à un bon pour une partie ShoesNotIncluded.
               <ul>
                 <li>Compatible avec tous les scénarios.</li>
@@ -82,8 +82,8 @@ const Payment = () => {
               </ul>
               ❗ Attention, ce bon d'achat est uniquement activable sur <u>Android</u>. La politique de vente d'Apple ne nous permet pas de vous faire profiter de cette réduction.
             </PaymentText>
-            <PaymentText>
-              <Checkbox id="consent" label={<>J'accepte les <StyledLink to="/cgu-cgv">conditions générales de ventes</StyledLink></>} value={consent} onChange={setConsent} />
+            <PaymentText className="fs-5">
+              <Checkbox id="consent" label={<> J'accepte les <StyledLink to="/cgu-cgv">conditions générales de ventes</StyledLink></>} value={consent} onChange={setConsent} />
             </PaymentText>
             <div style={{ display: 'flex', flex: 1 }}>
               <Button style={{ flex: 1 }} disabled={userAuth === undefined || userAuth === null || loading} onClick={() => {
@@ -111,19 +111,20 @@ const Payment = () => {
               </Button>
             </div>
             {
-              tryWithoutVerifiedUser && <PaymentText style={{ color: Constants.THEME_RED_COLORS[0] }}>
+              tryWithoutVerifiedUser && <PaymentText className="fs-5" style={{ color: Constants.THEME_RED_COLORS[0] }}>
                 Veuillez terminer votre inscription en cliquant sur le lien fourni par mail, puis rafraîchissez la page.
               </PaymentText>
             }
             {
-              tryWithoutConsent && <PaymentText style={{ color: Constants.THEME_RED_COLORS[0] }}>
+              tryWithoutConsent && <PaymentText className="fs-5" style={{ color: Constants.THEME_RED_COLORS[0] }}>
                 Veuillez accepter les conditions générales de vente.
               </PaymentText>
             }
-            <PaymentText>
+            <PaymentText className="fs-5">
               Pour utiliser le bon d'achat, veuillez vous référer à la section "Comment utiliser un bon d'achat ?" de la <StyledLink to="/faq">FAQ</StyledLink>.<br />
             </PaymentText>
-            <i>Précision : les bons d'achat ne sont pour l'instant pas visibles dans l'historique de l'application mobile.</i>
+            <br/>
+            <i className="fs-6">Précision : les bons d'achat ne sont pour l'instant pas visibles dans l'historique de l'application mobile.</i>
           </ContentContainer>
         </ContentPageContainer>
       </InnerPageContainer>

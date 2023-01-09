@@ -98,6 +98,14 @@ const LogoImage = styled.div`
   }
 `
 
+const BrandContainer = styled(Brand)`
+  font-size: 50px;
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+    font-size: 24px;
+  }
+`
+
 const SloganText = styled.h3`
   margin: 0;
   line-height: 1.4;
@@ -116,17 +124,7 @@ const SpecialText = styled.span`
 `
 
 const TopSection = () => {
-  const isMobileXS = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXS })
   const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL })
-
-  let brandFontSize: number
-  if (isMobileXS) {
-    brandFontSize = 2.2
-  } else if (isMobile) {
-    brandFontSize = 2.8
-  } else {
-    brandFontSize = 3.5
-  }
 
   return (
     <TopSectionContainer>
@@ -138,7 +136,7 @@ const TopSection = () => {
                 <img src={LogoImg} alt="ShoesNotIncluded logo" />
               </LogoImage>
             )}
-            <Brand size={brandFontSize} withShadow={true}></Brand>
+            <BrandContainer withShadow={true} />
             <Marginer direction="vertical" margin={8} />
             <SloganText>L&apos;escape game plein air</SloganText>
             <SloganText>

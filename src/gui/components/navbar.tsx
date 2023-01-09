@@ -1,71 +1,21 @@
-import React, { useState, useRef } from 'react'
+import React, { ReactElement } from 'react';
 import styled from 'styled-components'
-import { useMediaQuery } from 'react-responsive'
-import { Link } from 'react-router-dom'
+// import { useTranslation } from 'react-i18next';
+import Container from 'react-bootstrap/Container';
+// import Form from 'react-bootstrap/Form';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faUserSlash } from '@fortawesome/free-solid-svg-icons'
 
-import { DEVICE_SIZES } from '../../constants';
 import useCurrentUser from '../../hooks/useCurrentUser';
-import Brand from './brand'
-import Marginer from './marginer'
-import Burger from './burger'
-import Menu from './menu'
-import LogoImg from '../../assets/images/logo.png'
 
-const NavbarContainer = styled.div`
-  width: 100%;
-  height: 65px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5rem;
-
-  border-bottom: 0.6px solid rgb(0, 0, 0, 0.3);
-`
-
-const BrandLogoLink = styled(Link)`
-  display: flex;
-  flex-direction: row;
-`
-
-const LogoImage = styled.div`
-  img {
-    width: 40px;
-    height: 40px;
-  }
-`
-
-const AccessibilityContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-
-const MenuLink = styled(Link)`
-  display: flex;
-  flex-direction: columns;
-  color: #000;
-  font-size: 1.8rem;
-
-  &:hover {
-    color: ${({ theme }) => theme.linkHoverColor};
-  }
-
-  @media (max-width: ${({ theme }) => theme.deviceSizes.desktop}) {
-    font-size: 1.5rem;
-  }
-
-  @media (max-width: ${({ theme }) => theme.deviceSizes.laptop}) {
-    font-size: 1.2rem;
-  }
-
-  @media (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
-    font-size: 1rem;
-  }
-`
+import LogoImg from '../../assets/images/logo.png';
+import Brand from './brand';
+import { Link } from 'react-router-dom';
+// import useLocale from '../../hooks/useLocale';
+// import i18n from '../../i18n';
 
 const UserName = styled.div`
   overflow: hidden;
@@ -76,76 +26,62 @@ const UserName = styled.div`
   margin-right: 10px;
 `
 
-const MobileUserLink = styled(Link)`
-  display: flex;
-  color: black;
-  position: absolute;
-  right: 2rem;
-`
+const CustomNavbar = (): ReactElement => {
+  // const { t } = useTranslation();
 
-const Navbar = () => {
+  // const { locale, shortLocale } = useLocale();
+
+  // const changeLocale = (l: string): void => {
+  //   if (locale !== l) {
+  //     // eslint-disable-next-line @typescript-eslint/no-floating-promises
+  //     i18n.changeLanguage(l);
+  //   }
+  // };
+
   const { user } = useCurrentUser();
 
-  const burgerRef = useRef(null)
-
-  const [open, setOpen] = useState(false)
-
-  const isMobileXS = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXS })
-  const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL })
-  const tablet = useMediaQuery({ maxWidth: DEVICE_SIZES.tablet })
-  const laptop = useMediaQuery({ maxWidth: DEVICE_SIZES.laptop })
-
-  let brandFontSize: number
-  if (isMobileXS) {
-    brandFontSize = 1.25
-  } else if (isMobile) {
-    brandFontSize = 1.5
-  } else if (tablet) {
-    brandFontSize = 1.5
-  } else if (laptop) {
-    brandFontSize = 1.8
-  } else {
-    brandFontSize = 2
-  }
-
   return (
-    <NavbarContainer>
-      <AccessibilityContainer>
-        <BrandLogoLink to="/">
-          <LogoImage>
-            <img src={LogoImg} alt="ShoesNotIncluded logo" />
-          </LogoImage>
-          <Brand size={brandFontSize} />
-        </BrandLogoLink>
-        {
-          isMobile ? (
-            <>
-              <Burger burgerRef={burgerRef} open={open} setOpen={setOpen} />
-              <Menu burgerRef={burgerRef} open={open} setOpen={setOpen} />
-              <MobileUserLink style={{ display: 'flex', color: 'black', position: 'absolute', right: '2rem' }} to="/compte"><FontAwesomeIcon icon={user ? faUser : faUserSlash} size="2x" /></MobileUserLink>
-            </>
-          ) : (
-            <>
-              <Marginer direction="horizontal" margin={100} />
-              <MenuLink to="/scenarios">{"Les scénarios"}</MenuLink>
-              <Marginer direction="horizontal" margin={100} />
-              <MenuLink to="/enquoicaconsiste">{"En quoi ça consiste ?"}</MenuLink>
-              <Marginer direction="horizontal" margin={100} />
-              <MenuLink to="/tarif">Tarif</MenuLink>
-              <Marginer direction="horizontal" margin={100} />
-              <MenuLink to="/faq">FAQ</MenuLink>
-              <Marginer direction="horizontal" margin={100} />
-              <MenuLink to="/team-building">Team-building</MenuLink>
-              <Marginer direction="horizontal" margin={100} />
-              <MenuLink to="/compte" style={{ display: 'flex', alignItems: 'center' }}>
-                <UserName>{user ? user.displayName : "Mon compte"}</UserName> <FontAwesomeIcon icon={user ? faUser : faUserSlash} size="1x" />
-              </MenuLink>
-              <Marginer direction="horizontal" margin={100} />
-            </>
-          )}
-      </AccessibilityContainer>
-    </NavbarContainer>
-  )
-}
+    <Navbar sticky="top" expand="lg" style={{ backgroundColor: 'white' }}>
+      <Container>
+        <Navbar.Brand href="/" style={{ display: 'flex' }}>
+          <img
+            src={LogoImg}
+            width="40"
+            height="40"
+            className="d-inline-block align-top"
+            alt="ShoesNotIncluded logo"
+          />
+          <Brand className="fs-3" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="justify-content-end flex-grow-1 pe-3">
+            {/* <Form className="d-flex">
+              <Form.Control
+                type="search"
+                // TODO Ajouter une loupe
+                placeholder={t('menu.search.placeholder')}
+                className="me-2"
+                aria-label="Search"
+              />
+            </Form> */}
+            <Nav.Link className="px-4" as={Link} to="/scenarios">{"Les scénarios"}</Nav.Link>
+            <Nav.Link className="px-4" as={Link} to="/enquoicaconsiste">{"En quoi ça consiste ?"}</Nav.Link>
+            <Nav.Link className="px-4" as={Link} to="/tarif">Tarif</Nav.Link>
+            <Nav.Link className="px-4" as={Link} to="/faq">FAQ</Nav.Link>
+            <Nav.Link className="px-4" as={Link} to="/team-building">{"Team building"}</Nav.Link>
+            <Nav.Link className="px-4" as={Link} to="/compte" style={{ display: 'flex', alignItems: 'center' }}>
+              <UserName>{user ? user.displayName : "Mon compte"}</UserName> <FontAwesomeIcon icon={user ? faUser : faUserSlash} size="1x" />
+            </Nav.Link>
+            {/* <NavDropdown title={t(`menu.locale.${shortLocale}`)} id="navbarScrollingDropdown">
+              <NavDropdown.Item onClick={() => changeLocale('fr')}>Français</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => changeLocale('en')}>English</NavDropdown.Item>
+            </NavDropdown> */}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
 
-export default Navbar
+export default CustomNavbar;

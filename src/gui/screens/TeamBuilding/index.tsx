@@ -26,10 +26,13 @@ const Event = () => {
           <Marginer direction="vertical" margin="2em" />
           <ContentContainer>
             <TextContainer>
-              <h3>Vous souhaitez organiser une activité d'entreprise avec un escape game plein air ? <b>ShoesNotIncluded</b> a un scénario pour vous !</h3>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <StyledReactPlayer url={YOUTUBE_TEAM_BUILDING_VIDEO_URL} />
-            </div>
+              <h3 className="mb-4">Vous souhaitez organiser une activité d'entreprise avec un escape game plein air ? <b>ShoesNotIncluded</b> a un scénario pour vous !</h3>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <StyledReactPlayer url={YOUTUBE_TEAM_BUILDING_VIDEO_URL} />
+              </div>
+
+              <br/>
+
               <p style={{ marginBottom: 50 }}>Des pirates Nantais viennent de s'introduire dans votre système informatique : le groupe de hackers <b>4N0NYM0U5DU44</b>. Ils ont la main sur l'intégralité des données de votre entreprise mais heureusement pour vous, ils vous laissent une chance de les sauver. Ils considèrent Nantes comme un lieu historique trop méconnu, et sont outrés du manque de connaissance de vos équipes sur l'histoire locale. Résolvez les énigmes réalisées par leur soin et prouvez que vous êtes méritant de l'héritage culturel de la ville. Vous n'avez que peu de temps avant que l'intégralité de votre base de données soit définitivement effacée. Vous n'avez pas le choix, vous devez vous plier à leur exigence.</p>
               <p>Pendant approximativement 2h, vos collaborateurs devront résoudre les énigmes d'un escape game plein air et géolocalisé sur application mobile, leur faisant traverser la ville pour en découvrir ou redécouvrir certains principaux lieux culturels et historiques.</p>
               <p>Les participants formeront des équipes de 5 et les différentes équipes seront en concurrence les unes avec les autres.</p>
@@ -57,6 +60,9 @@ const Event = () => {
               <p><span style={{ textDecoration: "underline" }}>Attention</span> : le support du jeu est le smartphone des participants, il est donc nécessaire que chacun ait un téléphone chargé avec l'application mobile <b>ShoesNotIncluded</b> installée.</p>
             </TextContainer>
             <Link style={{ display: 'flex', flex: 1, marginTop: 25 }} to="/contact"><Button style={{ flex: 1 }}>Contactez-nous pour obtenir un devis.</Button></Link>
+            
+            <br/>
+            
             <TextContainer>
               <p>Si vous souhaitez plus d'information sur le fonctionnement de l'application, vous pouvez visualiser cette vidéo :</p>
             </TextContainer>

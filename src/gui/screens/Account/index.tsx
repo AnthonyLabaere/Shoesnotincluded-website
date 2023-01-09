@@ -24,10 +24,6 @@ const AccountContentContainer = styled(ContentContainer)`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  * {
-    text-align: center;
-  }
 `;
 
 const PaymentHistory = styled.div`
@@ -40,7 +36,7 @@ const PaymentRow = styled.div`
   flex: 1;
 `;
 
-const PaymentRowHeaderElement = styled.h3<{ flex?: number }>`
+const PaymentRowHeaderElement = styled.div<{ flex?: number }>`
   flex: ${({ flex = 1 }: { flex?: number }) => flex};
   margin: 5px;
   text-align: left;
@@ -253,26 +249,26 @@ const Account = () => {
         </ContentPageContainer>
         <ContentPageContainer>
           <AccountContentContainer>
-            <h2>Bonjour {user.displayName}, bienvenue dans votre espace personnel.</h2>
+            <div className="fs-3">Bonjour {user.displayName}, bienvenue dans votre espace personnel.</div>
             {
               !userAuth.emailVerified &&
-              <h3>
+              <div className="fs-4">
                 Merci de confirmer votre adresse mail en <span style={{ fontWeight: 'bold' }}>cliquant sur le lien fourni par mail</span> à l'adresse mail :
                 <br /><br />
                 {userAuth.email}<br /><br /><br />
                 Pensez à vérifier vos spams ou indésirables. <br /><br />
-                Merci de <StyledLink to="/contact">nous contacter</StyledLink> si vous ne recevez pas le mail.</h3>
+                Merci de <StyledLink to="/contact">nous contacter</StyledLink> si vous ne recevez pas le mail.</div>
             }
             {
               userAuth.emailVerified && <>
                 {
                   userVoucherCardHistoryDocuments.length > 0 &&
                   <PaymentHistory>
-                    <h2 style={{ textAlign: 'left' }}>Historique de validation de carte{userVoucherCardHistoryDocuments.length > 1 ? "s" : ""} :</h2>
+                    <div className="fs-3 fw-bold">Historique de validation de carte{userVoucherCardHistoryDocuments.length > 1 ? "s" : ""} :</div>
                     <PaymentRow>
-                      {!isMobile && <PaymentRowHeaderElement flex={1}>Identifiant{' '}de{' '}la{' '}carte</PaymentRowHeaderElement>}
-                      <PaymentRowHeaderElement flex={isMobile ? 0.5 : 1}>Date{!isMobile ? " de validation" : ""}</PaymentRowHeaderElement>
-                      <PaymentRowHeaderElement flex={1}>Bon{' '}d'achat</PaymentRowHeaderElement>
+                      {!isMobile && <PaymentRowHeaderElement className="fs-4 fw-bold" flex={1}>Identifiant{' '}de{' '}la{' '}carte</PaymentRowHeaderElement>}
+                      <PaymentRowHeaderElement className="fs-4 fw-bold" flex={isMobile ? 0.5 : 1}>Date{!isMobile ? " de validation" : ""}</PaymentRowHeaderElement>
+                      <PaymentRowHeaderElement className="fs-4 fw-bold" flex={1}>Bon{' '}d'achat</PaymentRowHeaderElement>
                     </PaymentRow>
                     {
                       userVoucherCardHistoryDocuments.map(userGameVoucherCardDocumentTmp => {
@@ -293,21 +289,21 @@ const Account = () => {
                   </PaymentHistory>
                 }
                 <PaymentHistory>
-                  <h2 style={{ textAlign: 'left' }}>Historique d'achat :</h2>
+                  <div className="fs-3 fw-bold">Historique d'achat :</div>
                   {
-                    payments === undefined ? <h3>Chargement de l'historique en cours...</h3>
+                    payments === undefined ? <div className="fs-4">Chargement de l'historique en cours...</div>
                       :
                       <>
                         {
-                          payments.length === 0 ? <h3 style={{ textAlign: 'left' }}>Aucun achat réalisé.</h3>
+                          payments.length === 0 ? <div className="fs-4">Aucun achat réalisé.</div>
                             :
                             <>
                               <PaymentRow>
-                                {!isMobile && <PaymentRowHeaderElement flex={1}>Identifiant</PaymentRowHeaderElement>}
-                                <PaymentRowHeaderElement flex={isMobile ? 0.5 : 1}>Date{!isMobile ? " d'achat" : ""}</PaymentRowHeaderElement>
-                                <PaymentRowHeaderElement flex={0.5}>Statut</PaymentRowHeaderElement>
-                                {!isMobile && <PaymentRowHeaderElement flex={0.5}>Montant</PaymentRowHeaderElement>}
-                                <PaymentRowHeaderElement flex={1}>Bon{' '}d'achat</PaymentRowHeaderElement>
+                                {!isMobile && <PaymentRowHeaderElement className="fs-4 fw-bold" flex={1}>Identifiant</PaymentRowHeaderElement>}
+                                <PaymentRowHeaderElement className="fs-4 fw-bold" flex={isMobile ? 0.5 : 1}>Date{!isMobile ? " d'achat" : ""}</PaymentRowHeaderElement>
+                                <PaymentRowHeaderElement className="fs-4 fw-bold" flex={0.5}>Statut</PaymentRowHeaderElement>
+                                {!isMobile && <PaymentRowHeaderElement className="fs-4 fw-bold" flex={0.5}>Montant</PaymentRowHeaderElement>}
+                                <PaymentRowHeaderElement className="fs-4 fw-bold" flex={1}>Bon{' '}d'achat</PaymentRowHeaderElement>
                               </PaymentRow>
                               {
                                 payments.map(paymentTmp => {

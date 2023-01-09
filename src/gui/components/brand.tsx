@@ -32,10 +32,10 @@ const BrandNot = styled.div<{ color: string; hoverColor: string; withShadow: boo
 `
 
 const Brand = (props: any) => {
-  const { color, hoverColor, size, withShadow } = props
+  const { className, color, hoverColor, withShadow } = props
 
   return (
-    <BrandContainer color={color} hoverColor={hoverColor} size={size} withShadow={withShadow}>
+    <BrandContainer className={className} color={color} hoverColor={hoverColor} withShadow={withShadow}>
       Shoes
       <BrandNot color={color} hoverColor={hoverColor} withShadow={withShadow}>
         Not

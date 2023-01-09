@@ -130,7 +130,7 @@ const Contact = () => {
           </ContentContainer>
         </ContentPageContainer>
         <ContactFormContentContainer>
-          <h2 style={{ textAlign: 'center', marginBottom: 50 }}>Une question sur l'application ou l'un des scénarios ? Merci de remplir le formulaire ci-dessous :</h2>
+          <div className="fs-3 text-center mb-5">Une question sur l'application ou l'un des scénarios ? Merci de remplir le formulaire ci-dessous :</div>
           <Form onSubmit={formik.handleSubmit}>
             <InputContainer>
               <Label htmlFor="lastName">Nom</Label>

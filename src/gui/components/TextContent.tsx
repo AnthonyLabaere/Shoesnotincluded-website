@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import * as Types from '../../types';
 import * as Constants from '../../constants';
+import * as LocaleUtils from '../../utils/localeUtils';
 
 const getTextStyleFromRichTextPart = (textPart: Types.RichTextContentType) => {
   const textStyle: Types.TextStyle = {};
@@ -97,20 +98,23 @@ const StyledTextContent = styled.span <{ key?: number | string, textStyle?: Type
 interface TextContentProps {
   globalTextStyle?: Types.TextStyle;
   textStyle?: Types.TextStyle;
-  children: number | string | Types.RichTextContentType[] | JSX.Element | (number | string | JSX.Element)[];
+  // FIXME children: number | string | Types.RichTextContentType[] | JSX.Element | (number | string | JSX.Element)[];
+  children: any;
   globalStyle?: any;
   style?: any;
 }
 
 function TextContent({ globalTextStyle, textStyle, children, globalStyle, style }: TextContentProps) {
-  if (Array.isArray(children) && children.length > 0 && (children[0] as Types.RichTextContentType).text !== undefined) {
+  const newChildren = LocaleUtils.getObjectFromLocale(children);
+
+  if (Array.isArray(newChildren) && newChildren.length > 0 && (newChildren[0] as Types.RichTextContentType).text !== undefined) {
     // Texte enrichi
-    return getTextContentFromRichText(children as Types.RichTextContentType[], globalTextStyle, textStyle, globalStyle);
+    return getTextContentFromRichText(newChildren as Types.RichTextContentType[], globalTextStyle, textStyle, globalStyle);
   }
 
   return (
     <StyledTextContent textStyle={textStyle} style={style}>
-      {children}
+      {newChildren as React.ReactNode}
     </StyledTextContent>
   );
 }

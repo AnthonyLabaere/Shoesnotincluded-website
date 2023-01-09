@@ -30,6 +30,7 @@ const FAQ = () => {
               Vous profitez donc d'une réduction de <span style={{ fontWeight: "bold" }}>{Constants.WEBSITE_TO_APP_GAME_REDUCTION_PERCENT}%</span> en l'<StyledLink to="/achat">achetant sur ce site</StyledLink>. 🎉<br /><br />
               Pourquoi ? Les frais appliqués par les stores sont plus élevés que ceux du site, tout simplement.
             </Response>
+            <br/>
 
             <Question>Combien de joueurs sur une partie ?</Question>
             <Response>
@@ -37,6 +38,7 @@ const FAQ = () => {
               Le tarif ci-dessus est bien applicable pour le groupe dans son intégralité : vous n'avez qu'à payer <span style={{ fontWeight: "bold" }}>une seule fois</span> pour les 5 joueurs.<br />
               Le joueur achetant la partie (ou utilisant un bon d'achat) a la possibilité d'inviter 4 autres personnes lors du lancement de la partie.<br />
             </Response>
+            <br/>
 
             {/* <Question>TODO Question enfants</Question>
             <Response>
@@ -52,12 +54,14 @@ const FAQ = () => {
               5 - Le joueur utilisant un bon d'achat a alors la possibilité d'inviter 4 autres personnes lors du lancement de la partie, qu'ils soient sur Android ou Apple.
               <br /><i>Précision : les bons d'achat ne sont pour l'instant pas visibles dans l'historique de l'application mobile.</i>
             </Response>
+            <br/>
 
             <Question>Comment retrouver le code de mon bon d'achat ?</Question>
             <Response>
               Retournez sur la page de votre <StyledLink to="/compte">compte</StyledLink> pour consulter votre historique de paiement. Les bons de commande associés aux paiements sont listés dans la colonne de droite.<br />
               ⚠ Attention : vous devez être connecté avec le même compte utilisateur que lors de la commande !
             </Response>
+            <br/>
           </ContentContainer>
         </ContentPageContainer>
       </InnerPageContainer>

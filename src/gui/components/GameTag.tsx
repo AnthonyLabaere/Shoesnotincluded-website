@@ -73,7 +73,7 @@ function GameTag({ label, type, large }: GameTagProps) {
   return (
     <Tag type={type} large={large}>
       {
-        large ? <h3>{enhancedLabel as string}</h3> : enhancedLabel as string
+        large ? <div className="fs-5">{enhancedLabel as string}</div> : enhancedLabel as string
       }
 
     </Tag>

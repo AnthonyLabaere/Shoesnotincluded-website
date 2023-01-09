@@ -1,6 +1,6 @@
-import React from 'react'
 import { /*faDiscord, */ faFacebook, faInstagram, faLinkedinIn /*, faTwitter faYoutube*/ } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useTranslation } from 'react-i18next'
 import { useMediaQuery } from 'react-responsive'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
@@ -149,6 +149,8 @@ const BottomStyledLink = styled(StyledLink)`
 `
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   const isMobileXS = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXS })
   const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL })
 
@@ -167,7 +169,7 @@ const Footer = () => {
         <TopContentContainer>
           <ContentContainer>
             <TopSubContainer>
-              <Title>À propos</Title>
+              <Title>{t("footer.about.title")}</Title>
               <p>ShoesNotIncluded est une application mobile multijoueur reprenant les codes de l&apos;escape game mais en plein air. Les jeux vous proposent de vous déplacer dans des quartiers, de fouiller l&apos;environnement à la recherche d&apos;indices et d&apos;y résoudre des énigmes. L&apos;application permet de jouer seul mais aussi à plusieurs.</p>
             </TopSubContainer>
             <TopSubContainer>
@@ -236,7 +238,7 @@ const Footer = () => {
       <BottomContainer>
         <BottomSubContainerColumn>
           <Link to="/">
-            <Brand size={isMobile ? 1 : 1.5} color={GREY_COLOR} hoverColor={GREY_HOVER_COLOR} />
+            <Brand className="fs-6" color={GREY_COLOR} hoverColor={GREY_HOVER_COLOR} />
           </Link>
           {/* <Marginer direction="horizontal" margin={marginerMargin} /> */}
           <PrivacyText> Marque déposée. 2021</PrivacyText>

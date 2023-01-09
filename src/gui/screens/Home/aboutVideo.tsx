@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
@@ -14,13 +13,6 @@ const AboutVideoContainer = styled.div`
   justify-content: center;
 `
 
-const Subtitle = styled.h2`
-  text-align: center;
-  a {
-    color: #000;
-  }
-`
-
 const StyledLink = styled(Link)`
   &:hover {
     color: ${({ theme }) => theme.linkHoverColor};
@@ -30,7 +22,7 @@ const StyledLink = styled(Link)`
 const AboutVideo = () => {
   return (
     <AboutVideoContainer>
-      <Subtitle>Vidéo de présentation :</Subtitle>
+      <h2 className="text-center">Vidéo de présentation :</h2>
       <StyledReactPlayer url={YOUTUBE_PRESENTATION_VIDEO_URL} />
       <StyledLink to="/enquoicaconsiste">
         <Button>Je souhaite plus d&apos;informations</Button>
