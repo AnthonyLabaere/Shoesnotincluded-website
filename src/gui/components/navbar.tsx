@@ -40,7 +40,7 @@ const CustomNavbar = (): React.ReactElement => {
   const { user } = useCurrentUser();
 
   return (
-    <Navbar sticky="top" expand="lg" style={{ backgroundColor: 'white' }}>
+    <Navbar sticky="top" expand="lg" collapseOnSelect style={{ backgroundColor: 'white' }}>
       <Container>
         <Navbar.Brand href="/" style={{ display: 'flex' }}>
           <img
@@ -64,25 +64,26 @@ const CustomNavbar = (): React.ReactElement => {
                 aria-label="Search"
               />
             </Form> */}
-            <Nav.Link className="px-4" as={Link} to="/scenarios">
+            <Nav.Link className="px-4" as={Link} to="/scenarios" eventKey="scenarios">
               {'Les scénarios'}
             </Nav.Link>
-            <Nav.Link className="px-4" as={Link} to="/enquoicaconsiste">
+            <Nav.Link className="px-4" as={Link} to="/enquoicaconsiste" eventKey="enquoicaconsiste">
               {'En quoi ça consiste ?'}
             </Nav.Link>
-            <Nav.Link className="px-4" as={Link} to="/tarif">
+            <Nav.Link className="px-4" as={Link} to="/tarif" eventKey="tarif">
               Tarif
             </Nav.Link>
-            <Nav.Link className="px-4" as={Link} to="/faq">
+            <Nav.Link className="px-4" as={Link} to="/faq" eventKey="faq">
               FAQ
             </Nav.Link>
-            <Nav.Link className="px-4" as={Link} to="/team-building">
+            <Nav.Link className="px-4" as={Link} to="/team-building" eventKey="team-building">
               {'Team building'}
             </Nav.Link>
             <Nav.Link
               className="px-4"
               as={Link}
               to="/compte"
+              eventKey="compte"
               style={{ display: 'flex', alignItems: 'center' }}>
               <UserName>{user != null ? user.displayName : 'Mon compte'}</UserName>{' '}
               <FontAwesomeIcon icon={user != null ? faUser : faUserSlash} size="1x" />
