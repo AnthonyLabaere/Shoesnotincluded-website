@@ -1,41 +1,41 @@
-import React, { ReactElement, Suspense, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { ThemeProvider } from 'styled-components'
 import './style/bootstrap.scss';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Footer from './gui/components/footer'
-import Navbar from './gui/components/navbar'
+import React, { ReactElement, Suspense, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { ThemeProvider } from 'styled-components';
 
+import Footer from './gui/components/footer';
+import Loading from './gui/components/Loading';
+import Navbar from './gui/components/navbar';
+import Account from './gui/screens/Account';
+import CardValidation from './gui/screens/CardValidation';
+import CGUCGV from './gui/screens/CGUCGV';
 import Contact from './gui/screens/Contact';
+import Cookies from './gui/screens/Cookies';
+import FAQ from './gui/screens/FAQ';
 import Home from './gui/screens/Home';
 import LegalNotices from './gui/screens/LegalNotices';
-import CGUCGV from './gui/screens/CGUCGV';
+import Payment from './gui/screens/Payment';
+import Prices from './gui/screens/Prices';
 import PrivacyPolicy from './gui/screens/PrivacyPolicy';
 import RedirectionError from './gui/screens/RedirectionError';
-import Scenarios from './gui/screens/Scenarios';
 import Scenario from './gui/screens/Scenario';
-import WhatIsThat from './gui/screens/WhatIsThat';
-import Prices from './gui/screens/Prices';
-import Cookies from './gui/screens/Cookies';
-import Account from './gui/screens/Account';
-import Payment from './gui/screens/Payment';
-import FAQ from './gui/screens/FAQ';
-import TheyTalkAboutUs from './gui/screens/TheyTalkAboutUs';
+import Scenarios from './gui/screens/Scenarios';
 import TeamBuilding from './gui/screens/TeamBuilding';
-import CardValidation from './gui/screens/CardValidation';
-
-import { GlobalStyles } from './style/global'
-import { theme } from './style/theme'
-
+import TheyTalkAboutUs from './gui/screens/TheyTalkAboutUs';
+import WhatIsThat from './gui/screens/WhatIsThat';
 import i18n from './i18n';
 import LocaleContext from './LocaleContext';
-import Loading from './gui/components/Loading';
+import { GlobalStyles } from './style/global';
+import { theme } from './style/theme';
 
 const App = (): ReactElement => {
   const [locale, setLocale] = useState(i18n.language);
-  i18n.on('languageChanged', () => setLocale(i18n.language));
+  i18n.on('languageChanged', () => {
+    setLocale(i18n.language);
+  });
 
   return (
     <div className="App">
@@ -73,7 +73,7 @@ const App = (): ReactElement => {
         </LocaleContext.Provider>
       </ThemeProvider>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

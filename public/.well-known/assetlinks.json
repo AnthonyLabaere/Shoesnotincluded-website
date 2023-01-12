@@ -1,15 +1,13 @@
 [
-   {
-      "relation":[
-         "delegate_permission/common.handle_all_urls"
-      ],
-      "target":{
-         "namespace":"android_app",
-         "package_name":"fr.shoesnotincluded",
-         "sha256_cert_fingerprints":[
-            "36:FB:88:08:31:C9:A5:8F:1B:4C:42:4E:D6:50:AF:8C:67:DD:81:28:7D:EF:CF:87:E2:17:D4:A8:DE:7F:55:9A",
-            "2F:88:34:B1:17:EF:19:36:39:1E:E9:10:74:20:72:92:F1:B4:B4:25:93:60:48:90:9B:70:36:6B:0A:58:AA:E4"
-         ]
-      }
-   }
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "fr.shoesnotincluded",
+      "sha256_cert_fingerprints": [
+        "36:FB:88:08:31:C9:A5:8F:1B:4C:42:4E:D6:50:AF:8C:67:DD:81:28:7D:EF:CF:87:E2:17:D4:A8:DE:7F:55:9A",
+        "2F:88:34:B1:17:EF:19:36:39:1E:E9:10:74:20:72:92:F1:B4:B4:25:93:60:48:90:9B:70:36:6B:0A:58:AA:E4"
+      ]
+    }
+  }
 ]

@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
 import { User } from 'firebase/auth';
+import { useEffect, useState } from 'react';
 
-import * as Types from '../types'
 import * as FirebaseAuth from '../firebase/auth';
-import * as UserFirestore from '../firebase/firestore/userFirestore'
+import * as UserFirestore from '../firebase/firestore/userFirestore';
+import * as Types from '../types';
 
-function useCurrentUser() {
+function useCurrentUser(): {
+  userAuth: undefined | null | User;
+  user: undefined | Types.UserDocument;
+} {
   const [userAuth, setUserAuth] = useState<null | User>();
 
   useEffect(() => {
-    return FirebaseAuth.subscribeToAuth(userAuthTmp => {
+    return FirebaseAuth.subscribeToAuth((userAuthTmp) => {
       setUserAuth(userAuthTmp);
     });
   }, []);
@@ -17,11 +20,11 @@ function useCurrentUser() {
   const [user, setUser] = useState<Types.UserDocument>();
 
   useEffect(() => {
-    if (userAuth) {
-      const unsubscribe = UserFirestore.subscribeToUser(userAuth.uid, userTmp => {
+    if (userAuth != null) {
+      const unsubscribe = UserFirestore.subscribeToUser(userAuth.uid, (userTmp) => {
         setUser({
           id: userAuth.uid,
-          ...userTmp,
+          ...userTmp
         });
       });
 
@@ -34,6 +37,6 @@ function useCurrentUser() {
   return {
     userAuth,
     user
-  }
+  };
 }
 export default useCurrentUser;

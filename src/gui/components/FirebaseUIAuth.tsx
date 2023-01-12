@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
 
 import { auth } from '../../firebase';
@@ -11,23 +11,23 @@ const uiConfig = {
   signInOptions: [
     {
       // firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      provider: "password",
+      provider: 'password',
       requireDisplayName: true
     },
     // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    "google.com",
+    'google.com',
     {
-      provider: "apple.com",
-      scopes: ["email", "name"]
+      provider: 'apple.com',
+      scopes: ['email', 'name']
     },
     {
       // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      provider: "facebook.com",
-    },
+      provider: 'facebook.com'
+    }
   ],
   callbacks: {
     // Avoid redirects after sign-in.
-    signInSuccessWithAuthResult: () => false,
+    signInSuccessWithAuthResult: () => false
   },
   // Terms of service url.
   tosUrl: 'https://www.shoesnotincluded.fr/cgu-cgv',
@@ -39,15 +39,24 @@ interface FirebaseUiAuthProps {
   signInSuccessWithAuthResultCallback?: (authResult: any) => boolean;
 }
 
-const FirebaseUiAuth = ({ signInSuccessWithAuthResultCallback }: FirebaseUiAuthProps) => {
+const FirebaseUiAuth = ({
+  signInSuccessWithAuthResultCallback
+}: FirebaseUiAuthProps): React.ReactElement => {
   return (
-    <FirebaseAuth uiConfig={
-      {
+    <FirebaseAuth
+      uiConfig={{
         ...uiConfig,
-        callbacks: { ...uiConfig.callbacks, signInSuccessWithAuthResult: signInSuccessWithAuthResultCallback !== undefined ? signInSuccessWithAuthResultCallback : uiConfig.callbacks.signInSuccessWithAuthResult }
-      }
-    } firebaseAuth={auth} />
+        callbacks: {
+          ...uiConfig.callbacks,
+          signInSuccessWithAuthResult:
+            signInSuccessWithAuthResultCallback !== undefined
+              ? signInSuccessWithAuthResultCallback
+              : uiConfig.callbacks.signInSuccessWithAuthResult
+        }
+      }}
+      firebaseAuth={auth}
+    />
   );
-}
+};
 
 export default FirebaseUiAuth;

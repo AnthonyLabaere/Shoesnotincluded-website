@@ -1,8 +1,8 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
-import oxygenBold from '../assets/fonts/Oxygen-Bold.ttf'
-import oxygenLight from '../assets/fonts/Oxygen-Light.ttf'
-import oxygenRegular from '../assets/fonts/Oxygen-Regular.ttf'
+import oxygenBold from '../assets/fonts/Oxygen-Bold.ttf';
+import oxygenLight from '../assets/fonts/Oxygen-Light.ttf';
+import oxygenRegular from '../assets/fonts/Oxygen-Regular.ttf';
 
 export const GlobalStyles = createGlobalStyle`
     @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
@@ -50,4 +50,4 @@ export const GlobalStyles = createGlobalStyle`
         font-family: inherit;
         font-size: inherit;
     }
-`
+`;

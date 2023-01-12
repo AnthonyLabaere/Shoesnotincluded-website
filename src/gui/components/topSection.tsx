@@ -1,13 +1,12 @@
-import React from 'react'
-import { useMediaQuery } from 'react-responsive'
-import styled from 'styled-components'
+import React from 'react';
+import { useMediaQuery } from 'react-responsive';
+import styled from 'styled-components';
 
-import { DEVICE_SIZES } from '../../constants'
-import Brand from './brand'
-import Marginer from './marginer'
-
-import LogoImg from '../../assets/images/logo.png'
-import TopSectionBackgroundImg from '../../assets/images/landing-page.jpg'
+import TopSectionBackgroundImg from '../../assets/images/landing-page.jpg';
+import LogoImg from '../../assets/images/logo.png';
+import { DEVICE_SIZES } from '../../constants';
+import Brand from './brand';
+import Marginer from './marginer';
 
 const TopSectionContainer = styled.div`
   width: 100%;
@@ -33,7 +32,7 @@ const TopSectionContainer = styled.div`
     height: 500px;
     background-position: -175px 0px;
   }
-`
+`;
 
 const BackgroundFilter = styled.div`
   width: 100%;
@@ -41,7 +40,7 @@ const BackgroundFilter = styled.div`
   /* background-color: rgba(180, 220, 220, 0.5); */
   display: flex;
   flex-direction: column;
-`
+`;
 
 const TopSectionInnerContainer = styled.div`
   width: 100%;
@@ -57,7 +56,7 @@ const TopSectionInnerContainer = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXS}) {
     height: 500px;
   }
-`
+`;
 
 const LogoContainer = styled.div`
   display: flex;
@@ -66,7 +65,7 @@ const LogoContainer = styled.div`
   align-items: center;
   justify-content: flex-end;
   filter: ${({ theme }) => theme.filter.default};
-`
+`;
 
 const LogoImage = styled.div`
   display: flex;
@@ -96,7 +95,7 @@ const LogoImage = styled.div`
     }
     filter: none;
   }
-`
+`;
 
 const BrandContainer = styled(Brand)`
   font-size: 50px;
@@ -104,7 +103,7 @@ const BrandContainer = styled(Brand)`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     font-size: 24px;
   }
-`
+`;
 
 const SloganText = styled.h3`
   margin: 0;
@@ -117,14 +116,14 @@ const SloganText = styled.h3`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     font-size: 24px;
   }
-`
+`;
 
 const SpecialText = styled.span`
   color: ${({ theme }) => theme.specialTextColor};
-`
+`;
 
-const TopSection = () => {
-  const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL })
+const TopSection = (): React.ReactElement => {
+  const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL });
 
   return (
     <TopSectionContainer>
@@ -152,7 +151,7 @@ const TopSection = () => {
         </TopSectionInnerContainer>
       </BackgroundFilter>
     </TopSectionContainer>
-  )
-}
+  );
+};
 
-export default TopSection
+export default TopSection;

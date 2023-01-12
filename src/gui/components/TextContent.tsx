@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import * as Types from '../../types';
 import * as Constants from '../../constants';
+import * as Types from '../../types';
 import * as LocaleUtils from '../../utils/localeUtils';
 
-const getTextStyleFromRichTextPart = (textPart: Types.RichTextContentType) => {
+const getTextStyleFromRichTextPart = (textPart: Types.RichTextContentType): Types.TextStyle => {
   const textStyle: Types.TextStyle = {};
   // TODO : faire des tableaux
   if (textPart.textStyle !== undefined) {
@@ -54,16 +54,24 @@ const getTextStyleFromRichTextPart = (textPart: Types.RichTextContentType) => {
   return textStyle;
 };
 
-export const getTextContentFromRichText = (text: Types.RichTextContentType[], globalTextStyle: Types.TextStyle = {}, textStyle: undefined | Types.TextStyle, globalStyle: undefined | any): JSX.Element => {
+export const getTextContentFromRichText = (
+  text: Types.RichTextContentType[],
+  globalTextStyle: Types.TextStyle = {},
+  textStyle: undefined | Types.TextStyle,
+  globalStyle: undefined | any
+): JSX.Element => {
   return (
     <TextContent textStyle={globalTextStyle} style={globalStyle}>
-      {
-        text.map((textPart: Types.RichTextContentType, index: number) => {
-          return (
-            <TextContent key={index} textStyle={{ ...textStyle, ...getTextStyleFromRichTextPart(textPart) }}>{textPart.text}</TextContent>
-          );
-        })
-      }
+      {text.map((textPart: Types.RichTextContentType, index: number) => {
+        return (
+          <TextContent
+            key={index}
+            textStyle={{ ...textStyle, ...getTextStyleFromRichTextPart(textPart) }}
+          >
+            {textPart.text}
+          </TextContent>
+        );
+      })}
     </TextContent>
   );
 };
@@ -75,22 +83,36 @@ export const getTextContentFromRichText = (text: Types.RichTextContentType[], gl
  *
  * A voir si ces margin et width sont à gérer différemment suivant les prochains jeux à développer
  */
-const StyledTextContent = styled.span <{ key?: number | string, textStyle?: Types.TextStyle }>`
-  text-align: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) => (textStyle.textAlign !== undefined ? textStyle.textAlign : 'center')};
-  font-weight: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) => (textStyle.fontWeight !== undefined ? textStyle.fontWeight : 'normal')};
-  font-style: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) => (textStyle.fontStyle !== undefined ? textStyle.fontStyle : 'normal')};
-  text-decoration: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) => (textStyle.textDecoration !== undefined ? textStyle.textDecoration : 'none')};
-  color: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) => (textStyle.color !== undefined ? textStyle.color : 'black')};
-  background-color: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) => (textStyle.backgroundColor !== undefined ? textStyle.backgroundColor : 'transparent')};
-  margin-bottom: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) => (textStyle.marginBottom !== undefined ? textStyle.marginBottom + 'px' : 0)};
-  width: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) => (textStyle.width !== undefined ? textStyle.width : 'auto')};
-  ${({ textStyle = {} }) => textStyle.rotate === true && `
+const StyledTextContent = styled.span<{ key?: number | string; textStyle?: Types.TextStyle }>`
+  text-align: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
+    textStyle.textAlign !== undefined ? textStyle.textAlign : 'center'};
+  font-weight: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
+    textStyle.fontWeight !== undefined ? textStyle.fontWeight : 'normal'};
+  font-style: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
+    textStyle.fontStyle !== undefined ? textStyle.fontStyle : 'normal'};
+  text-decoration: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
+    textStyle.textDecoration !== undefined ? textStyle.textDecoration : 'none'};
+  color: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
+    textStyle.color !== undefined ? textStyle.color : 'black'};
+  background-color: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
+    textStyle.backgroundColor !== undefined ? textStyle.backgroundColor : 'transparent'};
+  margin-bottom: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
+    textStyle.marginBottom !== undefined ? `${textStyle.marginBottom}px` : 0};
+  width: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
+    textStyle.width !== undefined ? textStyle.width : 'auto'};
+  ${({ textStyle = {} }) =>
+    textStyle.rotate === true &&
+    `
     transform: rotate(90deg);
   `};
-  ${({ textStyle = {} }) => textStyle.flip === true && `
+  ${({ textStyle = {} }) =>
+    textStyle.flip === true &&
+    `
     transform: rotate(180deg);
   `};
-  ${({ textStyle = {} }) => textStyle.reversed === true && `
+  ${({ textStyle = {} }) =>
+    textStyle.reversed === true &&
+    `
     transform: rotateY(180deg);
   `};
 `;
@@ -104,12 +126,27 @@ interface TextContentProps {
   style?: any;
 }
 
-function TextContent({ globalTextStyle, textStyle, children, globalStyle, style }: TextContentProps) {
+function TextContent({
+  globalTextStyle,
+  textStyle,
+  children,
+  globalStyle,
+  style
+}: TextContentProps): React.ReactElement {
   const newChildren = LocaleUtils.getObjectFromLocale(children);
 
-  if (Array.isArray(newChildren) && newChildren.length > 0 && (newChildren[0] as Types.RichTextContentType).text !== undefined) {
+  if (
+    Array.isArray(newChildren) &&
+    newChildren.length > 0 &&
+    (newChildren[0] as Types.RichTextContentType).text !== undefined
+  ) {
     // Texte enrichi
-    return getTextContentFromRichText(newChildren as Types.RichTextContentType[], globalTextStyle, textStyle, globalStyle);
+    return getTextContentFromRichText(
+      newChildren as Types.RichTextContentType[],
+      globalTextStyle,
+      textStyle,
+      globalStyle
+    );
   }
 
   return (

@@ -1,17 +1,22 @@
-import { /*faDiscord, */ faFacebook, faInstagram, faLinkedinIn /*, faTwitter faYoutube*/ } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useTranslation } from 'react-i18next'
-import { useMediaQuery } from 'react-responsive'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import {
+  /* faDiscord, */ faFacebook,
+  faInstagram,
+  faLinkedinIn /*, faTwitter faYoutube */
+} from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useMediaQuery } from 'react-responsive';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import { DEVICE_SIZES, SOCIAL_NETWORKS_URLS } from '../../constants';
 import { StyledLink } from '../components/common';
-import Brand from './brand'
-import Marginer from './marginer'
+import Brand from './brand';
+import Marginer from './marginer';
 
-const GREY_COLOR = '#353535'
-const GREY_HOVER_COLOR = '#666666'
+const GREY_COLOR = '#353535';
+const GREY_HOVER_COLOR = '#666666';
 
 const FooterContainer = styled.div`
   width: 100%;
@@ -31,7 +36,7 @@ const FooterContainer = styled.div`
   }
 
   padding-bottom: 0;
-`
+`;
 
 const TopContainer = styled.div`
   width: 100%;
@@ -40,12 +45,12 @@ const TopContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
-`
+`;
 
 const TopContentContainer = styled.div`
   width: 100%;
   max-width: ${({ theme }) => theme.deviceSizes.laptop};
-`
+`;
 
 const ContentContainer = styled.div<{ isMobile?: boolean }>`
   display: flex;
@@ -55,7 +60,7 @@ const ContentContainer = styled.div<{ isMobile?: boolean }>`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     flex-direction: column;
   }
-`
+`;
 
 const BottomContainer = styled.span`
   display: flex;
@@ -68,7 +73,7 @@ const BottomContainer = styled.span`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     padding: 0;
   }
-`
+`;
 
 const TopSubContainer = styled.span`
   display: flex;
@@ -78,7 +83,7 @@ const TopSubContainer = styled.span`
   margin-right: 1rem;
   text-align: justify;
   align-items: center;
-`
+`;
 
 const Title = styled.h2`
   margin: 0;
@@ -86,12 +91,12 @@ const Title = styled.h2`
   color: #000;
   font-weight: 600;
   font-size: 20px;
-`
+`;
 
 const SocialIconContainer = styled.div`
   display: flex;
   flex-direction: row;
-`
+`;
 
 const SocialIcon = styled.div`
   color: ${GREY_COLOR};
@@ -107,19 +112,19 @@ const SocialIcon = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     font-size: 25px;
   }
-`
+`;
 
 const BottomSubContainerColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 const BottomSubContainerRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`
+`;
 
 const PrivacyText = styled.div`
   color: ${GREY_COLOR};
@@ -133,7 +138,7 @@ const PrivacyText = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     font-size: 0.5rem;
   }
-`
+`;
 
 const BottomStyledLink = styled(StyledLink)`
   color: ${GREY_COLOR};
@@ -146,21 +151,21 @@ const BottomStyledLink = styled(StyledLink)`
   &:hover {
     color: ${GREY_HOVER_COLOR};
   }
-`
+`;
 
-const Footer = () => {
+const Footer = (): React.ReactElement => {
   const { t } = useTranslation();
 
-  const isMobileXS = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXS })
-  const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL })
+  const isMobileXS = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXS });
+  const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL });
 
-  let marginerMargin: number
+  let marginerMargin: number;
   if (isMobileXS) {
-    marginerMargin = 5
+    marginerMargin = 5;
   } else if (isMobile) {
-    marginerMargin = 7.5
+    marginerMargin = 7.5;
   } else {
-    marginerMargin = 10
+    marginerMargin = 10;
   }
 
   return (
@@ -169,12 +174,22 @@ const Footer = () => {
         <TopContentContainer>
           <ContentContainer>
             <TopSubContainer>
-              <Title>{t("footer.about.title")}</Title>
-              <p>ShoesNotIncluded est une application mobile multijoueur reprenant les codes de l&apos;escape game mais en plein air. Les jeux vous proposent de vous déplacer dans des quartiers, de fouiller l&apos;environnement à la recherche d&apos;indices et d&apos;y résoudre des énigmes. L&apos;application permet de jouer seul mais aussi à plusieurs.</p>
+              <Title>{t('footer.about.title')}</Title>
+              <p>
+                ShoesNotIncluded est une application mobile multijoueur reprenant les codes de
+                l&apos;escape game mais en plein air. Les jeux vous proposent de vous déplacer dans
+                des quartiers, de fouiller l&apos;environnement à la recherche d&apos;indices et
+                d&apos;y résoudre des énigmes. L&apos;application permet de jouer seul mais aussi à
+                plusieurs.
+              </p>
             </TopSubContainer>
             <TopSubContainer>
               <Title>Où jouer ?</Title>
-              <p>Plusieurs scénarios sont disponibles à Nantes et d'autres sont en cours de création. N&apos;hésitez pas à nous suivre sur les réseaux sociaux pour ne pas rater les évènements à venir.</p>
+              <p>
+                Plusieurs scénarios sont disponibles à Nantes et d&apos;autres sont en cours de
+                création. N&apos;hésitez pas à nous suivre sur les réseaux sociaux pour ne pas rater
+                les évènements à venir.
+              </p>
             </TopSubContainer>
           </ContentContainer>
           <ContentContainer>
@@ -247,13 +262,17 @@ const Footer = () => {
         <BottomSubContainerRow>
           <BottomStyledLink to="/mentions-legales">Mentions légales</BottomStyledLink>
           <Marginer direction="horizontal" margin={marginerMargin} />
-          <BottomStyledLink to="/cgu-cgv">{isMobile ? 'CGU & CGV' : "Condition générales d'utilisation et de vente"}</BottomStyledLink>
+          <BottomStyledLink to="/cgu-cgv">
+            {isMobile ? 'CGU & CGV' : "Condition générales d'utilisation et de vente"}
+          </BottomStyledLink>
           <Marginer direction="horizontal" margin={marginerMargin} />
-          <BottomStyledLink to="/confidentialite">{isMobile ? 'Confidentialité' : 'Politique de confidentialité'}</BottomStyledLink>
+          <BottomStyledLink to="/confidentialite">
+            {isMobile ? 'Confidentialité' : 'Politique de confidentialité'}
+          </BottomStyledLink>
         </BottomSubContainerRow>
       </BottomContainer>
     </FooterContainer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

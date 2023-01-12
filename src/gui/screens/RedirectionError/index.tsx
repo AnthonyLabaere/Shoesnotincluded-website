@@ -1,10 +1,14 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import { ContentContainer } from '../../components/common'
-import Marginer from '../../components/marginer'
-import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer'
-import ShareLinkImg from '../../../assets/images/partager-lien.png'
+import ShareLinkImg from '../../../assets/images/partager-lien.png';
+import { ContentContainer } from '../../components/common';
+import Marginer from '../../components/marginer';
+import {
+  ContentPageContainer,
+  InnerPageContainer,
+  PageContainer
+} from '../../components/pageContainer';
 
 const ShareLinkImage = styled.div`
   margin-top: 15px;
@@ -20,41 +24,64 @@ const ShareLinkImage = styled.div`
       width: 250px;
     }
   }
-`
+`;
 
 const TextContainer = styled.div`
   font-size: 1.1rem;
   text-align: justify;
-`
+`;
 
-const WhatIsThat = () => {
+const WhatIsThat = (): React.ReactElement => {
   return (
     <PageContainer>
       <InnerPageContainer>
         <ContentPageContainer coloredBackground>
           <ContentContainer>
-            <h1>Problème de redirection vers l'application mobile</h1>
+            <h1>Problème de redirection vers l&apos;application mobile</h1>
           </ContentContainer>
         </ContentPageContainer>
         <ContentPageContainer coloredBackground>
           <Marginer direction="vertical" margin="2em" />
           <ContentContainer>
-            <h2>Si vous n'avez pas été redirigé vers l'application mobile après un clic sur le lien partagé par un autre joueur, merci de suivre les indications suivantes :</h2>
+            <h2>
+              Si vous n&apos;avez pas été redirigé vers l&apos;application mobile après un clic sur
+              le lien partagé par un autre joueur, merci de suivre les indications suivantes :
+            </h2>
             <TextContainer>
               <ul>
-                <li>Veuillez ne cliquer sur le lien de partage que depuis un appareil mobile (smartphone ou tablette)</li>
-                {/* TODO : ajouter le lien vers les stores */}
-                <li>Vérifiez que l'application mobile ShoesNotIncluded est bien installée sur votre smartphone ou tablette</li>
                 <li>
-                  Choisissez d'ouvrir le lien avec l'application mobile et non un navigateur (exemple avec l'image ci-dessous où il est nécessaire de cliquer sur "ShoesNotIncluded") :
+                  Veuillez ne cliquer sur le lien de partage que depuis un appareil mobile
+                  (smartphone ou tablette)
+                </li>
+                {/* TODO : ajouter le lien vers les stores */}
+                <li>
+                  Vérifiez que l&apos;application mobile ShoesNotIncluded est bien installée sur
+                  votre smartphone ou tablette
+                </li>
+                <li>
+                  Choisissez d&apos;ouvrir le lien avec l&apos;application mobile et non un
+                  navigateur (exemple avec l&apos;image ci-dessous où il est nécessaire de cliquer
+                  sur &quot;ShoesNotIncluded&quot;) :
                   <ShareLinkImage>
                     <img src={ShareLinkImg} alt="Partager lien" />
                   </ShareLinkImage>
                 </li>
-                <li>Certains applications sur lesquelles ce lien vous a été partagé peuvent ne pas vous proposer par défaut d'ouvrir le lien avec l'application. Vous avez dans ce cas de figure deux possibilités :</li>
+                <li>
+                  Certains applications sur lesquelles ce lien vous a été partagé peuvent ne pas
+                  vous proposer par défaut d&apos;ouvrir le lien avec l&apos;application. Vous avez
+                  dans ce cas de figure deux possibilités :
+                </li>
                 <ul>
-                  <li>utiliser une autre application (exemple : votre messagerie sms, WhatsApp, Signal, Slack, etc.)</li>
-                  <li>modifier la configuration de l'application concernée (exemple : avec Facebook Messenger, appuyez sur votre photo de profil en haut à gauche. Faites défiler jusqu'à Photos et médias. Entrez dans ce sous-menu et activez la bascule « Ouvrir les liens dans le navigateur par défaut »</li>
+                  <li>
+                    utiliser une autre application (exemple : votre messagerie sms, WhatsApp,
+                    Signal, Slack, etc.)
+                  </li>
+                  <li>
+                    modifier la configuration de l&apos;application concernée (exemple : avec
+                    Facebook Messenger, appuyez sur votre photo de profil en haut à gauche. Faites
+                    défiler jusqu&apos;à Photos et médias. Entrez dans ce sous-menu et activez la
+                    bascule « Ouvrir les liens dans le navigateur par défaut »
+                  </li>
                 </ul>
               </ul>
             </TextContainer>
@@ -63,7 +90,7 @@ const WhatIsThat = () => {
         </ContentPageContainer>
       </InnerPageContainer>
     </PageContainer>
-  )
-}
+  );
+};
 
-export default WhatIsThat
+export default WhatIsThat;

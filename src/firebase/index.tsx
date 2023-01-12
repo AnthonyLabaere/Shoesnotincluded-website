@@ -1,6 +1,6 @@
-import { initializeApp } from 'firebase/app'
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 // import { getAnalytics } from "firebase/analytics";
 import { getFunctions } from 'firebase/functions';
 
@@ -15,8 +15,8 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_storageBucket,
   messagingSenderId: process.env.REACT_APP_messagingSenderId,
   appId: process.env.REACT_APP_appId,
-  measurementId: process.env.REACT_APP_measurementId,
-}
+  measurementId: process.env.REACT_APP_measurementId
+};
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -25,4 +25,3 @@ const functions = getFunctions(app);
 // const analytics = getAnalytics(app);
 
 export { app, auth, db, functions };
-

@@ -1,30 +1,24 @@
 import i18n from '../i18n';
 
-const getDefaultShortLocale = () => {
+const getDefaultShortLocale = (): string => {
   return i18n.languages[0].split('-')[0];
 };
 
-const getShortLocale = () => {
+const getShortLocale = (): string => {
   return i18n.language.split('-')[0];
 };
 
-const isLocaleObject = (object: any) => {
-  for (const index in i18n.languages) {
-    if (Object.prototype.hasOwnProperty.call(object, i18n.languages[index])) {
-      return true;
-    }
-  }
-  return false;
+const isLocaleObject = (object: any): boolean => {
+  return i18n.languages.some((language) => Object.prototype.hasOwnProperty.call(object, language));
 };
 
-export const getObjectFromLocale = (object: any) => {
+export const getObjectFromLocale = (object: any): any => {
   if (isLocaleObject(object)) {
     // C'est bien un objet internationalisé
     if (Object.prototype.hasOwnProperty.call(object, getShortLocale())) {
       // Retour de l'objet correspondant à la langue du téléphone si celui-ci est présent
       return object[getShortLocale()];
-    } 
-    else if (Object.prototype.hasOwnProperty.call(object, getDefaultShortLocale())) {
+    } else if (Object.prototype.hasOwnProperty.call(object, getDefaultShortLocale())) {
       // Sinon retour de l'objet correspondant à la locale par défaut si celui-ci est présent
       return object[getDefaultShortLocale()];
     }

@@ -1,9 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-import { ContentContainer } from '../../components/common'
-import Marginer from '../../components/marginer'
-import { ContentPageContainer, InnerPageContainer, PageContainer } from '../../components/pageContainer'
+import { ContentContainer } from '../../components/common';
+import Marginer from '../../components/marginer';
+import {
+  ContentPageContainer,
+  InnerPageContainer,
+  PageContainer
+} from '../../components/pageContainer';
 
 const CookiesContentContainer = styled(ContentContainer)`
   text-align: justify;
@@ -12,9 +16,9 @@ const CookiesContentContainer = styled(ContentContainer)`
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
-`
+`;
 
-const Cookies = () => {
+const Cookies = (): React.ReactElement => {
   return (
     <PageContainer>
       <InnerPageContainer>
@@ -27,7 +31,10 @@ const Cookies = () => {
           <CookiesContentContainer>
             <div>
               <div>
-                <p>Aucun cookie n'est utilisé pour l'instant par le site shoesnotincluded.fr.</p>
+                <p>
+                  Aucun cookie n&apos;est utilisé pour l&apos;instant par le site
+                  shoesnotincluded.fr.
+                </p>
               </div>
             </div>
           </CookiesContentContainer>
@@ -35,7 +42,7 @@ const Cookies = () => {
         </ContentPageContainer>
       </InnerPageContainer>
     </PageContainer>
-  )
-}
+  );
+};
 
-export default Cookies
+export default Cookies;

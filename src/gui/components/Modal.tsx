@@ -1,3 +1,4 @@
+import React from 'react';
 import ReactModal from 'react-modal';
 
 interface ModalProps {
@@ -7,7 +8,7 @@ interface ModalProps {
   children: JSX.Element | JSX.Element[];
 }
 
-const Modal = ({ isOpen, onClose, contentLabel, children }: ModalProps) => {
+const Modal = ({ isOpen, onClose, contentLabel, children }: ModalProps): React.ReactElement => {
   return (
     <ReactModal
       isOpen={isOpen}
@@ -27,6 +28,6 @@ const Modal = ({ isOpen, onClose, contentLabel, children }: ModalProps) => {
       ariaHideApp={false}>
       {children}
     </ReactModal>
-  )
-}
-export default Modal
+  );
+};
+export default Modal;

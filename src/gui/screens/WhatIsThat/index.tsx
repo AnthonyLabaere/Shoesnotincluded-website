@@ -1,26 +1,29 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { YOUTUBE_EXPLICATIONS_VIDEO_URL } from '../../../constants'
-import { ContentContainer, StyledReactPlayer } from '../../components/common'
-import Marginer from '../../components/marginer'
-import { InnerPageContainer, PageContainer, ContentPageContainer } from '../../components/pageContainer'
-import Button from '../../components/button'
-
-import FrameStepsImg from '../../../assets/images/1frameSteps.png'
-import FrameStepImg from '../../../assets/images/2frameStep.png'
-import FrameCarrouselImg from '../../../assets/images/3frameCarrousel.png'
-import FrameCodeImg from '../../../assets/images/4frameCode.png'
-import FrameVoiceImg from '../../../assets/images/5frameVoice.png'
-import FrameChronoImg from '../../../assets/images/6frameChrono.png'
-import FrameShoesImg from '../../../assets/images/7frameShoes.png'
-import FrameSynchroImg from '../../../assets/images/8frameSynchro.png'
+import FrameStepsImg from '../../../assets/images/1frameSteps.png';
+import FrameStepImg from '../../../assets/images/2frameStep.png';
+import FrameCarrouselImg from '../../../assets/images/3frameCarrousel.png';
+import FrameCodeImg from '../../../assets/images/4frameCode.png';
+import FrameVoiceImg from '../../../assets/images/5frameVoice.png';
+import FrameChronoImg from '../../../assets/images/6frameChrono.png';
+import FrameShoesImg from '../../../assets/images/7frameShoes.png';
+import FrameSynchroImg from '../../../assets/images/8frameSynchro.png';
+import { YOUTUBE_EXPLICATIONS_VIDEO_URL } from '../../../constants';
+import Button from '../../components/button';
+import { ContentContainer, StyledReactPlayer } from '../../components/common';
+import Marginer from '../../components/marginer';
+import {
+  ContentPageContainer,
+  InnerPageContainer,
+  PageContainer
+} from '../../components/pageContainer';
 
 const TextContainer = styled.div`
   /* font-size: 1.1rem; */
   text-align: justify;
-`
+`;
 
 const Image = styled.img`
   width: 50%;
@@ -30,14 +33,14 @@ const Image = styled.img`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     width: 100%;
   }
-`
+`;
 const ImageBetweenLi = styled(Image)`
   margin-bottom: 15px;
-`
+`;
 
-const ImageIntoParagraph = styled(Image)``
+const ImageIntoParagraph = styled(Image)``;
 
-const WhatIsThat = () => {
+const WhatIsThat = (): React.ReactElement => {
   return (
     <PageContainer>
       <InnerPageContainer>
@@ -55,17 +58,26 @@ const WhatIsThat = () => {
         <ContentPageContainer coloredBackground>
           <Marginer direction="vertical" margin="2em" />
           <ContentContainer>
-            <h3>ShoesNotIncluded, c&apos;est un jeu reprenant fidèlement les codes de l&apos;escape game mais en plein air.</h3>
+            <h3>
+              ShoesNotIncluded, c&apos;est un jeu reprenant fidèlement les codes de l&apos;escape
+              game mais en plein air.
+            </h3>
             <TextContainer className="fs-5">
               <p>
-                <b>La différence avec ce qu'on peut trouver ailleurs ? Le support est pensé multijoueur : les actions sont synchronisées entre les joueurs connectés sur une même partie. Et en plus, le prix est unique quelque soit le nombre de joueur : pas besoin de se ruiner pour jouer sur plusieurs smartphones !</b>
+                <b>
+                  La différence avec ce qu&apos;on peut trouver ailleurs ? Le support est pensé
+                  multijoueur : les actions sont synchronisées entre les joueurs connectés sur une
+                  même partie. Et en plus, le prix est unique quelque soit le nombre de joueur : pas
+                  besoin de se ruiner pour jouer sur plusieurs smartphones !
+                </b>
                 <br />
                 <br />
               </p>
               <p>
                 C&apos;est un mix entre un <u>escape game</u> et un <u>jeu de piste</u>.
               </p>
-              Plus concrètement, c&apos;est une <u>application mobile</u> présentant des jeux où :<br />
+              Plus concrètement, c&apos;est une <u>application mobile</u> présentant des jeux où :
+              <br />
               <ul>
                 <li>
                   Chaque jeu est constitué de <u>plusieurs étapes</u>.
@@ -76,38 +88,51 @@ const WhatIsThat = () => {
                 </li>
                 <ImageBetweenLi src={FrameStepImg} alt="Frame step" />
                 <li>
-                  Une fois à proximité du lieu, vous aurez automatiquement accès, via une géolocalisation, à des indices et <u>énigmes sous la forme de cartes</u>.
+                  Une fois à proximité du lieu, vous aurez automatiquement accès, via une
+                  géolocalisation, à des indices et <u>énigmes sous la forme de cartes</u>.
                 </li>
                 <ImageBetweenLi src={FrameCarrouselImg} alt="Frame carrousel" />
                 <li>
-                  Vous devrez alors résoudre une série d'énigmes en vous basant sur les indices affichés et l'<u>environnement local</u>, en trouvant des <u>codes</u>...
+                  Vous devrez alors résoudre une série d&apos;énigmes en vous basant sur les indices
+                  affichés et l&apos;<u>environnement local</u>, en trouvant des <u>codes</u>...
                 </li>
                 <ImageBetweenLi src={FrameCodeImg} alt="Frame code" />
                 <li>
                   ...et en effectuant certaines <u>manipulations</u>.
                 </li>
                 <ImageBetweenLi src={FrameVoiceImg} alt="Frame voice" />
-                <li>Une fois tous les codes trouvés et manipulations réalisées, vous aurez alors accès à l&apos;énigme de l&apos;étape suivante.</li>
+                <li>
+                  Une fois tous les codes trouvés et manipulations réalisées, vous aurez alors accès
+                  à l&apos;énigme de l&apos;étape suivante.
+                </li>
               </ul>
               <p>
-                Vous pouvez vous représenter chaque étape <u>comme une salle d'un escape game</u> : les étapes sont remplies d'indices et de codes à trouver, tout comme une salle d'escape game.
+                Vous pouvez vous représenter chaque étape{' '}
+                <u>comme une salle d&apos;un escape game</u> : les étapes sont remplies
+                d&apos;indices et de codes à trouver, tout comme une salle d&apos;escape game.
                 <br />
                 <br />
-                Attention, vous ne connaîtrez pas le nombre d'étapes d'un jeu. Alors ne traînez pas !<br />
+                Attention, vous ne connaîtrez pas le nombre d&apos;étapes d&apos;un jeu. Alors ne
+                traînez pas !<br />
                 <ImageIntoParagraph src={FrameChronoImg} alt="Frame chrono" />
               </p>
               <p>
-                La durée approximative du jeu est indiquée sur l'application, mais vous pouvez compter <u>60 à 90 minutes</u>. Un conseil : venez avec de bonnes chaussures ;)
+                La durée approximative du jeu est indiquée sur l&apos;application, mais vous pouvez
+                compter <u>60 à 90 minutes</u>. Un conseil : venez avec de bonnes chaussures ;)
                 <br />
                 <ImageIntoParagraph src={FrameShoesImg} alt="Frame shoes" />
               </p>
               <p>
-                Un dernier détail : toutes les actions sont <u>synchronisées</u> entre les smartphones des différents joueurs :<br />
+                Un dernier détail : toutes les actions sont <u>synchronisées</u> entre les
+                smartphones des différents joueurs :<br />
                 <ImageIntoParagraph src={FrameSynchroImg} alt="Frame synchro" />
               </p>
               <p>
                 <u>
-                  <b>Vous pouvez jouer jusqu&apos;à 5 sur une même partie, chacun sur votre smartphone</b>
+                  <b>
+                    Vous pouvez jouer jusqu&apos;à 5 sur une même partie, chacun sur votre
+                    smartphone
+                  </b>
                 </u>{' '}
                 !<br />
               </p>
@@ -119,13 +144,15 @@ const WhatIsThat = () => {
                 .
               </p>
             </TextContainer>
-            <Link style={{ display: 'flex', flex: 1, marginTop: 25 }} to="/achat"><Button style={{ flex: 1 }}>Je souhaite acheter un bon pour une partie</Button></Link>
+            <Link style={{ display: 'flex', flex: 1, marginTop: 25 }} to="/achat">
+              <Button style={{ flex: 1 }}>Je souhaite acheter un bon pour une partie</Button>
+            </Link>
           </ContentContainer>
           <Marginer direction="vertical" margin="2em" />
         </ContentPageContainer>
       </InnerPageContainer>
     </PageContainer>
-  )
-}
+  );
+};
 
-export default WhatIsThat
+export default WhatIsThat;

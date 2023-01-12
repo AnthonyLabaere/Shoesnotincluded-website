@@ -1,11 +1,13 @@
-import AboutVideo from './aboutVideo'
-import Stores from './stores'
-import { ContentContainer } from '../../components/common'
-import Marginer from '../../components/marginer'
-import { InnerPageContainer, PageContainer } from '../../components/pageContainer'
-import TopSection from '../../components/topSection'
+import React from 'react';
 
-const Home = () => {
+import { ContentContainer } from '../../components/common';
+import Marginer from '../../components/marginer';
+import { InnerPageContainer, PageContainer } from '../../components/pageContainer';
+import TopSection from '../../components/topSection';
+import AboutVideo from './aboutVideo';
+import Stores from './stores';
+
+const Home = (): React.ReactElement => {
   return (
     <PageContainer>
       <TopSection />
@@ -18,7 +20,7 @@ const Home = () => {
         <Stores />
       </InnerPageContainer>
     </PageContainer>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

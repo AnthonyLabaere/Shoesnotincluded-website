@@ -1,13 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-
-import * as Constants from '../../constants'
-import { Theme } from '../../style/theme'
+import React from 'react';
+import styled from 'styled-components';
 
 // https://developer.apple.com/app-store/marketing/guidelines/#section-badges
-import AppleStoreBadge from '../../assets/images/apple-store-badge.svg'
+import AppleStoreBadge from '../../assets/images/apple-store-badge.svg';
 // https://play.google.com/intl/en_us/badges
-import GooglePlayBadge from '../../assets/images/google-play-badge.png'
+import GooglePlayBadge from '../../assets/images/google-play-badge.png';
+import * as Constants from '../../constants';
+import { Theme } from '../../style/theme';
 
 const StoresImagesContainer = styled.div`
   width: 100%;
@@ -15,7 +14,7 @@ const StoresImagesContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-`
+`;
 
 const StoreImage = styled.div`
   margin: 1rem;
@@ -32,9 +31,9 @@ const StoreImage = styled.div`
       width: 7.5rem;
     }
   }
-`
+`;
 
-const StoreButtons = () => {
+const StoreButtons = (): React.ReactElement => {
   return (
     <StoresImagesContainer>
       <StoreImage>
@@ -48,7 +47,7 @@ const StoreButtons = () => {
         </a>
       </StoreImage>
     </StoresImagesContainer>
-  )
-}
+  );
+};
 
-export default StoreButtons
+export default StoreButtons;

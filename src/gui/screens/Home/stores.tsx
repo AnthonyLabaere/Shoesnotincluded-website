@@ -1,23 +1,23 @@
-import Marginer from '../../components/marginer'
-import { ContentPageContainer } from '../../components/pageContainer'
-import StoreButtons from '../../components/StoreButtons'
+import React from 'react';
 
-const Stores = () => {
+import Marginer from '../../components/marginer';
+import { ContentPageContainer } from '../../components/pageContainer';
+import StoreButtons from '../../components/StoreButtons';
+
+const Stores = (): React.ReactElement => {
   return (
     <ContentPageContainer coloredBackground id="stores">
       <Marginer direction="vertical" margin="5em" />
+      <h2 className="text-center">ShoesNotIncluded est sur les stores !</h2>
+      <br />
       <h2 className="text-center">
-        ShoesNotIncluded est sur les stores !
-      </h2>
-      <br/>
-      <h2 className="text-center">
-        Téléchargez l'application pour jouer aux scénarios à Nantes.
+        Téléchargez l&apos;application pour jouer aux scénarios à Nantes.
       </h2>
 
       <StoreButtons />
       <Marginer direction="vertical" margin="5em" />
     </ContentPageContainer>
-  )
-}
+  );
+};
 
-export default Stores
+export default Stores;

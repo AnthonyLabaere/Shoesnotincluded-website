@@ -1,4 +1,4 @@
-import { Timestamp } from "firebase/firestore";
+import { Timestamp } from 'firebase/firestore';
 
 export interface Coordinates {
   latitude: number;
@@ -44,7 +44,7 @@ export interface Tag {
   backgroundColor: string;
 }
 
-export type RichTextContentType = {
+export interface RichTextContentType {
   text: string;
   textStyle?: string;
 }
@@ -52,16 +52,16 @@ export type RichTextContentType = {
 export type TextContentType = string | RichTextContentType[];
 
 export interface CityDocument {
-  id: string,
-  active: boolean,
-  debug: boolean,
-  name: string,
-  imageUrl: string,
+  id: string;
+  active: boolean;
+  debug: boolean;
+  name: string;
+  imageUrl: string;
   coordinates: {
-    latitude: number,
-    longitude: number
-  }
-  hasSecretScenarii: boolean,
+    latitude: number;
+    longitude: number;
+  };
+  hasSecretScenarii: boolean;
   ordre: number;
 }
 

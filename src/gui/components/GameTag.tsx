@@ -1,45 +1,44 @@
 import React from 'react';
-
 import styled from 'styled-components';
 
 import * as Constants from '../../constants';
-import * as Types from '../../types';
 import { Theme } from '../../style/theme';
+import * as Types from '../../types';
 
 // Libellés des tags
 const SPECIFIC_TAGS_LABEL = {
   easy: 'Facile',
   medium: 'Intermédiaire',
   hard: 'Difficile',
-  all: 'Tout public',
+  all: 'Tout public'
 };
 
-const Tag = styled.div <{ type: Types.GameTagType, large?: boolean }>`
+const Tag = styled.div<{ type: Types.GameTagType; large?: boolean }>`
   align-self: flex-start;
   padding-left: ${({ large }: { large?: boolean }) => {
-    return large ? "15px" : "5px";
-  }}; 
+    return large === true ? '15px' : '5px';
+  }};
   padding-right: ${({ large }: { large?: boolean }) => {
-    return large ? "15px" : "5px";
-  }}; 
+    return large === true ? '15px' : '5px';
+  }};
   padding-top: ${({ large }: { large?: boolean }) => {
-    return large ? "0" : "1px";
-  }}; 
+    return large === true ? '0' : '1px';
+  }};
   padding-bottom: ${({ large }: { large?: boolean }) => {
-    return large ? "0" : "1px";
-  }}; 
+    return large === true ? '0' : '1px';
+  }};
   margin: ${({ large }: { large?: boolean }) => {
-    return large ? "5px" : "1px";
-  }}; 
+    return large === true ? '5px' : '1px';
+  }};
   border-radius: 5px;
-  color: ${({ type, theme }: { type: Types.GameTagType, theme: Theme }) => {
+  color: ${({ type, theme }: { type: Types.GameTagType; theme: Theme }) => {
     if (Object.keys(theme.tags).includes(type)) {
       return (theme.tags as any)[type].color;
     }
     // Cas non censé se produire mais au cas où :
     return Constants.THEME_WHITE_COLOR;
-  }}; 
-  background-color: ${({ type, theme }: { type: Types.GameTagType, theme: Theme }) => {
+  }};
+  background-color: ${({ type, theme }: { type: Types.GameTagType; theme: Theme }) => {
     if (Object.keys(theme.tags).includes(type)) {
       return (theme.tags as any)[type].backgroundColor;
     }
@@ -54,7 +53,7 @@ export interface GameTagProps {
   large?: boolean;
 }
 
-function GameTag({ label, type, large }: GameTagProps) {
+function GameTag({ label, type, large }: GameTagProps): React.ReactElement {
   let enhancedLabel: undefined | string;
 
   if (label !== undefined) {
@@ -65,17 +64,16 @@ function GameTag({ label, type, large }: GameTagProps) {
     }
   } else {
     // Cas non censé se produire mais au cas où :
-    return (
-      <></>
-    );
+    return <></>;
   }
 
   return (
     <Tag type={type} large={large}>
-      {
-        large ? <div className="fs-5">{enhancedLabel as string}</div> : enhancedLabel as string
-      }
-
+      {large === true ? (
+        <div className="fs-5">{enhancedLabel as string}</div>
+      ) : (
+        (enhancedLabel as string)
+      )}
     </Tag>
   );
 }

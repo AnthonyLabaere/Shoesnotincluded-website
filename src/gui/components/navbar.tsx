@@ -1,19 +1,18 @@
-import React, { ReactElement } from 'react';
-import styled from 'styled-components'
+import { faUser, faUserSlash } from '@fortawesome/free-solid-svg-icons';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 // import { useTranslation } from 'react-i18next';
 import Container from 'react-bootstrap/Container';
 // import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-// import NavDropdown from 'react-bootstrap/NavDropdown';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faUserSlash } from '@fortawesome/free-solid-svg-icons'
-
-import useCurrentUser from '../../hooks/useCurrentUser';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 import LogoImg from '../../assets/images/logo.png';
+import useCurrentUser from '../../hooks/useCurrentUser';
 import Brand from './brand';
-import { Link } from 'react-router-dom';
 // import useLocale from '../../hooks/useLocale';
 // import i18n from '../../i18n';
 
@@ -24,9 +23,9 @@ const UserName = styled.div`
   white-space: nowrap;
 
   margin-right: 10px;
-`
+`;
 
-const CustomNavbar = (): ReactElement => {
+const CustomNavbar = (): React.ReactElement => {
   // const { t } = useTranslation();
 
   // const { locale, shortLocale } = useLocale();
@@ -65,13 +64,28 @@ const CustomNavbar = (): ReactElement => {
                 aria-label="Search"
               />
             </Form> */}
-            <Nav.Link className="px-4" as={Link} to="/scenarios">{"Les scénarios"}</Nav.Link>
-            <Nav.Link className="px-4" as={Link} to="/enquoicaconsiste">{"En quoi ça consiste ?"}</Nav.Link>
-            <Nav.Link className="px-4" as={Link} to="/tarif">Tarif</Nav.Link>
-            <Nav.Link className="px-4" as={Link} to="/faq">FAQ</Nav.Link>
-            <Nav.Link className="px-4" as={Link} to="/team-building">{"Team building"}</Nav.Link>
-            <Nav.Link className="px-4" as={Link} to="/compte" style={{ display: 'flex', alignItems: 'center' }}>
-              <UserName>{user ? user.displayName : "Mon compte"}</UserName> <FontAwesomeIcon icon={user ? faUser : faUserSlash} size="1x" />
+            <Nav.Link className="px-4" as={Link} to="/scenarios">
+              {'Les scénarios'}
+            </Nav.Link>
+            <Nav.Link className="px-4" as={Link} to="/enquoicaconsiste">
+              {'En quoi ça consiste ?'}
+            </Nav.Link>
+            <Nav.Link className="px-4" as={Link} to="/tarif">
+              Tarif
+            </Nav.Link>
+            <Nav.Link className="px-4" as={Link} to="/faq">
+              FAQ
+            </Nav.Link>
+            <Nav.Link className="px-4" as={Link} to="/team-building">
+              {'Team building'}
+            </Nav.Link>
+            <Nav.Link
+              className="px-4"
+              as={Link}
+              to="/compte"
+              style={{ display: 'flex', alignItems: 'center' }}>
+              <UserName>{user != null ? user.displayName : 'Mon compte'}</UserName>{' '}
+              <FontAwesomeIcon icon={user != null ? faUser : faUserSlash} size="1x" />
             </Nav.Link>
             {/* <NavDropdown title={t(`menu.locale.${shortLocale}`)} id="navbarScrollingDropdown">
               <NavDropdown.Item onClick={() => changeLocale('fr')}>Français</NavDropdown.Item>
