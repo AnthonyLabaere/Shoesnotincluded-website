@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { ContentContainer } from '../../components/common';
+import { ContentContainer, StyledLink } from '../../components/common';
 import Marginer from '../../components/marginer';
 import {
   ContentPageContainer,
@@ -751,7 +751,7 @@ const PrivacyPolicy = (): React.ReactElement => {
                   <p>
                     La liste détaillée des cookies utilisés sur le Service
                     https://www.shoesnotincluded.fr/ est disponible à l&apos;adresse suivante :
-                    https://www.shoesnotincluded.fr/cookies.
+                    <StyledLink to="/cookies">https://www.shoesnotincluded.fr/cookies</StyledLink>.
                   </p>
                 </div>
               </div>

@@ -50,4 +50,12 @@ export const GlobalStyles = createGlobalStyle`
         font-family: inherit;
         font-size: inherit;
     }
+
+    .cookiesConsentBannerButtonWrapper {
+        @media screen and (max-width: 992px) {
+          flex: 1;
+          display: flex;
+          justify-content: center;
+        }
+    }
 `;

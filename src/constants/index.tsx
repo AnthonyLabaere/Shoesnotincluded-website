@@ -20,6 +20,10 @@ export const DEVICE_SIZES = {
   desktop: 2024
 };
 
+export const GA_TRACKING_ID = 'UA-172060458-2';
+export const GA_CONSENT_COOKIE = 'ga-consent';
+export const GA_COOKIES = ['_ga', '_gat', '_gid'];
+
 export const CONTACT_MESSAGE = 'Merci de nous contacter si le problème persiste.';
 
 export const SOCIAL_NETWORKS_URLS = {

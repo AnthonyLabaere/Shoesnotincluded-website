@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import * as Constants from '../../../constants';
 import * as ScenarioFirestore from '../../../firebase/firestore/scenarioFirestore';
+import useAnalyticsEventTracker from '../../../hooks/useAnalyticsEventTracker';
 import * as Types from '../../../types';
 import Button from '../../components/button';
 import { ContentContainer } from '../../components/common';
@@ -55,7 +56,9 @@ const ScenarioLogoImage = styled.div`
   }
 `;
 
-const Scenarios = (): React.ReactElement => {
+const Scenario = (): React.ReactElement => {
+  const gaEventTracker = useAnalyticsEventTracker('Scenario');
+
   const location = useLocation();
 
   const [loading, setLoading] = useState(true);
@@ -143,7 +146,13 @@ const Scenarios = (): React.ReactElement => {
               directement sur le site) pour une équipe allant jusqu&apos;à 5 joueurs.
             </h3>
             <Link style={{ display: 'flex', flex: 1 }} to="/achat">
-              <Button style={{ flex: 1 }}>Je souhaite acheter un bon pour une partie</Button>
+              <Button
+                style={{ flex: 1 }}
+                onClick={() => {
+                  gaEventTracker('wish-to-buy');
+                }}>
+                Je souhaite acheter un bon pour une partie
+              </Button>
             </Link>
           </ContentContainer>
           <Marginer direction="vertical" margin="1em" />
@@ -153,4 +162,4 @@ const Scenarios = (): React.ReactElement => {
   );
 };
 
-export default Scenarios;
+export default Scenario;

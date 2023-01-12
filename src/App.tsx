@@ -2,10 +2,13 @@ import './style/bootstrap.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
 import React, { ReactElement, Suspense, useState } from 'react';
+import ReactGA from 'react-ga';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
 
+import * as Constants from './constants';
+import CookiesBanner from './gui/components/CookiesBanner';
 import Footer from './gui/components/footer';
 import Loading from './gui/components/Loading';
 import Navbar from './gui/components/navbar';
@@ -28,6 +31,7 @@ import TheyTalkAboutUs from './gui/screens/TheyTalkAboutUs';
 import WhatIsThat from './gui/screens/WhatIsThat';
 import i18n from './i18n';
 import LocaleContext from './LocaleContext';
+import ReactGAPageView from './ReactGAPageView';
 import { GlobalStyles } from './style/global';
 import { theme } from './style/theme';
 
@@ -36,6 +40,8 @@ const App = (): ReactElement => {
   i18n.on('languageChanged', () => {
     setLocale(i18n.language);
   });
+
+  ReactGA.initialize(Constants.GA_TRACKING_ID);
 
   return (
     <div className="App">
@@ -46,6 +52,7 @@ const App = (): ReactElement => {
               <GlobalStyles />
 
               <Navbar />
+              <ReactGAPageView />
 
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -66,8 +73,12 @@ const App = (): ReactElement => {
                 <Route path="/ils-parlent-de-nous" element={<TheyTalkAboutUs />} />
                 <Route path="/validation-carte" element={<CardValidation />} />
               </Routes>
+
               <ToastContainer />
+
               <Footer />
+
+              <CookiesBanner />
             </BrowserRouter>
           </Suspense>
         </LocaleContext.Provider>

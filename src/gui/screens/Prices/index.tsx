@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import * as Constants from '../../../constants';
+import useAnalyticsEventTracker from '../../../hooks/useAnalyticsEventTracker';
 import Button from '../../components/button';
 import { ContentContainer, StyledLink } from '../../components/common';
 import Marginer from '../../components/marginer';
@@ -12,6 +13,8 @@ import {
 } from '../../components/pageContainer';
 
 const Prices = (): React.ReactElement => {
+  const gaEventTracker = useAnalyticsEventTracker('Prices');
+
   return (
     <PageContainer>
       <InnerPageContainer>
@@ -38,7 +41,13 @@ const Prices = (): React.ReactElement => {
               Pour plus d&apos;informations, visitez la <StyledLink to="/faq">FAQ</StyledLink>.
             </div>
             <Link style={{ display: 'flex', flex: 1, marginTop: 25 }} to="/achat">
-              <Button style={{ flex: 1 }}>Je souhaite acheter un bon pour une partie</Button>
+              <Button
+                style={{ flex: 1 }}
+                onClick={() => {
+                  gaEventTracker('wish-to-buy');
+                }}>
+                Je souhaite acheter un bon pour une partie
+              </Button>
             </Link>
           </ContentContainer>
           <Marginer direction="vertical" margin="2em" />
