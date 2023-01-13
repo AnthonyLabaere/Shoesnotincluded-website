@@ -90,7 +90,8 @@ const Payment = (): React.ReactElement => {
               </ul>
               ❗ Attention, ce bon d&apos;achat est uniquement activable sur <u>Android</u>. La
               politique de vente d&apos;Apple ne nous permet pas de vous faire profiter de cette
-              réduction.
+              réduction. Vous pouvez quand même en profiter <u>si au moins l&apos;un des membres</u>{' '}
+              de votre équipe possède un Android.
             </PaymentText>
             <PaymentText className="fs-5">
               <Checkbox
@@ -125,8 +126,7 @@ const Payment = (): React.ReactElement => {
                       }
                     }
                   }
-                }}
-              >
+                }}>
                 {!loading
                   ? 'Acheter un bon pour une partie à ' + Constants.WEBSITE_GAME_COST
                   : 'Redirection vers le site partenaire en cours, merci de patienter...'}
