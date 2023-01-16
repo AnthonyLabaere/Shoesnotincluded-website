@@ -1,7 +1,9 @@
 import React from 'react';
+import Carousel from 'react-bootstrap/Carousel';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+import TransparentSquare from '../../../assets/images/transparent-rectangle.png';
 import {
   YOUTUBE_EXPLICATIONS_VIDEO_URL,
   YOUTUBE_TEAM_BUILDING_VIDEO_URL
@@ -20,6 +22,21 @@ const TextContainer = styled.div`
   text-align: justify;
 `;
 
+const QUOTES = [
+  {
+    // title: 'Un joueur de Solent',
+    text: "C'était super chouette pour découvrir Nantes."
+  },
+  {
+    // title: 'Un joueur de Solent',
+    text: "C'était top !"
+  },
+  {
+    // title: 'Un joueur de Solent',
+    text: 'Très bonne intégration dans la ville !'
+  }
+];
+
 const Event = (): React.ReactElement => {
   return (
     <PageContainer>
@@ -31,6 +48,7 @@ const Event = (): React.ReactElement => {
         </ContentPageContainer>
         <ContentPageContainer coloredBackground>
           <Marginer direction="vertical" margin="2em" />
+
           <ContentContainer>
             <TextContainer>
               <h3 className="mb-4">
@@ -117,6 +135,28 @@ const Event = (): React.ReactElement => {
                 téléphone chargé avec l&apos;application mobile <b>ShoesNotIncluded</b> installée.
               </p>
             </TextContainer>
+
+            <br />
+
+            <Carousel style={{ maxHeight: 125 }}>
+              {QUOTES.map((quote, index) => {
+                return (
+                  <Carousel.Item key={index} style={{ maxHeight: 125 }}>
+                    <img
+                      className="d-block w-100"
+                      src={TransparentSquare}
+                      alt="First slide"
+                      style={{ maxHeight: 125 }}
+                    />
+                    <Carousel.Caption style={{ color: 'black' }}>
+                      {/* <div className="fs-3">{quote.title}</div> */}
+                      <q className="fs-3">{quote.text}</q>
+                    </Carousel.Caption>
+                  </Carousel.Item>
+                );
+              })}
+            </Carousel>
+
             <Link style={{ display: 'flex', flex: 1, marginTop: 25 }} to="/contact">
               <Button style={{ flex: 1 }}>Contactez-nous pour obtenir un devis.</Button>
             </Link>
