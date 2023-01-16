@@ -39,6 +39,7 @@ export const SOCIAL_NETWORKS_URLS = {
 export const YOUTUBE_PRESENTATION_VIDEO_URL = 'https://www.youtube.com/watch?v=pJGVxOwrCxw';
 export const YOUTUBE_EXPLICATIONS_VIDEO_URL = 'https://www.youtube.com/watch?v=isrewn1MPGc';
 export const YOUTUBE_TEAM_BUILDING_VIDEO_URL = 'https://www.youtube.com/watch?v=BhXXXDVpGLM';
+export const YOUTUBE_USER_VOUCHER_FAQ_VIDEO_URL = 'https://www.youtube.com/shorts/FJwP0NQBunc';
 
 export const PLAY_STORE_LINK = 'https://play.google.com/store/apps/details?id=fr.shoesnotincluded';
 export const APPLE_STORE_LINK = 'https://apps.apple.com/fr/app/shoesnotincluded/id1595811731';

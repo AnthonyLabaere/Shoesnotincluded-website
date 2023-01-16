@@ -2,7 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 import * as Constants from '../../../constants';
-import { ContentContainer, StyledALink, StyledLink } from '../../components/common';
+import {
+  ContentContainer,
+  StyledALink,
+  StyledLink,
+  StyledReactPlayer
+} from '../../components/common';
 import Marginer from '../../components/marginer';
 import {
   ContentPageContainer,
@@ -69,6 +74,9 @@ const FAQ = (): React.ReactElement => {
 
             <Question>Comment utiliser un bon d&apos;achat ?</Question>
             <Response>
+              <div className="mb-2">
+                <StyledReactPlayer url={Constants.YOUTUBE_USER_VOUCHER_FAQ_VIDEO_URL} />
+              </div>
               1 - Ouvrez l&apos;application ShoesNotIncluded (ou téléchargez-là au préalable sur les
               stores <StyledALink href={Constants.PLAY_STORE_LINK}>Android</StyledALink> ou{' '}
               <StyledALink href={Constants.APPLE_STORE_LINK}>Apple</StyledALink>).
@@ -88,6 +96,19 @@ const FAQ = (): React.ReactElement => {
                 Précision : les bons d&apos;achat ne sont pour l&apos;instant pas visibles dans
                 l&apos;historique de l&apos;application mobile.
               </i>
+            </Response>
+            <br />
+
+            <Question>Comment rejoindre une partie ?</Question>
+            <Response>
+              1 - Ouvrez l&apos;application ShoesNotIncluded (ou téléchargez-là au préalable sur les
+              stores <StyledALink href={Constants.PLAY_STORE_LINK}>Android</StyledALink> ou{' '}
+              <StyledALink href={Constants.APPLE_STORE_LINK}>Apple</StyledALink>).
+              <br />
+              2 - Cliquez sur Rejoindre une partie.
+              <br />
+              3 - Scannez le QR code de la partie obtenu par le joueur ayant lancé la partie.
+              <br />
             </Response>
             <br />
 
