@@ -12,6 +12,7 @@ import CookiesBanner from './gui/components/CookiesBanner';
 import Footer from './gui/components/footer';
 import Loading from './gui/components/Loading';
 import Navbar from './gui/components/navbar';
+import ScrollToTop from './gui/components/ScrollToTop';
 import Account from './gui/screens/Account';
 import CardValidation from './gui/screens/CardValidation';
 import CGUCGV from './gui/screens/CGUCGV';
@@ -53,6 +54,8 @@ const App = (): ReactElement => {
 
               <Navbar />
               <ReactGAPageView />
+
+              <ScrollToTop />
 
               <Routes>
                 <Route path="/" element={<Home />} />
