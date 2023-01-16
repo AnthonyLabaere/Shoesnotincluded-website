@@ -71,11 +71,16 @@ const LogoImage = styled.div`
   display: flex;
   flex: 1;
   align-items: center;
-  filter: ${({ theme }) => theme.filter.default};
 
   img {
     width: 400px;
     height: 400px;
+    background-color: white;
+    border-radius: 1000px;
+    padding-top: 25px;
+    padding-right: 35px;
+    padding-bottom: 45px;
+    padding-left: 35px;
   }
 
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
@@ -83,8 +88,11 @@ const LogoImage = styled.div`
     img {
       width: 160px;
       height: 160px;
+      padding-top: 10px;
+      padding-right: 15px;
+      padding-bottom: 20px;
+      padding-left: 15px;
     }
-    filter: none;
   }
 
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXS}) {
@@ -92,8 +100,11 @@ const LogoImage = styled.div`
     img {
       width: 130px;
       height: 130px;
+      padding-top: 10px;
+      padding-right: 15px;
+      padding-bottom: 20px;
+      padding-left: 15px;
     }
-    filter: none;
   }
 `;
 
