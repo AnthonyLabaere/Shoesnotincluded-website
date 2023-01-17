@@ -93,7 +93,7 @@ const Payment = (): React.ReactElement => {
               réduction. Vous pouvez quand même en profiter <u>si au moins l&apos;un des membres</u>{' '}
               de votre équipe possède un Android.
             </PaymentText>
-            <PaymentText className="fs-5">
+            <PaymentText className="fs-5 mt-4">
               <Checkbox
                 id="consent"
                 label={

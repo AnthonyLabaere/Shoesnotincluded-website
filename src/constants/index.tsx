@@ -11,7 +11,7 @@ export const GAMES_FIRESTORE_COLLECTION = 'games';
 export const GAMES_FINISHED_FLAGS_FIRESTORE_COLLECTION = 'gamesFinishedFlags';
 export const LEADERBOARD_FIRESTORE_COLLECTION = 'leaderboard';
 
-export const DEVICE_SIZES = {
+export const DEVICE_SIZES = { 
   mobileXS: 400,
   mobile: 580,
   mobileXL: 768,
