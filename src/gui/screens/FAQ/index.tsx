@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 
 import * as Constants from '../../../constants';
@@ -21,110 +22,117 @@ const Response = styled.div``;
 
 const FAQ = (): React.ReactElement => {
   return (
-    <PageContainer>
-      <InnerPageContainer>
-        <ContentPageContainer coloredBackground>
-          <ContentContainer>
-            <h1>Foire aux questions</h1>
-          </ContentContainer>
-        </ContentPageContainer>
-        <ContentPageContainer>
-          <Marginer direction="vertical" margin="2em" />
-          <ContentContainer>
-            <Question>Combien compte une partie ?</Question>
-            <Response>
-              Une partie coûte{' '}
-              <span style={{ fontWeight: 'bold' }}>{Constants.WEBSITE_GAME_COST}</span> si vous
-              l&apos;achetez directement sur le site web, contre{' '}
-              <span style={{ fontWeight: 'bold' }}>{Constants.APP_GAME_COST}</span> sur
-              l&apos;application mobile.
+    <>
+      <Helmet>
+        <title>Escape Game sur Mobile - FAQ - ShoesNotIncluded</title>
+        <meta
+          name="description"
+          content="Trouvez les réponses à vos questions sur les escape games en extérieur sur application mobile de ShoesNotIncluded sur notre page FAQ."
+        />
+      </Helmet>
+      <PageContainer>
+        <InnerPageContainer>
+          <ContentPageContainer coloredBackground>
+            <ContentContainer>
+              <h1>Foire aux questions</h1>
+            </ContentContainer>
+          </ContentPageContainer>
+          <ContentPageContainer>
+            <Marginer direction="vertical" margin="2em" />
+            <ContentContainer>
+              <Question>Combien compte une partie ?</Question>
+              <Response>
+                Une partie coûte{' '}
+                <span style={{ fontWeight: 'bold' }}>{Constants.WEBSITE_GAME_COST}</span> si vous
+                l&apos;achetez directement sur le site web, contre{' '}
+                <span style={{ fontWeight: 'bold' }}>{Constants.APP_GAME_COST}</span> sur
+                l&apos;application mobile.
+                <br />
+                Vous profitez donc d&apos;une réduction de{' '}
+                <span style={{ fontWeight: 'bold' }}>
+                  {Constants.WEBSITE_TO_APP_GAME_REDUCTION_PERCENT}%
+                </span>{' '}
+                en l&apos;<StyledLink to="/achat">achetant sur ce site</StyledLink>. 🎉
+                <br />
+                <br />
+                Pourquoi ? Les frais appliqués par les stores sont plus élevés que ceux du site,
+                tout simplement.
+              </Response>
               <br />
-              Vous profitez donc d&apos;une réduction de{' '}
-              <span style={{ fontWeight: 'bold' }}>
-                {Constants.WEBSITE_TO_APP_GAME_REDUCTION_PERCENT}%
-              </span>{' '}
-              en l&apos;<StyledLink to="/achat">achetant sur ce site</StyledLink>. 🎉
-              <br />
-              <br />
-              Pourquoi ? Les frais appliqués par les stores sont plus élevés que ceux du site, tout
-              simplement.
-            </Response>
-            <br />
 
-            <Question>Combien de joueurs sur une partie ?</Question>
-            <Response>
-              Vous pouvez jouer jusqu&apos;à 5 (smartphones synchronisés entre-eux) à une partie.
+              <Question>Combien de joueurs sur une partie ?</Question>
+              <Response>
+                Vous pouvez jouer jusqu&apos;à 5 (smartphones synchronisés entre-eux) à une partie.
+                <br />
+                Le tarif ci-dessus est bien applicable pour le groupe dans son intégralité : vous
+                n&apos;avez qu&apos;à payer{' '}
+                <span style={{ fontWeight: 'bold' }}>une seule fois</span> pour les 5 joueurs.
+                <br />
+                Le joueur achetant la partie (ou utilisant un bon d&apos;achat) a la possibilité
+                d&apos;inviter 4 autres personnes lors du lancement de la partie.
+                <br />
+              </Response>
               <br />
-              Le tarif ci-dessus est bien applicable pour le groupe dans son intégralité : vous
-              n&apos;avez qu&apos;à payer <span style={{ fontWeight: 'bold' }}>
-                une seule fois
-              </span>{' '}
-              pour les 5 joueurs.
-              <br />
-              Le joueur achetant la partie (ou utilisant un bon d&apos;achat) a la possibilité
-              d&apos;inviter 4 autres personnes lors du lancement de la partie.
-              <br />
-            </Response>
-            <br />
 
-            {/* <Question>TODO Question enfants</Question>
+              {/* <Question>TODO Question enfants</Question>
             <Response>
               TODO réponse enfant
             </Response> */}
 
-            <Question>Comment utiliser un bon d&apos;achat ?</Question>
-            <Response>
-              <div className="mb-2">
-                <StyledReactPlayer url={Constants.YOUTUBE_USER_VOUCHER_FAQ_VIDEO_URL} />
-              </div>
-              1 - Ouvrez l&apos;application ShoesNotIncluded (ou téléchargez-là au préalable sur les
-              stores <StyledALink href={Constants.PLAY_STORE_LINK}>Android</StyledALink> ou{' '}
-              <StyledALink href={Constants.APPLE_STORE_LINK}>Apple</StyledALink>).
+              <Question>Comment utiliser un bon d&apos;achat ?</Question>
+              <Response>
+                <div className="mb-2">
+                  <StyledReactPlayer url={Constants.YOUTUBE_USER_VOUCHER_FAQ_VIDEO_URL} />
+                </div>
+                1 - Ouvrez l&apos;application ShoesNotIncluded (ou téléchargez-là au préalable sur
+                les stores <StyledALink href={Constants.PLAY_STORE_LINK}>Android</StyledALink> ou{' '}
+                <StyledALink href={Constants.APPLE_STORE_LINK}>Apple</StyledALink>).
+                <br />
+                2 - Sélectionnez un scénario (exemple : Le testament d&apos;Anne de Bretagne)
+                <br />
+                3 - Cliquez sur &quot;Utiliser un bon d&apos;achat&quot; (uniquement disponible sur
+                Android)
+                <br />
+                4 - Renseignez le code du bon d&apos;achat obtenu lors du paiement.
+                <br />
+                5 - Le joueur utilisant un bon d&apos;achat a alors la possibilité d&apos;inviter 4
+                autres personnes lors du lancement de la partie, qu&apos;ils soient sur Android ou
+                Apple.
+                <br />
+                <i>
+                  Précision : les bons d&apos;achat ne sont pour l&apos;instant pas visibles dans
+                  l&apos;historique de l&apos;application mobile.
+                </i>
+              </Response>
               <br />
-              2 - Sélectionnez un scénario (exemple : Le testament d&apos;Anne de Bretagne)
-              <br />
-              3 - Cliquez sur &quot;Utiliser un bon d&apos;achat&quot; (uniquement disponible sur
-              Android)
-              <br />
-              4 - Renseignez le code du bon d&apos;achat obtenu lors du paiement.
-              <br />
-              5 - Le joueur utilisant un bon d&apos;achat a alors la possibilité d&apos;inviter 4
-              autres personnes lors du lancement de la partie, qu&apos;ils soient sur Android ou
-              Apple.
-              <br />
-              <i>
-                Précision : les bons d&apos;achat ne sont pour l&apos;instant pas visibles dans
-                l&apos;historique de l&apos;application mobile.
-              </i>
-            </Response>
-            <br />
 
-            <Question>Comment rejoindre une partie ?</Question>
-            <Response>
-              1 - Ouvrez l&apos;application ShoesNotIncluded (ou téléchargez-là au préalable sur les
-              stores <StyledALink href={Constants.PLAY_STORE_LINK}>Android</StyledALink> ou{' '}
-              <StyledALink href={Constants.APPLE_STORE_LINK}>Apple</StyledALink>).
+              <Question>Comment rejoindre une partie ?</Question>
+              <Response>
+                1 - Ouvrez l&apos;application ShoesNotIncluded (ou téléchargez-là au préalable sur
+                les stores <StyledALink href={Constants.PLAY_STORE_LINK}>Android</StyledALink> ou{' '}
+                <StyledALink href={Constants.APPLE_STORE_LINK}>Apple</StyledALink>).
+                <br />
+                2 - Cliquez sur Rejoindre une partie.
+                <br />
+                3 - Scannez le QR code de la partie obtenu par le joueur ayant lancé la partie.
+                <br />
+              </Response>
               <br />
-              2 - Cliquez sur Rejoindre une partie.
-              <br />
-              3 - Scannez le QR code de la partie obtenu par le joueur ayant lancé la partie.
-              <br />
-            </Response>
-            <br />
 
-            <Question>Comment retrouver le code de mon bon d&apos;achat ?</Question>
-            <Response>
-              Retournez sur la page de votre <StyledLink to="/compte">compte</StyledLink> pour
-              consulter votre historique de paiement. Les bons de commande associés aux paiements
-              sont listés dans la colonne de droite.
-              <br />⚠ Attention : vous devez être connecté avec le même compte utilisateur que lors
-              de la commande !
-            </Response>
-            <br />
-          </ContentContainer>
-        </ContentPageContainer>
-      </InnerPageContainer>
-    </PageContainer>
+              <Question>Comment retrouver le code de mon bon d&apos;achat ?</Question>
+              <Response>
+                Retournez sur la page de votre <StyledLink to="/compte">compte</StyledLink> pour
+                consulter votre historique de paiement. Les bons de commande associés aux paiements
+                sont listés dans la colonne de droite.
+                <br />⚠ Attention : vous devez être connecté avec le même compte utilisateur que
+                lors de la commande !
+              </Response>
+              <br />
+            </ContentContainer>
+          </ContentPageContainer>
+        </InnerPageContainer>
+      </PageContainer>
+    </>
   );
 };
 

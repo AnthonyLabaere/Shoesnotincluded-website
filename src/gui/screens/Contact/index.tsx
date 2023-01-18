@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 
 import * as Constants from '../../../constants';
@@ -153,76 +154,85 @@ const Contact = (): React.ReactElement => {
   });
 
   return (
-    <PageContainer>
-      <InnerPageContainer>
-        <ContentPageContainer coloredBackground>
-          <ContentContainer>
-            <h1>Nous contacter</h1>
-          </ContentContainer>
-        </ContentPageContainer>
-        <ContactFormContentContainer>
-          <div className="fs-3 text-center mb-5">
-            Une question sur l&apos;application ou l&apos;un des scénarios ? Merci de remplir le
-            formulaire ci-dessous :
-          </div>
-          <Form onSubmit={formik.handleSubmit}>
-            <InputContainer>
-              <Label htmlFor="lastName">Nom</Label>
-              <Input id="lastName" type="text" {...formik.getFieldProps('lastName')} />
-              <ErrorMessage>
-                {formik.touched.lastName === true && formik.errors.lastName != null
-                  ? formik.errors.lastName
-                  : ''}
-              </ErrorMessage>
-            </InputContainer>
+    <>
+      <Helmet>
+        <title>Escape Game - Contact - ShoesNotIncluded</title>
+        <meta
+          name="description"
+          content="Contactez l'équipe de ShoesNotIncluded pour demander un devis pour une activité de team building ou pour toute question sur nos escape games en extérieur."
+        />
+      </Helmet>
+      <PageContainer>
+        <InnerPageContainer>
+          <ContentPageContainer coloredBackground>
+            <ContentContainer>
+              <h1>Nous contacter</h1>
+            </ContentContainer>
+          </ContentPageContainer>
+          <ContactFormContentContainer>
+            <div className="fs-3 text-center mb-5">
+              Une question sur l&apos;application ou l&apos;un des scénarios ? Merci de remplir le
+              formulaire ci-dessous :
+            </div>
+            <Form onSubmit={formik.handleSubmit}>
+              <InputContainer>
+                <Label htmlFor="lastName">Nom</Label>
+                <Input id="lastName" type="text" {...formik.getFieldProps('lastName')} />
+                <ErrorMessage>
+                  {formik.touched.lastName === true && formik.errors.lastName != null
+                    ? formik.errors.lastName
+                    : ''}
+                </ErrorMessage>
+              </InputContainer>
 
-            <InputContainer>
-              <Label htmlFor="firstName">Prénom</Label>
-              <Input id="firstName" type="text" {...formik.getFieldProps('firstName')} />
-              <ErrorMessage>
-                {formik.touched.firstName === true && formik.errors.firstName != null
-                  ? formik.errors.firstName
-                  : ''}
-              </ErrorMessage>
-            </InputContainer>
+              <InputContainer>
+                <Label htmlFor="firstName">Prénom</Label>
+                <Input id="firstName" type="text" {...formik.getFieldProps('firstName')} />
+                <ErrorMessage>
+                  {formik.touched.firstName === true && formik.errors.firstName != null
+                    ? formik.errors.firstName
+                    : ''}
+                </ErrorMessage>
+              </InputContainer>
 
-            <InputContainer>
-              <Label htmlFor="email">Adresse mail</Label>
-              <Input id="email" type="email" {...formik.getFieldProps('email')} />
-              <ErrorMessage>
-                {formik.touched.email === true && formik.errors.email != null
-                  ? formik.errors.email
-                  : ''}
-              </ErrorMessage>
-            </InputContainer>
+              <InputContainer>
+                <Label htmlFor="email">Adresse mail</Label>
+                <Input id="email" type="email" {...formik.getFieldProps('email')} />
+                <ErrorMessage>
+                  {formik.touched.email === true && formik.errors.email != null
+                    ? formik.errors.email
+                    : ''}
+                </ErrorMessage>
+              </InputContainer>
 
-            <InputContainer>
-              <Label htmlFor="subject">Objet</Label>
-              <Input id="subject" type="text" {...formik.getFieldProps('subject')} />
-              <ErrorMessage>
-                {formik.touched.subject === true && formik.errors.subject != null
-                  ? formik.errors.subject
-                  : ''}
-              </ErrorMessage>
-            </InputContainer>
+              <InputContainer>
+                <Label htmlFor="subject">Objet</Label>
+                <Input id="subject" type="text" {...formik.getFieldProps('subject')} />
+                <ErrorMessage>
+                  {formik.touched.subject === true && formik.errors.subject != null
+                    ? formik.errors.subject
+                    : ''}
+                </ErrorMessage>
+              </InputContainer>
 
-            <InputContainer>
-              <Label htmlFor="message">Message</Label>
-              <Textarea id="message" {...formik.getFieldProps('message')} />
-              <ErrorMessage>
-                {formik.touched.message === true && formik.errors.message != null
-                  ? formik.errors.message
-                  : ''}
-              </ErrorMessage>
-            </InputContainer>
+              <InputContainer>
+                <Label htmlFor="message">Message</Label>
+                <Textarea id="message" {...formik.getFieldProps('message')} />
+                <ErrorMessage>
+                  {formik.touched.message === true && formik.errors.message != null
+                    ? formik.errors.message
+                    : ''}
+                </ErrorMessage>
+              </InputContainer>
 
-            <Button type="submit" disabled={formik.isSubmitting}>
-              {formik.isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
-            </Button>
-          </Form>
-        </ContactFormContentContainer>
-      </InnerPageContainer>
-    </PageContainer>
+              <Button type="submit" disabled={formik.isSubmitting}>
+                {formik.isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
+              </Button>
+            </Form>
+          </ContactFormContentContainer>
+        </InnerPageContainer>
+      </PageContainer>
+    </>
   );
 };
 

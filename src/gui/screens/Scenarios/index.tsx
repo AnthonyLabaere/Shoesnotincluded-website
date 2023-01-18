@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -88,52 +89,60 @@ const Scenarios = (): React.ReactElement => {
   }, [cityId]);
 
   return (
-    <PageContainer>
-      <InnerPageContainer>
-        <ContentPageContainer coloredBackground>
-          <ContentContainer>
-            {/* FIXME : à changer une fois la sélection de la ville rendue possible */}
-            <h1>Les scénarios disponibles à {city !== undefined ? city.name : 'Nantes'}</h1>
-          </ContentContainer>
-        </ContentPageContainer>
-        <ContentPageContainer>
-          <ContentContainer>
-            <ScenariosContainer>
-              {scenarios
-                .filter((scenario) => !scenario.data.secret)
-                .sort((a, b) => {
-                  return a.data.ordre - b.data.ordre;
-                })
-                .map((scenario) => {
-                  return (
-                    <ScenarioContainer key={scenario.id} to={'/scenario/' + scenario.id}>
-                      <div className="fs-3" style={{ flex: 1, textAlign: 'center', padding: 5 }}>
-                        {scenario.data.title}
-                      </div>
-                      <div
-                        style={{
-                          display: 'flex',
-                          flex: 3,
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          justifyContent: 'center'
-                        }}
-                      >
-                        <ScenarioLogoImage>
-                          <img src={scenario.data.logoUrl} alt={scenario.id + ' logo'} />
-                        </ScenarioLogoImage>
-                        <div style={{ flex: 2 }}>
-                          <GameTags tags={scenario.data.tags} />
+    <>
+      <Helmet>
+        <title>Escape Games en Extérieur à Nantes - ShoesNotIncluded</title>
+        <meta
+          name="description"
+          content="Découvrez les scénarios d'escape game de ShoesNotIncluded de notre application mobile à Nantes. Jouez à plusieurs en extérieur. Téléchargez dès maintenant !"
+        />
+      </Helmet>
+      <PageContainer>
+        <InnerPageContainer>
+          <ContentPageContainer coloredBackground>
+            <ContentContainer>
+              {/* FIXME : à changer une fois la sélection de la ville rendue possible */}
+              <h1>Les scénarios disponibles à {city !== undefined ? city.name : 'Nantes'}</h1>
+            </ContentContainer>
+          </ContentPageContainer>
+          <ContentPageContainer>
+            <ContentContainer>
+              <ScenariosContainer>
+                {scenarios
+                  .filter((scenario) => !scenario.data.secret)
+                  .sort((a, b) => {
+                    return a.data.ordre - b.data.ordre;
+                  })
+                  .map((scenario) => {
+                    return (
+                      <ScenarioContainer key={scenario.id} to={'/scenario/' + scenario.id}>
+                        <div className="fs-3" style={{ flex: 1, textAlign: 'center', padding: 5 }}>
+                          {scenario.data.title}
                         </div>
-                      </div>
-                    </ScenarioContainer>
-                  );
-                })}
-            </ScenariosContainer>
-          </ContentContainer>
-        </ContentPageContainer>
-      </InnerPageContainer>
-    </PageContainer>
+                        <div
+                          style={{
+                            display: 'flex',
+                            flex: 3,
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                          }}>
+                          <ScenarioLogoImage>
+                            <img src={scenario.data.logoUrl} alt={scenario.id + ' logo'} />
+                          </ScenarioLogoImage>
+                          <div style={{ flex: 2 }}>
+                            <GameTags tags={scenario.data.tags} />
+                          </div>
+                        </div>
+                      </ScenarioContainer>
+                    );
+                  })}
+              </ScenariosContainer>
+            </ContentContainer>
+          </ContentPageContainer>
+        </InnerPageContainer>
+      </PageContainer>
+    </>
   );
 };
 

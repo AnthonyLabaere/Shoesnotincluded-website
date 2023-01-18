@@ -71,6 +71,10 @@ export interface ScenarioSnapshot {
 }
 
 export interface ScenarioDocument {
+  readonly meta: {
+    title: string;
+    description: string;
+  };
   readonly active: boolean;
   readonly secret: boolean;
   readonly city?: string;

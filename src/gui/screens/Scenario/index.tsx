@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -110,55 +111,63 @@ const Scenario = (): React.ReactElement => {
   }
 
   return (
-    <PageContainer>
-      <InnerPageContainer>
-        <ContentPageContainer coloredBackground>
-          <ContentContainer>
-            <h1>{scenario.title}</h1>
-          </ContentContainer>
-        </ContentPageContainer>
-        <ContentPageContainer>
-          <ContentContainer>
-            <ScenarioContainer>
-              <GameTags tags={scenario.tags} large={true} />
-              <div className="fs-5" style={{ textAlign: 'justify' }}>
-                <TextContent>{scenario.description}</TextContent>
-              </div>
-              <ScenarioLogoImage>
-                <img src={scenario.logoUrl} alt={scenario.title + ' logo'} />
-              </ScenarioLogoImage>
-            </ScenarioContainer>
-          </ContentContainer>
-        </ContentPageContainer>
-        <ContentPageContainer coloredBackground>
-          <Marginer direction="vertical" margin="1em" />
-          <ContentContainer>
-            <h2 className="text-center">
-              Pour y jouer rien de plus simple, téléchargez l&apos;application et sélectionnez le
-              scénario :
-            </h2>
-            <StoreButtons />
-            <h3 className="text-center">
-              Prix d&apos;une partie :{' '}
-              <span style={{ textDecoration: 'line-through' }}>{Constants.APP_GAME_COST}</span>{' '}
-              <b>{Constants.WEBSITE_GAME_COST}</b> (
-              {Constants.WEBSITE_TO_APP_GAME_REDUCTION_PERCENT}% de réduction en achetant
-              directement sur le site) pour une équipe allant jusqu&apos;à 5 joueurs.
-            </h3>
-            <Link style={{ display: 'flex', flex: 1 }} to="/achat">
-              <Button
-                style={{ flex: 1 }}
-                onClick={() => {
-                  gaEventTracker('wish-to-buy');
-                }}>
-                Je souhaite acheter un bon pour une partie
-              </Button>
-            </Link>
-          </ContentContainer>
-          <Marginer direction="vertical" margin="1em" />
-        </ContentPageContainer>
-      </InnerPageContainer>
-    </PageContainer>
+    <>
+      {scenario.meta != null && (
+        <Helmet>
+          <title>{scenario.meta.title}</title>
+          <meta name="description" content={scenario.meta.description} />
+        </Helmet>
+      )}
+      <PageContainer>
+        <InnerPageContainer>
+          <ContentPageContainer coloredBackground>
+            <ContentContainer>
+              <h1>{scenario.title}</h1>
+            </ContentContainer>
+          </ContentPageContainer>
+          <ContentPageContainer>
+            <ContentContainer>
+              <ScenarioContainer>
+                <GameTags tags={scenario.tags} large={true} />
+                <div className="fs-5" style={{ textAlign: 'justify' }}>
+                  <TextContent>{scenario.description}</TextContent>
+                </div>
+                <ScenarioLogoImage>
+                  <img src={scenario.logoUrl} alt={scenario.title + ' logo'} />
+                </ScenarioLogoImage>
+              </ScenarioContainer>
+            </ContentContainer>
+          </ContentPageContainer>
+          <ContentPageContainer coloredBackground>
+            <Marginer direction="vertical" margin="1em" />
+            <ContentContainer>
+              <h2 className="text-center">
+                Pour y jouer rien de plus simple, téléchargez l&apos;application et sélectionnez le
+                scénario :
+              </h2>
+              <StoreButtons />
+              <h3 className="text-center">
+                Prix d&apos;une partie :{' '}
+                <span style={{ textDecoration: 'line-through' }}>{Constants.APP_GAME_COST}</span>{' '}
+                <b>{Constants.WEBSITE_GAME_COST}</b> (
+                {Constants.WEBSITE_TO_APP_GAME_REDUCTION_PERCENT}% de réduction en achetant
+                directement sur le site) pour une équipe allant jusqu&apos;à 5 joueurs.
+              </h3>
+              <Link style={{ display: 'flex', flex: 1 }} to="/achat">
+                <Button
+                  style={{ flex: 1 }}
+                  onClick={() => {
+                    gaEventTracker('wish-to-buy');
+                  }}>
+                  Je souhaite acheter un bon pour une partie
+                </Button>
+              </Link>
+            </ContentContainer>
+            <Marginer direction="vertical" margin="1em" />
+          </ContentPageContainer>
+        </InnerPageContainer>
+      </PageContainer>
+    </>
   );
 };
 
