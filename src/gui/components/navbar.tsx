@@ -68,7 +68,7 @@ const CustomNavbar = (): React.ReactElement => {
               {'Les scénarios'}
             </Nav.Link>
             <Nav.Link className="px-4" as={Link} to="/enquoicaconsiste" eventKey="enquoicaconsiste">
-              {'En quoi ça consiste ?'}
+              {'Comment ça marche ?'}
             </Nav.Link>
             <Nav.Link className="px-4" as={Link} to="/tarif" eventKey="tarif">
               Tarif

@@ -23,10 +23,12 @@ const StyledLink = styled(Link)`
 const AboutVideo = (): React.ReactElement => {
   return (
     <AboutVideoContainer>
-      <h2 className="text-center mb-4">Vidéo de présentation :</h2>
+      <h2 className="text-center mb-4">
+        Présentation du concept d&apos;<b>escape game</b> :
+      </h2>
       <StyledReactPlayer url={YOUTUBE_PRESENTATION_VIDEO_URL} />
       <StyledLink to="/enquoicaconsiste">
-        <Button>Je souhaite plus d&apos;informations</Button>
+        <Button>Comment ça marche un escape game sur mobile ?</Button>
       </StyledLink>
     </AboutVideoContainer>
   );

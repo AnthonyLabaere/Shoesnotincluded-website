@@ -29,7 +29,7 @@ const Prices = (): React.ReactElement => {
         <InnerPageContainer>
           <ContentPageContainer coloredBackground>
             <ContentContainer>
-              <h1>Tarif d&apos;une partie</h1>
+              <h1>Tarif d&apos;une partie d&apos;escape game</h1>
             </ContentContainer>
           </ContentPageContainer>
           <ContentPageContainer>
@@ -55,7 +55,7 @@ const Prices = (): React.ReactElement => {
                   onClick={() => {
                     gaEventTracker('wish-to-buy');
                   }}>
-                  Je souhaite acheter un bon pour une partie
+                  Acheter un bon pour une partie d&apos;escape game
                 </Button>
               </Link>
             </ContentContainer>

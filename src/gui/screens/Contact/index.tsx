@@ -170,10 +170,11 @@ const Contact = (): React.ReactElement => {
             </ContentContainer>
           </ContentPageContainer>
           <ContactFormContentContainer>
-            <div className="fs-3 text-center mb-5">
-              Une question sur l&apos;application ou l&apos;un des scénarios ? Merci de remplir le
-              formulaire ci-dessous :
-            </div>
+            <h2>
+              Une question sur l&apos;application, l&apos;un des scénarios ou une demande de devis
+              pour un activité d&apos;entreprise ?
+            </h2>
+            <h3 className="mb-5">Merci de remplir le formulaire ci-dessous :</h3>
             <Form onSubmit={formik.handleSubmit}>
               <InputContainer>
                 <Label htmlFor="lastName">Nom</Label>

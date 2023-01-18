@@ -60,10 +60,11 @@ const TeamBuilding = (): React.ReactElement => {
 
             <ContentContainer>
               <TextContainer>
-                <h3 className="mb-4">
-                  Vous souhaitez organiser une activité d&apos;entreprise avec un escape game plein
-                  air ? <b>ShoesNotIncluded</b> a un scénario pour vous !
-                </h3>
+                <h2 className="mb-4">
+                  Vous souhaitez organiser une <b>activité d&apos;entreprise</b> avec un{' '}
+                  <b>escape game</b> en <b>extérieur</b> ? <b>ShoesNotIncluded</b> a un scénario
+                  pour vous !
+                </h2>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                   <StyledReactPlayer url={YOUTUBE_TEAM_BUILDING_VIDEO_URL} />
                 </div>
@@ -72,15 +73,15 @@ const TeamBuilding = (): React.ReactElement => {
 
                 <p style={{ marginBottom: 50 }}>
                   Des pirates Nantais viennent de s&apos;introduire dans votre système informatique
-                  : le groupe de hackers <b>4N0NYM0U5DU44</b>. Ils ont la main sur
-                  l&apos;intégralité des données de votre entreprise mais heureusement pour vous,
-                  ils vous laissent une chance de les sauver. Ils considèrent Nantes comme un lieu
-                  historique trop méconnu, et sont outrés du manque de connaissance de vos équipes
-                  sur l&apos;histoire locale. Résolvez les énigmes réalisées par leur soin et
-                  prouvez que vous êtes méritant de l&apos;héritage culturel de la ville. Vous
-                  n&apos;avez que peu de temps avant que l&apos;intégralité de votre base de données
-                  soit définitivement effacée. Vous n&apos;avez pas le choix, vous devez vous plier
-                  à leur exigence.
+                  : le groupe de hackers 4N0NYM0U5DU44. Ils ont la main sur l&apos;intégralité des
+                  données de votre entreprise mais heureusement pour vous, ils vous laissent une
+                  chance de les sauver. Ils considèrent Nantes comme un lieu historique trop
+                  méconnu, et sont outrés du manque de connaissance de vos équipes sur
+                  l&apos;histoire locale. Résolvez les énigmes réalisées par leur soin et prouvez
+                  que vous êtes méritant de l&apos;héritage culturel de la ville. Vous n&apos;avez
+                  que peu de temps avant que l&apos;intégralité de votre base de données soit
+                  définitivement effacée. Vous n&apos;avez pas le choix, vous devez vous plier à
+                  leur exigence.
                 </p>
                 <p>
                   Pendant approximativement 2h, vos collaborateurs devront résoudre les énigmes

@@ -55,7 +55,7 @@ const WhatIsThat = (): React.ReactElement => {
         <InnerPageContainer>
           <ContentPageContainer coloredBackground>
             <ContentContainer>
-              <h1>Escape Game Mobile : comment ça marche ?</h1>
+              <h1>Un escape game sur mobile, comment ça marche ?</h1>
             </ContentContainer>
           </ContentPageContainer>
           <ContentContainer>
@@ -67,25 +67,23 @@ const WhatIsThat = (): React.ReactElement => {
           <ContentPageContainer coloredBackground>
             <Marginer direction="vertical" margin="2em" />
             <ContentContainer>
-              <h3>
+              <h2>
                 ShoesNotIncluded, c&apos;est un jeu reprenant fidèlement les codes de l&apos;escape
                 game mais en plein air.
-              </h3>
+              </h2>
               <TextContainer className="fs-5">
                 <p>
-                  <b>
-                    La différence avec ce qu&apos;on peut trouver ailleurs ? Le support est pensé
-                    multijoueur : les actions sont synchronisées entre les joueurs connectés sur une
-                    même partie. Et en plus, le prix est unique quelque soit le nombre de joueur :
-                    pas besoin de se ruiner pour jouer sur plusieurs smartphones !
-                  </b>
+                  La différence avec ce qu&apos;on peut trouver ailleurs ? Le support est pensé{' '}
+                  <b>multijoueur</b> : les actions sont synchronisées entre les <b>joueurs</b>{' '}
+                  connectés sur une même partie. Et en plus, le prix est unique quelque soit le
+                  nombre de joueur : pas besoin de se ruiner pour jouer sur plusieurs smartphones !
                   <br />
                   <br />
                 </p>
-                <p>
-                  C&apos;est un mix entre un <u>escape game</u> et un <u>jeu de piste</u>.
-                </p>
-                Plus concrètement, c&apos;est une <u>application mobile</u> présentant des jeux où :
+                <h3>
+                  C&apos;est un mix entre un <b>escape game</b> et un <b>jeu de piste</b>.
+                </h3>
+                Plus concrètement, c&apos;est une <b>application mobile</b> présentant des jeux où :
                 <br />
                 <ul>
                   <li>
@@ -99,7 +97,11 @@ const WhatIsThat = (): React.ReactElement => {
                   <ImageBetweenLi src={FrameStepImg} alt="Frame step" />
                   <li>
                     Une fois à proximité du lieu, vous aurez automatiquement accès, via une
-                    géolocalisation, à des indices et <u>énigmes sous la forme de cartes</u>.
+                    géolocalisation, à des indices et{' '}
+                    <u>
+                      <b>énigmes</b> sous la forme de cartes
+                    </u>
+                    .
                   </li>
                   <ImageBetweenLi src={FrameCarrouselImg} alt="Frame carrousel" />
                   <li>
@@ -119,8 +121,11 @@ const WhatIsThat = (): React.ReactElement => {
                 </ul>
                 <p>
                   Vous pouvez vous représenter chaque étape{' '}
-                  <u>comme une salle d&apos;un escape game</u> : les étapes sont remplies
-                  d&apos;indices et de codes à trouver, tout comme une salle d&apos;escape game.
+                  <u>
+                    comme une salle d&apos;un <b>escape game</b>
+                  </u>{' '}
+                  : les étapes sont remplies d&apos;indices et de codes à trouver, tout comme une
+                  salle d&apos;escape game.
                   <br />
                   <br />
                   Attention, vous ne connaîtrez pas le nombre d&apos;étapes d&apos;un jeu. Alors ne
@@ -157,7 +162,9 @@ const WhatIsThat = (): React.ReactElement => {
                 </p>
               </TextContainer>
               <Link style={{ display: 'flex', flex: 1, marginTop: 25 }} to="/achat">
-                <Button style={{ flex: 1 }}>Je souhaite acheter un bon pour une partie</Button>
+                <Button style={{ flex: 1 }}>
+                  Acheter un bon pour une partie d&apos;escape game
+                </Button>
               </Link>
             </ContentContainer>
             <Marginer direction="vertical" margin="2em" />
