@@ -3,6 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import React, { ReactElement, Suspense, useState } from 'react';
 import ReactGA from 'react-ga';
+import { Helmet } from 'react-helmet';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
@@ -56,6 +57,14 @@ const App = (): ReactElement => {
               <ReactGAPageView />
 
               <ScrollToTop />
+
+              <Helmet>
+                <title>Escape Game sur Mobile en plein air - ShoesNotIncluded</title>
+                <meta
+                  name="description"
+                  content="ShoesNotIncluded est une application mobile d'escape game en plein air, multijoueur, pour les particuliers ou les entreprises recherchant un team building."
+                />
+              </Helmet>
 
               <Routes>
                 <Route path="/" element={<Home />} />
