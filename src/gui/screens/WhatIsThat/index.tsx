@@ -13,7 +13,7 @@ import FrameShoesImg from '../../../assets/images/7frameShoes.png';
 import FrameSynchroImg from '../../../assets/images/8frameSynchro.png';
 import { YOUTUBE_EXPLICATIONS_VIDEO_URL } from '../../../constants';
 import Button from '../../components/button';
-import { ContentContainer, StyledReactPlayer } from '../../components/common';
+import { ContentContainer, StyledLink, StyledReactPlayer } from '../../components/common';
 import Marginer from '../../components/marginer';
 import {
   ContentPageContainer,
@@ -60,6 +60,17 @@ const WhatIsThat = (): React.ReactElement => {
           </ContentPageContainer>
           <ContentContainer>
             <Marginer direction="vertical" margin="2em" />
+            <h2>Pour commencer : c&apos;est quoi un escape game ?</h2>
+            <TextContainer className="fs-5">
+              <p>
+                L&apos;<StyledLink to="/escape-game">escape game</StyledLink> est un concept de jeu
+                qui consiste à résoudre des énigmes et des défis en équipe dans un délai imparti. Il
+                existe différents types d&apos;escape game, chacun avec ses propres
+                caractéristiques.
+              </p>
+            </TextContainer>
+          </ContentContainer>
+          <ContentContainer>
             <h2>Vidéo de présentation :</h2>
             <StyledReactPlayer url={YOUTUBE_EXPLICATIONS_VIDEO_URL} />
             <Marginer direction="vertical" margin="2em" />

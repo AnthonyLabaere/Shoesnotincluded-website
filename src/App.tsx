@@ -15,6 +15,17 @@ import Loading from './gui/components/Loading';
 import Navbar from './gui/components/navbar';
 import ScrollToTop from './gui/components/ScrollToTop';
 import Account from './gui/screens/Account';
+import CheapEscapeGame from './gui/screens/Blog/CheapEscapeGame';
+import DifferencesPaperChaseEscapeGame from './gui/screens/Blog/DifferencesPaperChaseEscapeGame';
+import DiscoverNantesMobileEscapeGame from './gui/screens/Blog/DiscoverNantesMobileEscapeGame';
+import EscapeGameOrigins from './gui/screens/Blog/EscapeGameOrigins';
+import ETourism from './gui/screens/Blog/ETourism';
+import MobileEscapeGame from './gui/screens/Blog/MobileEscapeGame';
+import OutdoorEscapeGame from './gui/screens/Blog/OutdoorEscapeGame';
+import TopReasonsToTryEscapeGame from './gui/screens/Blog/TopReasonsToTryEscapeGame';
+import TopReasonsToTryMobileEscapeGame from './gui/screens/Blog/TopReasonsToTryMobileEscapeGame';
+import TopReasonsToTryOutdoorEscapeGame from './gui/screens/Blog/TopReasonsToTryOutdoorEscapeGame';
+import WhatIsAnEscapeGame from './gui/screens/Blog/WhatIsAnEscapeGame';
 import CardValidation from './gui/screens/CardValidation';
 import CGUCGV from './gui/screens/CGUCGV';
 import Contact from './gui/screens/Contact';
@@ -84,6 +95,34 @@ const App = (): ReactElement => {
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/ils-parlent-de-nous" element={<TheyTalkAboutUs />} />
                 <Route path="/validation-carte" element={<CardValidation />} />
+                {/* Pages du "blog" */}
+                <Route path="/escape-game" element={<WhatIsAnEscapeGame />} />
+                <Route path="/origine-escape-game" element={<EscapeGameOrigins />} />
+                <Route path="/escape-game-mobile" element={<MobileEscapeGame />} />
+                <Route path="/escape-game-pas-cher" element={<CheapEscapeGame />} />
+                <Route path="/e-tourisme" element={<ETourism />} />
+                <Route
+                  path="/difference-jeu-de-piste-escape-game"
+                  element={<DifferencesPaperChaseEscapeGame />}
+                />
+                <Route path="/escape-game-plein-air" element={<OutdoorEscapeGame />} />
+                <Route
+                  path="/10-raisons-de-faire-escape-game"
+                  element={<TopReasonsToTryEscapeGame />}
+                />
+                <Route
+                  path="/10-raisons-de-faire-escape-game-mobile"
+                  element={<TopReasonsToTryMobileEscapeGame />}
+                />
+                <Route
+                  path="/10-raisons-de-faire-escape-game-plein-air"
+                  element={<TopReasonsToTryOutdoorEscapeGame />}
+                />
+
+                <Route
+                  path="/decouvrir-nantes-escape-game-mobile"
+                  element={<DiscoverNantesMobileEscapeGame />}
+                />
               </Routes>
 
               <ToastContainer />

@@ -1,5 +1,6 @@
 import ReactPlayer from 'react-player';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
 
 export const ContentContainer = styled.div`
@@ -44,6 +45,16 @@ export const StyledALink = styled.a`
 `;
 
 export const StyledLink = styled(Link)`
+  color: black;
+  display: inline;
+  text-decoration: underline;
+
+  &:hover {
+    color: #505050;
+  }
+`;
+
+export const StyledHashLink = styled(HashLink)`
   color: black;
   display: inline;
   text-decoration: underline;
