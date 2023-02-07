@@ -1,42 +1,45 @@
-import { User } from 'firebase/auth';
-import { useEffect, useState } from 'react';
+import { User } from 'firebase/auth'
+import { useEffect, useState } from 'react'
 
-import * as FirebaseAuth from '../firebase/auth';
-import * as UserFirestore from '../firebase/firestore/userFirestore';
-import * as Types from '../types';
+import * as FirebaseAuth from '../firebase/auth'
+import * as UserFirestore from '../firebase/firestore/userFirestore'
+import * as Types from '../types'
 
 function useCurrentUser(): {
-  userAuth: undefined | null | User;
-  user: undefined | Types.UserDocument;
+  userAuth: undefined | null | User
+  user: undefined | Types.UserDocument
 } {
-  const [userAuth, setUserAuth] = useState<null | User>();
+  const [userAuth, setUserAuth] = useState<null | User>()
 
   useEffect(() => {
     return FirebaseAuth.subscribeToAuth((userAuthTmp) => {
-      setUserAuth(userAuthTmp);
-    });
-  }, []);
+      setUserAuth(userAuthTmp)
+    })
+  }, [])
 
-  const [user, setUser] = useState<Types.UserDocument>();
+  const [user, setUser] = useState<Types.UserDocument>()
 
   useEffect(() => {
     if (userAuth != null) {
-      const unsubscribe = UserFirestore.subscribeToUser(userAuth.uid, (userTmp) => {
-        setUser({
-          id: userAuth.uid,
-          ...userTmp
-        });
-      });
+      const unsubscribe = UserFirestore.subscribeToUser(
+        userAuth.uid,
+        (userTmp) => {
+          setUser({
+            id: userAuth.uid,
+            ...userTmp,
+          })
+        }
+      )
 
-      return unsubscribe;
+      return unsubscribe
     } else {
-      setUser(undefined);
+      setUser(undefined)
     }
-  }, [userAuth]);
+  }, [userAuth])
 
   return {
     userAuth,
-    user
-  };
+    user,
+  }
 }
-export default useCurrentUser;
+export default useCurrentUser

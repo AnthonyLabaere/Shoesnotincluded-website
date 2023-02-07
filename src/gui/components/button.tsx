@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import { Theme } from '../../style/theme';
+import { Theme } from '../../styles/theme'
 
 const ButtonWrapper = styled.button<{ size?: number; disabled: boolean }>`
   border: none;
@@ -14,9 +14,9 @@ const ButtonWrapper = styled.button<{ size?: number; disabled: boolean }>`
   border-radius: 5px;
   background-color: ${({ disabled, theme }) => {
     if (disabled) {
-      return theme.backgroundHoverButtonColor;
+      return theme.backgroundHoverButtonColor
     }
-    return theme.backgroundButtonColor;
+    return theme.backgroundButtonColor
   }};
   transition: all 200ms ease-in-out;
 
@@ -32,7 +32,7 @@ const ButtonWrapper = styled.button<{ size?: number; disabled: boolean }>`
   &:focus {
     outline: none;
   }
-`;
+`
 
 const Button = ({
   children,
@@ -41,15 +41,15 @@ const Button = ({
   style,
   onClick,
   disabled = false,
-  type = 'button'
+  type = 'button',
 }: {
-  children: string | JSX.Element | JSX.Element[];
-  className?: string;
-  size?: number;
-  style?: React.CSSProperties;
-  onClick?: () => void;
-  disabled?: boolean;
-  type?: 'button' | 'submit' | 'reset';
+  children: string | JSX.Element | JSX.Element[]
+  className?: string
+  size?: number
+  style?: React.CSSProperties
+  onClick?: () => void
+  disabled?: boolean
+  type?: 'button' | 'submit' | 'reset'
 }): React.ReactElement => {
   return (
     <ButtonWrapper
@@ -58,14 +58,15 @@ const Button = ({
       style={style}
       onClick={() => {
         if (!disabled && onClick !== undefined) {
-          onClick();
+          onClick()
         }
       }}
       disabled={disabled}
-      type={type}>
+      type={type}
+    >
       {children}
     </ButtonWrapper>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

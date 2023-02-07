@@ -1,17 +1,17 @@
-import React, { MutableRefObject, useCallback, useEffect, useRef } from 'react';
+import React, { MutableRefObject, useCallback, useEffect, useRef } from 'react'
 
 const OutsideClickerInterceptor = ({
   enabled,
   exceptionRef,
   onIntercept,
-  children
+  children,
 }: {
-  exceptionRef: MutableRefObject<HTMLInputElement>;
-  enabled: boolean;
-  onIntercept: () => void;
-  children: JSX.Element | JSX.Element[];
+  exceptionRef: MutableRefObject<HTMLInputElement>
+  enabled: boolean
+  onIntercept: () => void
+  children: JSX.Element | JSX.Element[]
 }): React.ReactNode => {
-  const ref = useRef(null);
+  const ref = useRef(null)
 
   const clickListener = useCallback(
     (e: MouseEvent) => {
@@ -23,20 +23,20 @@ const OutsideClickerInterceptor = ({
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         !(exceptionRef.current as any).contains(e.target)
       ) {
-        onIntercept();
+        onIntercept()
       }
     },
     [ref, enabled, exceptionRef, onIntercept]
-  );
+  )
 
   useEffect(() => {
-    document.addEventListener('click', clickListener);
+    document.addEventListener('click', clickListener)
     return () => {
-      document.removeEventListener('click', clickListener);
-    };
-  }, [clickListener, enabled]);
+      document.removeEventListener('click', clickListener)
+    }
+  }, [clickListener, enabled])
 
-  return <div ref={ref}>{children}</div>;
-};
+  return <div ref={ref}>{children}</div>
+}
 
-export default OutsideClickerInterceptor;
+export default OutsideClickerInterceptor

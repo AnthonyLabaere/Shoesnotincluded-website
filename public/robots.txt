@@ -1,4 +1,13 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /cgu-cgv
+Disallow: /compte
+Disallow: /confidentialite
+Disallow: /contact
+Disallow: /cookies
+Disallow: /faq
+Disallow: /mentions-legales
+Disallow: /probleme-de-redirection
+Disallow: /validation-carte
+
 Sitemap: https://shoesnotincluded.fr/sitemap.xml

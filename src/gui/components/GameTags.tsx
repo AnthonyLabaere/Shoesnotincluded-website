@@ -1,33 +1,33 @@
-import React from 'react';
+import React from 'react'
 
-import * as Types from '../../types';
-import GameTag, { GameTagProps } from './GameTag';
+import * as Types from '../../types'
+import GameTag, { GameTagProps } from './GameTag'
 
 interface GameTagsProps {
-  tags: Types.Tags;
-  large?: boolean;
+  tags: Types.Tags
+  large?: boolean
 }
 
 function GameTags({ tags, large }: GameTagsProps): React.ReactElement {
-  const gameTagPropsList: GameTagProps[] = [];
+  const gameTagPropsList: GameTagProps[] = []
   gameTagPropsList.push({
     label: tags.difficulty,
-    type: tags.difficulty
-  });
+    type: tags.difficulty,
+  })
   gameTagPropsList.push({
     label: `${tags.time} min`,
-    type: 'time'
-  });
+    type: 'time',
+  })
   if (tags.estimatedTravelDistance !== undefined) {
     gameTagPropsList.push({
       label: tags.estimatedTravelDistance,
-      type: 'estimatedTravelDistance'
-    });
+      type: 'estimatedTravelDistance',
+    })
   }
   gameTagPropsList.push({
     label: tags.age,
-    type: tags.age
-  });
+    type: tags.age,
+  })
   return (
     <div
       style={{
@@ -35,7 +35,7 @@ function GameTags({ tags, large }: GameTagsProps): React.ReactElement {
         flexDirection: 'row',
         justifyContent: 'center',
         flexWrap: 'wrap',
-        padding: 10
+        padding: 10,
       }}
     >
       {gameTagPropsList.map((gameTagProps) => {
@@ -46,10 +46,10 @@ function GameTags({ tags, large }: GameTagsProps): React.ReactElement {
             type={gameTagProps.type}
             large={large}
           />
-        );
+        )
       })}
     </div>
-  );
+  )
 }
 
-export default GameTags;
+export default GameTags
