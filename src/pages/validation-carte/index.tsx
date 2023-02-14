@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive'
 import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
-import useAppSelector from '@/src/hooks/useAppSelector'
+import useCurrentUser from '@/src/hooks/useCurrentUser'
 
 import * as Constants from '../../constants'
 import * as FirebaseFunctions from '../../firebase/functions'
@@ -141,7 +141,7 @@ const CardValidation = (): React.ReactElement => {
     },
   })
 
-  const { userAuth } = useAppSelector((state) => state)
+  const { userAuth } = useCurrentUser()
 
   useEffect(() => {
     if (userAuth === null) {

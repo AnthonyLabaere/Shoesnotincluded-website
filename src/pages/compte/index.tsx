@@ -6,6 +6,8 @@ import { useMediaQuery } from 'react-responsive'
 import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
+import useCurrentUser from '@/src/hooks/useCurrentUser'
+import { selectUser } from '@/src/store/userSlice'
 
 import * as Constants from '../../constants'
 import { auth } from '../../firebase'
@@ -107,7 +109,8 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
 
   const [loading, setLoading] = useState(true)
 
-  const { userAuth, user } = useAppSelector((state) => state)
+  const { userAuth } = useCurrentUser()
+  const user = useAppSelector(selectUser)
 
   const optionalRedirectToAccount = (): void => {
     if (previousPage != null) {
@@ -190,7 +193,7 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
   }, [userAuth])
 
   const meta = {
-    title: 'Mon compte et mes bons d&apos;achat - ShoesNotIncluded',
+    title: "Mon compte et mes bons d'achat - ShoesNotIncluded",
     description:
       "Accédez à votre compte utilisateur ShoesNotIncluded pour consulter vos achats et vos bons d'achats associées à vos parties d'escape game en extérieur.",
   }

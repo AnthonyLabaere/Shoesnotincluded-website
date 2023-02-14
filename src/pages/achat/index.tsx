@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
-import useAppSelector from '@/src/hooks/useAppSelector'
+import useCurrentUser from '@/src/hooks/useCurrentUser'
 
 import * as Constants from '../../constants'
 import * as StripeFirestore from '../../firebase/firestore/stripeFirestore'
@@ -24,7 +24,7 @@ const PaymentText = styled.div`
 const Payment = (): React.ReactElement => {
   const router = useRouter()
 
-  const { userAuth } = useAppSelector((state) => state)
+  const { userAuth } = useCurrentUser()
 
   useEffect(() => {
     if (userAuth === null) {

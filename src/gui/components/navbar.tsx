@@ -9,6 +9,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import styled from 'styled-components'
 
 import useAppSelector from '@/src/hooks/useAppSelector'
+import { selectUser } from '@/src/store/userSlice'
 
 import LogoImg from '../../../public/images/logo.png'
 import Brand from './brand'
@@ -23,7 +24,7 @@ const UserName = styled.div`
 `
 
 const CustomNavbar = (): React.ReactElement => {
-  const { user } = useAppSelector((state) => state)
+  const user = useAppSelector(selectUser)
 
   return (
     <Navbar

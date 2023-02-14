@@ -1,21 +1,22 @@
-import { useEffect } from 'react'
+import { User } from 'firebase/auth'
+import { useEffect, useState } from 'react'
 
 import * as FirebaseAuth from '../firebase/auth'
 import * as UserFirestore from '../firebase/firestore/userFirestore'
+import { resetUser, setUser } from '../store/userSlice'
 import useAppDispatch from './useAppDispatch'
-import useAppSelector from './useAppSelector'
 
-function useCurrentUser() {
+const useCurrentUser = (): { userAuth: null | User } => {
   const dispatch = useAppDispatch()
 
-  const { userAuth } = useAppSelector((state) => state)
+  const [userAuth, setUserAuth] = useState<null | User>(null)
 
   useEffect(() => {
     return FirebaseAuth.subscribeToAuth((userAuthTmp) => {
-      dispatch({
-        type: 'SET_USER_AUTH',
-        payload: userAuthTmp,
-      })
+      setUserAuth(userAuthTmp)
+      if (userAuthTmp == null) {
+        dispatch(resetUser())
+      }
     })
   }, [dispatch])
 
@@ -24,22 +25,21 @@ function useCurrentUser() {
       const unsubscribe = UserFirestore.subscribeToUser(
         userAuth.uid,
         (userTmp) => {
-          dispatch({
-            type: 'SET_USER',
-            payload: {
+          dispatch(
+            setUser({
               id: userAuth.uid,
-              ...userTmp,
-            },
-          })
+              displayName: userTmp?.displayName,
+            })
+          )
         }
       )
 
       return unsubscribe
-    } else {
-      dispatch({
-        type: 'RESET_USER',
-      })
     }
   }, [dispatch, userAuth])
+
+  return {
+    userAuth,
+  }
 }
 export default useCurrentUser
