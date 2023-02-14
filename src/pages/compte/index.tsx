@@ -1,5 +1,6 @@
 import { faCopy } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Router from 'next/router'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
@@ -109,19 +110,26 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
   const [loading, setLoading] = useState(true)
 
   const { userAuth } = useCurrentUser()
+
   const user = useAppSelector(selectUser)
 
-  const optionalRedirectToAccount = (): void => {
-    if (previousPage != null) {
-      router.push(`../${previousPage}`)
+  const [redirectToAccount, setRedirectToAccount] = useState(false)
+
+  useEffect(() => {
+    if (redirectToAccount && user !== undefined) {
+      if (router.query.achat === 'true') {
+        router.push('../achat')
+      } else if (router.query.validationCarte === 'true') {
+        router.push('../validation-carte')
+      }
     }
-  }
+  }, [redirectToAccount, user])
 
   const getTitlePrefix = (): string => {
     if (previousPage != null) {
-      if (previousPage === 'achat') {
+      if (router.query.achat === 'true') {
         return 'Pour acheter une partie, v'
-      } else if (previousPage === 'validation-carte') {
+      } else if (router.query.validationCarte === 'true') {
         return 'Pour valider votre carte, v'
       }
     }
@@ -150,7 +158,7 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
             window.clearInterval(timerTmp)
 
             // Redirection éventuelle dans le cas où l'utilisateur a eu besoin de vérifier son adresse mail (email ou Facebook)
-            optionalRedirectToAccount()
+            setRedirectToAccount(true)
           }
         })
       }, 5000)
@@ -240,11 +248,11 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                             })
                           } else {
                             // Redirection éventuelle dans le cas où l'utilisateur n'a pas besoin de vérifier son adresse mail (Google ou Apple)
-                            optionalRedirectToAccount()
+                            setRedirectToAccount(true)
                           }
                         } else {
                           // Redirection éventuelle dans le cas où l'utilisateur avait déjà un compte
-                          optionalRedirectToAccount()
+                          setRedirectToAccount(true)
                         }
 
                         // Pas de redirection

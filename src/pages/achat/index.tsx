@@ -1,9 +1,11 @@
-import { useRouter } from 'next/router'
+import Router from 'next/router'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
+import useAppSelector from '@/src/hooks/useAppSelector'
 import useCurrentUser from '@/src/hooks/useCurrentUser'
+import { selectUser } from '@/src/store/userSlice'
 
 import * as Constants from '../../constants'
 import * as StripeFirestore from '../../firebase/firestore/stripeFirestore'
@@ -22,15 +24,18 @@ const PaymentText = styled.div`
 `
 
 const Payment = (): React.ReactElement => {
-  const router = useRouter()
-
   const { userAuth } = useCurrentUser()
 
+  const user = useAppSelector(selectUser)
+
   useEffect(() => {
-    if (userAuth === null) {
-      router.push('../compte')
+    if (user == null) {
+      Router.push({
+        pathname: '/compte',
+        query: { achat: true },
+      })
     }
-  }, [userAuth])
+  }, [user])
 
   const [loading, setLoading] = useState(false)
   const [checkoutSessionId, setCheckoutSessionId] = useState<string>()

@@ -15,7 +15,7 @@ interface LayoutProps {
 }
 
 export default function Layout({ meta, children, noIndex }: LayoutProps) {
-  useCurrentUser()
+  useCurrentUser(true)
 
   return (
     <div>

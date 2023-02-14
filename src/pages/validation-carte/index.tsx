@@ -1,12 +1,14 @@
 import { faCopy } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useFormik } from 'formik'
-import { useRouter } from 'next/router'
+import Router from 'next/router'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
+import useAppSelector from '@/src/hooks/useAppSelector'
 import useCurrentUser from '@/src/hooks/useCurrentUser'
+import { selectUser } from '@/src/store/userSlice'
 
 import * as Constants from '../../constants'
 import * as FirebaseFunctions from '../../firebase/functions'
@@ -98,8 +100,6 @@ const ModalButton = styled(Button)`
 `
 
 const CardValidation = (): React.ReactElement => {
-  const router = useRouter()
-
   const validate = (values: {
     voucherCardId?: string
     validationCode?: string
@@ -138,13 +138,16 @@ const CardValidation = (): React.ReactElement => {
     },
   })
 
-  const { userAuth } = useCurrentUser()
+  const user = useAppSelector(selectUser)
 
   useEffect(() => {
-    if (userAuth === null) {
-      router.push('../compte')
+    if (user == null) {
+      Router.push({
+        pathname: '/compte',
+        query: { validationCarte: true },
+      })
     }
-  }, [userAuth])
+  }, [user])
 
   const [redirectToAccount, setRedirectToAccount] = useState(false)
 
@@ -153,7 +156,9 @@ const CardValidation = (): React.ReactElement => {
       setRedirectToAccount(false)
       setVoucherId(undefined)
 
-      router.push('../compte')
+      Router.push({
+        pathname: '/compte',
+      })
     }
   }, [redirectToAccount, voucherId])
 

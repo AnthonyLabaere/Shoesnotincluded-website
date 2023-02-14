@@ -6,7 +6,7 @@ import * as UserFirestore from '../firebase/firestore/userFirestore'
 import { resetUser, setUser } from '../store/userSlice'
 import useAppDispatch from './useAppDispatch'
 
-const useCurrentUser = (): { userAuth: null | User } => {
+const useCurrentUser = (withEdition = false): { userAuth: null | User } => {
   const dispatch = useAppDispatch()
 
   const [userAuth, setUserAuth] = useState<null | User>(null)
@@ -14,29 +14,31 @@ const useCurrentUser = (): { userAuth: null | User } => {
   useEffect(() => {
     return FirebaseAuth.subscribeToAuth((userAuthTmp) => {
       setUserAuth(userAuthTmp)
-      if (userAuthTmp == null) {
+      if (withEdition && userAuthTmp == null) {
         dispatch(resetUser())
       }
     })
-  }, [dispatch])
+  }, [])
 
   useEffect(() => {
     if (userAuth != null) {
       const unsubscribe = UserFirestore.subscribeToUser(
         userAuth.uid,
         (userTmp) => {
-          dispatch(
-            setUser({
-              id: userAuth.uid,
-              displayName: userTmp?.displayName,
-            })
-          )
+          if (withEdition) {
+            dispatch(
+              setUser({
+                id: userAuth.uid,
+                displayName: userTmp?.displayName,
+              })
+            )
+          }
         }
       )
 
       return unsubscribe
     }
-  }, [dispatch, userAuth])
+  }, [userAuth])
 
   return {
     userAuth,
