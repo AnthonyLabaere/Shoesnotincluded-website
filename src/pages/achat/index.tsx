@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
+import useAppSelector from '@/src/hooks/useAppSelector'
 
 import * as Constants from '../../constants'
 import * as StripeFirestore from '../../firebase/firestore/stripeFirestore'
@@ -15,7 +16,6 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-import useCurrentUser from '../../hooks/useCurrentUser'
 
 const PaymentText = styled.div`
   text-align: left;
@@ -24,7 +24,7 @@ const PaymentText = styled.div`
 const Payment = (): React.ReactElement => {
   const router = useRouter()
 
-  const { userAuth } = useCurrentUser()
+  const { userAuth } = useAppSelector((state) => state)
 
   useEffect(() => {
     if (userAuth === null) {

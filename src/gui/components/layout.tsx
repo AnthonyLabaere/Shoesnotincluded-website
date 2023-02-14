@@ -1,5 +1,7 @@
 import Head from 'next/head'
 
+import useCurrentUser from '@/src/hooks/useCurrentUser'
+
 import Footer from '../../gui/components/footer'
 import Navbar from '../../gui/components/navbar'
 
@@ -13,6 +15,8 @@ interface LayoutProps {
 }
 
 export default function Layout({ meta, children, noIndex }: LayoutProps) {
+  useCurrentUser()
+
   return (
     <div>
       <Head>

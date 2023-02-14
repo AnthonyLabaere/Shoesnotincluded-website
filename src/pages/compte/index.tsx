@@ -21,7 +21,7 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-import useCurrentUser from '../../hooks/useCurrentUser'
+import useAppSelector from '../../hooks/useAppSelector'
 import * as Types from '../../types'
 import * as NotificationUtils from '../../utils/notificationUtils'
 import * as StripeUtils from '../../utils/stripeUtils'
@@ -107,7 +107,7 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
 
   const [loading, setLoading] = useState(true)
 
-  const { userAuth, user } = useCurrentUser()
+  const { userAuth, user } = useAppSelector((state) => state)
 
   const optionalRedirectToAccount = (): void => {
     if (previousPage != null) {

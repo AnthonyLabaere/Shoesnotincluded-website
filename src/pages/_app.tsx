@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import { Suspense, useEffect } from 'react'
 import ReactGA from 'react-ga'
+import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
 import { ThemeProvider } from 'styled-components'
 
@@ -12,9 +13,12 @@ import * as Constants from '../constants'
 import CookiesBanner from '../gui/components/CookiesBanner'
 import Loading from '../gui/components/Loading'
 import ScrollToTop from '../gui/components/ScrollToTop'
+import { wrapper } from '../store'
 import { theme } from '../styles/theme'
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, ...rest }: AppProps) => {
+  const { store, props } = wrapper.useWrappedStore(rest)
+
   ReactGA.initialize(Constants.GA_TRACKING_ID)
 
   const router = useRouter()
@@ -40,17 +44,19 @@ const App = ({ Component, pageProps }: AppProps) => {
   }, [])
 
   return (
-    <ThemeProvider theme={theme}>
-      <Suspense fallback={<Loading />}>
-        <ScrollToTop />
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <Suspense fallback={<Loading />}>
+          <ScrollToTop />
 
-        <ToastContainer />
+          <ToastContainer />
 
-        <CookiesBanner />
+          <CookiesBanner />
 
-        <Component {...pageProps} />
-      </Suspense>
-    </ThemeProvider>
+          <Component {...props.pageProps} />
+        </Suspense>
+      </ThemeProvider>
+    </Provider>
   )
 }
 
