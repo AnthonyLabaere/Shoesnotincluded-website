@@ -10,6 +10,10 @@
 
 module.exports = {
   reactStrictMode: true,
+  sassOptions: {
+    includePaths: ['./src'],
+    prependData: `@import "~@styles/variables.scss";`,
+  },
   images: {
     remotePatterns: [
       {

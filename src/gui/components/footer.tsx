@@ -5,10 +5,9 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import { useMediaQuery } from 'react-responsive'
 import styled from 'styled-components'
 
-import { DEVICE_SIZES, SOCIAL_NETWORKS_URLS } from '../../constants'
+import { SOCIAL_NETWORKS_URLS } from '../../constants'
 import { StyledLink } from '../components/common'
 import Brand from './brand'
 import Marginer from './marginer'
@@ -151,19 +150,27 @@ const BottomStyledLink = styled(StyledLink)`
   }
 `
 
-const Footer = (): React.ReactElement => {
-  const isMobileXS = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXS })
-  const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL })
+const CGUStyledLink = styled(BottomStyledLink)`
+  ::before {
+    content: "Condition générales d'utilisation et de vente";
 
-  let marginerMargin: number
-  if (isMobileXS) {
-    marginerMargin = 5
-  } else if (isMobile) {
-    marginerMargin = 7.5
-  } else {
-    marginerMargin = 10
+    @media screen and (max-width: ${({ theme }) =>
+        theme.deviceSizes.mobileXL}) {
+      content: 'CGU & CGV';
+    }
   }
+`
+const PrivacyPolicyStyledLink = styled(BottomStyledLink)`
+  ::before {
+    content: 'Politique de confidentialité';
 
+    @media screen and (max-width: ${({ theme }) =>
+        theme.deviceSizes.mobileXL}) {
+      content: 'Confidentialité';
+    }
+  }
+`
+const Footer = (): React.ReactElement => {
   return (
     <FooterContainer>
       <TopContainer>
@@ -249,16 +256,10 @@ const Footer = (): React.ReactElement => {
           <BottomStyledLink href="/mentions-legales" prefetch={false}>
             Mentions légales
           </BottomStyledLink>
-          <Marginer direction="horizontal" margin={marginerMargin} />
-          <BottomStyledLink href="/cgu-cgv" prefetch={false}>
-            {isMobile
-              ? 'CGU & CGV'
-              : "Condition générales d'utilisation et de vente"}
-          </BottomStyledLink>
-          <Marginer direction="horizontal" margin={marginerMargin} />
-          <BottomStyledLink href="/confidentialite" prefetch={false}>
-            {isMobile ? 'Confidentialité' : 'Politique de confidentialité'}
-          </BottomStyledLink>
+          <Marginer direction="horizontal" margin={10} />
+          <CGUStyledLink href="/cgu-cgv" prefetch={false} />
+          <Marginer direction="horizontal" margin={10} />
+          <PrivacyPolicyStyledLink href="/confidentialite" prefetch={false} />
         </BottomSubContainerRow>
       </BottomContainer>
     </FooterContainer>

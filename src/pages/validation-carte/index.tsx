@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useFormik } from 'formik'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import { useMediaQuery } from 'react-responsive'
 import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
@@ -101,8 +100,6 @@ const ModalButton = styled(Button)`
 const CardValidation = (): React.ReactElement => {
   const router = useRouter()
 
-  const isMobile = useMediaQuery({ maxWidth: Constants.DEVICE_SIZES.tablet })
-
   const validate = (values: {
     voucherCardId?: string
     validationCode?: string
@@ -118,7 +115,7 @@ const CardValidation = (): React.ReactElement => {
     return errors
   }
 
-  const [voucherId, setVoucherId] = useState<undefined | string>()
+  const [voucherId, setVoucherId] = useState<undefined | string>('156')
 
   const formik = useFormik({
     initialValues: {
@@ -245,7 +242,7 @@ const CardValidation = (): React.ReactElement => {
               // .catch((e) => {})
             }}
           >
-            <ModalTextLine style={{ display: isMobile ? 'block' : 'flex' }}>
+            <ModalTextLine>
               <FontAwesomeIcon
                 style={{ marginRight: 5 }}
                 icon={faCopy}

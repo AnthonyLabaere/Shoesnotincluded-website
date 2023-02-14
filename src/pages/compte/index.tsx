@@ -27,6 +27,7 @@ import useAppSelector from '../../hooks/useAppSelector'
 import * as Types from '../../types'
 import * as NotificationUtils from '../../utils/notificationUtils'
 import * as StripeUtils from '../../utils/stripeUtils'
+import styles from './compte.module.scss'
 
 const AccountContentContainer = styled(ContentContainer)`
   display: flex;
@@ -44,8 +45,7 @@ const PaymentRow = styled.div`
   flex: 1;
 `
 
-const PaymentRowHeaderElement = styled.div<{ flex?: number }>`
-  flex: ${({ flex = 1 }: { flex?: number }) => flex};
+const PaymentRowHeaderElement = styled.div`
   margin: 5px;
   text-align: left;
 
@@ -57,8 +57,7 @@ const PaymentRowHeaderElement = styled.div<{ flex?: number }>`
   }
 `
 
-const PaymentRowElement = styled.div<{ flex?: number }>`
-  flex: ${({ flex = 1 }: { flex?: number }) => flex};
+const PaymentRowElement = styled.div`
   margin: 5px;
   text-align: left;
 
@@ -316,25 +315,16 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                           : ''}{' '}
                         :
                       </div>
-                      <PaymentRow>
-                        {!isMobile && (
-                          <PaymentRowHeaderElement
-                            className="fs-4 fw-bold"
-                            flex={1}
-                          >
-                            Identifiant{' '}de{' '}la{' '}carte
-                          </PaymentRowHeaderElement>
-                        )}
+                      <PaymentRow className={styles.paymentRow}>
                         <PaymentRowHeaderElement
-                          className="fs-4 fw-bold"
-                          flex={isMobile ? 0.5 : 1}
+                          className={`fs-4 fw-bold ${styles.identifiant}`}
                         >
-                          Date{!isMobile ? ' de validation' : ''}
+                          Identifiant{' '}de{' '}la{' '}carte
                         </PaymentRowHeaderElement>
                         <PaymentRowHeaderElement
-                          className="fs-4 fw-bold"
-                          flex={1}
-                        >
+                          className={`fs-4 fw-bold ${styles.date} ${styles.validationDateHeader}`}
+                        />
+                        <PaymentRowHeaderElement className="fs-4 fw-bold">
                           Bon{' '}d&apos;achat
                         </PaymentRowHeaderElement>
                       </PaymentRow>
@@ -342,14 +332,13 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                         (userGameVoucherCardDocumentTmp) => {
                           return (
                             <PaymentRow
+                              className={styles.paymentRow}
                               key={userGameVoucherCardDocumentTmp.voucherCardId}
                             >
-                              {!isMobile && (
-                                <PaymentRowElement flex={1}>
-                                  {userGameVoucherCardDocumentTmp.voucherCardId}
-                                </PaymentRowElement>
-                              )}
-                              <PaymentRowElement flex={isMobile ? 0.5 : 1}>
+                              <PaymentRowElement className={styles.identifiant}>
+                                {userGameVoucherCardDocumentTmp.voucherCardId}
+                              </PaymentRowElement>
+                              <PaymentRowElement className={styles.date}>
                                 {isMobile
                                   ? userGameVoucherCardDocumentTmp.consumedDate
                                       .toDate()
@@ -364,7 +353,6 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                                       .toLocaleTimeString('fr')}
                               </PaymentRowElement>
                               <PaymentRowElement
-                                flex={1}
                                 style={{
                                   cursor:
                                     userGameVoucherCardDocumentTmp.voucherId !==
@@ -388,11 +376,7 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                                   // .catch((e) => {})
                                 }}
                               >
-                                <div
-                                  style={{
-                                    display: isMobile ? 'block' : 'flex',
-                                  }}
-                                >
+                                <div>
                                   <FontAwesomeIcon
                                     style={{ marginRight: 5 }}
                                     icon={faCopy}
@@ -421,51 +405,41 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                           <div className="fs-4">Aucun achat réalisé.</div>
                         ) : (
                           <>
-                            <PaymentRow>
-                              {!isMobile && (
-                                <PaymentRowHeaderElement
-                                  className="fs-4 fw-bold"
-                                  flex={1}
-                                >
-                                  Identifiant
-                                </PaymentRowHeaderElement>
-                              )}
+                            <PaymentRow className={styles.paymentRow}>
                               <PaymentRowHeaderElement
-                                className="fs-4 fw-bold"
-                                flex={isMobile ? 0.5 : 1}
+                                className={`fs-4 fw-bold ${styles.identifiant}`}
                               >
-                                Date{!isMobile ? " d'achat" : ''}
+                                Identifiant
                               </PaymentRowHeaderElement>
                               <PaymentRowHeaderElement
-                                className="fs-4 fw-bold"
-                                flex={0.5}
+                                className={`fs-4 fw-bold ${styles.date} ${styles.paymentDateHeader}`}
+                              />
+                              <PaymentRowHeaderElement
+                                className={`fs-4 fw-bold ${styles.status}`}
                               >
                                 Statut
                               </PaymentRowHeaderElement>
-                              {!isMobile && (
-                                <PaymentRowHeaderElement
-                                  className="fs-4 fw-bold"
-                                  flex={0.5}
-                                >
-                                  Montant
-                                </PaymentRowHeaderElement>
-                              )}
                               <PaymentRowHeaderElement
-                                className="fs-4 fw-bold"
-                                flex={1}
+                                className={`fs-4 fw-bold ${styles.amount}`}
                               >
+                                Montant
+                              </PaymentRowHeaderElement>
+                              <PaymentRowHeaderElement className="fs-4 fw-bold">
                                 Bon{' '}d&apos;achat
                               </PaymentRowHeaderElement>
                             </PaymentRow>
                             {payments.map((paymentTmp) => {
                               return (
-                                <PaymentRow key={paymentTmp.id}>
-                                  {!isMobile && (
-                                    <PaymentRowElement flex={1}>
-                                      {paymentTmp.id}
-                                    </PaymentRowElement>
-                                  )}
-                                  <PaymentRowElement flex={isMobile ? 0.5 : 1}>
+                                <PaymentRow
+                                  className={styles.paymentRow}
+                                  key={paymentTmp.id}
+                                >
+                                  <PaymentRowElement
+                                    className={styles.identifiant}
+                                  >
+                                    {paymentTmp.id}
+                                  </PaymentRowElement>
+                                  <PaymentRowElement className={styles.date}>
                                     {isMobile
                                       ? paymentTmp.createdDate.toLocaleDateString(
                                           'fr'
@@ -479,21 +453,18 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                                           'fr'
                                         )}
                                   </PaymentRowElement>
-                                  <PaymentRowElement flex={0.5}>
+                                  <PaymentRowElement className={styles.status}>
                                     {StripeUtils.getPaymentStatusLabel(
                                       paymentTmp.status,
                                       isMobile
                                     )}
                                   </PaymentRowElement>
-                                  {!isMobile && (
-                                    <PaymentRowElement flex={0.5}>
-                                      {StripeUtils.getPaymentAmount(
-                                        paymentTmp.amount
-                                      )}
-                                    </PaymentRowElement>
-                                  )}
+                                  <PaymentRowElement className={styles.amount}>
+                                    {StripeUtils.getPaymentAmount(
+                                      paymentTmp.amount
+                                    )}
+                                  </PaymentRowElement>
                                   <PaymentRowElement
-                                    flex={1}
                                     style={{
                                       cursor:
                                         paymentTmp.voucherId !== undefined
@@ -518,11 +489,7 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                                     }}
                                   >
                                     {paymentTmp.voucherId !== undefined ? (
-                                      <div
-                                        style={{
-                                          display: isMobile ? 'block' : 'flex',
-                                        }}
-                                      >
+                                      <div>
                                         <FontAwesomeIcon
                                           style={{ marginRight: 5 }}
                                           icon={faCopy}

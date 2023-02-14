@@ -1,0 +1,40 @@
+.paymentRow {
+  div {
+    flex: 1;
+
+    &.validationDateHeader {
+      &::before {
+        content: 'Date de validation';
+      }
+    }
+
+    &.paymentDateHeader {
+      &::before {
+        content: "Date d'achat";
+      }
+    }
+
+    &status {
+      flex: 0.5;
+    }
+
+    @media screen and (max-width: $deviceSizeTablet) {
+      &.date,
+      &.amount {
+        flex: 0.5;
+      }
+
+      &.identifiant,
+      &.amount {
+        display: none;
+      }
+
+      &.validationDateHeader,
+      &.paymentDateHeader {
+        &::before {
+          content: 'Date';
+        }
+      }
+    }
+  }
+}

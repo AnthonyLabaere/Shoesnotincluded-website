@@ -1,11 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
-import { useMediaQuery } from 'react-responsive'
 import styled from 'styled-components'
 
 import LandingPageImg from '../../../public/images/landing-page.jpg'
 import LogoImg from '../../../public/images/logo.png'
-import { DEVICE_SIZES } from '../../constants'
 import Brand from './brand'
 import Marginer from './marginer'
 import styles from './topSection.module.scss'
@@ -38,18 +36,19 @@ const TopSectionInnerContainer = styled.div`
   }
 `
 
-const LogoContainer = styled.div`
+const CenteredContainer = styled.div`
   display: flex;
-  flex: 3;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+`
+
+const SloganContainer = styled.div`
   filter: ${({ theme }) => theme.filter.default};
 `
 
 const LogoImage = styled.div`
   display: flex;
-  flex: 1;
   align-items: center;
 
   img {
@@ -72,6 +71,7 @@ const LogoImage = styled.div`
       padding-right: 15px;
       padding-bottom: 20px;
       padding-left: 15px;
+      margin-bottom: 15px;
     }
   }
 
@@ -85,6 +85,22 @@ const LogoImage = styled.div`
       padding-bottom: 20px;
       padding-left: 15px;
     }
+  }
+`
+
+const DesktopLogoImage = styled(LogoImage)`
+  display: flex;
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+    display: none;
+  }
+`
+
+const MobileLogoImage = styled(LogoImage)`
+  display: none;
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+    display: flex;
   }
 `
 
@@ -114,8 +130,6 @@ const SpecialText = styled.span`
 `
 
 const TopSection = (): React.ReactElement => {
-  const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL })
-
   return (
     <TopSectionContainer>
       <Image
@@ -126,29 +140,8 @@ const TopSection = (): React.ReactElement => {
       />
       <BackgroundFilter>
         <TopSectionInnerContainer>
-          <LogoContainer>
-            {isMobile && (
-              <LogoImage>
-                <Image
-                  priority
-                  src={LogoImg}
-                  alt="ShoesNotIncluded logo"
-                  width={400}
-                  height={400}
-                  style={{ zIndex: 1 }}
-                />
-              </LogoImage>
-            )}
-            <BrandContainer withShadow={true} />
-            <Marginer direction="vertical" margin={8} />
-            <SloganText>L&apos;escape game plein air</SloganText>
-            <SloganText>
-              qui vous <SpecialText>rassemble</SpecialText>
-            </SloganText>
-            <Marginer direction="vertical" margin={15} />
-          </LogoContainer>
-          {!isMobile && (
-            <LogoImage>
+          <CenteredContainer>
+            <MobileLogoImage>
               <Image
                 priority
                 src={LogoImg}
@@ -157,8 +150,27 @@ const TopSection = (): React.ReactElement => {
                 height={400}
                 style={{ zIndex: 1 }}
               />
-            </LogoImage>
-          )}
+            </MobileLogoImage>
+            <SloganContainer>
+              <BrandContainer withShadow={true} />
+              <Marginer direction="vertical" margin={8} />
+              <SloganText>L&apos;escape game plein air</SloganText>
+              <SloganText>
+                qui vous <SpecialText>rassemble</SpecialText>
+              </SloganText>
+              <Marginer direction="vertical" margin={15} />
+            </SloganContainer>
+          </CenteredContainer>
+          <DesktopLogoImage>
+            <Image
+              priority
+              src={LogoImg}
+              alt="ShoesNotIncluded logo"
+              width={400}
+              height={400}
+              style={{ zIndex: 1 }}
+            />
+          </DesktopLogoImage>
         </TopSectionInnerContainer>
       </BackgroundFilter>
     </TopSectionContainer>
