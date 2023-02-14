@@ -1,0 +1,76 @@
+$hideTextSize: 0;
+$showTextSize: 14px;
+
+.loginExternalWrapper {
+  :global(.firebaseui-idp-password) {
+    :global(.firebaseui-idp-text-long) {
+      font-size: $hideTextSize;
+      &:after {
+        font-size: $showTextSize;
+        content: 'Se connecter avec une adresse mail';
+      }
+    }
+
+    :global(.firebaseui-idp-text-short) {
+      font-size: $hideTextSize;
+      &:after {
+        font-size: $showTextSize;
+        content: 'Adresse mail';
+      }
+    }
+  }
+
+  :global(.firebaseui-idp-google) {
+    :global(.firebaseui-idp-text-long) {
+      font-size: $hideTextSize;
+      &:after {
+        font-size: $showTextSize;
+        content: 'Se connecter avec Google';
+      }
+    }
+
+    :global(.firebaseui-idp-text-short) {
+      font-size: $hideTextSize;
+      &:after {
+        font-size: $showTextSize;
+        content: 'Google';
+      }
+    }
+  }
+
+  :global(.firebaseui-idp-generic) {
+    :global(.firebaseui-idp-text-long) {
+      font-size: $hideTextSize;
+      &:after {
+        font-size: $showTextSize;
+        content: 'Se connecter avec Apple';
+      }
+    }
+
+    :global(.firebaseui-idp-text-short) {
+      font-size: $hideTextSize;
+      &:after {
+        font-size: $showTextSize;
+        content: 'Apple';
+      }
+    }
+  }
+
+  :global(.firebaseui-idp-facebook) {
+    :global(.firebaseui-idp-text-long) {
+      font-size: $hideTextSize;
+      &:after {
+        font-size: $showTextSize;
+        content: 'Se connecter avec Facebook';
+      }
+    }
+
+    :global(.firebaseui-idp-text-short) {
+      font-size: $hideTextSize;
+      &:after {
+        font-size: $showTextSize;
+        content: 'Facebook';
+      }
+    }
+  }
+}

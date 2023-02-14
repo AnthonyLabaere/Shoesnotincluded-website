@@ -1,58 +1,60 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
-import * as Constants from '../../constants';
-import * as Types from '../../types';
-import * as LocaleUtils from '../../utils/localeUtils';
+import * as Constants from '../../constants'
+import * as Types from '../../types'
+import * as LocaleUtils from '../../utils/localeUtils'
 
-const getTextStyleFromRichTextPart = (textPart: Types.RichTextContentType): Types.TextStyle => {
-  const textStyle: Types.TextStyle = {};
+const getTextStyleFromRichTextPart = (
+  textPart: Types.RichTextContentType
+): Types.TextStyle => {
+  const textStyle: Types.TextStyle = {}
   // TODO : faire des tableaux
   if (textPart.textStyle !== undefined) {
     if (textPart.textStyle.includes('left')) {
-      textStyle.textAlign = 'left';
+      textStyle.textAlign = 'left'
     } else {
-      textStyle.textAlign = 'center';
+      textStyle.textAlign = 'center'
     }
 
     if (textPart.textStyle.includes('bold')) {
-      textStyle.fontWeight = 'bold';
+      textStyle.fontWeight = 'bold'
     }
     if (textPart.textStyle.includes('italic')) {
-      textStyle.fontStyle = 'italic';
+      textStyle.fontStyle = 'italic'
     }
     if (textPart.textStyle.includes('underline')) {
-      textStyle.textDecoration = 'underline';
+      textStyle.textDecoration = 'underline'
     }
     if (textPart.textStyle.includes('line-through')) {
-      textStyle.textDecoration = 'line-through';
+      textStyle.textDecoration = 'line-through'
     }
 
     // Couleurs
     if (textPart.textStyle.includes('red')) {
-      textStyle.color = Constants.THEME_RED_COLORS[0];
+      textStyle.color = Constants.THEME_RED_COLORS[0]
     } else if (textPart.textStyle.includes('turquoise')) {
-      textStyle.color = Constants.THEME_TURQUOISE_COLORS[0];
+      textStyle.color = Constants.THEME_TURQUOISE_COLORS[0]
     } else if (textPart.textStyle.includes('blue')) {
-      textStyle.color = Constants.THEME_BLUE_COLORS[0];
+      textStyle.color = Constants.THEME_BLUE_COLORS[0]
     } else if (textPart.textStyle.includes('grey')) {
-      textStyle.color = Constants.THEME_GREY_COLOR;
+      textStyle.color = Constants.THEME_GREY_COLOR
     } else if (textPart.textStyle.includes('white')) {
-      textStyle.color = Constants.THEME_WHITE_COLOR;
+      textStyle.color = Constants.THEME_WHITE_COLOR
     } else if (textPart.textStyle.includes('yellow')) {
-      textStyle.color = Constants.THEME_YELLOW_COLORS[0];
+      textStyle.color = Constants.THEME_YELLOW_COLORS[0]
     } else if (textPart.textStyle.includes('orange')) {
-      textStyle.color = Constants.THEME_ORANGE_COLORS[0];
+      textStyle.color = Constants.THEME_ORANGE_COLORS[0]
     } else if (textPart.textStyle.includes('green')) {
-      textStyle.color = Constants.THEME_GREEN_COLORS[0];
+      textStyle.color = Constants.THEME_GREEN_COLORS[0]
     } else if (textPart.textStyle.includes('purple')) {
-      textStyle.color = Constants.THEME_PURPLE_COLORS[0];
+      textStyle.color = Constants.THEME_PURPLE_COLORS[0]
     } else if (textPart.textStyle.includes('firebrick')) {
-      textStyle.color = 'firebrick';
+      textStyle.color = 'firebrick'
     }
   }
-  return textStyle;
-};
+  return textStyle
+}
 
 export const getTextContentFromRichText = (
   text: Types.RichTextContentType[],
@@ -66,15 +68,18 @@ export const getTextContentFromRichText = (
         return (
           <TextContent
             key={index}
-            textStyle={{ ...textStyle, ...getTextStyleFromRichTextPart(textPart) }}
+            textStyle={{
+              ...textStyle,
+              ...getTextStyleFromRichTextPart(textPart),
+            }}
           >
             {textPart.text}
           </TextContent>
-        );
+        )
       })}
     </TextContent>
-  );
-};
+  )
+}
 
 /**
  * Construction d'un texte suivant les règles suivantes :
@@ -83,7 +88,10 @@ export const getTextContentFromRichText = (
  *
  * A voir si ces margin et width sont à gérer différemment suivant les prochains jeux à développer
  */
-const StyledTextContent = styled.span<{ key?: number | string; textStyle?: Types.TextStyle }>`
+const StyledTextContent = styled.span<{
+  key?: number | string
+  textStyle?: Types.TextStyle
+}>`
   text-align: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
     textStyle.textAlign !== undefined ? textStyle.textAlign : 'center'};
   font-weight: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
@@ -95,7 +103,9 @@ const StyledTextContent = styled.span<{ key?: number | string; textStyle?: Types
   color: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
     textStyle.color !== undefined ? textStyle.color : 'black'};
   background-color: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
-    textStyle.backgroundColor !== undefined ? textStyle.backgroundColor : 'transparent'};
+    textStyle.backgroundColor !== undefined
+      ? textStyle.backgroundColor
+      : 'transparent'};
   margin-bottom: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
     textStyle.marginBottom !== undefined ? `${textStyle.marginBottom}px` : 0};
   width: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
@@ -115,15 +125,15 @@ const StyledTextContent = styled.span<{ key?: number | string; textStyle?: Types
     `
     transform: rotateY(180deg);
   `};
-`;
+`
 
 interface TextContentProps {
-  globalTextStyle?: Types.TextStyle;
-  textStyle?: Types.TextStyle;
+  globalTextStyle?: Types.TextStyle
+  textStyle?: Types.TextStyle
   // FIXME children: number | string | Types.RichTextContentType[] | JSX.Element | (number | string | JSX.Element)[];
-  children: any;
-  globalStyle?: any;
-  style?: any;
+  children: any
+  globalStyle?: any
+  style?: any
 }
 
 function TextContent({
@@ -131,9 +141,9 @@ function TextContent({
   textStyle,
   children,
   globalStyle,
-  style
+  style,
 }: TextContentProps): React.ReactElement {
-  const newChildren = LocaleUtils.getObjectFromLocale(children);
+  const newChildren = LocaleUtils.getObjectFromLocale(children)
 
   if (
     Array.isArray(newChildren) &&
@@ -146,14 +156,14 @@ function TextContent({
       globalTextStyle,
       textStyle,
       globalStyle
-    );
+    )
   }
 
   return (
     <StyledTextContent textStyle={textStyle} style={style}>
       {newChildren as React.ReactNode}
     </StyledTextContent>
-  );
+  )
 }
 
-export default TextContent;
+export default TextContent

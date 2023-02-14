@@ -1,22 +1,19 @@
 import {
-  /* faDiscord, */ faFacebook,
+  faFacebook,
   faInstagram,
-  faLinkedinIn /*, faTwitter faYoutube */
-} from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { useMediaQuery } from 'react-responsive';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+  faLinkedinIn,
+} from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react'
+import styled from 'styled-components'
 
-import { DEVICE_SIZES, SOCIAL_NETWORKS_URLS } from '../../constants';
-import { StyledLink } from '../components/common';
-import Brand from './brand';
-import Marginer from './marginer';
+import { SOCIAL_NETWORKS_URLS } from '../../constants'
+import { StyledLink } from '../components/common'
+import Brand from './brand'
+import Marginer from './marginer'
 
-const GREY_COLOR = '#353535';
-const GREY_HOVER_COLOR = '#666666';
+const GREY_COLOR = '#353535'
+const GREY_HOVER_COLOR = '#666666'
 
 const FooterContainer = styled.div`
   width: 100%;
@@ -36,7 +33,7 @@ const FooterContainer = styled.div`
   }
 
   padding-bottom: 0;
-`;
+`
 
 const TopContainer = styled.div`
   width: 100%;
@@ -45,12 +42,12 @@ const TopContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
-`;
+`
 
 const TopContentContainer = styled.div`
   width: 100%;
   max-width: ${({ theme }) => theme.deviceSizes.laptop};
-`;
+`
 
 const ContentContainer = styled.div<{ isMobile?: boolean }>`
   display: flex;
@@ -60,7 +57,7 @@ const ContentContainer = styled.div<{ isMobile?: boolean }>`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     flex-direction: column;
   }
-`;
+`
 
 const BottomContainer = styled.span`
   display: flex;
@@ -73,7 +70,7 @@ const BottomContainer = styled.span`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     padding: 0;
   }
-`;
+`
 
 const TopSubContainer = styled.span`
   display: flex;
@@ -83,7 +80,7 @@ const TopSubContainer = styled.span`
   margin-right: 1rem;
   text-align: justify;
   align-items: center;
-`;
+`
 
 const Title = styled.h2`
   margin: 0;
@@ -91,12 +88,12 @@ const Title = styled.h2`
   color: #000;
   font-weight: 600;
   font-size: 20px;
-`;
+`
 
 const SocialIconContainer = styled.div`
   display: flex;
   flex-direction: row;
-`;
+`
 
 const SocialIcon = styled.div`
   color: ${GREY_COLOR};
@@ -112,19 +109,19 @@ const SocialIcon = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     font-size: 25px;
   }
-`;
+`
 
 const BottomSubContainerColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
+`
 
 const BottomSubContainerRow = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-`;
+`
 
 const PrivacyText = styled.div`
   color: ${GREY_COLOR};
@@ -138,7 +135,7 @@ const PrivacyText = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     font-size: 0.5rem;
   }
-`;
+`
 
 const BottomStyledLink = styled(StyledLink)`
   color: ${GREY_COLOR};
@@ -151,44 +148,51 @@ const BottomStyledLink = styled(StyledLink)`
   &:hover {
     color: ${GREY_HOVER_COLOR};
   }
-`;
+`
 
-const Footer = (): React.ReactElement => {
-  const { t } = useTranslation();
+const CGUStyledLink = styled(BottomStyledLink)`
+  ::before {
+    content: "Condition générales d'utilisation et de vente";
 
-  const isMobileXS = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXS });
-  const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL });
-
-  let marginerMargin: number;
-  if (isMobileXS) {
-    marginerMargin = 5;
-  } else if (isMobile) {
-    marginerMargin = 7.5;
-  } else {
-    marginerMargin = 10;
+    @media screen and (max-width: ${({ theme }) =>
+        theme.deviceSizes.mobileXL}) {
+      content: 'CGU & CGV';
+    }
   }
+`
+const PrivacyPolicyStyledLink = styled(BottomStyledLink)`
+  ::before {
+    content: 'Politique de confidentialité';
 
+    @media screen and (max-width: ${({ theme }) =>
+        theme.deviceSizes.mobileXL}) {
+      content: 'Confidentialité';
+    }
+  }
+`
+const Footer = (): React.ReactElement => {
   return (
     <FooterContainer>
       <TopContainer>
         <TopContentContainer>
           <ContentContainer>
             <TopSubContainer>
-              <Title>{t('footer.about.title')}</Title>
+              <Title>À propos</Title>
               <p>
-                ShoesNotIncluded est une application mobile multijoueur reprenant les codes de
-                l&apos;escape game mais en plein air. Les jeux vous proposent de vous déplacer dans
-                des quartiers, de fouiller l&apos;environnement à la recherche d&apos;indices et
-                d&apos;y résoudre des énigmes. L&apos;application permet de jouer seul mais aussi à
-                plusieurs.
+                ShoesNotIncluded est une application mobile multijoueur
+                reprenant les codes de l&apos;escape game mais en plein air. Les
+                jeux vous proposent de vous déplacer dans des quartiers, de
+                fouiller l&apos;environnement à la recherche d&apos;indices et
+                d&apos;y résoudre des énigmes. L&apos;application permet de
+                jouer seul mais aussi à plusieurs.
               </p>
             </TopSubContainer>
             <TopSubContainer>
               <Title>Où jouer ?</Title>
               <p>
-                Plusieurs scénarios sont disponibles à Nantes et d&apos;autres sont en cours de
-                création. N&apos;hésitez pas à nous suivre sur les réseaux sociaux pour ne pas rater
-                les évènements à venir.
+                Plusieurs scénarios sont disponibles à Nantes et d&apos;autres
+                sont en cours de création. N&apos;hésitez pas à nous suivre sur
+                les réseaux sociaux pour ne pas rater les évènements à venir.
               </p>
             </TopSubContainer>
           </ContentContainer>
@@ -196,39 +200,21 @@ const Footer = (): React.ReactElement => {
             <TopSubContainer>
               <Title>Suivez-nous sur les réseaux sociaux :</Title>
               <SocialIconContainer>
-                {/* <a href={SOCIAL_NETWORKS_URLS.discord} title="Discord">
-                  <SocialIcon>
-                    <FontAwesomeIcon icon={faDiscord} />
-                  </SocialIcon>
-                  <span className="sr-only">Discord</span>
-                </a> */}
                 <a href={SOCIAL_NETWORKS_URLS.facebook} title="Facebook">
                   <SocialIcon>
-                    <FontAwesomeIcon icon={faFacebook} />
+                    <FontAwesomeIcon icon={faFacebook} fontSize={45} />
                   </SocialIcon>
                   <span className="sr-only">Facebook</span>
                 </a>
-                {/* <a href={SOCIAL_NETWORKS_URLS.youtube} title="Youtube">
-                                    <SocialIcon>
-                                        <FontAwesomeIcon icon={faYoutube} />
-                                    </SocialIcon>
-                                    <span className="sr-only">Youtube</span>
-                                </a> */}
-                {/* <a href={SOCIAL_NETWORKS_URLS.twitter} title="Twitter">
-                  <SocialIcon>
-                    <FontAwesomeIcon icon={faTwitter} />
-                  </SocialIcon>
-                  <span className="sr-only">Twitter</span>
-                </a> */}
                 <a href={SOCIAL_NETWORKS_URLS.linkedin} title="Linkedin">
                   <SocialIcon>
-                    <FontAwesomeIcon icon={faLinkedinIn} />
+                    <FontAwesomeIcon icon={faLinkedinIn} fontSize={45} />
                   </SocialIcon>
                   <span className="sr-only">Linkedin</span>
                 </a>
                 <a href={SOCIAL_NETWORKS_URLS.instagram} title="Instagram">
                   <SocialIcon>
-                    <FontAwesomeIcon icon={faInstagram} />
+                    <FontAwesomeIcon icon={faInstagram} fontSize={45} />
                   </SocialIcon>
                   <span className="sr-only">Instagram</span>
                 </a>
@@ -238,13 +224,17 @@ const Footer = (): React.ReactElement => {
           <Marginer direction="vertical" margin={25} />
           <ContentContainer>
             <TopSubContainer>
-              <BottomStyledLink to="/ils-parlent-de-nous">Ils parlent de nous.</BottomStyledLink>
+              <BottomStyledLink href="/ils-parlent-de-nous" prefetch={false}>
+                Ils parlent de nous.
+              </BottomStyledLink>
             </TopSubContainer>
           </ContentContainer>
           <Marginer direction="vertical" margin={25} />
           <ContentContainer>
             <TopSubContainer>
-              <BottomStyledLink to="/contact">Nous contacter</BottomStyledLink>
+              <BottomStyledLink href="/contact" prefetch={false}>
+                Nous contacter
+              </BottomStyledLink>
             </TopSubContainer>
           </ContentContainer>
         </TopContentContainer>
@@ -252,27 +242,28 @@ const Footer = (): React.ReactElement => {
 
       <BottomContainer>
         <BottomSubContainerColumn>
-          <Link to="/">
-            <Brand className="fs-6" color={GREY_COLOR} hoverColor={GREY_HOVER_COLOR} />
-          </Link>
-          {/* <Marginer direction="horizontal" margin={marginerMargin} /> */}
+          <BottomStyledLink href="/">
+            <Brand
+              className="fs-6"
+              color={GREY_COLOR}
+              hoverColor={GREY_HOVER_COLOR}
+            />
+          </BottomStyledLink>
           <PrivacyText> Marque déposée. 2021</PrivacyText>
         </BottomSubContainerColumn>
 
         <BottomSubContainerRow>
-          <BottomStyledLink to="/mentions-legales">Mentions légales</BottomStyledLink>
-          <Marginer direction="horizontal" margin={marginerMargin} />
-          <BottomStyledLink to="/cgu-cgv">
-            {isMobile ? 'CGU & CGV' : "Condition générales d'utilisation et de vente"}
+          <BottomStyledLink href="/mentions-legales" prefetch={false}>
+            Mentions légales
           </BottomStyledLink>
-          <Marginer direction="horizontal" margin={marginerMargin} />
-          <BottomStyledLink to="/confidentialite">
-            {isMobile ? 'Confidentialité' : 'Politique de confidentialité'}
-          </BottomStyledLink>
+          <Marginer direction="horizontal" margin={10} />
+          <CGUStyledLink href="/cgu-cgv" prefetch={false} />
+          <Marginer direction="horizontal" margin={10} />
+          <PrivacyPolicyStyledLink href="/confidentialite" prefetch={false} />
         </BottomSubContainerRow>
       </BottomContainer>
     </FooterContainer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

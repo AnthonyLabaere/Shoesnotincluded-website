@@ -1,42 +1,47 @@
-import { User } from 'firebase/auth';
-import { useEffect, useState } from 'react';
+import { User } from 'firebase/auth'
+import { useEffect, useState } from 'react'
 
-import * as FirebaseAuth from '../firebase/auth';
-import * as UserFirestore from '../firebase/firestore/userFirestore';
-import * as Types from '../types';
+import * as FirebaseAuth from '../firebase/auth'
+import * as UserFirestore from '../firebase/firestore/userFirestore'
+import { resetUser, setUser } from '../store/userSlice'
+import useAppDispatch from './useAppDispatch'
 
-function useCurrentUser(): {
-  userAuth: undefined | null | User;
-  user: undefined | Types.UserDocument;
-} {
-  const [userAuth, setUserAuth] = useState<null | User>();
+const useCurrentUser = (withEdition = false): { userAuth: null | User } => {
+  const dispatch = useAppDispatch()
+
+  const [userAuth, setUserAuth] = useState<null | User>(null)
 
   useEffect(() => {
     return FirebaseAuth.subscribeToAuth((userAuthTmp) => {
-      setUserAuth(userAuthTmp);
-    });
-  }, []);
-
-  const [user, setUser] = useState<Types.UserDocument>();
+      setUserAuth(userAuthTmp)
+      if (withEdition && userAuthTmp == null) {
+        dispatch(resetUser())
+      }
+    })
+  }, [])
 
   useEffect(() => {
     if (userAuth != null) {
-      const unsubscribe = UserFirestore.subscribeToUser(userAuth.uid, (userTmp) => {
-        setUser({
-          id: userAuth.uid,
-          ...userTmp
-        });
-      });
+      const unsubscribe = UserFirestore.subscribeToUser(
+        userAuth.uid,
+        (userTmp) => {
+          if (withEdition) {
+            dispatch(
+              setUser({
+                id: userAuth.uid,
+                displayName: userTmp?.displayName,
+              })
+            )
+          }
+        }
+      )
 
-      return unsubscribe;
-    } else {
-      setUser(undefined);
+      return unsubscribe
     }
-  }, [userAuth]);
+  }, [userAuth])
 
   return {
     userAuth,
-    user
-  };
+  }
 }
-export default useCurrentUser;
+export default useCurrentUser

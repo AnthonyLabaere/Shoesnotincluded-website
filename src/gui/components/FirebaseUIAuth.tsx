@@ -1,7 +1,8 @@
-import React from 'react';
-import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
+import React from 'react'
 
-import { auth } from '../../firebase';
+import { auth } from '../../firebase'
+import styles from './FirebaseUIAuth.module.scss'
+import StyledFirebaseAuth from './StyledFirebaseAuth'
 
 // Configure FirebaseUI.
 const uiConfig = {
@@ -12,38 +13,39 @@ const uiConfig = {
     {
       // firebase.auth.EmailAuthProvider.PROVIDER_ID,
       provider: 'password',
-      requireDisplayName: true
+      requireDisplayName: true,
     },
     // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
     'google.com',
     {
       provider: 'apple.com',
-      scopes: ['email', 'name']
+      scopes: ['email', 'name'],
     },
     {
       // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      provider: 'facebook.com'
-    }
+      provider: 'facebook.com',
+    },
   ],
   callbacks: {
     // Avoid redirects after sign-in.
-    signInSuccessWithAuthResult: () => false
+    signInSuccessWithAuthResult: () => false,
   },
   // Terms of service url.
   tosUrl: 'https://www.shoesnotincluded.fr/cgu-cgv',
   // Privacy policy url.
-  privacyPolicyUrl: 'https://www.shoesnotincluded.fr/confidentialite'
-};
+  privacyPolicyUrl: 'https://www.shoesnotincluded.fr/confidentialite',
+}
 
 interface FirebaseUiAuthProps {
-  signInSuccessWithAuthResultCallback?: (authResult: any) => boolean;
+  signInSuccessWithAuthResultCallback?: (authResult: any) => boolean
 }
 
 const FirebaseUiAuth = ({
-  signInSuccessWithAuthResultCallback
+  signInSuccessWithAuthResultCallback,
 }: FirebaseUiAuthProps): React.ReactElement => {
   return (
-    <FirebaseAuth
+    <StyledFirebaseAuth
+      className={styles.loginExternalWrapper}
       uiConfig={{
         ...uiConfig,
         callbacks: {
@@ -51,12 +53,12 @@ const FirebaseUiAuth = ({
           signInSuccessWithAuthResult:
             signInSuccessWithAuthResultCallback !== undefined
               ? signInSuccessWithAuthResultCallback
-              : uiConfig.callbacks.signInSuccessWithAuthResult
-        }
+              : uiConfig.callbacks.signInSuccessWithAuthResult,
+        },
       }}
       firebaseAuth={auth}
     />
-  );
-};
+  )
+}
 
-export default FirebaseUiAuth;
+export default FirebaseUiAuth

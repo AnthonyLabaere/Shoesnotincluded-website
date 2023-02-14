@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+
+@import './bootstrap.scss';
+
+@font-face {
+  font-family: 'Oxygen-Bold';
+  src: local('Oxygen-Bold'), url('/fonts/Oxygen-Bold.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oxygen-Light';
+  src: local('Oxygen-Light'), url('/fonts/Oxygen-Light.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Oxygen-Regular';
+  src: local('Oxygen-Regular'),
+    url('/fonts/Oxygen-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Oxygen', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-weight: 'bold';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, monospace;
+}
+
+a {
+  text-decoration: none;
+}
+
+textarea,
+input,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.cookiesConsentBannerButtonWrapper {
+  @media screen and (max-width: 992px) {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const BrandContainer = styled.div<{
-  color?: string;
-  hoverColor?: string;
-  size?: number;
-  withShadow: boolean;
+  color?: string
+  hoverColor?: string
+  size?: number
+  withShadow: boolean
 }>`
   display: flex;
   flex-direction: row;
@@ -19,27 +19,31 @@ const BrandContainer = styled.div<{
   &:hover {
     color: ${({ color, hoverColor }) => {
       if (hoverColor != null) {
-        return hoverColor;
+        return hoverColor
       } else if (color != null) {
-        return color;
+        return color
       }
-      return '#000';
+      return '#000'
     }};
 
     div {
       color: ${({ color, hoverColor, theme }) => {
         if (hoverColor != null) {
-          return hoverColor;
+          return hoverColor
         } else if (color != null) {
-          return color;
+          return color
         }
-        return theme.specialTextColor;
+        return theme.specialTextColor
       }};
     }
   }
-`;
+`
 
-const BrandNot = styled.div<{ color?: string; hoverColor?: string; withShadow: boolean }>`
+const BrandNot = styled.div<{
+  color?: string
+  hoverColor?: string
+  withShadow: boolean
+}>`
   display: inline;
   margin-left: ${({ withShadow }) => (withShadow ? '0.3rem' : '0')};
   margin-right: ${({ withShadow }) => (withShadow ? '0.3rem' : '0')};
@@ -49,24 +53,25 @@ const BrandNot = styled.div<{ color?: string; hoverColor?: string; withShadow: b
     margin-left: ${({ withShadow }) => (withShadow ? '0.15rem' : '0')};
     margin-right: ${({ withShadow }) => (withShadow ? '0.15rem' : '0')};
   }
-`;
+`
 
 const Brand = (props: any): React.ReactElement => {
-  const { className, color, hoverColor, withShadow } = props;
+  const { className, color, hoverColor, withShadow } = props
 
   return (
     <BrandContainer
       className={className}
       color={color}
       hoverColor={hoverColor}
-      withShadow={withShadow}>
+      withShadow={withShadow}
+    >
       Shoes
       <BrandNot color={color} hoverColor={hoverColor} withShadow={withShadow}>
         Not
       </BrandNot>
       Included
     </BrandContainer>
-  );
-};
+  )
+}
 
-export default Brand;
+export default Brand

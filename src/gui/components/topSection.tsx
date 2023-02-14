@@ -1,46 +1,24 @@
-import React from 'react';
-import { useMediaQuery } from 'react-responsive';
-import styled from 'styled-components';
+import Image from 'next/image'
+import React from 'react'
+import styled from 'styled-components'
 
-import TopSectionBackgroundImg from '../../assets/images/landing-page.jpg';
-import LogoImg from '../../assets/images/logo.png';
-import { DEVICE_SIZES } from '../../constants';
-import Brand from './brand';
-import Marginer from './marginer';
+import LandingPageImg from '../../../public/images/landing-page.jpg'
+import LogoImg from '../../../public/images/logo.png'
+import Brand from './brand'
+import Marginer from './marginer'
+import styles from './topSection.module.scss'
 
 const TopSectionContainer = styled.div`
   width: 100%;
   height: 800px;
-  background: url(${TopSectionBackgroundImg}) no-repeat;
-  background-position: 0px -150px;
-  background-size: cover;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.laptop}) {
-    background-position: 0px 0px;
-  }
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    background-position: -80px 0px;
-  }
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobile}) {
-    height: 700px;
-    background-position: -315px 0px;
-  }
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXS}) {
-    height: 500px;
-    background-position: -175px 0px;
-  }
-`;
+`
 
 const BackgroundFilter = styled.div`
   width: 100%;
   height: 100%;
-  /* background-color: rgba(180, 220, 220, 0.5); */
   display: flex;
   flex-direction: column;
-`;
+`
 
 const TopSectionInnerContainer = styled.div`
   width: 100%;
@@ -56,20 +34,21 @@ const TopSectionInnerContainer = styled.div`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXS}) {
     height: 500px;
   }
-`;
+`
 
-const LogoContainer = styled.div`
+const CenteredContainer = styled.div`
   display: flex;
-  flex: 3;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+`
+
+const SloganContainer = styled.div`
   filter: ${({ theme }) => theme.filter.default};
-`;
+`
 
 const LogoImage = styled.div`
   display: flex;
-  flex: 1;
   align-items: center;
 
   img {
@@ -92,6 +71,7 @@ const LogoImage = styled.div`
       padding-right: 15px;
       padding-bottom: 20px;
       padding-left: 15px;
+      margin-bottom: 15px;
     }
   }
 
@@ -106,7 +86,23 @@ const LogoImage = styled.div`
       padding-left: 15px;
     }
   }
-`;
+`
+
+const DesktopLogoImage = styled(LogoImage)`
+  display: flex;
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+    display: none;
+  }
+`
+
+const MobileLogoImage = styled(LogoImage)`
+  display: none;
+
+  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
+    display: flex;
+  }
+`
 
 const BrandContainer = styled(Brand)`
   font-size: 50px;
@@ -114,7 +110,7 @@ const BrandContainer = styled(Brand)`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     font-size: 24px;
   }
-`;
+`
 
 const SloganText = styled.h3`
   margin: 0;
@@ -127,42 +123,58 @@ const SloganText = styled.h3`
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
     font-size: 24px;
   }
-`;
+`
 
 const SpecialText = styled.span`
   color: ${({ theme }) => theme.specialTextColor};
-`;
+`
 
 const TopSection = (): React.ReactElement => {
-  const isMobile = useMediaQuery({ maxWidth: DEVICE_SIZES.mobileXL });
-
   return (
     <TopSectionContainer>
+      <Image
+        priority
+        src={LandingPageImg}
+        alt="People playing on the street at ShoesNotIncluded"
+        className={styles.imageTopSection}
+      />
       <BackgroundFilter>
         <TopSectionInnerContainer>
-          <LogoContainer>
-            {isMobile && (
-              <LogoImage>
-                <img src={LogoImg} alt="ShoesNotIncluded logo" />
-              </LogoImage>
-            )}
-            <BrandContainer withShadow={true} />
-            <Marginer direction="vertical" margin={8} />
-            <SloganText>L&apos;escape game plein air</SloganText>
-            <SloganText>
-              qui vous <SpecialText>rassemble</SpecialText>
-            </SloganText>
-            <Marginer direction="vertical" margin={15} />
-          </LogoContainer>
-          {!isMobile && (
-            <LogoImage>
-              <img src={LogoImg} alt="ShoesNotIncluded logo" />
-            </LogoImage>
-          )}
+          <CenteredContainer>
+            <MobileLogoImage>
+              <Image
+                priority
+                src={LogoImg}
+                alt="ShoesNotIncluded logo"
+                width={400}
+                height={400}
+                style={{ zIndex: 1 }}
+              />
+            </MobileLogoImage>
+            <SloganContainer>
+              <BrandContainer withShadow={true} />
+              <Marginer direction="vertical" margin={8} />
+              <SloganText>L&apos;escape game plein air</SloganText>
+              <SloganText>
+                qui vous <SpecialText>rassemble</SpecialText>
+              </SloganText>
+              <Marginer direction="vertical" margin={15} />
+            </SloganContainer>
+          </CenteredContainer>
+          <DesktopLogoImage>
+            <Image
+              priority
+              src={LogoImg}
+              alt="ShoesNotIncluded logo"
+              width={400}
+              height={400}
+              style={{ zIndex: 1 }}
+            />
+          </DesktopLogoImage>
         </TopSectionInnerContainer>
       </BackgroundFilter>
     </TopSectionContainer>
-  );
-};
+  )
+}
 
-export default TopSection;
+export default TopSection

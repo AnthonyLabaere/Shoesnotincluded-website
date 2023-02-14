@@ -1,0 +1,19 @@
+// change the theme
+$theme-colors: (
+  'primary': #0090c3,
+  'secondary': #f0c611,
+  'danger': #de1925,
+  'light': white,
+  'dark': black,
+);
+
+// $navbar-light-color: black !default;
+// $navbar-light-hover-color: #de1925 !default;
+// $navbar-light-active-color: #de1925 !default;
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+
+.nav-link {
+  font-size: x-large;
+}

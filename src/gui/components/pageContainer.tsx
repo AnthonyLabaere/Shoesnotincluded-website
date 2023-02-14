@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
 
 const PageWrapper = styled.div`
   width: 100%;
@@ -9,10 +9,10 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
+`
 
 export function PageContainer(props: any): React.ReactElement {
-  return <PageWrapper>{props.children}</PageWrapper>;
+  return <PageWrapper>{props.children}</PageWrapper>
 }
 
 export const InnerPageContainer = styled.div<{ maxWidth?: number }>`
@@ -22,25 +22,27 @@ export const InnerPageContainer = styled.div<{ maxWidth?: number }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
+`
 
-export const ContentPageContainer = styled.div<{ coloredBackground?: boolean | string }>`
+export const ContentPageContainer = styled.div<{
+  coloredBackground?: boolean | string
+}>`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ${({ coloredBackground, theme }) => {
     if (coloredBackground === undefined || coloredBackground === false) {
-      return 'transparent';
+      return 'transparent'
     }
     if (coloredBackground === true) {
-      return theme.backgroundColor;
+      return theme.backgroundColor
     }
-    return coloredBackground;
+    return coloredBackground
   }};
   padding: 10px;
 
   > * {
     max-width: ${({ theme }) => theme.deviceSizes.laptop};
   }
-`;
+`

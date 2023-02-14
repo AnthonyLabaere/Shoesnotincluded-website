@@ -1,0 +1,26 @@
+.imageTopSection {
+  width: 100%;
+  color: transparent;
+  object-fit: cover;
+  height: 800px;
+  position: absolute;
+  object-position: 0px -150px;
+
+  @media screen and (max-width: $deviceSizeLaptop) {
+    object-position: 0px 0px;
+  }
+
+  @media screen and (max-width: $deviceSizeMobileXL) {
+    object-position: -80px 0px;
+  }
+
+  @media screen and (max-width: $deviceSizeMobile) {
+    height: 700px;
+    object-position: -315px 0px;
+  }
+
+  @media screen and (max-width: $deviceSizeMobileXS) {
+    height: 500px;
+    object-position: -175px 0px;
+  }
+}
