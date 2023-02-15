@@ -20,6 +20,7 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
+import styles from './blog.module.scss'
 
 const POSTS_DIRECTORY = path.join(process.cwd(), 'src/data/blog/articles')
 
@@ -66,14 +67,11 @@ const BlogArticle = ({
           <ContentPageContainer>
             <BlogArticleContentContainer>
               <Image
-                // src="../../../public/images/google-play-badge.png"
                 src={`/images/blog/${articleData.headerImageName}`}
                 width={400}
                 height={400}
-                // className={(isMobile ? 'px-1' : 'px-10') + ' my-3'}
-                className="px-10 my-3"
+                className={`px-10 my-3 ${styles.headerImage}`}
                 alt={articleData.title}
-                style={{ width: '40%', height: 'auto' }}
               />
               <ReactMarkdown
                 // eslint-disable-next-line react/no-children-prop
@@ -132,8 +130,6 @@ export async function getStaticProps({
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
   const fileContentsMatter = matter(fileContents)
-  // console.log('DATA', fileContentsMatter.data)
-  // console.log('CONTENT', fileContentsMatter.content)
 
   return {
     props: {
