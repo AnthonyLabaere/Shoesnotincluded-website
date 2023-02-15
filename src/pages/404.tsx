@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
-// import { Helmet } from 'react-helmet'
 import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
