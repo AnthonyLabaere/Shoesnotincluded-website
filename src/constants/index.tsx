@@ -21,7 +21,6 @@ export const DEVICE_SIZES = {
   desktop: 2024,
 }
 
-export const GA_TRACKING_ID = 'UA-172060458-2'
 export const GA_CONSENT_COOKIE = 'ga-consent'
 export const GA_COOKIES = ['_ga', '_gat', '_gid']
 
