@@ -55,7 +55,6 @@ const BlogArticle = ({
         title: articleData.meta.title,
         description: articleData.meta.description,
       }}
-      noIndex
     >
       <PageContainer>
         <InnerPageContainer>
