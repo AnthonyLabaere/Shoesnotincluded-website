@@ -21,10 +21,6 @@ const uiConfig = {
       provider: 'apple.com',
       scopes: ['email', 'name'],
     },
-    {
-      // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      provider: 'facebook.com',
-    },
   ],
   callbacks: {
     // Avoid redirects after sign-in.
