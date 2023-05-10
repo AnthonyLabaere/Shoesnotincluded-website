@@ -1,4 +1,14 @@
-import { collection, doc, getDoc, onSnapshot } from 'firebase/firestore'
+import {
+  and,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  onSnapshot,
+  or,
+  query,
+  where,
+} from 'firebase/firestore'
 
 import * as Constants from '../../constants'
 import * as Types from '../../types'
@@ -52,11 +62,48 @@ export const subscribeToCity = (
   )
 }
 
+const getCitiesQuery = () => {
+  if (process.env.NODE_ENV == 'development') {
+    return query(
+      collection(db, 'cities'),
+      or(
+        where('active', '==', true),
+        and(where('active', '==', false), where('debug', '==', true))
+      )
+    )
+  }
+
+  return query(collection(db, 'cities'), where('active', '==', true))
+}
+
+export const getCities = async (): Promise<Types.CitySnapshot[]> => {
+  const q = getCitiesQuery()
+
+  try {
+    const docsSnapshots = await getDocs(q)
+    return docsSnapshots.docs.map((doc) => {
+      return {
+        id: doc.id,
+        data: doc.data() as Types.CityDocument,
+      }
+    })
+  } catch (error) {
+    console.error(error)
+    NotificationUtils.handleError(
+      'Une erreur est survenue lors de la récupération des villes.' +
+        Constants.CONTACT_MESSAGE
+    )
+    return []
+  }
+}
+
 export const subscribeToCities = (
   callback: (cities: Types.CityDocument[]) => void
 ): (() => void) => {
+  const q = getCitiesQuery()
+
   const unsubscribe = onSnapshot(
-    collection(db, 'cities'),
+    q,
     (querySnapshot) => {
       callback(
         querySnapshot.docs.map((doc) => doc.data() as Types.CityDocument)

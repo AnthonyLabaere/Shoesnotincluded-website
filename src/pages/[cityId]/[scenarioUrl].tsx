@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import Layout from '@/src/gui/components/layout'
 
 import * as Constants from '../../constants'
+import * as CityFirestore from '../../firebase/firestore/cityFirestore'
 import * as ScenarioFirestore from '../../firebase/firestore/scenarioFirestore'
 import Button from '../../gui/components/button'
 import { ContentContainer } from '../../gui/components/common'
@@ -157,12 +158,18 @@ const Scenario = ({
 }
 
 export async function getStaticPaths() {
-  const scenarios = await ScenarioFirestore.getScenariosFromCity('nantes')
+  const cities = await CityFirestore.getCities()
+
+  // Récupération des scénarios associés à une ville (pas le tuto typiquement)
+  const scenarios = await ScenarioFirestore.getScenariosFromCities(
+    cities.map((city) => city.id)
+  )
 
   const paths = scenarios.map((scenario) => {
     return {
       params: {
-        scenarioId: scenario.id,
+        cityId: scenario.data.city,
+        scenarioUrl: scenario.data.url,
       },
     }
   })
@@ -176,14 +183,17 @@ export async function getStaticPaths() {
 export async function getStaticProps({
   params,
 }: {
-  params: { scenarioId: string }
+  params: { cityId: string; scenarioUrl: string }
 }) {
-  const scenario = await ScenarioFirestore.getScenario(params.scenarioId)
+  const scenario = await ScenarioFirestore.getScenarioByCityAndUrl(
+    params.cityId,
+    params.scenarioUrl
+  )
 
   return {
     props: {
-      scenarioId: params.scenarioId,
-      staticScenario: scenario as Types.ScenarioDocument,
+      scenarioId: (scenario as Types.ScenarioSnapshot).id,
+      staticScenario: (scenario as Types.ScenarioSnapshot).data,
     },
   }
 }

@@ -22,4 +22,33 @@ module.exports = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/scenario/apprentiSorcierNantes',
+        destination: '/nantes/apprenti-sorcier',
+        permanent: true,
+      },
+      {
+        source: '/scenario/testamentannedebretagne',
+        destination: '/nantes/testament-anne-de-bretagne',
+        permanent: true,
+      },
+      {
+        source: '/scenario/armecachee',
+        destination: '/nantes/arme-cachee',
+        permanent: true,
+      },
+      {
+        source: '/scenario/tresorcambronne',
+        destination: '/nantes/tresor-cambronne',
+        permanent: true,
+      },
+      {
+        source: '/scenario/perenoelsurbooke',
+        destination: '/nantes/pere-noel-surbooke',
+        permanent: true,
+      },
+    ]
+  },
 }

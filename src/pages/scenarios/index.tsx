@@ -6,7 +6,6 @@ import styled from 'styled-components'
 import Layout from '@/src/gui/components/layout'
 
 import * as CityFirestore from '../../firebase/firestore/cityFirestore'
-import * as ScenarioFirestore from '../../firebase/firestore/scenarioFirestore'
 import { ContentContainer } from '../../gui/components/common'
 import GameTags from '../../gui/components/GameTags'
 import {
@@ -16,13 +15,13 @@ import {
 } from '../../gui/components/pageContainer'
 import * as Types from '../../types'
 
-const ScenariosContainer = styled.div`
+const CitiesContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 `
 
-const ScenarioContainer = styled(Link)`
+const CityContainer = styled(Link)`
   display: flex;
   flex-direction: column;
 
@@ -50,116 +49,80 @@ const ScenarioContainer = styled(Link)`
   }
 `
 
-const ScenarioLogoImage = styled.div`
+const CityLogoImage = styled.div`
+  display: flex;
   flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   padding: 5px;
 
   img {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
   }
 
   @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXS}) {
     img {
-      width: 100px;
-      height: 100px;
+      width: 175px;
+      height: 175px;
     }
   }
 `
 
-interface ScenariosProps {
-  cityId: string
-  staticCity: Types.CityDocument
-  staticScenarios: Types.ScenarioSnapshot[]
+interface CitiesProps {
+  staticCities: Types.CityDocument[]
 }
 
-const Scenarios = ({
-  cityId,
-  staticCity,
-  staticScenarios,
-}: ScenariosProps): React.ReactElement => {
-  // TODO : mettre une page intermédiaire avec sélection de sa ville lorsque d'autres villes seront concernées
-  // const [cities, setCities] = useState<Types.CityDocument[]>([])
-  // console.debug("cities", cities)
-  // useEffect(() => {
-  //   return CityFirestore.subscribeToCities(setCities)
-  // }, [])
-
-  const [city, setCity] = useState<Types.CityDocument>(staticCity)
+const Cities = ({ staticCities }: CitiesProps): React.ReactElement => {
+  const [cities, setCities] = useState<Types.CityDocument[]>(staticCities)
   useEffect(() => {
-    return CityFirestore.subscribeToCity(cityId, (cityTmp) => {
-      if (cityTmp !== undefined) {
-        setCity(cityTmp)
-      }
-    })
-  }, [cityId])
-
-  const [scenarios, setScenarios] =
-    useState<Types.ScenarioSnapshot[]>(staticScenarios)
-  useEffect(() => {
-    return ScenarioFirestore.subscribeToScenariosFromCity(cityId, setScenarios)
-  }, [cityId])
+    return CityFirestore.subscribeToCities(setCities)
+  }, [])
 
   return (
     <Layout
       meta={{
-        title: 'Escape Games en Extérieur à Nantes - ShoesNotIncluded',
+        title: 'Escape Games en Extérieur - ShoesNotIncluded',
         description:
-          "Découvrez les scénarios d'escape game de ShoesNotIncluded de notre application mobile à Nantes. Jouez à plusieurs en extérieur. Téléchargez dès maintenant !",
+          "Découvrez les scénarios d'escape game de ShoesNotIncluded de notre application mobile. Jouez à plusieurs en extérieur. Téléchargez dès maintenant !",
       }}
     >
       <PageContainer>
         <InnerPageContainer>
           <ContentPageContainer coloredBackground>
             <ContentContainer>
-              {/* FIXME : à changer une fois la sélection de la ville rendue possible */}
-              <h1>Les scénarios disponibles à {city.name}</h1>
+              <h1>Sélectionnez votre ville :</h1>
             </ContentContainer>
           </ContentPageContainer>
           <ContentPageContainer>
             <ContentContainer>
-              <ScenariosContainer>
-                {scenarios
+              <CitiesContainer>
+                {cities
                   .sort((a, b) => {
-                    return a.data.ordre - b.data.ordre
+                    return a.ordre - b.ordre
                   })
-                  .map((scenario) => {
+                  .map((city) => {
                     return (
-                      <ScenarioContainer
-                        key={scenario.id}
-                        href={'/scenario/' + scenario.id}
-                      >
+                      <CityContainer key={city.id} href={'/' + city.id}>
                         <div
                           className="fs-3"
                           style={{ flex: 1, textAlign: 'center', padding: 5 }}
                         >
-                          {scenario.data.title}
+                          {city.name}
                         </div>
-                        <div
-                          style={{
-                            display: 'flex',
-                            flex: 3,
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <ScenarioLogoImage>
-                            <Image
-                              src={scenario.data.logoUrl}
-                              width={150}
-                              height={150}
-                              alt={scenario.id + ' logo'}
-                            />
-                          </ScenarioLogoImage>
-                          <div style={{ flex: 2 }}>
-                            <GameTags tags={scenario.data.tags} />
-                          </div>
-                        </div>
-                      </ScenarioContainer>
+                        <CityLogoImage>
+                          <Image
+                            src={city.imageUrl}
+                            width={150}
+                            height={150}
+                            alt={city.id + ' logo'}
+                          />
+                        </CityLogoImage>
+                      </CityContainer>
                     )
                   })}
-              </ScenariosContainer>
+              </CitiesContainer>
             </ContentContainer>
           </ContentPageContainer>
         </InnerPageContainer>
@@ -168,21 +131,13 @@ const Scenarios = ({
   )
 }
 
-// TODO : ajouter la ville en param quand d'autres villes auront des scénarios
 export async function getStaticProps() {
-  const cityId = 'nantes'
-
-  const city = await CityFirestore.getCity(cityId)
-
-  const scenarios = await ScenarioFirestore.getScenariosFromCity(cityId)
-
+  const cities = await CityFirestore.getCities()
   return {
     props: {
-      cityId,
-      staticCity: city,
-      staticScenarios: scenarios,
+      staticCities: cities.map((city) => city.data),
     },
   }
 }
 
-export default Scenarios
+export default Cities

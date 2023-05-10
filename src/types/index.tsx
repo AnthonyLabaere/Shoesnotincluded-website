@@ -55,6 +55,11 @@ export interface RichTextContentType {
 
 export type TextContentType = string | RichTextContentType[]
 
+export interface CitySnapshot {
+  id: string
+  data: CityDocument
+}
+
 export interface CityDocument {
   id: string
   active: boolean
@@ -75,6 +80,7 @@ export interface ScenarioSnapshot {
 }
 
 export interface ScenarioDocument {
+  readonly url: string
   readonly meta: {
     title: string
     description: string
