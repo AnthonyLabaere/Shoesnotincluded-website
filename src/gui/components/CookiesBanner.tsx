@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React, { useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import CookieConsent from 'react-cookie-consent'
@@ -33,7 +34,7 @@ const CookiesBanner = (): React.ReactElement => {
   return (
     <CookieConsent
       location="bottom"
-      buttonText="Continuer"
+      buttonText="Accepter"
       cookieName={Constants.GA_CONSENT_COOKIE}
       style={{ background: Constants.THEME_BLACK_COLOR }}
       buttonStyle={{
@@ -49,12 +50,23 @@ const CookiesBanner = (): React.ReactElement => {
       onDecline={() => {
         removeGACookies()
       }}
-      declineButtonText="Refuser les cookies"
+      declineButtonText="Refuser"
       buttonWrapperClasses="cookiesConsentBannerButtonWrapper"
       expires={150}
     >
-      En poursuivant votre navigation, vous nous autorisez à déposer des cookies
-      à des fins de mesure d&apos;audience.
+      Nous utilisons des cookies de mesure d&apos;audience pour comprendre
+      comment notre site est utilisé. Aucun cookie n&apos;est déposé sans votre
+      accord. Vous pouvez les accepter, les refuser, ou consulter notre{' '}
+      <Link
+        href="/cookies"
+        style={{
+          color: Constants.THEME_TURQUOISE_COLORS[0],
+          textDecoration: 'underline',
+        }}
+      >
+        politique cookies
+      </Link>
+      .
     </CookieConsent>
   )
 }
