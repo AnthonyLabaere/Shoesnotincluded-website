@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Script from 'next/script'
+import { useCookies } from 'react-cookie'
 
+import * as Constants from '@/src/constants'
 import useCurrentUser from '@/src/hooks/useCurrentUser'
 
 import Footer from '../../gui/components/footer'
@@ -18,44 +20,35 @@ interface LayoutProps {
 export default function Layout({ meta, children, noIndex }: LayoutProps) {
   useCurrentUser(true)
 
+  // RGPD : ne charger Google Tag Manager qu'après consentement explicite.
+  // Le cookie `ga-consent` est posé par le bandeau `CookiesBanner`
+  // (react-cookie-consent), avec la valeur "true" si l'utilisateur a accepté.
+  // `useCookies` déclenche un re-render dès que le cookie change, ce qui
+  // permet de charger les scripts immédiatement après acceptation.
+  const [cookies] = useCookies([Constants.GA_CONSENT_COOKIE])
+  const gaConsentGranted =
+    cookies[Constants.GA_CONSENT_COOKIE] === true ||
+    cookies[Constants.GA_CONSENT_COOKIE] === 'true'
+
+  const gaTrackingId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS
+
   return (
     <div>
-      <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-      />
+      {gaConsentGranted && gaTrackingId !== undefined && gaTrackingId !== '' && (
+        <>
+          <Script
+            strategy="lazyOnload"
+            src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
+          />
 
-      <Script id="ga" strategy="lazyOnload">
-        {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-              page_path: window.location.pathname,
-            });
-        `}
-      </Script>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        {noIndex === true && <meta name="robots" content="noindex,nofollow" />}
-        <title>{meta.title}</title>
-        <meta name="description" content={meta.description} />
-        {/* <meta
-          property="og:image"
-          content={`https://og-image.vercel.app/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" /> */}
-      </Head>
-      <header>
-        <Navbar />
-      </header>
-      <main>{children}</main>
-      <footer>
-        <Footer />
-      </footer>
-    </div>
-  )
-}
+          <Script id="ga" strategy="lazyOnload">
+            {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaTrackingId}', {
+                  page_path: window.location.pathname,
+                  anonymize_ip: true,
+                });
+            `}
+  
