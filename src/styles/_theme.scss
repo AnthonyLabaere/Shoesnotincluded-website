@@ -1,0 +1,67 @@
+// Variables de thème — exposées en CSS custom properties pour pouvoir être
+// consommées depuis les CSS modules de l'application. Les valeurs miroitent
+// celles de `src/styles/theme.tsx` et de `src/constants/index.tsx`.
+//
+// Pendant la migration styled-components → CSS modules, ce fichier coexiste
+// avec `theme.tsx` et le `<ThemeProvider>` de styled-components ; les deux
+// sources doivent rester synchronisées tant que des composants utilisent
+// encore le theme prop.
+
+:root {
+  // --- Palette brute ---
+  --color-red-1: #ff5e66;
+  --color-red-2: #ff777d;
+  --color-red-3: #ffa9ae;
+  --color-turquoise-1: #4cdabd;
+  --color-turquoise-2: #76f1d9;
+  --color-turquoise-3: #abffef;
+  --color-blue-1: #7ec8ff;
+  --color-blue-2: #89dcff;
+  --color-blue-3: #beecff;
+  --color-yellow-1: #ffe27e;
+  --color-yellow-2: #ffe89b;
+  --color-orange-1: #f6b36f;
+  --color-orange-2: #ffc991;
+  --color-green-1: #a0c59a;
+  --color-green-2: #c4e7bf;
+  --color-purple-1: #aba9e9;
+  --color-purple-2: #c7c6f1;
+  --color-black: #4a4a4a;
+  --color-grey: #949494;
+  --color-white: #f1f1f1;
+
+  // --- Couleurs sémantiques ---
+  --background-color: var(--color-blue-3);
+  --background-button-color: var(--color-turquoise-1);
+  --background-hover-button-color: var(--color-turquoise-2);
+  --link-hover-color: var(--color-turquoise-1);
+  --special-text-color: var(--color-red-1);
+
+  // --- Tags ---
+  --tag-easy-color: var(--color-black);
+  --tag-easy-bg: var(--color-green-2);
+  --tag-medium-color: var(--color-black);
+  --tag-medium-bg: var(--color-orange-2);
+  --tag-hard-color: var(--color-white);
+  --tag-hard-bg: var(--color-red-1);
+  --tag-all-color: var(--color-black);
+  --tag-all-bg: var(--color-green-2);
+  --tag-distance-color: var(--color-black);
+  --tag-distance-bg: var(--color-blue-1);
+  --tag-time-color: var(--color-white);
+  --tag-time-bg: var(--color-black);
+
+  // --- Filtres ---
+  --filter-mobile-xs: drop-shadow(0 0 2rem #fff) drop-shadow(0 0 2rem #fff) drop-shadow(0 0 2rem #fff);
+  --filter-default: drop-shadow(0 0 2rem #fff) drop-shadow(0 0 2rem #fff) drop-shadow(0 0 2rem #fff) drop-shadow(0 0 2rem #fff);
+}
+
+// --- Breakpoints (variables Sass) ---
+// Exposées en variables Sass car les CSS custom properties ne sont pas
+// utilisables directement dans les `@media (max-width: var(--xxx))`.
+$device-mobile-xs: 400px;
+$device-mobile: 580px;
+$device-mobile-xl: 768px;
+$device-tablet: 992px;
+$device-laptop: 1324px;
+$device-desktop: 2024px;
