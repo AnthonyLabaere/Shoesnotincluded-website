@@ -66,7 +66,7 @@ const Payment = (): React.ReactElement => {
 
       return unsubscribe
     }
-  }, [checkoutSessionId])
+  }, [userAuth, checkoutSessionId])
 
   useEffect(() => {
     if (stripeUrl !== undefined) {
