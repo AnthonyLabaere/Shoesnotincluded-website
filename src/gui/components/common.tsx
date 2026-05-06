@@ -7,7 +7,7 @@ import styles from './common.module.scss'
 const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false })
 
 export function ContentContainer(props: {
-  children: React.ReactNode
+  children?: React.ReactNode
   className?: string
   style?: React.CSSProperties
 }): React.ReactElement {

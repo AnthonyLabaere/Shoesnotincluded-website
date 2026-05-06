@@ -3,13 +3,13 @@ import React from 'react'
 import styles from './pageContainer.module.scss'
 
 export function PageContainer(props: {
-  children: React.ReactNode
+  children?: React.ReactNode
 }): React.ReactElement {
   return <div className={styles.pageWrapper}>{props.children}</div>
 }
 
 export function InnerPageContainer(props: {
-  children: React.ReactNode
+  children?: React.ReactNode
   maxWidth?: number
 }): React.ReactElement {
   const style: React.CSSProperties | undefined =
@@ -22,7 +22,7 @@ export function InnerPageContainer(props: {
 }
 
 export function ContentPageContainer(props: {
-  children: React.ReactNode
+  children?: React.ReactNode
   coloredBackground?: boolean | string
   id?: string
 }): React.ReactElement {
