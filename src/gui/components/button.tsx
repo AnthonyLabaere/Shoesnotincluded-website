@@ -1,38 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
 
-import { Theme } from '../../styles/theme'
-
-const ButtonWrapper = styled.button<{ size?: number; disabled: boolean }>`
-  border: none;
-  outline: none;
-  color: #fff;
-  margin: 1.25rem;
-  padding: 0.75rem;
-  font-size: ${({ size }) => (size != null ? `${size}rem` : '1.5rem')};
-  font-weight: 600;
-  border-radius: 5px;
-  background-color: ${({ disabled, theme }) => {
-    if (disabled) {
-      return theme.backgroundHoverButtonColor
-    }
-    return theme.backgroundButtonColor
-  }};
-  transition: all 200ms ease-in-out;
-
-  ${({ disabled, theme }: { disabled: boolean; theme: Theme }) =>
-    !disabled &&
-    `
-    cursor: pointer;
-    &:hover {
-      background-color: ${theme.backgroundHoverButtonColor};
-    }
-  `};
-
-  &:focus {
-    outline: none;
-  }
-`
+import styles from './button.module.scss'
 
 const Button = ({
   children,
@@ -51,11 +19,19 @@ const Button = ({
   disabled?: boolean
   type?: 'button' | 'submit' | 'reset'
 }): React.ReactElement => {
+  const composedClassName =
+    className !== undefined && className !== ''
+      ? `${styles.buttonWrapper} ${className}`
+      : styles.buttonWrapper
+  const composedStyle: React.CSSProperties | undefined =
+    size !== undefined
+      ? { fontSize: `${size}rem`, ...(style ?? {}) }
+      : style
+
   return (
-    <ButtonWrapper
-      size={size}
-      className={className}
-      style={style}
+    <button
+      className={composedClassName}
+      style={composedStyle}
       onClick={() => {
         if (!disabled && onClick !== undefined) {
           onClick()
@@ -65,7 +41,7 @@ const Button = ({
       type={type}
     >
       {children}
-    </ButtonWrapper>
+    </button>
   )
 }
 
