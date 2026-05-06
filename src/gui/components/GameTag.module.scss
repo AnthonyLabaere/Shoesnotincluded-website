@@ -1,0 +1,25 @@
+.tag {
+  align-self: flex-start;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin: 1px;
+  border-radius: 5px;
+}
+
+.tagLarge {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 5px;
+}
+
+.tagEasy { color: var(--tag-easy-color); background-color: var(--tag-easy-bg); }
+.tagMedium { color: var(--tag-medium-color); background-color: var(--tag-medium-bg); }
+.tagHard { color: var(--tag-hard-color); background-color: var(--tag-hard-bg); }
+.tagAll { color: var(--tag-all-color); background-color: var(--tag-all-bg); }
+.tagEstimatedTravelDistance { color: var(--tag-distance-color); background-color: var(--tag-distance-bg); }
+.tagTime { color: var(--tag-time-color); background-color: var(--tag-time-bg); }
+.tagFallback { color: var(--color-white); background-color: var(--color-black); }
