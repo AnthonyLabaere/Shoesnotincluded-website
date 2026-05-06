@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import React from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -18,44 +17,7 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-
-const ShortImage = styled(Image)`
-  width: 75%;
-  height: auto;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  border: 5px solid black;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    width: 100%;
-  }
-`
-
-const LongImage = styled(ShortImage)`
-  width: 50%;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    width: 100%;
-  }
-`
-
-const RightSubContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-
-  a > img {
-    float: right;
-  }
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    align-items: flex-start;
-
-    a > img {
-      float: left;
-    }
-  }
-`
+import styles from './index.module.scss'
 
 const TheyTalkAboutUs = (): React.ReactElement => {
   return (
@@ -77,47 +39,46 @@ const TheyTalkAboutUs = (): React.ReactElement => {
             <ContentContainer>
               <div className="fs-4">NANTES&VOUSTV - 30 août 2022</div>
               <a href={Constants.NANTES_ET_VOUS_TV_URL}>
-                <LongImage src={NantesEtVousTV} alt="NANTESETVOUSTV" />
+                <Image className={styles.longImage} src={NantesEtVousTV} alt="NANTESETVOUSTV" />
               </a>
             </ContentContainer>
             <ContentContainer>
-              <RightSubContentContainer>
+              <div className={styles.rightSubContentContainer}>
                 <div className="fs-4">Sorties à Nantes - 22 août 2022</div>
                 <a href={Constants.SORTIES_A_NANTES_18082022_URL}>
-                  <LongImage
-                    src={SortiesANantes}
+                  <Image className={styles.longImage} src={SortiesANantes}
                     alt="Sorties-A-Nantes-20220818"
                   />
                 </a>
-              </RightSubContentContainer>
+              </div>
             </ContentContainer>
             <ContentContainer>
               <div className="fs-4">Ouest-France - 28 mai 2022</div>
               <a href={Constants.OUEST_FRANCE_28052022_URL}>
-                <LongImage src={OuestFrance} alt="Ouest-France" />
+                <Image className={styles.longImage} src={OuestFrance} alt="Ouest-France" />
               </a>
             </ContentContainer>
             <ContentContainer>
-              <RightSubContentContainer>
+              <div className={styles.rightSubContentContainer}>
                 <div className="fs-4">Unidivers - 11 avril 2022</div>
                 <a href={Constants.UNIDIVERS_NANTES_11042022_URL}>
-                  <ShortImage src={Unidivers} alt="Unidivers" />
+                  <Image className={styles.shortImage} src={Unidivers} alt="Unidivers" />
                 </a>
-              </RightSubContentContainer>
+              </div>
             </ContentContainer>
             <ContentContainer>
               <div className="fs-4">Océane fm - 30 décembre 2021</div>
               <a href={Constants.OCEANE_FM_30122021_URL}>
-                <ShortImage src={OceaneFM} alt="OceaneFM" />
+                <Image className={styles.shortImage} src={OceaneFM} alt="OceaneFM" />
               </a>
             </ContentContainer>
             <ContentContainer>
-              <RightSubContentContainer>
+              <div className={styles.rightSubContentContainer}>
                 <div className="fs-4">ActuNantes - 15 décembre 2021</div>
                 <a href={Constants.ACTU_NANTES_15122021_URL}>
-                  <ShortImage src={ActuNantes} alt="ActuNantes" />
+                  <Image className={styles.shortImage} src={ActuNantes} alt="ActuNantes" />
                 </a>
-              </RightSubContentContainer>
+              </div>
             </ContentContainer>
             <Marginer direction="vertical" margin="2em" />
           </ContentPageContainer>

@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -14,58 +13,8 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
+import styles from './index.module.scss'
 import * as Types from '../../types'
-
-const ScenariosContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`
-
-const ScenarioContainer = styled(Link)`
-  display: flex;
-  flex-direction: column;
-
-  min-width: 30%;
-  max-width: 30%;
-
-  margin: 15px;
-  padding: 15px;
-
-  border: 1px solid black;
-  border-radius: 15px;
-
-  cursor: pointer;
-  color: black;
-
-  background-color: ${({ theme }) => theme.colors.white};
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    min-width: 95%;
-    max-width: 95%;
-  }
-
-  :hover {
-    background-color: ${({ theme }) => theme.backgroundColor};
-  }
-`
-
-const ScenarioLogoImage = styled.div`
-  flex: 1;
-  padding: 5px;
-
-  img {
-    width: 150px;
-    height: 150px;
-  }
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXS}) {
-    img {
-      width: 100px;
-      height: 100px;
-    }
-  }
-`
 
 interface ScenariosProps {
   cityId: string
@@ -109,15 +58,14 @@ const Scenarios = ({
           </ContentPageContainer>
           <ContentPageContainer>
             <ContentContainer>
-              <ScenariosContainer>
+              <div className={styles.scenariosContainer}>
                 {scenarios
                   .sort((a, b) => {
                     return a.data.ordre - b.data.ordre
                   })
                   .map((scenario) => {
                     return (
-                      <ScenarioContainer
-                        key={scenario.data.url}
+                      <Link className={styles.scenarioContainer} key={scenario.data.url}
                         href={cityId + '/' + scenario.data.url}
                       >
                         <div
@@ -135,22 +83,22 @@ const Scenarios = ({
                             justifyContent: 'center',
                           }}
                         >
-                          <ScenarioLogoImage>
+                          <div className={styles.scenarioLogoImage}>
                             <Image
                               src={scenario.data.logoUrl}
                               width={150}
                               height={150}
                               alt={scenario.id + ' logo'}
                             />
-                          </ScenarioLogoImage>
+                          </div>
                           <div style={{ flex: 2 }}>
                             <GameTags tags={scenario.data.tags} />
                           </div>
                         </div>
-                      </ScenarioContainer>
+                      </Link>
                     )
                   })}
-              </ScenariosContainer>
+              </div>
             </ContentContainer>
           </ContentPageContainer>
         </InnerPageContainer>
