@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -10,15 +9,7 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-
-const CookiesContentContainer = styled(ContentContainer)`
-  text-align: justify;
-
-  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-`
+import articleStyles from '../../styles/article.module.scss'
 
 const Cookies = (): React.ReactElement => {
   return (
@@ -38,7 +29,7 @@ const Cookies = (): React.ReactElement => {
             </ContentContainer>
           </ContentPageContainer>
           <ContentPageContainer>
-            <CookiesContentContainer>
+            <ContentContainer className={articleStyles.justified}>
               <div>
                 <div>
                   <div>
@@ -86,7 +77,7 @@ const Cookies = (): React.ReactElement => {
                   </div>
                 </div>
               </div>
-            </CookiesContentContainer>
+            </ContentContainer>
             <Marginer direction="vertical" margin="2em" />
           </ContentPageContainer>
         </InnerPageContainer>

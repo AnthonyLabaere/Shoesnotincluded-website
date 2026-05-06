@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -10,15 +9,7 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-
-const PrivacyPolicyContentContainer = styled(ContentContainer)`
-  text-align: justify;
-
-  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-`
+import articleStyles from '../../styles/article.module.scss'
 
 const PrivacyPolicy = (): React.ReactElement => {
   return (
@@ -38,7 +29,7 @@ const PrivacyPolicy = (): React.ReactElement => {
             </ContentContainer>
           </ContentPageContainer>
           <ContentPageContainer>
-            <PrivacyPolicyContentContainer>
+            <ContentContainer className={articleStyles.justified}>
               <div>
                 <div>
                   <h3>
@@ -895,7 +886,7 @@ const PrivacyPolicy = (): React.ReactElement => {
                   Tous droits réservés - 12 novembre 2021
                 </p>
               </div>
-            </PrivacyPolicyContentContainer>
+            </ContentContainer>
             <Marginer direction="vertical" margin="2em" />
           </ContentPageContainer>
         </InnerPageContainer>

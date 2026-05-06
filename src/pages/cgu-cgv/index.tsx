@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -10,15 +9,7 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-
-const CGUCGVContentContainer = styled(ContentContainer)`
-  text-align: justify;
-
-  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-`
+import articleStyles from '../../styles/article.module.scss'
 
 const CGUCGV = (): React.ReactElement => {
   return (
@@ -35,7 +26,7 @@ const CGUCGV = (): React.ReactElement => {
           <ContentPageContainer coloredBackground>
             <ContentContainer>
               <h1>Conditions générales d&apos;utilisation et de vente</h1>
-              <CGUCGVContentContainer>
+              <ContentContainer className={articleStyles.justified}>
                 <div>
                   <div>
                     <h3>
@@ -886,11 +877,11 @@ const CGUCGV = (): React.ReactElement => {
                     Tous droits réservés - 12 novembre 2021
                   </p>{' '}
                 </div>
-              </CGUCGVContentContainer>
+              </ContentContainer>
             </ContentContainer>
           </ContentPageContainer>
           <ContentPageContainer>
-            <CGUCGVContentContainer></CGUCGVContentContainer>
+            <ContentContainer className={articleStyles.justified} />
             <Marginer direction="vertical" margin="2em" />
           </ContentPageContainer>
         </InnerPageContainer>
