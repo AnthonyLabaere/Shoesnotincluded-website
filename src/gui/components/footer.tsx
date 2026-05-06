@@ -4,180 +4,61 @@ import {
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
 import React from 'react'
-import styled from 'styled-components'
 
 import { SOCIAL_NETWORKS_URLS } from '../../constants'
-import { StyledLink } from '../components/common'
 import Brand from './brand'
+import styles from './footer.module.scss'
 import Marginer from './marginer'
 
 const GREY_COLOR = '#353535'
 const GREY_HOVER_COLOR = '#666666'
 
-const FooterContainer = styled.div`
-  width: 100%;
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 2rem 3rem;
-  border-top: 0.6px solid rgb(0, 0, 0, 0.3);
+interface BottomStyledLinkProps
+  extends Omit<React.ComponentProps<typeof Link>, 'className'> {
+  className?: string
+  children?: React.ReactNode
+}
 
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    padding: 2rem 0.75rem;
-  }
+function BottomStyledLink({
+  className,
+  children,
+  ...rest
+}: BottomStyledLinkProps): React.ReactElement {
+  const composedClassName =
+    className !== undefined && className !== ''
+      ? `${styles.bottomStyledLink} ${className}`
+      : styles.bottomStyledLink
+  return (
+    <Link {...rest} className={composedClassName}>
+      {children}
+    </Link>
+  )
+}
 
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXS}) {
-    padding: 2rem 0.5rem;
-  }
+function CGUStyledLink(
+  props: Omit<BottomStyledLinkProps, 'className' | 'children'>
+): React.ReactElement {
+  return <BottomStyledLink {...props} className={styles.cguStyledLink} />
+}
 
-  padding-bottom: 0;
-`
+function PrivacyPolicyStyledLink(
+  props: Omit<BottomStyledLinkProps, 'className' | 'children'>
+): React.ReactElement {
+  return (
+    <BottomStyledLink {...props} className={styles.privacyPolicyStyledLink} />
+  )
+}
 
-const TopContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-`
-
-const TopContentContainer = styled.div`
-  width: 100%;
-  max-width: ${({ theme }) => theme.deviceSizes.laptop};
-`
-
-const ContentContainer = styled.div<{ isMobile?: boolean }>`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    flex-direction: column;
-  }
-`
-
-const BottomContainer = styled.span`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 70px;
-  border-top: 0.6px solid rgb(0, 0, 0, 0.3);
-  padding: 0 10px;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    padding: 0;
-  }
-`
-
-const TopSubContainer = styled.span`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  text-align: justify;
-  align-items: center;
-`
-
-const Title = styled.h2`
-  margin: 0;
-  margin-bottom: 13px;
-  color: #000;
-  font-weight: 600;
-  font-size: 20px;
-`
-
-const SocialIconContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-const SocialIcon = styled.div`
-  color: ${GREY_COLOR};
-  font-size: 45px;
-  margin: 0 10px;
-  cursor: pointer;
-  transition: background-color, 200ms ease-in-out;
-
-  &:hover {
-    color: ${GREY_HOVER_COLOR};
-  }
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    font-size: 25px;
-  }
-`
-
-const BottomSubContainerColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
-
-const BottomSubContainerRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`
-
-const PrivacyText = styled.div`
-  color: ${GREY_COLOR};
-  font-size: 0.75rem;
-  font-weight: bold;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  display: inline;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    font-size: 0.5rem;
-  }
-`
-
-const BottomStyledLink = styled(StyledLink)`
-  color: ${GREY_COLOR};
-  font-size: 1.25rem;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    font-size: 0.75rem;
-  }
-
-  &:hover {
-    color: ${GREY_HOVER_COLOR};
-  }
-`
-
-const CGUStyledLink = styled(BottomStyledLink)`
-  ::before {
-    content: "Condition générales d'utilisation et de vente";
-
-    @media screen and (max-width: ${({ theme }) =>
-        theme.deviceSizes.mobileXL}) {
-      content: 'CGU & CGV';
-    }
-  }
-`
-const PrivacyPolicyStyledLink = styled(BottomStyledLink)`
-  ::before {
-    content: 'Politique de confidentialité';
-
-    @media screen and (max-width: ${({ theme }) =>
-        theme.deviceSizes.mobileXL}) {
-      content: 'Confidentialité';
-    }
-  }
-`
 const Footer = (): React.ReactElement => {
   return (
-    <FooterContainer>
-      <TopContainer>
-        <TopContentContainer>
-          <ContentContainer>
-            <TopSubContainer>
-              <Title>À propos</Title>
+    <div className={styles.footerContainer}>
+      <div className={styles.topContainer}>
+        <div className={styles.topContentContainer}>
+          <div className={styles.contentContainer}>
+            <span className={styles.topSubContainer}>
+              <h2 className={styles.title}>À propos</h2>
               <p>
                 ShoesNotIncluded est une application mobile multijoueur
                 reprenant les codes de l&apos;escape game mais en plein air. Les
@@ -186,62 +67,64 @@ const Footer = (): React.ReactElement => {
                 d&apos;y résoudre des énigmes. L&apos;application permet de
                 jouer seul mais aussi à plusieurs.
               </p>
-            </TopSubContainer>
-            <TopSubContainer>
-              <Title>Où jouer ?</Title>
+            </span>
+            <span className={styles.topSubContainer}>
+              <h2 className={styles.title}>Où jouer ?</h2>
               <p>
                 Plusieurs scénarios sont disponibles à Nantes et d&apos;autres
                 sont en cours de création. N&apos;hésitez pas à nous suivre sur
                 les réseaux sociaux pour ne pas rater les évènements à venir.
               </p>
-            </TopSubContainer>
-          </ContentContainer>
-          <ContentContainer>
-            <TopSubContainer>
-              <Title>Suivez-nous sur les réseaux sociaux :</Title>
-              <SocialIconContainer>
+            </span>
+          </div>
+          <div className={styles.contentContainer}>
+            <span className={styles.topSubContainer}>
+              <h2 className={styles.title}>
+                Suivez-nous sur les réseaux sociaux :
+              </h2>
+              <div className={styles.socialIconContainer}>
                 <a href={SOCIAL_NETWORKS_URLS.facebook} title="Facebook">
-                  <SocialIcon>
+                  <div className={styles.socialIcon}>
                     <FontAwesomeIcon icon={faFacebook} fontSize={45} />
-                  </SocialIcon>
+                  </div>
                   <span className="sr-only">Facebook</span>
                 </a>
                 <a href={SOCIAL_NETWORKS_URLS.linkedin} title="Linkedin">
-                  <SocialIcon>
+                  <div className={styles.socialIcon}>
                     <FontAwesomeIcon icon={faLinkedinIn} fontSize={45} />
-                  </SocialIcon>
+                  </div>
                   <span className="sr-only">Linkedin</span>
                 </a>
                 <a href={SOCIAL_NETWORKS_URLS.instagram} title="Instagram">
-                  <SocialIcon>
+                  <div className={styles.socialIcon}>
                     <FontAwesomeIcon icon={faInstagram} fontSize={45} />
-                  </SocialIcon>
+                  </div>
                   <span className="sr-only">Instagram</span>
                 </a>
-              </SocialIconContainer>
-            </TopSubContainer>
-          </ContentContainer>
+              </div>
+            </span>
+          </div>
           <Marginer direction="vertical" margin={25} />
-          <ContentContainer>
-            <TopSubContainer>
+          <div className={styles.contentContainer}>
+            <span className={styles.topSubContainer}>
               <BottomStyledLink href="/ils-parlent-de-nous" prefetch={false}>
                 Ils parlent de nous.
               </BottomStyledLink>
-            </TopSubContainer>
-          </ContentContainer>
+            </span>
+          </div>
           <Marginer direction="vertical" margin={25} />
-          <ContentContainer>
-            <TopSubContainer>
+          <div className={styles.contentContainer}>
+            <span className={styles.topSubContainer}>
               <BottomStyledLink href="/contact" prefetch={false}>
                 Nous contacter
               </BottomStyledLink>
-            </TopSubContainer>
-          </ContentContainer>
-        </TopContentContainer>
-      </TopContainer>
+            </span>
+          </div>
+        </div>
+      </div>
 
-      <BottomContainer>
-        <BottomSubContainerColumn>
+      <span className={styles.bottomContainer}>
+        <div className={styles.bottomSubContainerColumn}>
           <BottomStyledLink href="/">
             <Brand
               className="fs-6"
@@ -249,10 +132,10 @@ const Footer = (): React.ReactElement => {
               hoverColor={GREY_HOVER_COLOR}
             />
           </BottomStyledLink>
-          <PrivacyText> Marque déposée. 2021</PrivacyText>
-        </BottomSubContainerColumn>
+          <div className={styles.privacyText}> Marque déposée. 2021</div>
+        </div>
 
-        <BottomSubContainerRow>
+        <div className={styles.bottomSubContainerRow}>
           <BottomStyledLink href="/mentions-legales" prefetch={false}>
             Mentions légales
           </BottomStyledLink>
@@ -260,9 +143,9 @@ const Footer = (): React.ReactElement => {
           <CGUStyledLink href="/cgu-cgv" prefetch={false} />
           <Marginer direction="horizontal" margin={10} />
           <PrivacyPolicyStyledLink href="/confidentialite" prefetch={false} />
-        </BottomSubContainerRow>
-      </BottomContainer>
-    </FooterContainer>
+        </div>
+      </span>
+    </div>
   )
 }
 
