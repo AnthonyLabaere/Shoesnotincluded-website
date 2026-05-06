@@ -1,0 +1,23 @@
+// Variantes utilitaires de ContentContainer pour les pages "article"
+// (CGU, mentions légales, politique de confidentialité, page 404,
+// articles de blog, page cookies). Évite la duplication d'un module
+// SCSS quasi-identique dans chaque page.
+
+.justified {
+  text-align: justify;
+
+  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+}
+
+.justifiedCentered {
+  align-items: center;
+  text-align: justify;
+
+  p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+}
