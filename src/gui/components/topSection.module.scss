@@ -1,3 +1,8 @@
+.topSectionContainer {
+  width: 100%;
+  height: 800px;
+}
+
 .imageTopSection {
   width: 100%;
   color: transparent;
@@ -6,21 +11,139 @@
   position: absolute;
   object-position: 0px -150px;
 
-  @media screen and (max-width: $deviceSizeLaptop) {
+  @media screen and (max-width: 1324px) {
     object-position: 0px 0px;
   }
 
-  @media screen and (max-width: $deviceSizeMobileXL) {
+  @media screen and (max-width: 768px) {
     object-position: -80px 0px;
   }
 
-  @media screen and (max-width: $deviceSizeMobile) {
+  @media screen and (max-width: 580px) {
     height: 700px;
     object-position: -315px 0px;
   }
 
-  @media screen and (max-width: $deviceSizeMobileXS) {
+  @media screen and (max-width: 400px) {
     height: 500px;
     object-position: -175px 0px;
   }
+}
+
+.backgroundFilter {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.topSectionInnerContainer {
+  width: 100%;
+  height: 800px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 5rem;
+
+  @media screen and (max-width: 768px) {
+    height: 700px;
+  }
+
+  @media screen and (max-width: 400px) {
+    height: 500px;
+  }
+}
+
+.centeredContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.sloganContainer {
+  filter: var(--filter-default);
+}
+
+.logoImage {
+  display: flex;
+  align-items: center;
+
+  img {
+    width: 400px;
+    height: 400px;
+    background-color: white;
+    border-radius: 1000px;
+    padding-top: 25px;
+    padding-right: 35px;
+    padding-bottom: 45px;
+    padding-left: 35px;
+  }
+
+  @media screen and (max-width: 768px) {
+    align-items: flex-end;
+
+    img {
+      width: 160px;
+      height: 160px;
+      padding-top: 10px;
+      padding-right: 15px;
+      padding-bottom: 20px;
+      padding-left: 15px;
+      margin-bottom: 15px;
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    align-items: flex-end;
+
+    img {
+      width: 130px;
+      height: 130px;
+      padding-top: 10px;
+      padding-right: 15px;
+      padding-bottom: 20px;
+      padding-left: 15px;
+    }
+  }
+}
+
+.logoImageDesktop {
+  display: flex;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.logoImageMobile {
+  display: none;
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
+}
+
+.brandContainer {
+  font-size: 50px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+.sloganText {
+  margin: 0;
+  line-height: 1.4;
+  color: #000;
+  font-family: 'Oxygen-Regular';
+  font-weight: normal;
+  font-size: 50px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+.specialText {
+  color: var(--special-text-color);
 }
