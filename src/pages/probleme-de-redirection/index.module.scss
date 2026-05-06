@@ -1,0 +1,18 @@
+.shareLinkImage {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: auto;
+
+  img {
+    width: 400px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    img {
+      width: 250px;
+    }
+  }
+}

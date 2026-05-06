@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -21,44 +20,7 @@ import StoreButtons from '../../gui/components/StoreButtons'
 import TextContent from '../../gui/components/TextContent'
 import useAnalyticsEventTracker from '../../hooks/useAnalyticsEventTracker'
 import * as Types from '../../types'
-
-const ScenarioContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
-
-const ScenarioLogoImage = styled.div`
-  flex: 1;
-  padding: 5px;
-
-  img {
-    width: 350px;
-    height: 350px;
-  }
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.desktop}) {
-    img {
-      width: 300px;
-      height: 300px;
-    }
-  }
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.laptop}) {
-    img {
-      width: 250px;
-      height: 250px;
-    }
-  }
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXS}) {
-    img {
-      width: 100px;
-      height: 100px;
-    }
-  }
-`
+import styles from './scenarioUrl.module.scss'
 
 interface ScenarioProps {
   scenarioId: string
@@ -104,20 +66,20 @@ const Scenario = ({
           </ContentPageContainer>
           <ContentPageContainer>
             <ContentContainer>
-              <ScenarioContainer>
+              <div className={styles.scenarioContainer}>
                 <GameTags tags={scenario.tags} large={true} />
                 <div className="fs-5" style={{ textAlign: 'justify' }}>
                   <TextContent>{scenario.description}</TextContent>
                 </div>
-                <ScenarioLogoImage>
+                <div className={styles.scenarioLogoImage}>
                   <Image
                     src={scenario.logoUrl}
                     width={350}
                     height={350}
                     alt={scenario.title}
                   />
-                </ScenarioLogoImage>
-              </ScenarioContainer>
+                </div>
+              </div>
             </ContentContainer>
           </ContentPageContainer>
           <ContentPageContainer coloredBackground>
