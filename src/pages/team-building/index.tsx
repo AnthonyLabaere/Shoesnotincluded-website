@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Carousel from 'react-bootstrap/Carousel'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -22,11 +21,6 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-
-const TextContainer = styled.div`
-  font-size: 1.1rem;
-  text-align: justify;
-`
 
 const QUOTES = [
   {
@@ -63,7 +57,7 @@ const TeamBuilding = (): React.ReactElement => {
             <Marginer direction="vertical" margin="2em" />
 
             <ContentContainer>
-              <TextContainer>
+              <div style={{ fontSize: '1.1rem', textAlign: 'justify' }}>
                 <h2 className="mb-4">
                   Vous souhaitez organiser une <b>activité d&apos;entreprise</b>{' '}
                   avec un <b>escape game</b> en <b>extérieur</b> ?{' '}
@@ -171,7 +165,7 @@ const TeamBuilding = (): React.ReactElement => {
                   donc nécessaire que chacun ait un téléphone chargé avec
                   l&apos;application mobile <b>ShoesNotIncluded</b> installée.
                 </p>
-              </TextContainer>
+              </div>
 
               <br />
 
@@ -205,13 +199,13 @@ const TeamBuilding = (): React.ReactElement => {
 
               <br />
 
-              <TextContainer>
+              <div style={{ fontSize: '1.1rem', textAlign: 'justify' }}>
                 <p>
                   Si vous souhaitez plus d&apos;information sur le
                   fonctionnement de l&apos;application, vous pouvez visualiser
                   cette vidéo :
                 </p>
-              </TextContainer>
+              </div>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <StyledReactPlayer url={YOUTUBE_EXPLICATIONS_VIDEO_URL} />
               </div>

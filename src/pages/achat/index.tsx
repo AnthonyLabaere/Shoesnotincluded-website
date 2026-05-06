@@ -1,6 +1,5 @@
 import Router from 'next/router'
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 import useAppSelector from '@/src/hooks/useAppSelector'
@@ -18,10 +17,6 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-
-const PaymentText = styled.div`
-  text-align: left;
-`
 
 const Payment = (): React.ReactElement => {
   const { userAuth } = useCurrentUser()
@@ -97,7 +92,7 @@ const Payment = (): React.ReactElement => {
           <ContentPageContainer>
             <ContentContainer>
               <Marginer direction="vertical" margin="2em" />
-              <PaymentText className="fs-5">
+              <div className="fs-5" style={{ textAlign: 'left' }}>
                 Cet achat vous donnera accès à un bon pour une partie
                 ShoesNotIncluded.
                 <ul>
@@ -116,8 +111,8 @@ const Payment = (): React.ReactElement => {
                 pouvez quand même en profiter{' '}
                 <u>si au moins l&apos;un des membres</u> de votre équipe possède
                 un Android.
-              </PaymentText>
-              <PaymentText className="fs-5 mt-4">
+              </div>
+              <div className="fs-5 mt-4" style={{ textAlign: 'left' }}>
                 <Checkbox
                   id="consent"
                   label={
@@ -132,7 +127,7 @@ const Payment = (): React.ReactElement => {
                   value={consent}
                   onChange={setConsent}
                 />
-              </PaymentText>
+              </div>
               <div style={{ display: 'flex', flex: 1 }}>
                 <Button
                   style={{ flex: 1 }}
@@ -163,28 +158,28 @@ const Payment = (): React.ReactElement => {
                 </Button>
               </div>
               {tryWithoutVerifiedUser && (
-                <PaymentText
+                <div
                   className="fs-5"
-                  style={{ color: Constants.THEME_RED_COLORS[0] }}
-                >
+                  style={{ textAlign: 'left', color: Constants.THEME_RED_COLORS[0] }}
+                  >
                   Veuillez terminer votre inscription en cliquant sur le lien
                   fourni par mail, puis rafraîchissez la page.
-                </PaymentText>
+                </div>
               )}
               {tryWithoutConsent && (
-                <PaymentText
+                <div
                   className="fs-5"
-                  style={{ color: Constants.THEME_RED_COLORS[0] }}
-                >
+                  style={{ textAlign: 'left', color: Constants.THEME_RED_COLORS[0] }}
+                  >
                   Veuillez accepter les conditions générales de vente.
-                </PaymentText>
+                </div>
               )}
-              <PaymentText className="fs-5">
+              <div className="fs-5" style={{ textAlign: 'left' }}>
                 Pour utiliser le bon d&apos;achat, veuillez vous référer à la
                 section &quot;Comment utiliser un bon d&apos;achat ?&quot; de la{' '}
                 <StyledLink href="/faq">FAQ</StyledLink>.
                 <br />
-              </PaymentText>
+              </div>
               <br />
               <i className="fs-6">
                 Précision : les bons d&apos;achat ne sont pour l&apos;instant
