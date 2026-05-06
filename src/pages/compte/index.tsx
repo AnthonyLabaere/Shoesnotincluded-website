@@ -4,7 +4,6 @@ import Router from 'next/router'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 import useCurrentUser from '@/src/hooks/useCurrentUser'
@@ -24,79 +23,12 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
+import styles from './index.module.scss'
 import useAppSelector from '../../hooks/useAppSelector'
 import * as Types from '../../types'
 import * as NotificationUtils from '../../utils/notificationUtils'
 import * as StripeUtils from '../../utils/stripeUtils'
 import styles from './compte.module.scss'
-
-const AccountContentContainer = styled(ContentContainer)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-
-const PaymentHistory = styled.div`
-  margin: 50px;
-`
-
-const PaymentRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex: 1;
-`
-
-const PaymentRowHeaderElement = styled.div`
-  margin: 5px;
-  text-align: left;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
-    text-align: center;
-  }
-`
-
-const PaymentRowElement = styled.div`
-  margin: 5px;
-  text-align: left;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
-    text-align: center;
-  }
-`
-
-const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
-    flex-direction: column;
-  }
-`
-
-const DeleteOrLogoutButton = styled(Button)`
-  flex: 1;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
-    width: 100%;
-  }
-`
-
-const DeleteButton = styled(DeleteOrLogoutButton)`
-  background-color: ${({ theme }) => theme.colors.reds[0]};
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.black};
-  }
-`
 
 interface AccountProps {
   previousPage: null | string
@@ -219,7 +151,7 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
               </ContentContainer>
             </ContentPageContainer>
             <ContentPageContainer>
-              <AccountContentContainer>
+              <ContentContainer className={styles.accountContentContainer}>
                 {!loading && !loadingUser ? (
                   <>
                     <h2>
@@ -269,7 +201,7 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                 ) : (
                   <h2>Chargement du compte en cours...</h2>
                 )}
-              </AccountContentContainer>
+              </ContentContainer>
             </ContentPageContainer>
           </InnerPageContainer>
         </PageContainer>
@@ -287,7 +219,7 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
             </ContentContainer>
           </ContentPageContainer>
           <ContentPageContainer>
-            <AccountContentContainer>
+            <ContentContainer className={styles.accountContentContainer}>
               <div className="fs-3">
                 Bonjour {user.displayName}, bienvenue dans votre espace
                 personnel.
@@ -315,7 +247,7 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
               {userAuth.emailVerified && (
                 <>
                   {userVoucherCardHistoryDocuments.length > 0 && (
-                    <PaymentHistory>
+                    <div className={styles.paymentHistory}>
                       <div className="fs-3 fw-bold">
                         Historique de validation de carte
                         {userVoucherCardHistoryDocuments.length > 1
@@ -323,30 +255,27 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                           : ''}{' '}
                         :
                       </div>
-                      <PaymentRow className={styles.paymentRow}>
-                        <PaymentRowHeaderElement
-                          className={`fs-4 fw-bold ${styles.identifiant}`}
+                      <div className={styles.paymentRow} className={styles.paymentRow}>
+                        <div className={styles.paymentRowHeaderElement} className={`fs-4 fw-bold ${styles.identifiant}`}
                         >
                           Identifiant{' '}de{' '}la{' '}carte
-                        </PaymentRowHeaderElement>
-                        <PaymentRowHeaderElement
-                          className={`fs-4 fw-bold ${styles.date} ${styles.validationDateHeader}`}
+                        </div>
+                        <div className={styles.paymentRowHeaderElement} className={`fs-4 fw-bold ${styles.date} ${styles.validationDateHeader}`}
                         />
-                        <PaymentRowHeaderElement className="fs-4 fw-bold">
+                        <div className={styles.paymentRowHeaderElement} className="fs-4 fw-bold">
                           Bon{' '}d&apos;achat
-                        </PaymentRowHeaderElement>
-                      </PaymentRow>
+                        </div>
+                      </div>
                       {userVoucherCardHistoryDocuments.map(
                         (userGameVoucherCardDocumentTmp) => {
                           return (
-                            <PaymentRow
-                              className={styles.paymentRow}
+                            <div className={styles.paymentRow} className={styles.paymentRow}
                               key={userGameVoucherCardDocumentTmp.voucherCardId}
                             >
-                              <PaymentRowElement className={styles.identifiant}>
+                              <div className={styles.paymentRowElement} className={styles.identifiant}>
                                 {userGameVoucherCardDocumentTmp.voucherCardId}
-                              </PaymentRowElement>
-                              <PaymentRowElement className={styles.date}>
+                              </div>
+                              <div className={styles.paymentRowElement} className={styles.date}>
                                 {isMobile
                                   ? userGameVoucherCardDocumentTmp.consumedDate
                                       .toDate()
@@ -359,9 +288,8 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                                     userGameVoucherCardDocumentTmp.consumedDate
                                       .toDate()
                                       .toLocaleTimeString('fr')}
-                              </PaymentRowElement>
-                              <PaymentRowElement
-                                style={{
+                              </div>
+                              <div className={styles.paymentRowElement} style={{
                                   cursor:
                                     userGameVoucherCardDocumentTmp.voucherId !==
                                     undefined
@@ -392,14 +320,14 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                                   />
                                   {userGameVoucherCardDocumentTmp.voucherId}
                                 </div>
-                              </PaymentRowElement>
-                            </PaymentRow>
+                              </div>
+                            </div>
                           )
                         }
                       )}
-                    </PaymentHistory>
+                    </div>
                   )}
-                  <PaymentHistory>
+                  <div className={styles.paymentHistory}>
                     <div className="fs-3 fw-bold">
                       Historique d&apos;achat :
                     </div>
@@ -413,41 +341,35 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                           <div className="fs-4">Aucun achat réalisé.</div>
                         ) : (
                           <>
-                            <PaymentRow className={styles.paymentRow}>
-                              <PaymentRowHeaderElement
-                                className={`fs-4 fw-bold ${styles.identifiant}`}
+                            <div className={styles.paymentRow} className={styles.paymentRow}>
+                              <div className={styles.paymentRowHeaderElement} className={`fs-4 fw-bold ${styles.identifiant}`}
                               >
                                 Identifiant
-                              </PaymentRowHeaderElement>
-                              <PaymentRowHeaderElement
-                                className={`fs-4 fw-bold ${styles.date} ${styles.paymentDateHeader}`}
+                              </div>
+                              <div className={styles.paymentRowHeaderElement} className={`fs-4 fw-bold ${styles.date} ${styles.paymentDateHeader}`}
                               />
-                              <PaymentRowHeaderElement
-                                className={`fs-4 fw-bold ${styles.status}`}
+                              <div className={styles.paymentRowHeaderElement} className={`fs-4 fw-bold ${styles.status}`}
                               >
                                 Statut
-                              </PaymentRowHeaderElement>
-                              <PaymentRowHeaderElement
-                                className={`fs-4 fw-bold ${styles.amount}`}
+                              </div>
+                              <div className={styles.paymentRowHeaderElement} className={`fs-4 fw-bold ${styles.amount}`}
                               >
                                 Montant
-                              </PaymentRowHeaderElement>
-                              <PaymentRowHeaderElement className="fs-4 fw-bold">
+                              </div>
+                              <div className={styles.paymentRowHeaderElement} className="fs-4 fw-bold">
                                 Bon{' '}d&apos;achat
-                              </PaymentRowHeaderElement>
-                            </PaymentRow>
+                              </div>
+                            </div>
                             {payments.map((paymentTmp) => {
                               return (
-                                <PaymentRow
-                                  className={styles.paymentRow}
+                                <div className={styles.paymentRow} className={styles.paymentRow}
                                   key={paymentTmp.id}
                                 >
-                                  <PaymentRowElement
-                                    className={styles.identifiant}
+                                  <div className={styles.paymentRowElement} className={styles.identifiant}
                                   >
                                     {paymentTmp.id}
-                                  </PaymentRowElement>
-                                  <PaymentRowElement className={styles.date}>
+                                  </div>
+                                  <div className={styles.paymentRowElement} className={styles.date}>
                                     {isMobile
                                       ? paymentTmp.createdDate.toLocaleDateString(
                                           'fr'
@@ -460,20 +382,19 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                                         paymentTmp.createdDate.toLocaleTimeString(
                                           'fr'
                                         )}
-                                  </PaymentRowElement>
-                                  <PaymentRowElement className={styles.status}>
+                                  </div>
+                                  <div className={styles.paymentRowElement} className={styles.status}>
                                     {StripeUtils.getPaymentStatusLabel(
                                       paymentTmp.status,
                                       isMobile
                                     )}
-                                  </PaymentRowElement>
-                                  <PaymentRowElement className={styles.amount}>
+                                  </div>
+                                  <div className={styles.paymentRowElement} className={styles.amount}>
                                     {StripeUtils.getPaymentAmount(
                                       paymentTmp.amount
                                     )}
-                                  </PaymentRowElement>
-                                  <PaymentRowElement
-                                    style={{
+                                  </div>
+                                  <div className={styles.paymentRowElement} style={{
                                       cursor:
                                         paymentTmp.voucherId !== undefined
                                           ? 'pointer'
@@ -508,35 +429,33 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                                     ) : (
                                       <span>Indisponible</span>
                                     )}
-                                  </PaymentRowElement>
-                                </PaymentRow>
+                                  </div>
+                                </div>
                               )
                             })}
                           </>
                         )}
                       </>
                     )}
-                  </PaymentHistory>
+                  </div>
                 </>
               )}
-              <ButtonsContainer>
-                <DeleteOrLogoutButton
-                  style={{ flex: 1 }}
+              <div className={styles.buttonsContainer}>
+                <Button className={styles.deleteOrLogoutButton} style={{ flex: 1 }}
                   onClick={() => {
                     void auth.signOut()
                   }}
                 >
                   Déconnexion
-                </DeleteOrLogoutButton>
-                <DeleteButton
-                  onClick={() => {
+                </Button>
+                <Button className={styles.deleteButton} onClick={() => {
                     setDisplayDeleteAccountModal(true)
                   }}
                 >
                   Suppression de votre compte
-                </DeleteButton>
-              </ButtonsContainer>
-            </AccountContentContainer>
+                </Button>
+              </div>
+            </ContentContainer>
           </ContentPageContainer>
         </InnerPageContainer>
 
@@ -552,24 +471,22 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
             Attention, la suppression de votre compte entraînera la suppression
             de toutes vos données.
           </div>
-          <ButtonsContainer>
-            <DeleteButton
-              onClick={() => {
+          <div className={styles.buttonsContainer}>
+            <Button className={styles.deleteButton} onClick={() => {
                 FirebaseAuth.deleteCurrentUser(() => {
                   setDisplayDeleteAccountModal(false)
                 })
               }}
             >
               Supprimer
-            </DeleteButton>
-            <DeleteOrLogoutButton
-              onClick={() => {
+            </Button>
+            <Button className={styles.deleteOrLogoutButton} onClick={() => {
                 setDisplayDeleteAccountModal(false)
               }}
             >
               Annuler
-            </DeleteOrLogoutButton>
-          </ButtonsContainer>
+            </Button>
+          </div>
         </Modal>
       </PageContainer>
     </Layout>
