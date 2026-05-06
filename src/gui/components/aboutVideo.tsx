@@ -2,9 +2,9 @@ import Link from 'next/link'
 import React from 'react'
 
 import { YOUTUBE_PRESENTATION_VIDEO_URL } from '../../constants'
+import styles from './aboutVideo.module.scss'
 import Button from './button'
 import { StyledReactPlayer } from './common'
-import styles from './aboutVideo.module.scss'
 
 const AboutVideo = (): React.ReactElement => {
   return (
