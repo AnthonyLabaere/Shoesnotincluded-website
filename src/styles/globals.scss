@@ -63,3 +63,10 @@ select {
     justify-content: center;
   }
 }
+
+// Empêche le wrap des libellés des liens du menu principal sur les viewports
+// intermédiaires où l'espace flex se contracte (sinon "Comment ça marche ?",
+// "Team building" ou "Mon compte" passent sur 2-3 lignes).
+nav.navbar a.nav-link {
+  white-space: nowrap;
+}
