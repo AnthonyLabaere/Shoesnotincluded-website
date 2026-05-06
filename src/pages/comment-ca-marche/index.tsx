@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -26,27 +25,9 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
+import styles from './index.module.scss'
 
-const TextContainer = styled.div`
-  /* font-size: 1.1rem; */
-  text-align: justify;
-`
 
-const StyledImage = styled(Image)`
-  width: 50%;
-  height: auto;
-  margin-top: 15px;
-  margin-bottom: 15px;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    width: 100%;
-  }
-`
-const ImageBetweenLi = styled(StyledImage)`
-  margin-bottom: 15px;
-`
-
-const ImageIntoParagraph = styled(StyledImage)``
 
 const WhatIsThat = (): React.ReactElement => {
   return (
@@ -67,7 +48,7 @@ const WhatIsThat = (): React.ReactElement => {
           <ContentContainer>
             <Marginer direction="vertical" margin="2em" />
             <h2>Pour commencer : c&apos;est quoi un escape game ?</h2>
-            <TextContainer className="fs-5">
+            <div className={`fs-5 ${styles.textContainer}`}>
               <p>
                 L&apos;
                 <StyledLink href="/blog/escape-game">escape game</StyledLink>{' '}
@@ -76,7 +57,7 @@ const WhatIsThat = (): React.ReactElement => {
                 types d&apos;escape game, chacun avec ses propres
                 caractéristiques.
               </p>
-            </TextContainer>
+            </div>
           </ContentContainer>
           <ContentContainer>
             <h2>Vidéo de présentation :</h2>
@@ -90,7 +71,7 @@ const WhatIsThat = (): React.ReactElement => {
                 ShoesNotIncluded, c&apos;est un jeu reprenant fidèlement les
                 codes de l&apos;escape game mais en plein air.
               </h2>
-              <TextContainer className="fs-5">
+              <div className={`fs-5 ${styles.textContainer}`}>
                 <p>
                   La différence avec ce qu&apos;on peut trouver ailleurs ? Le
                   support est pensé <b>multijoueur</b> : les actions sont
@@ -112,12 +93,12 @@ const WhatIsThat = (): React.ReactElement => {
                   <li>
                     Chaque jeu est constitué de <u>plusieurs étapes</u>.
                   </li>
-                  <ImageBetweenLi src={FrameStepsImg} alt="Frame steps" />
+                  <Image className={styles.imageBetweenLi} src={FrameStepsImg} alt="Frame steps" />
                   <li>
                     Chaque étape correspond à un <u>lieu donné</u>, à trouver en
                     résolvant une énigme.
                   </li>
-                  <ImageBetweenLi src={FrameStepImg} alt="Frame step" />
+                  <Image className={styles.imageBetweenLi} src={FrameStepImg} alt="Frame step" />
                   <li>
                     Une fois à proximité du lieu, vous aurez automatiquement
                     accès, via une géolocalisation, à des indices et{' '}
@@ -126,8 +107,7 @@ const WhatIsThat = (): React.ReactElement => {
                     </u>
                     .
                   </li>
-                  <ImageBetweenLi
-                    src={FrameCarrouselImg}
+                  <Image className={styles.imageBetweenLi} src={FrameCarrouselImg}
                     alt="Frame carrousel"
                   />
                   <li>
@@ -135,11 +115,11 @@ const WhatIsThat = (): React.ReactElement => {
                     basant sur les indices affichés et l&apos;
                     <u>environnement local</u>, en trouvant des <u>codes</u>...
                   </li>
-                  <ImageBetweenLi src={FrameCodeImg} alt="Frame code" />
+                  <Image className={styles.imageBetweenLi} src={FrameCodeImg} alt="Frame code" />
                   <li>
                     ...et en effectuant certaines <u>manipulations</u>.
                   </li>
-                  <ImageBetweenLi src={FrameVoiceImg} alt="Frame voice" />
+                  <Image className={styles.imageBetweenLi} src={FrameVoiceImg} alt="Frame voice" />
                   <li>
                     Une fois tous les codes trouvés et manipulations réalisées,
                     vous aurez alors accès à l&apos;énigme de l&apos;étape
@@ -157,7 +137,7 @@ const WhatIsThat = (): React.ReactElement => {
                   <br />
                   Attention, vous ne connaîtrez pas le nombre d&apos;étapes
                   d&apos;un jeu. Alors ne traînez pas !<br />
-                  <ImageIntoParagraph src={FrameChronoImg} alt="Frame chrono" />
+                  <Image className={styles.imageIntoParagraph} src={FrameChronoImg} alt="Frame chrono" />
                 </p>
                 <p>
                   La durée approximative du jeu est indiquée sur
@@ -165,14 +145,13 @@ const WhatIsThat = (): React.ReactElement => {
                   <u>60 à 90 minutes</u>. Un conseil : venez avec de bonnes
                   chaussures ;)
                   <br />
-                  <ImageIntoParagraph src={FrameShoesImg} alt="Frame shoes" />
+                  <Image className={styles.imageIntoParagraph} src={FrameShoesImg} alt="Frame shoes" />
                 </p>
                 <p>
                   Un dernier détail : toutes les actions sont{' '}
                   <u>synchronisées</u> entre les smartphones des différents
                   joueurs :<br />
-                  <ImageIntoParagraph
-                    src={FrameSynchroImg}
+                  <Image className={styles.imageIntoParagraph} src={FrameSynchroImg}
                     alt="Frame synchro"
                   />
                 </p>
@@ -193,7 +172,7 @@ const WhatIsThat = (): React.ReactElement => {
                   </u>
                   .
                 </p>
-              </TextContainer>
+              </div>
               <Link
                 style={{ display: 'flex', flex: 1, marginTop: 25 }}
                 href="/achat"

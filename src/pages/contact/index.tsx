@@ -1,6 +1,5 @@
 import { useFormik } from 'formik'
 import React from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -13,83 +12,8 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-import { Theme } from '../../styles/theme'
+import styles from './index.module.scss'
 import * as NotificationUtils from '../../utils/notificationUtils'
-
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-`
-
-export const InputContainer = styled.div`
-  margin-bottom: 15px;
-  width: 50%;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
-    width: 100%;
-    text-align: center;
-  }
-`
-
-export const Label = styled.label`
-  font-size: 1.5em;
-`
-
-export const Input = styled.input`
-  width: 100%;
-  height: 42px;
-  outline: none;
-  border: 1px solid rgba(200, 200, 200, 0.03);
-  padding: 0 10px;
-  transition: all, 200ms ease-in-out;
-  box-sizing: border-box;
-  border-bottom: 1.4px solid rgba(200, 200, 200, 0.4);
-
-  &::placeholder {
-    color: rgba(170, 170, 170, 1);
-  }
-
-  &:focus {
-    outline: none;
-    border-bottom: ${({ theme }: { theme: Theme }) =>
-      `2px solid ${theme.linkHoverColor}`};
-  }
-`
-
-export const Textarea = styled.textarea`
-  width: 100%;
-  height: 168px;
-  outline: none;
-  border: 1px solid rgba(200, 200, 200, 0.03);
-  padding: 10px 10px;
-  transition: all, 200ms ease-in-out;
-  box-sizing: border-box;
-  border-bottom: 1.4px solid rgba(200, 200, 200, 0.4);
-  resize: none;
-
-  &::placeholder {
-    color: rgba(170, 170, 170, 1);
-  }
-
-  &:focus {
-    outline: none;
-    border-bottom: ${({ theme }: { theme: Theme }) =>
-      `2px solid ${theme.linkHoverColor}`};
-  }
-`
-
-export const ErrorMessage = styled.div`
-  font-weight: bold;
-  color: ${Constants.THEME_RED_COLORS[0]};
-  margin-top: 5px;
-  min-height: 20px;
-`
-
-const ContactFormContentContainer = styled(ContentContainer)`
-  min-height: 500px;
-`
 
 interface ContactErrors {
   lastName?: string
@@ -172,7 +96,7 @@ const Contact = (): React.ReactElement => {
               <h1>Nous contacter</h1>
             </ContentContainer>
           </ContentPageContainer>
-          <ContactFormContentContainer>
+          <ContentContainer className={styles.contactFormContentContainer}>
             <h2>
               Une question sur l&apos;application, l&apos;un des scénarios ou
               une demande de devis pour un activité d&apos;entreprise ?
@@ -180,82 +104,78 @@ const Contact = (): React.ReactElement => {
             <h3 className="mb-5">
               Merci de remplir le formulaire ci-dessous :
             </h3>
-            <Form onSubmit={formik.handleSubmit}>
-              <InputContainer>
-                <Label htmlFor="lastName">Nom</Label>
-                <Input
-                  id="lastName"
+            <form className={styles.form} onSubmit={formik.handleSubmit}>
+              <div className={styles.inputContainer}>
+                <label className={styles.label} htmlFor="lastName">Nom</label>
+                <input className={styles.input} id="lastName"
                   type="text"
                   {...formik.getFieldProps('lastName')}
                 />
-                <ErrorMessage>
+                <div className={styles.errorMessage}>
                   {formik.touched.lastName === true &&
                   formik.errors.lastName != null
                     ? formik.errors.lastName
                     : ''}
-                </ErrorMessage>
-              </InputContainer>
+                </div>
+              </div>
 
-              <InputContainer>
-                <Label htmlFor="firstName">Prénom</Label>
-                <Input
-                  id="firstName"
+              <div className={styles.inputContainer}>
+                <label className={styles.label} htmlFor="firstName">Prénom</label>
+                <input className={styles.input} id="firstName"
                   type="text"
                   {...formik.getFieldProps('firstName')}
                 />
-                <ErrorMessage>
+                <div className={styles.errorMessage}>
                   {formik.touched.firstName === true &&
                   formik.errors.firstName != null
                     ? formik.errors.firstName
                     : ''}
-                </ErrorMessage>
-              </InputContainer>
+                </div>
+              </div>
 
-              <InputContainer>
-                <Label htmlFor="email">Adresse mail</Label>
-                <Input
-                  id="email"
+              <div className={styles.inputContainer}>
+                <label className={styles.label} htmlFor="email">Adresse mail</label>
+                <input className={styles.input} id="email"
                   type="email"
                   {...formik.getFieldProps('email')}
                 />
-                <ErrorMessage>
+                <div className={styles.errorMessage}>
                   {formik.touched.email === true && formik.errors.email != null
                     ? formik.errors.email
                     : ''}
-                </ErrorMessage>
-              </InputContainer>
+                </div>
+              </div>
 
-              <InputContainer>
-                <Label htmlFor="subject">Objet</Label>
-                <Input
-                  id="subject"
+              <div className={styles.inputContainer}>
+                <label className={styles.label} htmlFor="subject">Objet</label>
+                <input className={styles.input} id="subject"
                   type="text"
                   {...formik.getFieldProps('subject')}
                 />
-                <ErrorMessage>
+                <div className={styles.errorMessage}>
                   {formik.touched.subject === true &&
                   formik.errors.subject != null
                     ? formik.errors.subject
                     : ''}
-                </ErrorMessage>
-              </InputContainer>
+                </div>
+              </div>
 
-              <InputContainer>
-                <Label htmlFor="message">Message</Label>
-                <Textarea id="message" {...formik.getFieldProps('message')} />
-                <ErrorMessage>
+              <div className={styles.inputContainer}>
+                <label className={styles.label} htmlFor="message">Message</label>
+                <textarea className={styles.textarea} id="message" {...formik.getFieldProps('message')} />
+                <div className={styles.errorMessage}>
                   {formik.touched.message === true &&
                   formik.errors.message != null
                     ? formik.errors.message
                     : ''}
-                </ErrorMessage>
-              </InputContainer>
+                </div>
+              </div>
 
               <Button type="submit" disabled={formik.isSubmitting}>
                 {formik.isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
               </Button>
-            </Form>
-          </ContactFormContentContainer>
+            </form>
+          </ContentContainer>
         </InnerPageContainer>
       </PageContainer>
     </Layout>

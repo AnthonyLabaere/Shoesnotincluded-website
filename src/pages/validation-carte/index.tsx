@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useFormik } from 'formik'
 import Router from 'next/router'
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 import useAppSelector from '@/src/hooks/useAppSelector'
@@ -21,83 +20,8 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-import { Theme } from '../../styles/theme'
+import styles from './index.module.scss'
 import * as NotificationUtils from '../../utils/notificationUtils'
-
-export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-`
-
-export const InputContainer = styled.div`
-  margin-bottom: 15px;
-  width: 50%;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
-    width: 100%;
-    text-align: center;
-  }
-`
-
-export const Label = styled.label`
-  font-size: 1.5em;
-`
-
-export const Input = styled.input`
-  width: 100%;
-  height: 42px;
-  outline: none;
-  border: 1px solid rgba(200, 200, 200, 0.03);
-  padding: 0 10px;
-  transition: all, 200ms ease-in-out;
-  box-sizing: border-box;
-  border-bottom: 1.4px solid rgba(200, 200, 200, 0.4);
-
-  &::placeholder {
-    color: rgba(170, 170, 170, 1);
-  }
-
-  &:focus {
-    outline: none;
-    border-bottom: ${({ theme }: { theme: Theme }) =>
-      `2px solid ${theme.linkHoverColor}`};
-  }
-`
-
-export const ErrorMessage = styled.div`
-  font-weight: bold;
-  color: ${Constants.THEME_RED_COLORS[0]};
-  margin-top: 5px;
-  min-height: 20px;
-`
-
-const ModalTextLine = styled.div`
-  font-size: 1.25em;
-  margin-bottom: 0.5em;
-  margin-top: 0.5em;
-`
-
-const ModalButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
-    flex-direction: column;
-  }
-`
-
-const ModalButton = styled(Button)`
-  flex: 1;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.tablet}) {
-    width: 100%;
-  }
-`
 
 const CardValidation = (): React.ReactElement => {
   const validate = (values: {
@@ -179,47 +103,45 @@ const CardValidation = (): React.ReactElement => {
             </ContentContainer>
           </ContentPageContainer>
           <ContentPageContainer>
-            <Form onSubmit={formik.handleSubmit}>
-              <InputContainer>
+            <form className={styles.form} onSubmit={formik.handleSubmit}>
+              <div className={styles.inputContainer}>
                 {/* TODO : mettre une infobulle (avec un point d'interrogation visible à droite et clickable ?) avec une image pour expliquer où est l'identifiant de la carte */}
-                <Label htmlFor="voucherCardId">Identifiant de la carte</Label>
-                <Input
-                  id="voucherCardId"
+                <label className={styles.label} htmlFor="voucherCardId">Identifiant de la carte</label>
+                <input className={styles.input} id="voucherCardId"
                   type="text"
                   {...formik.getFieldProps('voucherCardId')}
                 />
-                <ErrorMessage>
+                <div className={styles.errorMessage}>
                   {formik.touched.voucherCardId === true &&
                   formik.errors.voucherCardId != null
                     ? formik.errors.voucherCardId
                     : ''}
-                </ErrorMessage>
-              </InputContainer>
+                </div>
+              </div>
 
-              <InputContainer>
+              <div className={styles.inputContainer}>
                 {/* TODO : mettre une infobulle (avec un point d'interrogation visible à droite et clickable ?) avec une image pour expliquer où est le code de validation */}
-                <Label htmlFor="validationCode">Code de validation</Label>
-                <Input
-                  id="validationCode"
+                <label className={styles.label} htmlFor="validationCode">Code de validation</label>
+                <input className={styles.input} id="validationCode"
                   type="text"
                   {...formik.getFieldProps('validationCode')}
                   minLength={4}
                   maxLength={4}
                 />
-                <ErrorMessage>
+                <div className={styles.errorMessage}>
                   {formik.touched.validationCode === true &&
                   formik.errors.validationCode != null
                     ? formik.errors.validationCode
                     : ''}
-                </ErrorMessage>
-              </InputContainer>
+                </div>
+              </div>
 
               <Button type="submit" disabled={formik.isSubmitting}>
                 {formik.isSubmitting
                   ? 'Validation en cours...'
                   : 'Valider ma carte'}
               </Button>
-            </Form>
+            </form>
             <Marginer direction="vertical" margin="2em" />
           </ContentPageContainer>
         </InnerPageContainer>
@@ -232,7 +154,7 @@ const CardValidation = (): React.ReactElement => {
           contentLabel="Confirmation de validation"
         >
           <h2>Confirmation de validation</h2>
-          <ModalTextLine>Votre carte a été validée.</ModalTextLine>
+          <div className={styles.modalTextLine}>Votre carte a été validée.</div>
           <div
             style={{ cursor: 'pointer' }}
             onClick={() => {
@@ -247,14 +169,14 @@ const CardValidation = (): React.ReactElement => {
               // .catch((e) => {})
             }}
           >
-            <ModalTextLine>
+            <div className={styles.modalTextLine}>
               <FontAwesomeIcon
                 style={{ marginRight: 5 }}
                 icon={faCopy}
                 size="1x"
               />
               Votre bon d&apos;achat est le {voucherId}.
-            </ModalTextLine>
+            </div>
           </div>
           <ModalTextLine style={{ fontStyle: 'italic' }}>
             Pour l&apos;utiliser :<br />1 - Ouvrez l&apos;application
@@ -270,20 +192,19 @@ const CardValidation = (): React.ReactElement => {
             <br />
             4 - Renseignez le code du bon d&apos;achat obtenu lors du paiement.
             <br />
-          </ModalTextLine>
+          </div>
           <ModalTextLine style={{ marginTop: 25 }}>
             Un mail récapitulatif a été envoyé à l&apos;adresse mail associée à
             votre compte.
-          </ModalTextLine>
-          <ModalButtonsContainer>
-            <ModalButton
-              onClick={() => {
+          </div>
+          <div className={styles.modalButtonsContainer}>
+            <Button className={styles.modalButton} onClick={() => {
                 setRedirectToAccount(true)
               }}
             >
               Bien compris !
-            </ModalButton>
-          </ModalButtonsContainer>
+            </Button>
+          </div>
         </Modal>
       </PageContainer>
     </Layout>
