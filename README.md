@@ -9,9 +9,9 @@ utilisateurs, et acheter des cartes de bon pour des parties via Stripe.
 
 ## Stack technique
 
-- **Framework** : [Next.js](https://nextjs.org/) 13 (Pages Router)
+- **Framework** : [Next.js](https://nextjs.org/) 15 (Pages Router)
 - **Langage** : TypeScript
-- **UI** : React 18, [styled-components](https://styled-components.com/),
+- **UI** : React 19, [CSS Modules](https://github.com/css-modules/css-modules) + [Sass](https://sass-lang.com/) (variables CSS custom propagées via :root),
   [Bootstrap 5](https://getbootstrap.com/) + [react-bootstrap](https://react-bootstrap.github.io/)
 - **State** : [Redux Toolkit](https://redux-toolkit.js.org/) +
   [next-redux-wrapper](https://github.com/kirill-konshin/next-redux-wrapper)
@@ -128,14 +128,11 @@ public/               Assets statiques (images, fonts, robots.txt, sitemap.xml, 
 Voir `src/gui/components/layout.tsx` et `src/gui/components/CookiesBanner.tsx`
 pour le détail.
 
-## Tech debt connue
+## Tech debt connue / pistes futures
 
 - **Préfixe `NEXT_PUBLIC_REACT_APP_*`** : héritage d'une migration depuis
   Create React App. À renommer en `NEXT_PUBLIC_*` dans une MR future, en
   ajustant `firebase/index.tsx`, `stripeFirestore.tsx` et le `.env.local` /
   variables Netlify.
 - **`react-ga`** : dépendance morte (à supprimer — voir MR dédiée).
-- **styled-components** : à migrer vers CSS modules (cohérent avec le SCSS
-  déjà en place).
-- **Next.js 13.1** : version intermédiaire à mettre à jour vers la dernière
-  LTS.
+- **styled-components** : à migrer vers CSS mo
