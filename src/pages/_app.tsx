@@ -3,6 +3,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import type { AppProps } from 'next/app'
 import { Suspense } from 'react'
+import { CookiesProvider } from 'react-cookie'
 import { Provider } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
 
@@ -15,13 +16,15 @@ const App = ({ Component, ...rest }: AppProps) => {
 
   return (
     <Provider store={store}>
-      <Suspense fallback={<Loading />}>
-        <ToastContainer />
+      <CookiesProvider>
+        <Suspense fallback={<Loading />}>
+          <ToastContainer />
 
-        <CookiesBanner />
+          <CookiesBanner />
 
-        <Component {...props.pageProps} />
-      </Suspense>
+          <Component {...props.pageProps} />
+        </Suspense>
+      </CookiesProvider>
     </Provider>
   )
 }

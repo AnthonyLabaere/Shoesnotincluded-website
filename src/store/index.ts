@@ -1,4 +1,8 @@
-import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit'
+import {
+  configureStore,
+  ThunkAction,
+  UnknownAction,
+} from '@reduxjs/toolkit'
 import { createWrapper } from 'next-redux-wrapper'
 import { Store } from 'redux'
 
@@ -12,17 +16,16 @@ const makeStore = () =>
   })
 export const store = makeStore()
 
-// export type AppDispatch = Store['dispatch']
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   RootState,
   unknown,
-  Action<string>
+  UnknownAction
 >
 
-// // export an assembled wrapper
+// Wrapper Next.js (next-redux-wrapper) — assemble le store côté SSR/CSR
 export const wrapper = createWrapper<Store<RootState>>(makeStore, {
   debug: false,
 })
