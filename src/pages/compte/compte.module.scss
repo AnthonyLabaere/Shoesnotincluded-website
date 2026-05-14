@@ -1,4 +1,18 @@
+.accountContentContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paymentHistory {
+  margin: 50px;
+}
+
 .paymentRow {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+
   div {
     flex: 1;
 
@@ -14,11 +28,11 @@
       }
     }
 
-    &status {
+    &.status {
       flex: 0.5;
     }
 
-    @media screen and (max-width: $deviceSizeTablet) {
+    @media screen and (max-width: 992px) {
       &.date,
       &.amount {
         flex: 0.5;
@@ -36,5 +50,60 @@
         }
       }
     }
+  }
+}
+
+.paymentRowHeaderElement {
+  margin: 5px;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media screen and (max-width: 992px) {
+    text-align: center;
+  }
+}
+
+.paymentRowElement {
+  margin: 5px;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media screen and (max-width: 992px) {
+    text-align: center;
+  }
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  @media screen and (max-width: 992px) {
+    flex-direction: column;
+  }
+}
+
+.deleteOrLogoutButton {
+  flex: 1;
+
+  @media screen and (max-width: 992px) {
+    width: 100%;
+  }
+}
+
+.deleteButton {
+  flex: 1;
+  background-color: var(--color-red-1);
+
+  @media screen and (max-width: 992px) {
+    width: 100%;
+  }
+
+  &:hover {
+    background-color: var(--color-black);
   }
 }

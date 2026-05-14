@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 
 import Layout from '@/src/gui/components/layout'
@@ -13,13 +12,15 @@ import {
 import articleStyles from '../styles/article.module.scss'
 
 const Custom404 = (): React.ReactElement => {
-  const router = useRouter()
-
   useEffect(() => {
-    if (router.asPath.includes('/join')) {
-      router.replace('/probleme-de-redirection')
+    // Redirection côté client uniquement (pas pendant le prerendering SSG)
+    if (
+      typeof window !== 'undefined' &&
+      window.location.pathname.includes('/join')
+    ) {
+      window.location.replace('/probleme-de-redirection')
     }
-  }, [router])
+  }, [])
 
   return (
     <Layout

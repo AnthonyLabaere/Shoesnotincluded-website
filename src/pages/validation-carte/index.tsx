@@ -178,7 +178,7 @@ const CardValidation = (): React.ReactElement => {
               Votre bon d&apos;achat est le {voucherId}.
             </div>
           </div>
-          <ModalTextLine style={{ fontStyle: 'italic' }}>
+          <div className={styles.modalTextLine} style={{ fontStyle: 'italic' }}>
             Pour l&apos;utiliser :<br />1 - Ouvrez l&apos;application
             ShoesNotIncluded (ou téléchargez-là au préalable sur les stores{' '}
             <StyledALink href={Constants.PLAY_STORE_LINK}>Android</StyledALink>{' '}
@@ -193,7 +193,7 @@ const CardValidation = (): React.ReactElement => {
             4 - Renseignez le code du bon d&apos;achat obtenu lors du paiement.
             <br />
           </div>
-          <ModalTextLine style={{ marginTop: 25 }}>
+          <div className={styles.modalTextLine} style={{ marginTop: 25 }}>
             Un mail récapitulatif a été envoyé à l&apos;adresse mail associée à
             votre compte.
           </div>

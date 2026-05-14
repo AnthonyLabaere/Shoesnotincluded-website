@@ -1,10 +1,10 @@
 import { toast } from 'react-toastify'
 
 export const handleMessage = (message: string): void => {
-  toast(message, { type: toast.TYPE.INFO })
+  toast.info(message)
 }
 
 export const handleError = (message: string): void => {
-  toast(message, { type: toast.TYPE.ERROR, autoClose: false })
+  toast.error(message, { autoClose: false })
   // TODO : intégration de crashlytics
 }

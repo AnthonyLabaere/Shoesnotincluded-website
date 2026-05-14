@@ -75,13 +75,13 @@ const BlogArticle = ({
                           href={props.href as string}
                           scroll={!props.href?.includes('#')}
                         >
-                          {props.children[0]}
+                          {props.children}
                         </StyledLink>
                       )
                     }
                     return (
                       <StyledALink href={props.href as string}>
-                        {props.children[0]}
+                        {props.children}
                       </StyledALink>
                     )
                   },

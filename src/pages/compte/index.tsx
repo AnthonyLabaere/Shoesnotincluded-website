@@ -23,7 +23,7 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-import styles from './index.module.scss'
+
 import useAppSelector from '../../hooks/useAppSelector'
 import * as Types from '../../types'
 import * as NotificationUtils from '../../utils/notificationUtils'
@@ -255,27 +255,27 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                           : ''}{' '}
                         :
                       </div>
-                      <div className={styles.paymentRow} className={styles.paymentRow}>
-                        <div className={styles.paymentRowHeaderElement} className={`fs-4 fw-bold ${styles.identifiant}`}
+                      <div className={`${styles.paymentRow} ${styles.paymentRow}`}>
+                        <div className={`${styles.paymentRowHeaderElement} ${`fs-4 fw-bold ${styles.identifiant}`}`}
                         >
                           Identifiant{' '}de{' '}la{' '}carte
                         </div>
-                        <div className={styles.paymentRowHeaderElement} className={`fs-4 fw-bold ${styles.date} ${styles.validationDateHeader}`}
+                        <div className={`${styles.paymentRowHeaderElement} ${`fs-4 fw-bold ${styles.date}`} ${styles.validationDateHeader}`}
                         />
-                        <div className={styles.paymentRowHeaderElement} className="fs-4 fw-bold">
+                        <div className={`${styles.paymentRowHeaderElement} fs-4 fw-bold`}>
                           Bon{' '}d&apos;achat
                         </div>
                       </div>
                       {userVoucherCardHistoryDocuments.map(
                         (userGameVoucherCardDocumentTmp) => {
                           return (
-                            <div className={styles.paymentRow} className={styles.paymentRow}
+                            <div className={`${styles.paymentRow} ${styles.paymentRow}`}
                               key={userGameVoucherCardDocumentTmp.voucherCardId}
                             >
-                              <div className={styles.paymentRowElement} className={styles.identifiant}>
+                              <div className={`${styles.paymentRowElement} ${styles.identifiant}`}>
                                 {userGameVoucherCardDocumentTmp.voucherCardId}
                               </div>
-                              <div className={styles.paymentRowElement} className={styles.date}>
+                              <div className={`${styles.paymentRowElement} ${styles.date}`}>
                                 {isMobile
                                   ? userGameVoucherCardDocumentTmp.consumedDate
                                       .toDate()
@@ -341,35 +341,35 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                           <div className="fs-4">Aucun achat réalisé.</div>
                         ) : (
                           <>
-                            <div className={styles.paymentRow} className={styles.paymentRow}>
-                              <div className={styles.paymentRowHeaderElement} className={`fs-4 fw-bold ${styles.identifiant}`}
+                            <div className={`${styles.paymentRow} ${styles.paymentRow}`}>
+                              <div className={`${styles.paymentRowHeaderElement} ${`fs-4 fw-bold ${styles.identifiant}`}`}
                               >
                                 Identifiant
                               </div>
-                              <div className={styles.paymentRowHeaderElement} className={`fs-4 fw-bold ${styles.date} ${styles.paymentDateHeader}`}
+                              <div className={`${styles.paymentRowHeaderElement} ${`fs-4 fw-bold ${styles.date}`} ${styles.paymentDateHeader}`}
                               />
-                              <div className={styles.paymentRowHeaderElement} className={`fs-4 fw-bold ${styles.status}`}
+                              <div className={`${styles.paymentRowHeaderElement} ${`fs-4 fw-bold ${styles.status}`}`}
                               >
                                 Statut
                               </div>
-                              <div className={styles.paymentRowHeaderElement} className={`fs-4 fw-bold ${styles.amount}`}
+                              <div className={`${styles.paymentRowHeaderElement} ${`fs-4 fw-bold ${styles.amount}`}`}
                               >
                                 Montant
                               </div>
-                              <div className={styles.paymentRowHeaderElement} className="fs-4 fw-bold">
+                              <div className={`${styles.paymentRowHeaderElement} fs-4 fw-bold`}>
                                 Bon{' '}d&apos;achat
                               </div>
                             </div>
                             {payments.map((paymentTmp) => {
                               return (
-                                <div className={styles.paymentRow} className={styles.paymentRow}
+                                <div className={`${styles.paymentRow} ${styles.paymentRow}`}
                                   key={paymentTmp.id}
                                 >
-                                  <div className={styles.paymentRowElement} className={styles.identifiant}
+                                  <div className={`${styles.paymentRowElement} ${styles.identifiant}`}
                                   >
                                     {paymentTmp.id}
                                   </div>
-                                  <div className={styles.paymentRowElement} className={styles.date}>
+                                  <div className={`${styles.paymentRowElement} ${styles.date}`}>
                                     {isMobile
                                       ? paymentTmp.createdDate.toLocaleDateString(
                                           'fr'
@@ -383,13 +383,13 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                                           'fr'
                                         )}
                                   </div>
-                                  <div className={styles.paymentRowElement} className={styles.status}>
+                                  <div className={`${styles.paymentRowElement} ${styles.status}`}>
                                     {StripeUtils.getPaymentStatusLabel(
                                       paymentTmp.status,
                                       isMobile
                                     )}
                                   </div>
-                                  <div className={styles.paymentRowElement} className={styles.amount}>
+                                  <div className={`${styles.paymentRowElement} ${styles.amount}`}>
                                     {StripeUtils.getPaymentAmount(
                                       paymentTmp.amount
                                     )}
