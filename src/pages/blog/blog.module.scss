@@ -1,9 +1,8 @@
 .headerImage {
-  // Retirer le !important quand styled-components sera viré ?
-  width: 40% !important;
+  width: 40%;
   height: auto;
 
-  @media screen and (max-width: $deviceSizeMobile) {
-    width: 100% !important;
+  @media screen and (max-width: 580px) {
+    width: 100%;
   }
 }
