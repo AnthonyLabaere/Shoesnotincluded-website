@@ -19,9 +19,11 @@ const OutsideClickerInterceptor = ({
       if (
         enabled &&
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/strict-boolean-expressions
-        !(ref.current! as any).contains(e.target) &&
+        !(ref.current as unknown as HTMLElement).contains(e.target as Node) &&
         // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-        !(exceptionRef.current as any).contains(e.target)
+        !(exceptionRef.current as unknown as HTMLElement).contains(
+          e.target as Node
+        )
       ) {
         onIntercept()
       }

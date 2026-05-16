@@ -6,7 +6,6 @@ import React, { useEffect, useState } from 'react'
 
 import Layout from '@/src/gui/components/layout'
 import useAppSelector from '@/src/hooks/useAppSelector'
-import useCurrentUser from '@/src/hooks/useCurrentUser'
 import { selectUser } from '@/src/store/userSlice'
 
 import * as Constants from '../../constants'
@@ -20,8 +19,8 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-import styles from './index.module.scss'
 import * as NotificationUtils from '../../utils/notificationUtils'
+import styles from './index.module.scss'
 
 const CardValidation = (): React.ReactElement => {
   const validate = (values: {

@@ -31,7 +31,7 @@ function GameTag({ label, type, large }: GameTagProps): React.ReactElement {
 
   if (label !== undefined) {
     if (Object.keys(SPECIFIC_TAGS_LABEL).includes(label)) {
-      enhancedLabel = (SPECIFIC_TAGS_LABEL as any)[label]
+      enhancedLabel = (SPECIFIC_TAGS_LABEL as Record<string, string>)[label]
     } else {
       enhancedLabel = label
     }

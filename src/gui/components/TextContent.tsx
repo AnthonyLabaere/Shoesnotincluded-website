@@ -59,7 +59,7 @@ export const getTextContentFromRichText = (
   text: Types.RichTextContentType[],
   globalTextStyle: Types.TextStyle = {},
   textStyle: undefined | Types.TextStyle,
-  globalStyle: undefined | any
+  globalStyle: undefined | React.CSSProperties
 ): JSX.Element => {
   return (
     <TextContent textStyle={globalTextStyle} style={globalStyle}>
@@ -105,9 +105,10 @@ interface TextContentProps {
   globalTextStyle?: Types.TextStyle
   textStyle?: Types.TextStyle
   // FIXME children: number | string | Types.RichTextContentType[] | JSX.Element | (number | string | JSX.Element)[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children: any
-  globalStyle?: any
-  style?: any
+  globalStyle?: React.CSSProperties
+  style?: React.CSSProperties
 }
 
 function TextContent({

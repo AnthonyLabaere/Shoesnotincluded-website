@@ -1,6 +1,5 @@
 import { faCopy } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Router from 'next/router'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
@@ -23,7 +22,6 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-
 import useAppSelector from '../../hooks/useAppSelector'
 import * as Types from '../../types'
 import * as NotificationUtils from '../../utils/notificationUtils'
@@ -55,7 +53,7 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
         router.push('../validation-carte')
       }
     }
-  }, [redirectToAccount, user])
+  }, [redirectToAccount, user, router])
 
   const getTitlePrefix = (): string => {
     if (previousPage != null) {
@@ -160,8 +158,16 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
                     </h2>
                     <FirebaseUiAuth
                       signInSuccessWithAuthResultCallback={(
-                        authResult: any
+                        authResultUnknown: unknown
                       ) => {
+                        const authResult = authResultUnknown as {
+                          user: {
+                            uid: string
+                            displayName?: string | null
+                            emailVerified?: boolean
+                          }
+                          additionalUserInfo: { isNewUser: boolean }
+                        }
                         const authResultUser = authResult.user
 
                         if (authResult.additionalUserInfo.isNewUser === true) {
@@ -493,7 +499,9 @@ const Account = ({ previousPage }: AccountProps): React.ReactElement => {
   )
 }
 
-export async function getServerSideProps(context: any) {
+import type { GetServerSidePropsContext } from 'next'
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const previousUrlSplit =
     context.req.headers.referer !== undefined
       ? context.req.headers.referer.split('/')

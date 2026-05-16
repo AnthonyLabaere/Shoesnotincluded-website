@@ -33,7 +33,7 @@ const uiConfig = {
 }
 
 interface FirebaseUiAuthProps {
-  signInSuccessWithAuthResultCallback?: (authResult: any) => boolean
+  signInSuccessWithAuthResultCallback?: (authResult: unknown) => boolean
 }
 
 const FirebaseUiAuth = ({

@@ -10,7 +10,8 @@ const getShortLocale = (): string => {
   return 'fr'
 }
 
-const isLocaleObject = (object: any): boolean => {
+const isLocaleObject = (object: unknown): boolean => {
+  if (object === null || typeof object !== 'object') return false
   // return i18n.languages.some((language) =>
   //   Object.prototype.hasOwnProperty.call(object, language)
   // )
@@ -19,17 +20,18 @@ const isLocaleObject = (object: any): boolean => {
   )
 }
 
-export const getObjectFromLocale = (object: any): any => {
+export const getObjectFromLocale = (object: unknown): unknown => {
   if (isLocaleObject(object)) {
+    const localeObject = object as Record<string, unknown>
     // C'est bien un objet internationalisé
-    if (Object.prototype.hasOwnProperty.call(object, getShortLocale())) {
+    if (Object.prototype.hasOwnProperty.call(localeObject, getShortLocale())) {
       // Retour de l'objet correspondant à la langue du téléphone si celui-ci est présent
-      return object[getShortLocale()]
+      return localeObject[getShortLocale()]
     } else if (
-      Object.prototype.hasOwnProperty.call(object, getDefaultShortLocale())
+      Object.prototype.hasOwnProperty.call(localeObject, getDefaultShortLocale())
     ) {
       // Sinon retour de l'objet correspondant à la locale par défaut si celui-ci est présent
-      return object[getDefaultShortLocale()]
+      return localeObject[getDefaultShortLocale()]
     }
   }
   // Sinon ou si l'objet n'est pas internationalisé, retour sans changement

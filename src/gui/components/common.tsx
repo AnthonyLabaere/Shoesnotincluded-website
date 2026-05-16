@@ -22,7 +22,9 @@ export function ContentContainer(props: {
   )
 }
 
-export function StyledReactPlayer(props: any): React.ReactElement {
+export function StyledReactPlayer(
+  props: Record<string, unknown>
+): React.ReactElement {
   return <ReactPlayer {...props} className={styles.styledReactPlayer} />
 }
 

@@ -29,6 +29,10 @@ const CookiesBanner = (): React.ReactElement => {
     ) {
       removeGACookies()
     }
+    // removeGACookies est défini dans le composant (re-créé à chaque render)
+    // mais sa logique ne dépend que de window et de removeCookie qui est stable
+    // depuis react-cookie 7. On désactive donc le warning ici.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cookies])
 
   return (

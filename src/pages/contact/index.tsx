@@ -3,7 +3,6 @@ import React from 'react'
 
 import Layout from '@/src/gui/components/layout'
 
-import * as Constants from '../../constants'
 import * as FirebaseFunctions from '../../firebase/functions'
 import Button from '../../gui/components/button'
 import { ContentContainer } from '../../gui/components/common'
@@ -12,8 +11,8 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-import styles from './index.module.scss'
 import * as NotificationUtils from '../../utils/notificationUtils'
+import styles from './index.module.scss'
 
 interface ContactErrors {
   lastName?: string

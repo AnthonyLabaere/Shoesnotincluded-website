@@ -13,8 +13,8 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-import styles from './index.module.scss'
 import * as Types from '../../types'
+import styles from './index.module.scss'
 
 interface ScenariosProps {
   cityId: string
