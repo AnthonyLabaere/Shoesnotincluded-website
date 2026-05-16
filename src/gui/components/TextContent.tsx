@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import * as Constants from '../../constants'
 import * as Types from '../../types'
@@ -60,7 +59,7 @@ export const getTextContentFromRichText = (
   text: Types.RichTextContentType[],
   globalTextStyle: Types.TextStyle = {},
   textStyle: undefined | Types.TextStyle,
-  globalStyle: undefined | any
+  globalStyle: undefined | React.CSSProperties
 ): JSX.Element => {
   return (
     <TextContent textStyle={globalTextStyle} style={globalStyle}>
@@ -81,59 +80,35 @@ export const getTextContentFromRichText = (
   )
 }
 
-/**
- * Construction d'un texte suivant les règles suivantes :
- * - si textFont est renseigné, ses informations sont appliquées sur le style de la police
- * - si textFontSize est renseigné, ses informations sont appliquées sur le style de la police et écrasent éventuellement celles de textFont
- *
- * A voir si ces margin et width sont à gérer différemment suivant les prochains jeux à développer
- */
-const StyledTextContent = styled.span<{
-  key?: number | string
+const computeStyle = (
   textStyle?: Types.TextStyle
-}>`
-  text-align: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
-    textStyle.textAlign !== undefined ? textStyle.textAlign : 'center'};
-  font-weight: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
-    textStyle.fontWeight !== undefined ? textStyle.fontWeight : 'normal'};
-  font-style: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
-    textStyle.fontStyle !== undefined ? textStyle.fontStyle : 'normal'};
-  text-decoration: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
-    textStyle.textDecoration !== undefined ? textStyle.textDecoration : 'none'};
-  color: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
-    textStyle.color !== undefined ? textStyle.color : 'black'};
-  background-color: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
-    textStyle.backgroundColor !== undefined
-      ? textStyle.backgroundColor
-      : 'transparent'};
-  margin-bottom: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
-    textStyle.marginBottom !== undefined ? `${textStyle.marginBottom}px` : 0};
-  width: ${({ textStyle = {} }: { textStyle?: Types.TextStyle }) =>
-    textStyle.width !== undefined ? textStyle.width : 'auto'};
-  ${({ textStyle = {} }) =>
-    textStyle.rotate === true &&
-    `
-    transform: rotate(90deg);
-  `};
-  ${({ textStyle = {} }) =>
-    textStyle.flip === true &&
-    `
-    transform: rotate(180deg);
-  `};
-  ${({ textStyle = {} }) =>
-    textStyle.reversed === true &&
-    `
-    transform: rotateY(180deg);
-  `};
-`
+): React.CSSProperties => {
+  const ts = textStyle ?? {}
+  let transform: string | undefined
+  if (ts.rotate === true) transform = 'rotate(90deg)'
+  else if (ts.flip === true) transform = 'rotate(180deg)'
+  else if (ts.reversed === true) transform = 'rotateY(180deg)'
+  return {
+    textAlign: ts.textAlign ?? 'center',
+    fontWeight: ts.fontWeight ?? 'normal',
+    fontStyle: ts.fontStyle ?? 'normal',
+    textDecoration: ts.textDecoration ?? 'none',
+    color: ts.color ?? 'black',
+    backgroundColor: ts.backgroundColor ?? 'transparent',
+    marginBottom: ts.marginBottom !== undefined ? `${ts.marginBottom}px` : 0,
+    width: ts.width ?? 'auto',
+    transform,
+  }
+}
 
 interface TextContentProps {
   globalTextStyle?: Types.TextStyle
   textStyle?: Types.TextStyle
   // FIXME children: number | string | Types.RichTextContentType[] | JSX.Element | (number | string | JSX.Element)[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children: any
-  globalStyle?: any
-  style?: any
+  globalStyle?: React.CSSProperties
+  style?: React.CSSProperties
 }
 
 function TextContent({
@@ -160,9 +135,9 @@ function TextContent({
   }
 
   return (
-    <StyledTextContent textStyle={textStyle} style={style}>
+    <span style={{ ...computeStyle(textStyle), ...style }}>
       {newChildren as React.ReactNode}
-    </StyledTextContent>
+    </span>
   )
 }
 

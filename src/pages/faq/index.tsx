@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -16,10 +15,6 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-
-const Question = styled.h2``
-
-const Response = styled.div``
 
 const FAQ = (): React.ReactElement => {
   return (
@@ -41,8 +36,8 @@ const FAQ = (): React.ReactElement => {
           <ContentPageContainer>
             <Marginer direction="vertical" margin="2em" />
             <ContentContainer>
-              <Question>Combien compte une partie ?</Question>
-              <Response>
+              <h2>Combien compte une partie ?</h2>
+              <div>
                 Une partie coûte{' '}
                 <span style={{ fontWeight: 'bold' }}>
                   {Constants.WEBSITE_GAME_COST}
@@ -63,11 +58,11 @@ const FAQ = (): React.ReactElement => {
                 <br />
                 Pourquoi ? Les frais appliqués par les stores sont plus élevés
                 que ceux du site, tout simplement.
-              </Response>
+              </div>
               <br />
 
-              <Question>Combien de joueurs sur une partie ?</Question>
-              <Response>
+              <h2>Combien de joueurs sur une partie ?</h2>
+              <div>
                 Vous pouvez jouer jusqu&apos;à 5 (smartphones synchronisés
                 entre-eux) à une partie.
                 <br />
@@ -80,16 +75,16 @@ const FAQ = (): React.ReactElement => {
                 a la possibilité d&apos;inviter 4 autres personnes lors du
                 lancement de la partie.
                 <br />
-              </Response>
+              </div>
               <br />
 
-              {/* <Question>TODO Question enfants</Question>
-            <Response>
+              {/* <h2>TODO Question enfants</h2>
+            <div>
               TODO réponse enfant
-            </Response> */}
+            </div> */}
 
-              <Question>Comment utiliser un bon d&apos;achat ?</Question>
-              <Response>
+              <h2>Comment utiliser un bon d&apos;achat ?</h2>
+              <div>
                 <div className="mb-2">
                   <StyledReactPlayer
                     url={Constants.YOUTUBE_USER_VOUCHER_FAQ_VIDEO_URL}
@@ -124,11 +119,11 @@ const FAQ = (): React.ReactElement => {
                   pas visibles dans l&apos;historique de l&apos;application
                   mobile.
                 </i>
-              </Response>
+              </div>
               <br />
 
-              <Question>Comment rejoindre une partie ?</Question>
-              <Response>
+              <h2>Comment rejoindre une partie ?</h2>
+              <div>
                 1 - Ouvrez l&apos;application ShoesNotIncluded (ou
                 téléchargez-là au préalable sur les stores{' '}
                 <StyledALink href={Constants.PLAY_STORE_LINK}>
@@ -145,20 +140,20 @@ const FAQ = (): React.ReactElement => {
                 3 - Scannez le QR code de la partie obtenu par le joueur ayant
                 lancé la partie.
                 <br />
-              </Response>
+              </div>
               <br />
 
-              <Question>
+              <h2>
                 Comment retrouver le code de mon bon d&apos;achat ?
-              </Question>
-              <Response>
+              </h2>
+              <div>
                 Retournez sur la page de votre{' '}
                 <StyledLink href="/compte">compte</StyledLink> pour consulter
                 votre historique de paiement. Les bons de commande associés aux
                 paiements sont listés dans la colonne de droite.
                 <br />⚠ Attention : vous devez être connecté avec le même compte
                 utilisateur que lors de la commande !
-              </Response>
+              </div>
               <br />
             </ContentContainer>
           </ContentPageContainer>

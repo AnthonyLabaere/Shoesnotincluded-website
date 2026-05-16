@@ -1,0 +1,29 @@
+.brandContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  font-family: 'Oxygen-Bold';
+  font-weight: bold;
+  font-size: 1.25rem;
+
+  &:hover {
+    color: var(--brand-hover-color, currentColor);
+
+    .brandNot {
+      color: var(--brand-not-hover-color, var(--special-text-color));
+    }
+  }
+}
+
+.brandNot {
+  display: inline;
+  margin-left: var(--brand-not-margin, 0);
+  margin-right: var(--brand-not-margin, 0);
+  color: var(--special-text-color);
+
+  @media screen and (max-width: 768px) {
+    margin-left: var(--brand-not-margin-sm, 0);
+    margin-right: var(--brand-not-margin-sm, 0);
+  }
+}

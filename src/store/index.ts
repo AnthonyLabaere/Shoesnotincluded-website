@@ -12,7 +12,6 @@ const makeStore = () =>
   })
 export const store = makeStore()
 
-// export type AppDispatch = Store['dispatch']
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof store.getState>
 export type AppThunk<ReturnType = void> = ThunkAction<
@@ -22,7 +21,7 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   Action<string>
 >
 
-// // export an assembled wrapper
+// Wrapper Next.js (next-redux-wrapper) — assemble le store côté SSR/CSR
 export const wrapper = createWrapper<Store<RootState>>(makeStore, {
   debug: false,
 })

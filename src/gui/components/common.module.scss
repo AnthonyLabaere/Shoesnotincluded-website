@@ -1,0 +1,39 @@
+.contentContainer {
+  width: 100%;
+  max-width: 1324px; // = theme.deviceSizes.laptop
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem;
+
+  > * {
+    width: 100%;
+  }
+
+  > h1 {
+    text-align: center;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding: 5px;
+  }
+}
+
+.styledReactPlayer {
+  max-width: 100%;
+
+  @media screen and (max-width: 768px) {
+    max-width: 95%;
+  }
+}
+
+.linkBlack {
+  color: black;
+  display: inline;
+  text-decoration: underline;
+
+  &:hover {
+    color: #505050;
+  }
+}

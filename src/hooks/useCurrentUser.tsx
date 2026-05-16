@@ -18,7 +18,7 @@ const useCurrentUser = (withEdition = false): { userAuth: null | User } => {
         dispatch(resetUser())
       }
     })
-  }, [])
+  }, [withEdition, dispatch])
 
   useEffect(() => {
     if (userAuth != null) {
@@ -38,7 +38,7 @@ const useCurrentUser = (withEdition = false): { userAuth: null | User } => {
 
       return unsubscribe
     }
-  }, [userAuth])
+  }, [userAuth, withEdition, dispatch])
 
   return {
     userAuth,

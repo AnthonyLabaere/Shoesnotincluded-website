@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -10,15 +9,7 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-
-const LegalNoticesContentContainer = styled(ContentContainer)`
-  text-align: justify;
-
-  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-`
+import articleStyles from '../../styles/article.module.scss'
 
 const LegalNotices = (): React.ReactElement => {
   return (
@@ -38,7 +29,7 @@ const LegalNotices = (): React.ReactElement => {
             </ContentContainer>
           </ContentPageContainer>
           <ContentPageContainer>
-            <LegalNoticesContentContainer>
+            <ContentContainer className={articleStyles.justified}>
               <div>
                 <h3>
                   <span style={{ marginLeft: 0 }}>
@@ -78,7 +69,7 @@ const LegalNotices = (): React.ReactElement => {
               <p style={{ marginTop: 40, textAlign: 'right' }}>
                 Tous droits réservés - 12 novembre 2021
               </p>{' '}
-            </LegalNoticesContentContainer>
+            </ContentContainer>
             <Marginer direction="vertical" margin="2em" />
           </ContentPageContainer>
         </InnerPageContainer>

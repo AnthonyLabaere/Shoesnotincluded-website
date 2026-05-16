@@ -1,56 +1,46 @@
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import styled from 'styled-components'
+import React from 'react'
+
+import styles from './common.module.scss'
 
 const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false })
 
-export const ContentContainer = styled.div`
-  width: 100%;
-  max-width: ${({ theme }) => theme.deviceSizes.laptop};
+export function ContentContainer(props: {
+  children?: React.ReactNode
+  className?: string
+  style?: React.CSSProperties
+}): React.ReactElement {
+  const composedClassName =
+    props.className !== undefined && props.className !== ''
+      ? `${styles.contentContainer} ${props.className}`
+      : styles.contentContainer
+  return (
+    <div className={composedClassName} style={props.style}>
+      {props.children}
+    </div>
+  )
+}
 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 1rem;
+export function StyledReactPlayer(
+  props: Record<string, unknown>
+): React.ReactElement {
+  return <ReactPlayer {...props} className={styles.styledReactPlayer} />
+}
 
-  > * {
-    width: 100%;
-  }
+export function StyledALink({
+  children,
+  ...rest
+}: React.AnchorHTMLAttributes<HTMLAnchorElement>): React.ReactElement {
+  return (
+    <a {...rest} className={styles.linkBlack}>
+      {children}
+    </a>
+  )
+}
 
-  > h1 {
-    text-align: center;
-  }
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    padding: 5px;
-  }
-`
-
-export const StyledReactPlayer = styled(ReactPlayer)`
-  max-width: 100%;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    max-width: 95%;
-  }
-`
-
-export const StyledALink = styled.a`
-  color: black;
-  display: inline;
-  text-decoration: underline;
-
-  &:hover {
-    color: #505050;
-  }
-`
-
-export const StyledLink = styled(Link)`
-  color: black;
-  display: inline;
-  text-decoration: underline;
-
-  &:hover {
-    color: #505050;
-  }
-`
+export function StyledLink(
+  props: React.ComponentProps<typeof Link>
+): React.ReactElement {
+  return <Link {...props} className={styles.linkBlack} />
+}

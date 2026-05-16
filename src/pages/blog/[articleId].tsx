@@ -5,7 +5,6 @@ import path from 'path'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -20,19 +19,11 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
+import articleStyles from '../../styles/article.module.scss'
 import styles from './blog.module.scss'
 
 const POSTS_DIRECTORY = path.join(process.cwd(), 'src/data/blog/articles')
 
-const BlogArticleContentContainer = styled(ContentContainer)`
-  align-items: center;
-  text-align: justify;
-
-  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-`
 interface BlogArticleProps {
   articleData: {
     meta: {
@@ -64,7 +55,7 @@ const BlogArticle = ({
             </ContentContainer>
           </ContentPageContainer>
           <ContentPageContainer>
-            <BlogArticleContentContainer>
+            <ContentContainer className={articleStyles.justifiedCentered}>
               <Image
                 src={`/images/blog/${articleData.headerImageName}`}
                 width={400}
@@ -84,19 +75,19 @@ const BlogArticle = ({
                           href={props.href as string}
                           scroll={!props.href?.includes('#')}
                         >
-                          {props.children[0]}
+                          {props.children}
                         </StyledLink>
                       )
                     }
                     return (
                       <StyledALink href={props.href as string}>
-                        {props.children[0]}
+                        {props.children}
                       </StyledALink>
                     )
                   },
                 }}
               />
-            </BlogArticleContentContainer>
+            </ContentContainer>
             <Marginer direction="vertical" margin="2em" />
           </ContentPageContainer>
         </InnerPageContainer>

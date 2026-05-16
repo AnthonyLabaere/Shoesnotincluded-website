@@ -1,0 +1,41 @@
+.shortImage {
+  width: 75%;
+  height: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 5px solid black;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.longImage {
+  width: 50%;
+  height: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border: 5px solid black;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.rightSubContentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  a > img {
+    float: right;
+  }
+
+  @media screen and (max-width: 768px) {
+    align-items: flex-start;
+
+    a > img {
+      float: left;
+    }
+  }
+}

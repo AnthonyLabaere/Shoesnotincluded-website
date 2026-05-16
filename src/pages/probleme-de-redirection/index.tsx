@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import React from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -12,28 +11,7 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
-
-const ShareLinkImage = styled.div`
-  margin-top: 15px;
-  margin-bottom: 15px;
-  img {
-    width: 400px;
-  }
-  height: auto;
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    img {
-      width: 250px;
-    }
-  }
-`
-
-const TextContainer = styled.div`
-  font-size: 1.1rem;
-  text-align: justify;
-`
+import styles from './index.module.scss'
 
 const RedirectionError = (): React.ReactElement => {
   return (
@@ -58,7 +36,7 @@ const RedirectionError = (): React.ReactElement => {
                 mobile après un clic sur le lien partagé par un autre joueur,
                 merci de suivre les indications suivantes :
               </h2>
-              <TextContainer>
+              <div style={{ fontSize: '1.1rem', textAlign: 'justify' }}>
                 <ul>
                   <li>
                     Veuillez ne cliquer sur le lien de partage que depuis un
@@ -74,14 +52,14 @@ const RedirectionError = (): React.ReactElement => {
                     mobile et non un navigateur (exemple avec l&apos;image
                     ci-dessous où il est nécessaire de cliquer sur
                     &quot;ShoesNotIncluded&quot;) :
-                    <ShareLinkImage>
+                    <div className={styles.shareLinkImage}>
                       <Image
                         priority
                         src={ShareLinkImg}
                         width={400}
                         alt="Partager lien"
                       />
-                    </ShareLinkImage>
+                    </div>
                   </li>
                   <li>
                     Certains applications sur lesquelles ce lien vous a été
@@ -104,7 +82,7 @@ const RedirectionError = (): React.ReactElement => {
                     </li>
                   </ul>
                 </ul>
-              </TextContainer>
+              </div>
             </ContentContainer>
             <Marginer direction="vertical" margin="2em" />
           </ContentPageContainer>

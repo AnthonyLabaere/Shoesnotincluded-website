@@ -1,48 +1,42 @@
 import React from 'react'
-import styled from 'styled-components'
 
-const PageWrapper = styled.div`
-  width: 100%;
-  min-height: 100%;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
+import styles from './pageContainer.module.scss'
 
-export function PageContainer(props: any): React.ReactElement {
-  return <PageWrapper>{props.children}</PageWrapper>
+export function PageContainer(props: {
+  children?: React.ReactNode
+}): React.ReactElement {
+  return <div className={styles.pageWrapper}>{props.children}</div>
 }
 
-export const InnerPageContainer = styled.div<{ maxWidth?: number }>`
-  flex: 1;
-  width: 100%;
-  max-width: ${({ maxWidth }) => maxWidth ?? 'auto'};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`
+export function InnerPageContainer(props: {
+  children?: React.ReactNode
+  maxWidth?: number
+}): React.ReactElement {
+  const style: React.CSSProperties | undefined =
+    props.maxWidth !== undefined ? { maxWidth: props.maxWidth } : undefined
+  return (
+    <div className={styles.innerPageContainer} style={style}>
+      {props.children}
+    </div>
+  )
+}
 
-export const ContentPageContainer = styled.div<{
+export function ContentPageContainer(props: {
+  children?: React.ReactNode
   coloredBackground?: boolean | string
-}>`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: ${({ coloredBackground, theme }) => {
-    if (coloredBackground === undefined || coloredBackground === false) {
-      return 'transparent'
-    }
-    if (coloredBackground === true) {
-      return theme.backgroundColor
-    }
-    return coloredBackground
-  }};
-  padding: 10px;
-
-  > * {
-    max-width: ${({ theme }) => theme.deviceSizes.laptop};
-  }
-`
+  id?: string
+}): React.ReactElement {
+  const isColoredBoolean = props.coloredBackground === true
+  const isColoredString = typeof props.coloredBackground === 'string'
+  const className = isColoredBoolean
+    ? `${styles.contentPageContainer} ${styles.contentPageContainerColored}`
+    : styles.contentPageContainer
+  const style: React.CSSProperties | undefined = isColoredString
+    ? { backgroundColor: props.coloredBackground as string }
+    : undefined
+  return (
+    <div className={className} style={style} id={props.id}>
+      {props.children}
+    </div>
+  )
+}

@@ -4,7 +4,7 @@ interface CheckboxProps {
   id: string
   label: string | JSX.Element
   value: boolean
-  onChange: (event: any) => void
+  onChange: (value: boolean) => void
 }
 
 const Checkbox = ({

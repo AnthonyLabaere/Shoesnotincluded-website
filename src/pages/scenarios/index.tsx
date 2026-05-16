@@ -1,74 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
 import * as CityFirestore from '../../firebase/firestore/cityFirestore'
 import { ContentContainer } from '../../gui/components/common'
-import GameTags from '../../gui/components/GameTags'
 import {
   ContentPageContainer,
   InnerPageContainer,
   PageContainer,
 } from '../../gui/components/pageContainer'
 import * as Types from '../../types'
-
-const CitiesContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-`
-
-const CityContainer = styled(Link)`
-  display: flex;
-  flex-direction: column;
-
-  min-width: 30%;
-  max-width: 30%;
-
-  margin: 15px;
-  padding: 15px;
-
-  border: 1px solid black;
-  border-radius: 15px;
-
-  cursor: pointer;
-  color: black;
-
-  background-color: ${({ theme }) => theme.colors.white};
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    min-width: 95%;
-    max-width: 95%;
-  }
-
-  :hover {
-    background-color: ${({ theme }) => theme.backgroundColor};
-  }
-`
-
-const CityLogoImage = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-
-  img {
-    width: 250px;
-    height: 250px;
-  }
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXS}) {
-    img {
-      width: 175px;
-      height: 175px;
-    }
-  }
-`
+import styles from './index.module.scss'
 
 interface CitiesProps {
   staticCities: Types.CityDocument[]
@@ -97,32 +41,32 @@ const Cities = ({ staticCities }: CitiesProps): React.ReactElement => {
           </ContentPageContainer>
           <ContentPageContainer>
             <ContentContainer>
-              <CitiesContainer>
+              <div className={styles.citiesContainer}>
                 {cities
                   .sort((a, b) => {
                     return a.ordre - b.ordre
                   })
                   .map((city) => {
                     return (
-                      <CityContainer key={city.id} href={'/' + city.id}>
+                      <Link className={styles.cityContainer} key={city.id} href={'/' + city.id}>
                         <div
                           className="fs-3"
                           style={{ flex: 1, textAlign: 'center', padding: 5 }}
                         >
                           {city.name}
                         </div>
-                        <CityLogoImage>
+                        <div className={styles.cityLogoImage}>
                           <Image
                             src={city.imageUrl}
                             width={150}
                             height={150}
                             alt={city.id + ' logo'}
                           />
-                        </CityLogoImage>
-                      </CityContainer>
+                        </div>
+                      </Link>
                     )
                   })}
-              </CitiesContainer>
+              </div>
             </ContentContainer>
           </ContentPageContainer>
         </InnerPageContainer>

@@ -1,6 +1,6 @@
 import 'firebaseui/dist/firebaseui.css'
 
-import { onAuthStateChanged } from 'firebase/auth'
+import { Auth, onAuthStateChanged } from 'firebase/auth'
 import { auth } from 'firebaseui'
 import { useEffect, useRef, useState } from 'react'
 
@@ -13,7 +13,7 @@ interface Props {
   // disableAutoSignIn().
   uiCallback?(ui: auth.AuthUI): void
   // The Firebase App auth instance to use.
-  firebaseAuth: any // As firebaseui-web
+  firebaseAuth: Auth // From firebase/auth
   className?: string
 }
 
@@ -32,7 +32,7 @@ const StyledFirebaseAuth = ({
   useEffect(() => {
     // Firebase UI only works on the Client. So we're loading the package only after
     // the component has mounted, so that this works when doing server-side rendering.
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
     setFirebaseui(require('firebaseui'))
   }, [])
 

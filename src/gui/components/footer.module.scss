@@ -1,0 +1,153 @@
+$grey-color: #353535;
+$grey-hover-color: #666666;
+
+.footerContainer {
+  width: 100%;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 3rem;
+  border-top: 0.6px solid rgba(0, 0, 0, 0.3);
+  padding-bottom: 0;
+
+  @media screen and (max-width: 768px) {
+    padding: 2rem 0.75rem;
+    padding-bottom: 0;
+  }
+
+  @media screen and (max-width: 400px) {
+    padding: 2rem 0.5rem;
+    padding-bottom: 0;
+  }
+}
+
+.topContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.topContentContainer {
+  width: 100%;
+  max-width: 1324px;
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.bottomContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  border-top: 0.6px solid rgba(0, 0, 0, 0.3);
+  padding: 0 10px;
+
+  @media screen and (max-width: 768px) {
+    padding: 0;
+  }
+}
+
+.topSubContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-align: justify;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 13px;
+  color: #000;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.socialIconContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.socialIcon {
+  color: $grey-color;
+  font-size: 45px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: background-color, 200ms ease-in-out;
+
+  &:hover {
+    color: $grey-hover-color;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 25px;
+  }
+}
+
+.bottomSubContainerColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bottomSubContainerRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.privacyText {
+  color: $grey-color;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin: 0;
+  display: inline;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.5rem;
+  }
+}
+
+.bottomStyledLink {
+  color: $grey-color;
+  font-size: 1.25rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 0.75rem;
+  }
+
+  &:hover {
+    color: $grey-hover-color;
+  }
+}
+
+.cguStyledLink::before {
+  content: "Condition générales d'utilisation et de vente";
+
+  @media screen and (max-width: 768px) {
+    content: 'CGU & CGV';
+  }
+}
+
+.privacyPolicyStyledLink::before {
+  content: 'Politique de confidentialité';
+
+  @media screen and (max-width: 768px) {
+    content: 'Confidentialité';
+  }
+}

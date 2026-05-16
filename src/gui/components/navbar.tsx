@@ -6,22 +6,13 @@ import React from 'react'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import styled from 'styled-components'
 
 import useAppSelector from '@/src/hooks/useAppSelector'
 import { selectUser } from '@/src/store/userSlice'
 
 import LogoImg from '../../../public/images/logo.png'
 import Brand from './brand'
-
-const UserName = styled.div`
-  overflow: hidden;
-  max-width: 15ch;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-
-  margin-right: 10px;
-`
+import styles from './navbar.module.scss'
 
 const CustomNavbar = (): React.ReactElement => {
   const user = useAppSelector(selectUser)
@@ -56,7 +47,7 @@ const CustomNavbar = (): React.ReactElement => {
               href="/scenarios"
               eventKey="scenarios"
             >
-              {'Les scénarios'}
+              {'Les scénarios'}
             </Nav.Link>
             <Nav.Link
               className="px-4"
@@ -64,7 +55,7 @@ const CustomNavbar = (): React.ReactElement => {
               href="/comment-ca-marche"
               eventKey="comment-ca-marche"
             >
-              {'Comment ça marche ?'}
+              {'Comment ça marche ?'}
             </Nav.Link>
             <Nav.Link className="px-4" as={Link} href="/tarif" eventKey="tarif">
               Tarif
@@ -78,7 +69,7 @@ const CustomNavbar = (): React.ReactElement => {
               href="/team-building"
               eventKey="team-building"
             >
-              {'Team building'}
+              {'Team building'}
             </Nav.Link>
             <Nav.Link
               className="px-4"
@@ -87,9 +78,9 @@ const CustomNavbar = (): React.ReactElement => {
               eventKey="compte"
               style={{ display: 'flex', alignItems: 'center' }}
             >
-              <UserName>
-                {user != null ? user.displayName : 'Mon compte'}
-              </UserName>{' '}
+              <div className={styles.userName}>
+                {user != null ? user.displayName : 'Mon compte'}
+              </div>{' '}
               <FontAwesomeIcon
                 icon={user != null ? faUser : faUserSlash}
                 size="1x"

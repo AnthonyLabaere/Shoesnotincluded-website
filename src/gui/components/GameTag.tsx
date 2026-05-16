@@ -1,57 +1,24 @@
 import React from 'react'
-import styled from 'styled-components'
 
-import * as Constants from '../../constants'
-import { Theme } from '../../styles/theme'
 import * as Types from '../../types'
+import styles from './GameTag.module.scss'
 
 // Libellés des tags
 const SPECIFIC_TAGS_LABEL = {
   easy: 'Facile',
   medium: 'Intermédiaire',
   hard: 'Difficile',
-  all: 'Tout public',
+  all: 'Tout public',
 }
 
-const Tag = styled.div<{ type: Types.GameTagType; large?: boolean }>`
-  align-self: flex-start;
-  padding-left: ${({ large }: { large?: boolean }) => {
-    return large === true ? '15px' : '5px'
-  }};
-  padding-right: ${({ large }: { large?: boolean }) => {
-    return large === true ? '15px' : '5px'
-  }};
-  padding-top: ${({ large }: { large?: boolean }) => {
-    return large === true ? '0' : '1px'
-  }};
-  padding-bottom: ${({ large }: { large?: boolean }) => {
-    return large === true ? '0' : '1px'
-  }};
-  margin: ${({ large }: { large?: boolean }) => {
-    return large === true ? '5px' : '1px'
-  }};
-  border-radius: 5px;
-  color: ${({ type, theme }: { type: Types.GameTagType; theme: Theme }) => {
-    if (Object.keys(theme.tags).includes(type)) {
-      return (theme.tags as any)[type].color
-    }
-    // Cas non censé se produire mais au cas où :
-    return Constants.THEME_WHITE_COLOR
-  }};
-  background-color: ${({
-    type,
-    theme,
-  }: {
-    type: Types.GameTagType
-    theme: Theme
-  }) => {
-    if (Object.keys(theme.tags).includes(type)) {
-      return (theme.tags as any)[type].backgroundColor
-    }
-    // Cas non censé se produire mais au cas où :
-    return Constants.THEME_BLACK_COLOR
-  }};
-`
+const TYPE_TO_CLASS: Record<string, string> = {
+  easy: styles.tagEasy,
+  medium: styles.tagMedium,
+  hard: styles.tagHard,
+  all: styles.tagAll,
+  estimatedTravelDistance: styles.tagEstimatedTravelDistance,
+  time: styles.tagTime,
+}
 
 export interface GameTagProps {
   label?: string
@@ -64,7 +31,7 @@ function GameTag({ label, type, large }: GameTagProps): React.ReactElement {
 
   if (label !== undefined) {
     if (Object.keys(SPECIFIC_TAGS_LABEL).includes(label)) {
-      enhancedLabel = (SPECIFIC_TAGS_LABEL as any)[label]
+      enhancedLabel = (SPECIFIC_TAGS_LABEL as Record<string, string>)[label]
     } else {
       enhancedLabel = label
     }
@@ -73,14 +40,18 @@ function GameTag({ label, type, large }: GameTagProps): React.ReactElement {
     return <></>
   }
 
+  const typeClass = TYPE_TO_CLASS[type] ?? styles.tagFallback
+  const sizeClass = large === true ? styles.tagLarge : ''
+  const className = `${styles.tag} ${typeClass} ${sizeClass}`.trim()
+
   return (
-    <Tag type={type} large={large}>
+    <div className={className}>
       {large === true ? (
         <div className="fs-5">{enhancedLabel as string}</div>
       ) : (
         (enhancedLabel as string)
       )}
-    </Tag>
+    </div>
   )
 }
 

@@ -1,0 +1,45 @@
+.scenariosContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.scenarioContainer {
+  display: flex;
+  flex-direction: column;
+  min-width: 30%;
+  max-width: 30%;
+  margin: 15px;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 15px;
+  cursor: pointer;
+  color: black;
+  background-color: var(--color-white);
+
+  @media screen and (max-width: 768px) {
+    min-width: 95%;
+    max-width: 95%;
+  }
+
+  &:hover {
+    background-color: var(--background-color);
+  }
+}
+
+.scenarioLogoImage {
+  flex: 1;
+  padding: 5px;
+
+  img {
+    width: 150px;
+    height: 150px;
+  }
+
+  @media screen and (max-width: 400px) {
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}

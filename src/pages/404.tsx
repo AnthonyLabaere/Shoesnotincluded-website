@@ -1,6 +1,4 @@
-import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
-import styled from 'styled-components'
 
 import Layout from '@/src/gui/components/layout'
 
@@ -11,24 +9,18 @@ import {
   InnerPageContainer,
   PageContainer,
 } from '../gui/components/pageContainer'
-
-const ContentContainer404 = styled(ContentContainer)`
-  text-align: justify;
-
-  p {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-`
+import articleStyles from '../styles/article.module.scss'
 
 const Custom404 = (): React.ReactElement => {
-  const router = useRouter()
-
   useEffect(() => {
-    if (router.asPath.includes('/join')) {
-      router.replace('/probleme-de-redirection')
+    // Redirection côté client uniquement (pas pendant le prerendering SSG)
+    if (
+      typeof window !== 'undefined' &&
+      window.location.pathname.includes('/join')
+    ) {
+      window.location.replace('/probleme-de-redirection')
     }
-  }, [router])
+  }, [])
 
   return (
     <Layout
@@ -46,7 +38,9 @@ const Custom404 = (): React.ReactElement => {
             </ContentContainer>
           </ContentPageContainer>
           <ContentPageContainer>
-            <ContentContainer404 className="fs-5">
+            <ContentContainer
+              className={`fs-5 ${articleStyles.justified}`}
+            >
               <p>
                 Whoops ! Il semble que vous soyez perdu dans un labyrinthe sans
                 issue. Mais ne vous inquiétez pas, nous sommes là pour vous
@@ -77,7 +71,7 @@ const Custom404 = (): React.ReactElement => {
                 besoin d&apos;aide pour sortir de cette page 404. Nous sommes là
                 pour vous aider.
               </p>
-            </ContentContainer404>
+            </ContentContainer>
             <Marginer direction="vertical" margin="2em" />
           </ContentPageContainer>
         </InnerPageContainer>

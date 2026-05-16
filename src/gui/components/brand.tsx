@@ -1,76 +1,59 @@
 import React from 'react'
-import styled from 'styled-components'
 
-const BrandContainer = styled.div<{
+import styles from './brand.module.scss'
+
+interface BrandProps {
+  className?: string
   color?: string
   hoverColor?: string
   size?: number
-  withShadow: boolean
-}>`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 0;
-  font-family: 'Oxygen-Bold';
-  font-weight: bold;
-  font-size: ${({ size }) => (size != null ? `${size}rem` : '1.25rem')};
-  color: ${({ color }) => color ?? '#000'};
+  withShadow?: boolean
+}
 
-  &:hover {
-    color: ${({ color, hoverColor }) => {
-      if (hoverColor != null) {
-        return hoverColor
-      } else if (color != null) {
-        return color
-      }
-      return '#000'
-    }};
+const Brand = ({
+  className,
+  color,
+  hoverColor,
+  size,
+  withShadow = false,
+}: BrandProps): React.ReactElement => {
+  const childHoverColor = hoverColor ?? color
+  const containerStyle: React.CSSProperties = {
+    ...(size !== undefined ? { fontSize: `${size}rem` } : null),
+    ...(color !== undefined ? { color } : null),
+    ...(childHoverColor !== undefined
+      ? ({ ['--brand-hover-color']: childHoverColor } as Record<string, string>)
+      : null),
+  } as React.CSSProperties
 
-    div {
-      color: ${({ color, hoverColor, theme }) => {
-        if (hoverColor != null) {
-          return hoverColor
-        } else if (color != null) {
-          return color
-        }
-        return theme.specialTextColor
-      }};
-    }
-  }
-`
+  const notStyle: React.CSSProperties = {
+    ...(color !== undefined ? { color } : null),
+    ...(childHoverColor !== undefined
+      ? ({
+          ['--brand-not-hover-color']: childHoverColor,
+        } as Record<string, string>)
+      : null),
+    ...(withShadow
+      ? ({
+          ['--brand-not-margin']: '0.3rem',
+          ['--brand-not-margin-sm']: '0.15rem',
+        } as Record<string, string>)
+      : null),
+  } as React.CSSProperties
 
-const BrandNot = styled.div<{
-  color?: string
-  hoverColor?: string
-  withShadow: boolean
-}>`
-  display: inline;
-  margin-left: ${({ withShadow }) => (withShadow ? '0.3rem' : '0')};
-  margin-right: ${({ withShadow }) => (withShadow ? '0.3rem' : '0')};
-  color: ${({ color, theme }) => color ?? theme.specialTextColor};
-
-  @media screen and (max-width: ${({ theme }) => theme.deviceSizes.mobileXL}) {
-    margin-left: ${({ withShadow }) => (withShadow ? '0.15rem' : '0')};
-    margin-right: ${({ withShadow }) => (withShadow ? '0.15rem' : '0')};
-  }
-`
-
-const Brand = (props: any): React.ReactElement => {
-  const { className, color, hoverColor, withShadow } = props
+  const composedClassName =
+    className !== undefined && className !== ''
+      ? `${styles.brandContainer} ${className}`
+      : styles.brandContainer
 
   return (
-    <BrandContainer
-      className={className}
-      color={color}
-      hoverColor={hoverColor}
-      withShadow={withShadow}
-    >
+    <div className={composedClassName} style={containerStyle}>
       Shoes
-      <BrandNot color={color} hoverColor={hoverColor} withShadow={withShadow}>
+      <div className={styles.brandNot} style={notStyle}>
         Not
-      </BrandNot>
+      </div>
       Included
-    </BrandContainer>
+    </div>
   )
 }
 
