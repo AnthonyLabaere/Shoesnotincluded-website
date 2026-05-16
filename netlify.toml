@@ -1,0 +1,17 @@
+# Configuration Netlify pour le déploiement.
+# Permet de figer la version de Node utilisée à l'install et au build.
+# Sans ça, Netlify part sur Node 16 par défaut, incompatible avec
+# l'`engines.node: >=18.18` du package.json (Next.js 15 requiert
+# Node >= 18.18).
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # Aligne le comportement avec mon `.npmrc` local : autoriser les
+  # peer-deps non strictement satisfaites (combinaison eslint 9 +
+  # @typescript-eslint 8 + eslint-config-next 15 non parfaitement
+  # alignée). Utile si Netlify tombe sur npm install au lieu de yarn.
+  NPM_FLAGS = "--legacy-peer-deps"
